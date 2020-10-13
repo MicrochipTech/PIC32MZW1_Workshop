@@ -1200,7 +1200,7 @@ After provisioning, your device is going to connect to MQTT broker and start pub
 
 Pick one of the MQTT client tool from the list below:
 - [MQTTBox](http://workswithweb.com/mqttbox.html)
-- MQTT.fx
+- [MQTT.fx](https://mqttfx.jensd.de/index.php/download)
 - [MQTTLens Chrome Plugin](https://chrome.google.com/webstore/detail/mqttlens/hemojaaeigabkbcookmlgmdigohjobjm)
 - [MyMQTT app for Android](https://play.google.com/store/apps/details?id=at.tripwire.mqtt.client)
 - [MQTTTool app for iOS](https://apps.apple.com/us/app/mqttool/id1085976398)
@@ -1282,13 +1282,16 @@ First step is to get the server certificate of [test.mosquitto.org](https://test
 
 > Check out [OpenSSL manpage](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html) for more details.
 
-4. Copy the top-level certificate (including -----BEGIN CERTIFICATE----- to -----END CERTIFICATE-----) into a text file. Save the file in `C:\PIC32MZW1` and rename it to `mosquitto.crt`
+<!-- 4. Copy the top-level certificate (including -----BEGIN CERTIFICATE----- to -----END CERTIFICATE-----) into a text file. Save the file in `C:\PIC32MZW1` and rename it to `mosquitto.crt`-->
+4. Copy the level 1 certificate (including -----BEGIN CERTIFICATE----- to -----END CERTIFICATE-----) into a text file. Save the file in `C:\PIC32MZW1` and rename it to `mosquitto.crt`
 <p align="center">
-<img src="resources/media/openssl_command_02.png" width=720>
-<img src="resources/media/openssl_command_03.png" width=480>
+<img src="resources/media/openssl_command_02_bis.png" width=720>
+<img src="resources/media/openssl_command_03_bis.png" width=480>
 </p>
 
-> Alternate solution is to download the certificate directly from [test.mosquitto.org](https://test.mosquitto.org/ssl/mosquitto.org.crt) but the command-line approach is more scalable to connect to other hosts.
+> Here, the certificate chain consists of two certificates presented. At level 0 there is the server certificate with some parsed information. s: is the subject line of the certificate and i: contains information abouth the issuing CA.\
+This particular server (test.mosquitto.org) has sent an intermediate certificate as well. Subject and issuer information is provided for each certificate in the presented chain. Chains can be much longer than 2 certificates in length. The server certificates section is a duplicate of level 0 in the chain. Here we are looking for the end entity certificate.\
+> Alternate solution is to download the certificate directly from [test.mosquitto.org](https://test.mosquitto.org/ssl/mosquitto.org.crt) but the command line approach is more scalable to connect to other hosts.
 
 5. Make sure you have [python 3](https://www.python.org/downloads/) installed\
   From the Git bash console:

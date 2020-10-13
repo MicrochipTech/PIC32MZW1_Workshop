@@ -59,6 +59,8 @@ Check out the [SW User Guide](https://www.microchip.com/PIC32MZW1) to get more d
 
 From the TCP Client example, you will evaluate the PIC32MZ W1 solution along several labs.
 
+From beginner to intermediate level:
+
 | Lab | Device configuration | Harmony code base | Compiler / Linker | Comments |
 | --- | -------------------- | ----------------- | ----------------- | -------- |
 | Lab 0 - Wi-Fi feature evaluation with CLI | CLI | No | No | Fastest path for evaluation (especially for non Harmony users) |
@@ -88,7 +90,7 @@ Advanced labs:
 
 - Using Application Browser:
   - Filter for **'w1'** applications
-  - Copy TCP Client example to your `<HarmonyProjects>` path in order to not modify the original `<HarmonyFramework>` folder
+  - Copy both projects: Paho MQTT Client and TCP Client to your `<HarmonyProjects>` path in order to not modify the original projects located in `<HarmonyFramework>` folder
 <p align="center">
 <img src="resources/media/h3_application_browser_tcp_client.png" width=720>
 <img src="resources/media/h3_application_browser_destination_path.png" width=480>
@@ -175,7 +177,7 @@ This lab let the user get familiar with MPLAB X IDE, compiler and CLI commands.
 
 1. Launch **MPLAB X IDE**
 
-2. Open TCP Client project you copied from Application to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 
 3. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
 <p align="center">
@@ -296,7 +298,7 @@ Learn to use MHC to configure Wi-Fi credentials of the Wi-Fi System Service to c
 
 1.	Launch **MPLAP X IDE**
 
-2. Open TCP Client project you copied from Application to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 
 3.	Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
 
@@ -391,7 +393,7 @@ This is useful for the products which is production ready. End user can provisio
 
 1. Launch **MPLAB X IDE**
 
-2. Open TCP Client project you copied from Application to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 
 3.	Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
 
@@ -530,14 +532,134 @@ Checkout the [Wi-Fi provisioning System Service Usage](https://microchip-mplab-h
 
 ### Purpose
 
-Learn to merge TCP Client example application and Paho MQTT Client example application. This is useful for the users who want to have merge two application into one for their project.
+Learn to merge TCP Client example application and Paho MQTT Client example application. In real-life scenario, an application has very often several complex tasks to execute. Here, you will start from Paho MQTT application and merge the functionalities of the TCP Client application to result into a single application.
 
 ### Instructions
 
-TO COMPLETE.
+1. Open Paho MQTT example project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 
-2. Open TCP Client project you copied from Application to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+2. Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
 
+3. Select **Net Service** component from **Root** view in Project graph
+4. Configure below settings, these are the settings of the TCP Client example project
+<p align="center">
+<img src="resources/media/mhc_configure_net_service.png" width=>
+</p>
+
+5. After enabling **TLS**, below messages are prompt and require to activate **wolfSSL** library, **SNTP** component and connect **wolfSSL** with **wolfcyptLib**.\
+Reply **Yes** for all these settings.
+<p align="center">
+<img src="resources/media/mhc_add_wolfssl.png" width=>
+<img src="resources/media/mhc_add_sntp.png" width=>
+<img src="resources/media/mhc_link_wolfssl.png" width=>
+</p>
+
+6. Select **WIFI Service** component and configure the STA SSID and password to connect the device to the target Home Router
+<p align="center">
+<img src="resources/media/mhc_configure_wifi_service.png" width=480>
+</p>
+
+7. Select **wolfCrypt Library** component from **System Component** view in Project graph. Select **Single Thread** as **Threading Support** option
+<p align="center">
+<img src="resources/media/mhc_configure_wolfcrypt_library.png" width=480>
+</p>
+
+8. Click **Generate Code** icon
+<p align="center">
+<img src="resources/media/lab2_mplab_harmony_generate_code.png" width=>
+</p>
+
+8. Save the modified configuration
+<p align="center">
+<img src="resources/media/lab5_mhc_save_configuration.png" width=520>
+</p>
+
+9. Select **Merge Strategy** as **USER_ALL**, click **Generate**
+
+<p align="center">
+<img src="resources/media/lab2_mplab_harmony_generate_project.png" width=320>
+</p>
+
+10. Now, it is time to merge the TCP Client example application code to the Paho MQTT Client application.\
+You will copy the TCP Client example application code from `<HarmonyProjects>/wireless/apps/tcp_client/firmware/src/app_pic32mzw1.c` to Paho MQTT Client application code in `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src/app.c`<br><br>
+The details steps are given in the next steps.
+   
+11. Copy the files `<HarmonyProjects>/wireless/apps/tcp_client/firmware/src/app_pic32mzw1.c` and `app_pic32mzw1.h` to Paho MQTT Client project source folder `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src`.
+<p align="center">
+<img src="resources/media/lab5_copy_files_01.png" width=720>
+</p>
+    
+12. Rename both files to `app_tcp_client.c` and `app_tcp_client.h`
+<p align="center">
+<img src="resources/media/lab5_rename_files_01.png" width=720>
+</p>
+
+13. Add the files to the open project. Right click in **Source Files** folder in the project panel and select **Add Existing Item**
+<p align="center">
+<img src="resources/media/lab5_add_existing_item.png" width=320>
+</p>
+
+14. Select `app_tcp_client.c` and add the file in the Source folder of the project
+<p align="center">
+<img src="resources/media/lab5_add_existing_item_01.png" width=520>
+</p>
+
+15. Right click in **Header Files** folder in the project panel and select **Add Existing Item**
+<p align="center">
+<img src="resources/media/lab5_add_existing_item_02.png" width=320>
+</p>
+
+16. Select `app_tcp_client.h` and add the file in the Header folder of the project
+<p align="center">
+<img src="resources/media/lab5_add_existing_item_03.png" width=520>
+</p>
+
+17. Open header file `app_tcp_client.h` and rename the functions below for easy recognition
+
+| Original Function name | New Function name |
+| ---------------------- | ----------------- |
+| `void APP_PIC32MZW1_Initialize ( void )` ->  | `void APP_TCP_Client_Initialize ( void )` |
+| `void APP_PIC32MZW1_Tasks ( void )` | `void APP_TCP_Client_Tasks ( void )` |
+
+18. Open source file `app_tcp_client.c` and rename the same two functions as above
+
+19. Add a call to `APP_TCP_Client_Initialize()` below `APP_Initialize()` in function `SYS_Initialize()` located at `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src/config/pic32mz_w1_curiosity/initialization.c`
+<p align="center">
+<img src="resources/media/lab5_add_app_tcp_client_init.png" width=480>
+</p>
+
+20. Add `APP_TCP_Client_Tasks()` below `APP_Tasks()` in function `SYS_Tasks()` located at `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src/config/pic32mz_w1_curiosity/tasks.c`
+<p align="center">
+<img src="resources/media/lab5_add_app_tcp_client_tasks.png" width=480>
+</p>
+
+21. Include header `app_tcp_client.h` in `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src/config/pic32mz_w1_curiosity/definitions.h`
+<p align="center">
+<img src="resources/media/lab5_include_app_tcp_client.png" width=520>
+</p>
+
+22. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
+
+23. Click **Run Main Project** button , program is start compiled and download to the curiosity board
+<p align="center">
+<img src="resources/media/mplabx_ide_run_main_project.png" width=>
+</p>
+
+24. After program is downloaded to the board and start running, below console log is printed. The log show that the board is able to connect to the target AP, get the IP from the DHCP server, send a HTTP Get command to google.com, and receive the html Page content. Also it connects to test.mosquitto.org MQTT Broker, subscribe to MQTT topic `MCHP/Sample/b` and publish message periodically to topic `MCHP/Sample/a`
+<p align="center">
+<img src="resources/media/lab5_console_bis.png" width=520>
+</p>
+
+25. To test the MQTT application, you can download and install [MQTT.fx](https://mqttfx.jensd.de/index.php/download)\
+Launch MQTT.fx and apply the following configuration:
+- Host: **test.mosquitto.org**
+- Port: **1883**
+- Subscribe to: **MCHP/Sample/a**
+- Publish to: **MCHP/Sample/b**
+
+<p align="center">
+<img src="resources/media/lab5_mqtt_fx.png" width=720>
+</p>
 
 ## Lab 6 - Enable WLAN MAC Debug Log<a name="step11"></a>
 
@@ -563,14 +685,14 @@ Serial port settings: **_115200 8N1_**
 <img src="resources/media/lab5_add_stdio.png" width=520>
 </p>
 
-4. Right click **UART** on **STDIO** component, select **UART2**. Use the default settings of UART2.
+4. Right click **UART** on **STDIO** component (red diamond), select **UART2**. Use the default settings of UART2.
 <p align="center">
 <img src="resources/media/lab5_configure_stdio.png" width=720>
 </p>
 
 5. Select **MHC -> Tools -> Pin Configuration**
 <p align="center">
-<img src="resources/media/lab5_pin_configuration.png" width=>
+<img src="resources/media/lab5_pin_configuration.png" width=320>
 </p>
 
 6. In **Pin Setting** Tab, set **A56** pin to **U2RX** and **A57** pin to **U2TX**

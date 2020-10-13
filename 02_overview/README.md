@@ -149,6 +149,8 @@ The integration of a Secure Element utilising Microchip [Trust&GO](https://www.m
 
 Check out the [Trust&Go Datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/ATECC608A-TNGTLS-CryptoAuthentication-Data-Sheet-DS40002112B.pdf) for more information.
 
+Learn out to use [Trust&Go solutions for PIC32MZ W1](https://www.microchip.com/design-centers/wireless-connectivity/embedded-wi-fi/pic3mz-21-trust-go-wi-fi-module)
+
 
 ## Learn about Wireless Software<a name="step4"></a>
 

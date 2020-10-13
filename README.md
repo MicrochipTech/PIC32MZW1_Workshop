@@ -4,7 +4,7 @@
 Devices: | **PIC32MZ W1 | WFI32E01** | **Trust\&Go (ECC608)** |
 
 [![Latest release](https://img.shields.io/github/v/release/MicrochipTech/PIC32MZW1_Workshop?include_prereleases&sort=semver&style=for-the-badge)](https://github.com/MicrochipTech/PIC32MZW1_Workshop/releases/latest)
-[![Latest release date](https://img.shields.io/github/release-date/MicrochipTech/PIC32MZW1_Workshop?style=for-the-badge)](https://github.com/MicrochipTech/Workshop/releases/latest)
+[![Latest release date](https://img.shields.io/github/release-date/MicrochipTech/PIC32MZW1_Workshop?style=for-the-badge)](https://github.com/MicrochipTech/PIC32MZW1_Workshop/releases/latest)
 
 <p align="left">
 <a href="https://www.microchip.com" target="_blank">
@@ -19,7 +19,7 @@ Devices: | **PIC32MZ W1 | WFI32E01** | **Trust\&Go (ECC608)** |
 
 Start from navigating in the resources available then discover the strengths of PIC32MZ W1 family and learn the ecosystem. Get the evaluation board and enjoy the out-of-box demo capable of publishing temperature sensor data directly to AWS Cloud with minimal setup. Then learn how to modify Microchip sample code to customize to your needs by adding your own sensor or connecting to your own cloud instance. The demo allows to easily control the board with a smart speaker by adding voice control commands in your AWS account.
 
-Then dive-in the collection of code example available and evaluate an existing application from different perspective. 
+Then dive-in the collection of code example available and evaluate an existing application from different levels, on a scale from beginner up to advanced users.
 
 Continue the PIC32MZ W1 journey by developing a Secured Smart Home application from scratch with detailled step by step instructions.
 
