@@ -3,9 +3,10 @@
 
 Devices: | **PIC32MZ W1 | WFI32E01** | **Trust\&Go (ECC608)** |
 
+<!--
 [![Latest release](https://img.shields.io/github/v/release/MicrochipTech/PIC32MZW1_Workshop?include_prereleases&sort=semver&style=for-the-badge)](https://github.com/MicrochipTech/PIC32MZW1_Workshop/releases/latest)
 [![Latest release date](https://img.shields.io/github/release-date/MicrochipTech/PIC32MZW1_Workshop?style=for-the-badge)](https://github.com/MicrochipTech/PIC32MZW1_Workshop/releases/latest)
-
+-->
 <p align="left">
 <a href="https://www.microchip.com" target="_blank">
 <img src="resources/media/Microchip_logo.png" width=320></a>
