@@ -82,8 +82,9 @@ Advanced labs:
 - TeraTerm Serial Terminal installed, setup 115200 8N1, disable local echo
 - Download and install [Packet Sender](https://packetsender.com/)
 
-- Setup the PIC32WFI32E Curiosity board to use embedded debugger PKOB (refer to [Setup the Tools](../03_setup/README.md#top) section)
-- Plug USB cable to **USB DEBUG J302** connector on PIC32WFI32E Curiosity board to connect computer and the board
+- Use an external debugger such as MPLAB ICD 4, MPLAB PICkit 4 or MPLAB Snap for the best programming and debugging experience. Refer to [Setup the Tools](../03_setup/README.md#top) section
+- Plug USB cable to **USB DEBUG J204** connector on PIC32WFI32E Curiosity board to connect computer and the board
+
 - USB-UART cable is required
 - To capture console log, connect a USB-to-UART converter to J207 (GPIO Header) of the curiosity board. Refer to [Setup the Tools](../03_setup/README.md#top) section.
 - [CLI documentation](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/usage.html)
@@ -125,7 +126,7 @@ This lab provides the fastest path for evaluation (especially for non Harmony us
 <img src="resources/media/mplabx_ipe_logo.png" width=>
 </p>
 
-2. Ensure select Device as **PIC32MZ1025W104132**, and select Tool as Starter Kits(PKOB).\
+2. Ensure select Device as **PIC32MZ1025W104132**, and select your Hardware programming tool.\
 Click **Connect**
 
 <p align="center">
@@ -395,7 +396,7 @@ This is useful for the products which is production ready. End user can provisio
 
 2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 
-3.	Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
+3. Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
 
 <p align="center">
 <img src="resources/media/lab2_mplab_harmony_configurator.png" width=>
