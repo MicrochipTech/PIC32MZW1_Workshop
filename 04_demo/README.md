@@ -69,11 +69,14 @@ The new drive contains several files.
 <img src="resources/media/oob_wireless_configuration.png" width=320>
 </p>
 
-- Click Download Configuration to download the Wi-Fi® configuration file `WIFI.CFG` and save the file in a dedicated folder on your hard drive (e.g. `c:\pic32mzw1`).
+- Click Download Configuration to download the Wi-Fi® configuration file `WIFI.CFG` and save the file in a dedicated folder on your hard drive (e.g. c:\pic32mzw1).
 
-- Drag and drop the file to the root of the new drive and replace the old one. 
+- Drag and drop the new file `WIFI.CFG` to the root of the new drive and replace the existing file. Make sure the file is named exactly `WIFI.CFG` and the copy process is completed.
 
-- Your board will blink, and automatically connect to the network.
+- Reboot the board by pressing MCLR button.
+
+- Your board will automatically connect to the network.
+
 <p align="center">
 <img src="resources/media/oob_board_ready.png" width=520>
 </p>
