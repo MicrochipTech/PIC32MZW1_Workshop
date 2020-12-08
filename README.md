@@ -22,7 +22,7 @@ Start from navigating in the resources available then discover the strengths of 
 
 Then dive-in the collection of code example available and evaluate an existing application from different levels, on a scale from beginner up to advanced users.
 
-Continue the PIC32MZ W1 journey by developing a Secured Smart Home application from scratch with detailled step by step instructions.
+Continue the PIC32MZ W1 journey by developing a Secured Smart Home application from scratch with detailed step by step instructions.
 
 <p align="center">
 <img src="resources/media/workshop_flow.png" width=>
@@ -58,8 +58,9 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
 1. <font size="6">[Out-of-box experience](04_demo/README.md#top)</font>
    1. [Introduction](04_demo/README.md#step1)
    1. [Resources](04_demo/README.md#step2)
-   1. [Run the demo](04_demo/README.md#step3)
-   1. [Customize the demo](04_demo/README.md#step4)
+   1. [System architecture](04_demo/README.md#step3)
+   1. [Run the demo](04_demo/README.md#step4)
+   1. [Customize the demo](04_demo/README.md#step5)
 1. <font size="6">[Explore and try](05_evaluate/README.md#top)</font>
    1. [Collection of code examples](05_evaluate/README.md#step1)
    1. [Evaluation flow](05_evaluate/README.md#step2)
@@ -73,5 +74,5 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [Lab 5 - Merging TCP Client example application and Paho MQTT Client example application](05_evaluate/README.md#step10)
    1. [Lab 6 - Enable WLAN MAC Debug Log](05_evaluate/README.md#step11)
 1. <font size="6">[Develop a Secured Smart Home Application from scratch](06_develop/README.md#top)</font>
-<!-- 1. <font size="6">Develop an Ethernet to Wi-Fi Bridge Application -->
+
 

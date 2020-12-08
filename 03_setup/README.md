@@ -27,10 +27,21 @@
 ## Hardware Setup<a name="step2"></a>
 
 <p align="center">
-<img src="resources/media/curiosity_board_01.png">
+<img src="resources/media/curiosity_board.png" width=720>
 </p>
 
-The PIC32WFI32E Curiosity Board has the PKOB debugger on-board. You can either setup the board to use the on-board programmer/debugger or either use external one for faster programming time.
+The PIC32WFI32E Curiosity Board has the PKOB debugger on-board. You can either setup the board to use the on-board programmer/debugger or either use an external programmer/debugger tool for faster programming experience.
+
+The table below provide the possible combinations for the jumpers (open/close) and the connectors (Yes: connected, No: not connected).
+
+| Mode of operation | External Power Supply J201 | Power Source Selection Jumpers J202 | Standalone USB Power J204 | USB Host/Device Selection Jumper J205 | ICSP Header J206 | Int/Ext Debugger/Programmer Jumpers J301 |  USB Prog/Debug J302 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| On-board programming/debugger | No | PKOB | No | Open | No | Close | Yes |
+| External programming/debugging | Yes | VBUS | No | Open | Yes | Open | No |
+| External programming/debugging (tool supplies 3V) | No | Open | No | Open | Yes | Open | No |
+| USB Device Standalone power operation/run | No | VBUS | Yes | Open | No | Open | No |
+| USB Host powered from external 5V | Yes | PS | No | Close | No | Open | No |
+| USB Device powered from USB debug | No | PKOB | No | Close | No | Close | Yes |
 
 ### On-board debugger setup
 

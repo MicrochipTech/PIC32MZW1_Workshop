@@ -136,7 +136,7 @@ ECC608 employs ultra-secure hardware-based key storage which prevent the physica
 <img src="resources/media/trust-go.png" width=520>
 </p>
 
-The integration of a Secure Element utilising Microchip [Trust&GO](https://www.microchip.com/design-centers/security-ics/trust-platform/trust-go) provides a simple and secure method to provision devices with major cloud vendors. The Trust&GO enabled secure element comes pre-provisioned with a locked key, in a tamper protected device, and a certificate ready for registration with your chosen cloud partner.
+The integration of a Secure Element utilizing Microchip [Trust&GO](https://www.microchip.com/design-centers/security-ics/trust-platform/trust-go) provides a simple and secure method to provision devices with major cloud vendors. The Trust&GO enabled secure element comes pre-provisioned with a locked key, in a tamper protected device, and a certificate ready for registration with your chosen cloud partner.
 
 <p align="center">
 <img src="resources/media/trust&go_cloud.png" width=480>

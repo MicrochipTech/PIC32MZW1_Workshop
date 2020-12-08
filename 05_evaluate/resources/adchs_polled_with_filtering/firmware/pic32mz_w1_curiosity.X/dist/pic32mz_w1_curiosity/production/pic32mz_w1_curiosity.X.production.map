@@ -1,0 +1,2668 @@
+Archive member included because of file (symbol)
+
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (__floatunsidf)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_on_reset)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_on_bootstrap)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_nmi_handler)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (__pic32_data_init)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (__pic32_init_cache)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (__pic32_tlb_init_ebi_sqi)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_general_exception_context)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_cache_err_exception_context)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o (_simple_tlb_refill_exception_context)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+                              C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o (_DefaultInterrupt)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o (_iob)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o (rand)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o (setbuf)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (_printf_cdnopuxX)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o) (_bufallo)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o) (errno)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo) (_vfprintf_cdnopuxX)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo) (fputc)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo) (_ctype)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o) (_flsbuf)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (dpdiv)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (dpmul)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (dpsub)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (dptoli)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+                              build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o (litodp)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo) (__udivdi3)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo) (__umoddi3)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o) (sbrk)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o) (write)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o) (memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+my_ages             0x3c              build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+result              0x4               build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+my_data             0x3c              build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+adc_count_filtered  0x4               build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+input_voltage       0x8               build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+adc_count_raw       0x4               build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+myMedian            0x10              build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+lwp_iir_tap         0x10              build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+
+Microchip PIC32 Memory-Usage Report
+
+kseg0 Program-Memory Usage
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+.simple_tlb_refill_excp 0x90000000           0x10          16   
+.text.TIMER_1_Handler   0x90000010           0xf0         240   
+.cache_err_excpt        0x90000100           0x10          16   
+.text.UART1_Write       0x90000110           0x60          96   
+.text.GPIO_Initialize   0x90000170            0x8           8   
+.rodata                 0x90000178            0x8           8  Read-only const 
+.app_excpt              0x90000180           0x10          16  General-Exception 
+.text.SYS_PMU_SPI_READ  0x90000190           0x60          96   
+.text._on_reset         0x900001f0            0x8           8   
+.text._on_bootstrap     0x900001f8            0x8           8   
+.vectors                0x90000200           0x50          80   
+.text._vfprintf_cdnopux 0x90000250          0xc8c        3212   
+.text.dp32mul           0x90000edc          0x4b8        1208   
+.text                   0x90001394          0x8bc        2236  App's exec code 
+.text.dp32subadd        0x90001c50          0x430        1072   
+.dinit                  0x90002080          0x400        1024   
+.text.dp32mul           0x90002480          0x32c         812   
+.text.main              0x900027ac          0x28c         652   
+.text._sbrk_init        0x90002a38          0x194         404   
+.text.fputc             0x90002bcc          0x144         324   
+.text._flsbuf           0x90002d10          0x12c         300   
+.rodata                 0x90002e40          0x128         296  Read-only const 
+.text.SYS_PMU_MLDO_TRIM 0x90002f68          0x118         280   
+.text.CLK_Initialize    0x90003080          0x110         272   
+.rodata                 0x90003190          0x104         260  Read-only const 
+.text.setvbuf           0x90003294          0x100         256   
+.text.ADCHS_Initialize  0x90003394           0xe4         228   
+.text.general_exception 0x90003478           0xdc         220   
+.text._cache_err_except 0x90003554           0xd8         216   
+.text.simple_tlb_refill 0x9000362c           0xd8         216   
+.rodata                 0x90003708           0xd0         208  Read-only const 
+.text._sbrk             0x900037d8           0xc8         200   
+.tlb.__pic32_tlb_init_e 0x900038a0           0xbc         188   
+.text                   0x9000395c           0xa8         168  App's exec code 
+.text.write             0x90003a04           0x9c         156   
+.text.dptoli            0x90003aa0           0x90         144   
+.text.SYS_Initialize    0x90003b30           0x8c         140   
+.text.LWP_iir_filter    0x90003bbc           0x88         136   
+.text                   0x90003c44           0x84         132  App's exec code 
+.text.litodp            0x90003cc8           0x78         120   
+.text._bufallo          0x90003d40           0x5c          92   
+.text.SYS_PMU_SPI_WRITE 0x90003d9c           0x54          84   
+.text.main_entry        0x90003df0           0x54          84   
+.text.sbrk              0x90003e44           0x50          80   
+.text.DelayMs           0x90003e94           0x4c          76   
+.text                   0x90003ee0           0x88         136  App's exec code 
+.text.TMR1_Initialize   0x90003f68           0x40          64   
+.text.TIMER_1_Interrupt 0x90003fa8           0x40          64   
+.text._printf_cdnopuxX  0x90003fe8           0x40          64   
+.text.setbuf            0x90004028           0x3c          60   
+.text.UART1_Initialize  0x90004064           0x38          56   
+.text.EVIC_Initialize   0x9000409c           0x30          48   
+.text._mon_putc         0x900040cc           0x2c          44   
+.text._stub_sbd_memlayo 0x900040f8           0x2c          44   
+.text.ADCHS_ChannelResu 0x90004124           0x24          36   
+.text._general_exceptio 0x90004148           0x24          36   
+.text._bootstrap_except 0x9000416c           0x24          36   
+.text._cache_err_except 0x90004190           0x24          36   
+.text._simple_tlb_refil 0x900041b4           0x24          36   
+.text.LWP_iir_init      0x900041d8           0x20          32   
+.text.ADCHS_ChannelResu 0x900041f8           0x18          24   
+.text                   0x90004210           0x18          24  App's exec code 
+.text.TMR1_Start        0x90004228           0x14          20   
+.text._buffree          0x9000423c           0x14          20   
+      Total kseg0_program_mem used  :      0x4248       16968  1.6% of 0x100000
+
+kseg0 Boot-Memory Usage
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+         Total kseg0_boot_mem used  :           0           0  
+
+kseg1 Boot-Memory Usage
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+.reset                  0xbfc00000          0x1a4         420  Reset handler 
+.bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
+         Total kseg1_boot_mem used  :       0x1b4         436  37.8% of 0x480
+        --------------------------------------------------------------------------
+         Total Program Memory used  :      0x43fc       17404  1.7% of 0x100480
+        --------------------------------------------------------------------------
+
+
+kseg0 Data-Memory Usage
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+.sdata                  0x80000000           0x44          68  Small init data 
+.sbss                   0x80000044           0x30          48  Small uninit data 
+.bss                    0x80000074           0x10          16  Uninitialized data 
+.data                   0x80000084           0xa4         164  Initialized data 
+.bss                    0x80000128           0x68         104  Uninitialized data 
+.bss                    0x80000190            0x4           4  Uninitialized data 
+.bss.errno              0x80000194            0x4           4   
+         Total kseg0_data_mem used  :       0x198         408  0.2% of 0x40000
+        --------------------------------------------------------------------------
+            Total Data Memory used  :       0x198         408  0.2% of 0x40000
+        --------------------------------------------------------------------------
+
+
+Dynamic Data-Memory Reservation
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+heap                    0x800001a0          0x200         512  Reserved for heap 
+stack                   0x800003b8        0x3fc40      261184  Reserved for stack 
+
+        --------------------------------------------------------------------------
+
+External Memory _crypto1SCM  [Origin = 0xbf900000, Length = 0x2000]
+
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+
+        --------------------------------------------------------------------------
+         Total External Memory used :           0           0  
+        --------------------------------------------------------------------------
+
+External Memory _crypto1UCM  [Origin = 0x9f902000, Length = 0x2000]
+
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+
+        --------------------------------------------------------------------------
+         Total External Memory used :           0           0  
+        --------------------------------------------------------------------------
+
+External Memory _wcmDataMem  [Origin = 0xbf803000, Length = 0x2000]
+
+section                    address  length [bytes]      (dec)  Description
+-------                 ----------  -------------------------  -----------
+
+        --------------------------------------------------------------------------
+         Total External Memory used :           0           0  
+        --------------------------------------------------------------------------
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .text.MDN_median_constructor
+                0x00000000       0x44 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .text.MDN_median_insert
+                0x00000000      0x1e4 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .text.MDN_test
+                0x00000000       0x70 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ COMMON         0x00000000       0x88 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_ModulesEnable
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_ModulesDisable
+                0x00000000       0x20 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_ChannelResultInterruptEnable
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_ChannelResultInterruptDisable
+                0x00000000       0x2c build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_GlobalEdgeConversionStart
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_GlobalLevelConversionStart
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_GlobalLevelConversionStop
+                0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_ChannelConversionStart
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text.ADCHS_EOSStatusGet
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_SerialSetup
+                0x00000000      0x11c build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_ErrorGet
+                0x00000000       0x74 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_Read
+                0x00000000       0xb0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_AutoBaudQuery
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_AutoBaudSet
+                0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_WriteByte
+                0x00000000       0x20 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_TransmitterIsReady
+                0x00000000       0x14 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_TransmitComplete
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_ReadByte
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text.UART1_ReceiverIsReady
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .text._mon_getc
+                0x00000000       0x30 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortRead
+                0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortWrite
+                0x00000000       0x30 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortLatchRead
+                0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortSet
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortClear
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortToggle
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortInputEnable
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text.GPIO_PortOutputEnable
+                0x00000000       0x1c build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceEnable
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceDisable
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceIsEnabled
+                0x00000000       0x20 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceStatusGet
+                0x00000000       0x20 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceStatusSet
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text.EVIC_SourceStatusClear
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .text          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .data          0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .bss           0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .reginfo       0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_Stop
+                0x00000000       0x14 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_PeriodSet
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_PeriodGet
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_CounterGet
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_FrequencyGet
+                0x00000000        0xc build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_InterruptEnable
+                0x00000000       0x14 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_InterruptDisable
+                0x00000000       0x14 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text.TMR1_CallbackRegister
+                0x00000000        0xc build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ __memory__crypto1SCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ __memory__crypto1UCM
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ __memory__wcmDataMem
+                0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+ .text          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+ .data          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+ .bss           0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+ .reginfo       0x00000000       0x18 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+ .text          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\cc5o5BhB.o
+ .data          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\cc5o5BhB.o
+ .bss           0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\cc5o5BhB.o
+ .reginfo       0x00000000       0x18 C:\Users\m16946\AppData\Local\Temp\cc5o5BhB.o
+ .text          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+ .data          0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+ .bss           0x00000000        0x0 C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+ .reginfo       0x00000000       0x18 C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+ .discard       0x00000000        0x4 C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+ .discard       0x00000000        0x4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .cache_init.pic32_size_cache
+                0x00000000       0x58 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .bss           0x00000000       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .text.srand    0x00000000       0x1c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .text.rand     0x00000000       0x8c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .text.getpagesize
+                0x00000000        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+kseg0_program_mem 0x90000000         0x00100000         xr
+kseg0_boot_mem   0x9fc004b0         0x00000000
+kseg1_boot_mem   0xbfc00000         0x00000480
+kseg1_boot_mem_4B0 0xbfc004b0         0x0000fb50
+config_BFC55E88  0xbfc55e88         0x00000004
+config_BFC55E8C  0xbfc55e8c         0x00000004
+config_BFC55E90  0xbfc55e90         0x00000004
+config_BFC55E94  0xbfc55e94         0x00000004
+config_BFC55E98  0xbfc55e98         0x00000004
+config_BFC55E9C  0xbfc55e9c         0x00000004
+config_BFC55EBC  0xbfc55ebc         0x00000004
+config_BFC55F88  0xbfc55f88         0x00000004
+config_BFC55F8C  0xbfc55f8c         0x00000004
+config_BFC55F90  0xbfc55f90         0x00000004
+config_BFC55F94  0xbfc55f94         0x00000004
+config_BFC55F98  0xbfc55f98         0x00000004
+config_BFC55F9C  0xbfc55f9c         0x00000004
+config_BFC55FBC  0xbfc55fbc         0x00000004
+kseg0_data_mem   0x80000000         0x00040000         w !x
+sfrs             0xbf800000         0x00100000
+configsfrs_BFC55E88 0xbfc55e88         0x00000018
+configsfrs_BFC55EBC 0xbfc55ebc         0x00000004
+configsfrs_BFC55F88 0xbfc55f88         0x00000018
+configsfrs_BFC55FBC 0xbfc55fbc         0x00000004
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+LOAD build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+                0x00000001                __MPLAB_BUILD = 0x1
+                0x00000400                PROVIDE (_min_stack_size, 0x400)
+START GROUP
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+END GROUP
+                0x00000001                PROVIDE (_vector_spacing, 0x1)
+                0x90000000                PROVIDE (_ebase_address, 0x90000000)
+                0xbfc00000                _RESET_ADDR = 0xbfc00000
+                0xbfc00380                _BEV_EXCPT_ADDR = 0xbfc00380
+                0xbfc00480                _DBG_EXCPT_ADDR = 0xbfc00480
+                0x90000000                _SIMPLE_TLB_REFILL_EXCPT_ADDR = (_ebase_address + 0x0)
+                0x90000100                _CACHE_ERR_EXCPT_ADDR = (_ebase_address + 0x100)
+                0x90000180                _GEN_EXCPT_ADDR = (_ebase_address + 0x180)
+
+.config_BFC55E88
+ *(.config_BFC55E88)
+
+.config_BFC55E8C
+ *(.config_BFC55E8C)
+
+.config_BFC55E90
+ *(.config_BFC55E90)
+
+.config_BFC55E94
+ *(.config_BFC55E94)
+
+.config_BFC55E98
+ *(.config_BFC55E98)
+
+.config_BFC55E9C
+ *(.config_BFC55E9C)
+
+.config_BFC55EBC
+ *(.config_BFC55EBC)
+
+.config_BFC55F88
+ *(.config_BFC55F88)
+
+.config_BFC55F8C
+                0xbfc55f8c        0x4
+ *(.config_BFC55F8C)
+ .config_BFC55F8C
+                0xbfc55f8c        0x4 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+
+.config_BFC55F90
+                0xbfc55f90        0x4
+ *(.config_BFC55F90)
+ .config_BFC55F90
+                0xbfc55f90        0x4 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+
+.config_BFC55F94
+                0xbfc55f94        0x4
+ *(.config_BFC55F94)
+ .config_BFC55F94
+                0xbfc55f94        0x4 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+
+.config_BFC55F98
+                0xbfc55f98        0x4
+ *(.config_BFC55F98)
+ .config_BFC55F98
+                0xbfc55f98        0x4 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+
+.config_BFC55F9C
+                0xbfc55f9c        0x4
+ *(.config_BFC55F9C)
+ .config_BFC55F9C
+                0xbfc55f9c        0x4 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+
+.config_BFC55FBC
+ *(.config_BFC55FBC)
+
+.reset          0xbfc00000      0x1a4
+ *(.reset)
+ .reset         0xbfc00000       0x18 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+                0xbfc00000                _reset
+ *(.reset.startup)
+ .reset.startup
+                0xbfc00018      0x18c C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+                0xbfc00018                _startup
+
+.bev_excpt      0xbfc00380       0x10
+ *(.bev_handler)
+ .bev_handler   0xbfc00380       0x10 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+
+.cache_init     0xbfc004b0      0x1c0
+ *(.cache_init)
+ *(.cache_init.*)
+ .cache_init.cache
+                0xbfc004b0       0xc0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+ .cache_init.pic32_init_cache
+                0xbfc00570      0x100 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+                0xbfc00570                __pic32_init_cache
+
+.simple_tlb_refill_excpt
+                0x90000000       0x10
+ *(.simple_tlb_refill_vector)
+ .simple_tlb_refill_vector
+                0x90000000       0x10 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+
+.cache_err_excpt
+                0x90000100       0x10
+ *(.cache_err_vector)
+ .cache_err_vector
+                0x90000100       0x10 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+
+.app_excpt      0x90000180       0x10
+ *(.gen_handler)
+ .gen_handler   0x90000180       0x10 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+
+.vectors        0x90000200       0x50
+                0x90000200                . = ALIGN (0x4)
+                0x00000208                __vector_offset_0 = DEFINED (__vector_dispatch_0)?(. - _ebase_address):__vector_offset_default
+ *(.vector_0)
+                0x90000200                . = ALIGN (0x4)
+                0x00000208                __vector_offset_1 = DEFINED (__vector_dispatch_1)?(. - _ebase_address):__vector_offset_default
+ *(.vector_1)
+                0x90000200                . = ALIGN (0x4)
+                0x00000208                __vector_offset_2 = DEFINED (__vector_dispatch_2)?(. - _ebase_address):__vector_offset_default
+ *(.vector_2)
+                0x90000200                . = ALIGN (0x4)
+                0x00000208                __vector_offset_3 = DEFINED (__vector_dispatch_3)?(. - _ebase_address):__vector_offset_default
+ *(.vector_3)
+                0x90000200                . = ALIGN (0x4)
+                0x00000200                __vector_offset_4 = DEFINED (__vector_dispatch_4)?(. - _ebase_address):__vector_offset_default
+ *(.vector_4)
+ .vector_4      0x90000200        0x8 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+                0x90000200                __vector_dispatch_4
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_5 = DEFINED (__vector_dispatch_5)?(. - _ebase_address):__vector_offset_default
+ *(.vector_5)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_6 = DEFINED (__vector_dispatch_6)?(. - _ebase_address):__vector_offset_default
+ *(.vector_6)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_7 = DEFINED (__vector_dispatch_7)?(. - _ebase_address):__vector_offset_default
+ *(.vector_7)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_8 = DEFINED (__vector_dispatch_8)?(. - _ebase_address):__vector_offset_default
+ *(.vector_8)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_9 = DEFINED (__vector_dispatch_9)?(. - _ebase_address):__vector_offset_default
+ *(.vector_9)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_10 = DEFINED (__vector_dispatch_10)?(. - _ebase_address):__vector_offset_default
+ *(.vector_10)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_11 = DEFINED (__vector_dispatch_11)?(. - _ebase_address):__vector_offset_default
+ *(.vector_11)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_12 = DEFINED (__vector_dispatch_12)?(. - _ebase_address):__vector_offset_default
+ *(.vector_12)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_13 = DEFINED (__vector_dispatch_13)?(. - _ebase_address):__vector_offset_default
+ *(.vector_13)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_14 = DEFINED (__vector_dispatch_14)?(. - _ebase_address):__vector_offset_default
+ *(.vector_14)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_15 = DEFINED (__vector_dispatch_15)?(. - _ebase_address):__vector_offset_default
+ *(.vector_15)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_16 = DEFINED (__vector_dispatch_16)?(. - _ebase_address):__vector_offset_default
+ *(.vector_16)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_17 = DEFINED (__vector_dispatch_17)?(. - _ebase_address):__vector_offset_default
+ *(.vector_17)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_18 = DEFINED (__vector_dispatch_18)?(. - _ebase_address):__vector_offset_default
+ *(.vector_18)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_19 = DEFINED (__vector_dispatch_19)?(. - _ebase_address):__vector_offset_default
+ *(.vector_19)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_20 = DEFINED (__vector_dispatch_20)?(. - _ebase_address):__vector_offset_default
+ *(.vector_20)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_21 = DEFINED (__vector_dispatch_21)?(. - _ebase_address):__vector_offset_default
+ *(.vector_21)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_22 = DEFINED (__vector_dispatch_22)?(. - _ebase_address):__vector_offset_default
+ *(.vector_22)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_23 = DEFINED (__vector_dispatch_23)?(. - _ebase_address):__vector_offset_default
+ *(.vector_23)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_24 = DEFINED (__vector_dispatch_24)?(. - _ebase_address):__vector_offset_default
+ *(.vector_24)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_25 = DEFINED (__vector_dispatch_25)?(. - _ebase_address):__vector_offset_default
+ *(.vector_25)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_26 = DEFINED (__vector_dispatch_26)?(. - _ebase_address):__vector_offset_default
+ *(.vector_26)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_27 = DEFINED (__vector_dispatch_27)?(. - _ebase_address):__vector_offset_default
+ *(.vector_27)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_28 = DEFINED (__vector_dispatch_28)?(. - _ebase_address):__vector_offset_default
+ *(.vector_28)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_29 = DEFINED (__vector_dispatch_29)?(. - _ebase_address):__vector_offset_default
+ *(.vector_29)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_30 = DEFINED (__vector_dispatch_30)?(. - _ebase_address):__vector_offset_default
+ *(.vector_30)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_31 = DEFINED (__vector_dispatch_31)?(. - _ebase_address):__vector_offset_default
+ *(.vector_31)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_32 = DEFINED (__vector_dispatch_32)?(. - _ebase_address):__vector_offset_default
+ *(.vector_32)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_33 = DEFINED (__vector_dispatch_33)?(. - _ebase_address):__vector_offset_default
+ *(.vector_33)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_34 = DEFINED (__vector_dispatch_34)?(. - _ebase_address):__vector_offset_default
+ *(.vector_34)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_35 = DEFINED (__vector_dispatch_35)?(. - _ebase_address):__vector_offset_default
+ *(.vector_35)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_36 = DEFINED (__vector_dispatch_36)?(. - _ebase_address):__vector_offset_default
+ *(.vector_36)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_37 = DEFINED (__vector_dispatch_37)?(. - _ebase_address):__vector_offset_default
+ *(.vector_37)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_38 = DEFINED (__vector_dispatch_38)?(. - _ebase_address):__vector_offset_default
+ *(.vector_38)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_39 = DEFINED (__vector_dispatch_39)?(. - _ebase_address):__vector_offset_default
+ *(.vector_39)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_40 = DEFINED (__vector_dispatch_40)?(. - _ebase_address):__vector_offset_default
+ *(.vector_40)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_41 = DEFINED (__vector_dispatch_41)?(. - _ebase_address):__vector_offset_default
+ *(.vector_41)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_42 = DEFINED (__vector_dispatch_42)?(. - _ebase_address):__vector_offset_default
+ *(.vector_42)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_43 = DEFINED (__vector_dispatch_43)?(. - _ebase_address):__vector_offset_default
+ *(.vector_43)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_44 = DEFINED (__vector_dispatch_44)?(. - _ebase_address):__vector_offset_default
+ *(.vector_44)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_45 = DEFINED (__vector_dispatch_45)?(. - _ebase_address):__vector_offset_default
+ *(.vector_45)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_46 = DEFINED (__vector_dispatch_46)?(. - _ebase_address):__vector_offset_default
+ *(.vector_46)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_47 = DEFINED (__vector_dispatch_47)?(. - _ebase_address):__vector_offset_default
+ *(.vector_47)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_48 = DEFINED (__vector_dispatch_48)?(. - _ebase_address):__vector_offset_default
+ *(.vector_48)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_49 = DEFINED (__vector_dispatch_49)?(. - _ebase_address):__vector_offset_default
+ *(.vector_49)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_50 = DEFINED (__vector_dispatch_50)?(. - _ebase_address):__vector_offset_default
+ *(.vector_50)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_51 = DEFINED (__vector_dispatch_51)?(. - _ebase_address):__vector_offset_default
+ *(.vector_51)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_52 = DEFINED (__vector_dispatch_52)?(. - _ebase_address):__vector_offset_default
+ *(.vector_52)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_53 = DEFINED (__vector_dispatch_53)?(. - _ebase_address):__vector_offset_default
+ *(.vector_53)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_54 = DEFINED (__vector_dispatch_54)?(. - _ebase_address):__vector_offset_default
+ *(.vector_54)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_55 = DEFINED (__vector_dispatch_55)?(. - _ebase_address):__vector_offset_default
+ *(.vector_55)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_56 = DEFINED (__vector_dispatch_56)?(. - _ebase_address):__vector_offset_default
+ *(.vector_56)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_57 = DEFINED (__vector_dispatch_57)?(. - _ebase_address):__vector_offset_default
+ *(.vector_57)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_58 = DEFINED (__vector_dispatch_58)?(. - _ebase_address):__vector_offset_default
+ *(.vector_58)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_59 = DEFINED (__vector_dispatch_59)?(. - _ebase_address):__vector_offset_default
+ *(.vector_59)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_60 = DEFINED (__vector_dispatch_60)?(. - _ebase_address):__vector_offset_default
+ *(.vector_60)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_61 = DEFINED (__vector_dispatch_61)?(. - _ebase_address):__vector_offset_default
+ *(.vector_61)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_62 = DEFINED (__vector_dispatch_62)?(. - _ebase_address):__vector_offset_default
+ *(.vector_62)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_63 = DEFINED (__vector_dispatch_63)?(. - _ebase_address):__vector_offset_default
+ *(.vector_63)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_64 = DEFINED (__vector_dispatch_64)?(. - _ebase_address):__vector_offset_default
+ *(.vector_64)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_65 = DEFINED (__vector_dispatch_65)?(. - _ebase_address):__vector_offset_default
+ *(.vector_65)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_66 = DEFINED (__vector_dispatch_66)?(. - _ebase_address):__vector_offset_default
+ *(.vector_66)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_67 = DEFINED (__vector_dispatch_67)?(. - _ebase_address):__vector_offset_default
+ *(.vector_67)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_68 = DEFINED (__vector_dispatch_68)?(. - _ebase_address):__vector_offset_default
+ *(.vector_68)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_69 = DEFINED (__vector_dispatch_69)?(. - _ebase_address):__vector_offset_default
+ *(.vector_69)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_70 = DEFINED (__vector_dispatch_70)?(. - _ebase_address):__vector_offset_default
+ *(.vector_70)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_71 = DEFINED (__vector_dispatch_71)?(. - _ebase_address):__vector_offset_default
+ *(.vector_71)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_72 = DEFINED (__vector_dispatch_72)?(. - _ebase_address):__vector_offset_default
+ *(.vector_72)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_73 = DEFINED (__vector_dispatch_73)?(. - _ebase_address):__vector_offset_default
+ *(.vector_73)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_74 = DEFINED (__vector_dispatch_74)?(. - _ebase_address):__vector_offset_default
+ *(.vector_74)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_75 = DEFINED (__vector_dispatch_75)?(. - _ebase_address):__vector_offset_default
+ *(.vector_75)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_76 = DEFINED (__vector_dispatch_76)?(. - _ebase_address):__vector_offset_default
+ *(.vector_76)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_77 = DEFINED (__vector_dispatch_77)?(. - _ebase_address):__vector_offset_default
+ *(.vector_77)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_78 = DEFINED (__vector_dispatch_78)?(. - _ebase_address):__vector_offset_default
+ *(.vector_78)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_79 = DEFINED (__vector_dispatch_79)?(. - _ebase_address):__vector_offset_default
+ *(.vector_79)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_80 = DEFINED (__vector_dispatch_80)?(. - _ebase_address):__vector_offset_default
+ *(.vector_80)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_81 = DEFINED (__vector_dispatch_81)?(. - _ebase_address):__vector_offset_default
+ *(.vector_81)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_82 = DEFINED (__vector_dispatch_82)?(. - _ebase_address):__vector_offset_default
+ *(.vector_82)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_83 = DEFINED (__vector_dispatch_83)?(. - _ebase_address):__vector_offset_default
+ *(.vector_83)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_84 = DEFINED (__vector_dispatch_84)?(. - _ebase_address):__vector_offset_default
+ *(.vector_84)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_85 = DEFINED (__vector_dispatch_85)?(. - _ebase_address):__vector_offset_default
+ *(.vector_85)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_86 = DEFINED (__vector_dispatch_86)?(. - _ebase_address):__vector_offset_default
+ *(.vector_86)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_87 = DEFINED (__vector_dispatch_87)?(. - _ebase_address):__vector_offset_default
+ *(.vector_87)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_88 = DEFINED (__vector_dispatch_88)?(. - _ebase_address):__vector_offset_default
+ *(.vector_88)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_89 = DEFINED (__vector_dispatch_89)?(. - _ebase_address):__vector_offset_default
+ *(.vector_89)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_90 = DEFINED (__vector_dispatch_90)?(. - _ebase_address):__vector_offset_default
+ *(.vector_90)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_91 = DEFINED (__vector_dispatch_91)?(. - _ebase_address):__vector_offset_default
+ *(.vector_91)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_92 = DEFINED (__vector_dispatch_92)?(. - _ebase_address):__vector_offset_default
+ *(.vector_92)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_93 = DEFINED (__vector_dispatch_93)?(. - _ebase_address):__vector_offset_default
+ *(.vector_93)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_94 = DEFINED (__vector_dispatch_94)?(. - _ebase_address):__vector_offset_default
+ *(.vector_94)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_95 = DEFINED (__vector_dispatch_95)?(. - _ebase_address):__vector_offset_default
+ *(.vector_95)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_96 = DEFINED (__vector_dispatch_96)?(. - _ebase_address):__vector_offset_default
+ *(.vector_96)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_97 = DEFINED (__vector_dispatch_97)?(. - _ebase_address):__vector_offset_default
+ *(.vector_97)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_98 = DEFINED (__vector_dispatch_98)?(. - _ebase_address):__vector_offset_default
+ *(.vector_98)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_99 = DEFINED (__vector_dispatch_99)?(. - _ebase_address):__vector_offset_default
+ *(.vector_99)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_100 = DEFINED (__vector_dispatch_100)?(. - _ebase_address):__vector_offset_default
+ *(.vector_100)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_101 = DEFINED (__vector_dispatch_101)?(. - _ebase_address):__vector_offset_default
+ *(.vector_101)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_102 = DEFINED (__vector_dispatch_102)?(. - _ebase_address):__vector_offset_default
+ *(.vector_102)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_103 = DEFINED (__vector_dispatch_103)?(. - _ebase_address):__vector_offset_default
+ *(.vector_103)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_104 = DEFINED (__vector_dispatch_104)?(. - _ebase_address):__vector_offset_default
+ *(.vector_104)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_105 = DEFINED (__vector_dispatch_105)?(. - _ebase_address):__vector_offset_default
+ *(.vector_105)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_106 = DEFINED (__vector_dispatch_106)?(. - _ebase_address):__vector_offset_default
+ *(.vector_106)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_107 = DEFINED (__vector_dispatch_107)?(. - _ebase_address):__vector_offset_default
+ *(.vector_107)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_108 = DEFINED (__vector_dispatch_108)?(. - _ebase_address):__vector_offset_default
+ *(.vector_108)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_109 = DEFINED (__vector_dispatch_109)?(. - _ebase_address):__vector_offset_default
+ *(.vector_109)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_110 = DEFINED (__vector_dispatch_110)?(. - _ebase_address):__vector_offset_default
+ *(.vector_110)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_111 = DEFINED (__vector_dispatch_111)?(. - _ebase_address):__vector_offset_default
+ *(.vector_111)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_112 = DEFINED (__vector_dispatch_112)?(. - _ebase_address):__vector_offset_default
+ *(.vector_112)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_113 = DEFINED (__vector_dispatch_113)?(. - _ebase_address):__vector_offset_default
+ *(.vector_113)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_114 = DEFINED (__vector_dispatch_114)?(. - _ebase_address):__vector_offset_default
+ *(.vector_114)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_115 = DEFINED (__vector_dispatch_115)?(. - _ebase_address):__vector_offset_default
+ *(.vector_115)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_116 = DEFINED (__vector_dispatch_116)?(. - _ebase_address):__vector_offset_default
+ *(.vector_116)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_117 = DEFINED (__vector_dispatch_117)?(. - _ebase_address):__vector_offset_default
+ *(.vector_117)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_118 = DEFINED (__vector_dispatch_118)?(. - _ebase_address):__vector_offset_default
+ *(.vector_118)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_119 = DEFINED (__vector_dispatch_119)?(. - _ebase_address):__vector_offset_default
+ *(.vector_119)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_120 = DEFINED (__vector_dispatch_120)?(. - _ebase_address):__vector_offset_default
+ *(.vector_120)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_121 = DEFINED (__vector_dispatch_121)?(. - _ebase_address):__vector_offset_default
+ *(.vector_121)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_122 = DEFINED (__vector_dispatch_122)?(. - _ebase_address):__vector_offset_default
+ *(.vector_122)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_123 = DEFINED (__vector_dispatch_123)?(. - _ebase_address):__vector_offset_default
+ *(.vector_123)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_124 = DEFINED (__vector_dispatch_124)?(. - _ebase_address):__vector_offset_default
+ *(.vector_124)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_125 = DEFINED (__vector_dispatch_125)?(. - _ebase_address):__vector_offset_default
+ *(.vector_125)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_126 = DEFINED (__vector_dispatch_126)?(. - _ebase_address):__vector_offset_default
+ *(.vector_126)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_127 = DEFINED (__vector_dispatch_127)?(. - _ebase_address):__vector_offset_default
+ *(.vector_127)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_128 = DEFINED (__vector_dispatch_128)?(. - _ebase_address):__vector_offset_default
+ *(.vector_128)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_129 = DEFINED (__vector_dispatch_129)?(. - _ebase_address):__vector_offset_default
+ *(.vector_129)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_130 = DEFINED (__vector_dispatch_130)?(. - _ebase_address):__vector_offset_default
+ *(.vector_130)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_131 = DEFINED (__vector_dispatch_131)?(. - _ebase_address):__vector_offset_default
+ *(.vector_131)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_132 = DEFINED (__vector_dispatch_132)?(. - _ebase_address):__vector_offset_default
+ *(.vector_132)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_133 = DEFINED (__vector_dispatch_133)?(. - _ebase_address):__vector_offset_default
+ *(.vector_133)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_134 = DEFINED (__vector_dispatch_134)?(. - _ebase_address):__vector_offset_default
+ *(.vector_134)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_135 = DEFINED (__vector_dispatch_135)?(. - _ebase_address):__vector_offset_default
+ *(.vector_135)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_136 = DEFINED (__vector_dispatch_136)?(. - _ebase_address):__vector_offset_default
+ *(.vector_136)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_137 = DEFINED (__vector_dispatch_137)?(. - _ebase_address):__vector_offset_default
+ *(.vector_137)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_138 = DEFINED (__vector_dispatch_138)?(. - _ebase_address):__vector_offset_default
+ *(.vector_138)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_139 = DEFINED (__vector_dispatch_139)?(. - _ebase_address):__vector_offset_default
+ *(.vector_139)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_140 = DEFINED (__vector_dispatch_140)?(. - _ebase_address):__vector_offset_default
+ *(.vector_140)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_141 = DEFINED (__vector_dispatch_141)?(. - _ebase_address):__vector_offset_default
+ *(.vector_141)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_142 = DEFINED (__vector_dispatch_142)?(. - _ebase_address):__vector_offset_default
+ *(.vector_142)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_143 = DEFINED (__vector_dispatch_143)?(. - _ebase_address):__vector_offset_default
+ *(.vector_143)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_144 = DEFINED (__vector_dispatch_144)?(. - _ebase_address):__vector_offset_default
+ *(.vector_144)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_145 = DEFINED (__vector_dispatch_145)?(. - _ebase_address):__vector_offset_default
+ *(.vector_145)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_146 = DEFINED (__vector_dispatch_146)?(. - _ebase_address):__vector_offset_default
+ *(.vector_146)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_147 = DEFINED (__vector_dispatch_147)?(. - _ebase_address):__vector_offset_default
+ *(.vector_147)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_148 = DEFINED (__vector_dispatch_148)?(. - _ebase_address):__vector_offset_default
+ *(.vector_148)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_149 = DEFINED (__vector_dispatch_149)?(. - _ebase_address):__vector_offset_default
+ *(.vector_149)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_150 = DEFINED (__vector_dispatch_150)?(. - _ebase_address):__vector_offset_default
+ *(.vector_150)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_151 = DEFINED (__vector_dispatch_151)?(. - _ebase_address):__vector_offset_default
+ *(.vector_151)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_152 = DEFINED (__vector_dispatch_152)?(. - _ebase_address):__vector_offset_default
+ *(.vector_152)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_153 = DEFINED (__vector_dispatch_153)?(. - _ebase_address):__vector_offset_default
+ *(.vector_153)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_154 = DEFINED (__vector_dispatch_154)?(. - _ebase_address):__vector_offset_default
+ *(.vector_154)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_155 = DEFINED (__vector_dispatch_155)?(. - _ebase_address):__vector_offset_default
+ *(.vector_155)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_156 = DEFINED (__vector_dispatch_156)?(. - _ebase_address):__vector_offset_default
+ *(.vector_156)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_157 = DEFINED (__vector_dispatch_157)?(. - _ebase_address):__vector_offset_default
+ *(.vector_157)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_158 = DEFINED (__vector_dispatch_158)?(. - _ebase_address):__vector_offset_default
+ *(.vector_158)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_159 = DEFINED (__vector_dispatch_159)?(. - _ebase_address):__vector_offset_default
+ *(.vector_159)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_160 = DEFINED (__vector_dispatch_160)?(. - _ebase_address):__vector_offset_default
+ *(.vector_160)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_161 = DEFINED (__vector_dispatch_161)?(. - _ebase_address):__vector_offset_default
+ *(.vector_161)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_162 = DEFINED (__vector_dispatch_162)?(. - _ebase_address):__vector_offset_default
+ *(.vector_162)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_163 = DEFINED (__vector_dispatch_163)?(. - _ebase_address):__vector_offset_default
+ *(.vector_163)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_164 = DEFINED (__vector_dispatch_164)?(. - _ebase_address):__vector_offset_default
+ *(.vector_164)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_165 = DEFINED (__vector_dispatch_165)?(. - _ebase_address):__vector_offset_default
+ *(.vector_165)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_166 = DEFINED (__vector_dispatch_166)?(. - _ebase_address):__vector_offset_default
+ *(.vector_166)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_167 = DEFINED (__vector_dispatch_167)?(. - _ebase_address):__vector_offset_default
+ *(.vector_167)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_168 = DEFINED (__vector_dispatch_168)?(. - _ebase_address):__vector_offset_default
+ *(.vector_168)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_169 = DEFINED (__vector_dispatch_169)?(. - _ebase_address):__vector_offset_default
+ *(.vector_169)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_170 = DEFINED (__vector_dispatch_170)?(. - _ebase_address):__vector_offset_default
+ *(.vector_170)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_171 = DEFINED (__vector_dispatch_171)?(. - _ebase_address):__vector_offset_default
+ *(.vector_171)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_172 = DEFINED (__vector_dispatch_172)?(. - _ebase_address):__vector_offset_default
+ *(.vector_172)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_173 = DEFINED (__vector_dispatch_173)?(. - _ebase_address):__vector_offset_default
+ *(.vector_173)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_174 = DEFINED (__vector_dispatch_174)?(. - _ebase_address):__vector_offset_default
+ *(.vector_174)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_175 = DEFINED (__vector_dispatch_175)?(. - _ebase_address):__vector_offset_default
+ *(.vector_175)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_176 = DEFINED (__vector_dispatch_176)?(. - _ebase_address):__vector_offset_default
+ *(.vector_176)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_177 = DEFINED (__vector_dispatch_177)?(. - _ebase_address):__vector_offset_default
+ *(.vector_177)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_178 = DEFINED (__vector_dispatch_178)?(. - _ebase_address):__vector_offset_default
+ *(.vector_178)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_179 = DEFINED (__vector_dispatch_179)?(. - _ebase_address):__vector_offset_default
+ *(.vector_179)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_180 = DEFINED (__vector_dispatch_180)?(. - _ebase_address):__vector_offset_default
+ *(.vector_180)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_181 = DEFINED (__vector_dispatch_181)?(. - _ebase_address):__vector_offset_default
+ *(.vector_181)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_182 = DEFINED (__vector_dispatch_182)?(. - _ebase_address):__vector_offset_default
+ *(.vector_182)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_183 = DEFINED (__vector_dispatch_183)?(. - _ebase_address):__vector_offset_default
+ *(.vector_183)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_184 = DEFINED (__vector_dispatch_184)?(. - _ebase_address):__vector_offset_default
+ *(.vector_184)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_185 = DEFINED (__vector_dispatch_185)?(. - _ebase_address):__vector_offset_default
+ *(.vector_185)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_186 = DEFINED (__vector_dispatch_186)?(. - _ebase_address):__vector_offset_default
+ *(.vector_186)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_187 = DEFINED (__vector_dispatch_187)?(. - _ebase_address):__vector_offset_default
+ *(.vector_187)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_188 = DEFINED (__vector_dispatch_188)?(. - _ebase_address):__vector_offset_default
+ *(.vector_188)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_189 = DEFINED (__vector_dispatch_189)?(. - _ebase_address):__vector_offset_default
+ *(.vector_189)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_190 = DEFINED (__vector_dispatch_190)?(. - _ebase_address):__vector_offset_default
+ *(.vector_190)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_191 = DEFINED (__vector_dispatch_191)?(. - _ebase_address):__vector_offset_default
+ *(.vector_191)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_192 = DEFINED (__vector_dispatch_192)?(. - _ebase_address):__vector_offset_default
+ *(.vector_192)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_193 = DEFINED (__vector_dispatch_193)?(. - _ebase_address):__vector_offset_default
+ *(.vector_193)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_194 = DEFINED (__vector_dispatch_194)?(. - _ebase_address):__vector_offset_default
+ *(.vector_194)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_195 = DEFINED (__vector_dispatch_195)?(. - _ebase_address):__vector_offset_default
+ *(.vector_195)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_196 = DEFINED (__vector_dispatch_196)?(. - _ebase_address):__vector_offset_default
+ *(.vector_196)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_197 = DEFINED (__vector_dispatch_197)?(. - _ebase_address):__vector_offset_default
+ *(.vector_197)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_198 = DEFINED (__vector_dispatch_198)?(. - _ebase_address):__vector_offset_default
+ *(.vector_198)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_199 = DEFINED (__vector_dispatch_199)?(. - _ebase_address):__vector_offset_default
+ *(.vector_199)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_200 = DEFINED (__vector_dispatch_200)?(. - _ebase_address):__vector_offset_default
+ *(.vector_200)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_201 = DEFINED (__vector_dispatch_201)?(. - _ebase_address):__vector_offset_default
+ *(.vector_201)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_202 = DEFINED (__vector_dispatch_202)?(. - _ebase_address):__vector_offset_default
+ *(.vector_202)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_203 = DEFINED (__vector_dispatch_203)?(. - _ebase_address):__vector_offset_default
+ *(.vector_203)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_204 = DEFINED (__vector_dispatch_204)?(. - _ebase_address):__vector_offset_default
+ *(.vector_204)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_205 = DEFINED (__vector_dispatch_205)?(. - _ebase_address):__vector_offset_default
+ *(.vector_205)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_206 = DEFINED (__vector_dispatch_206)?(. - _ebase_address):__vector_offset_default
+ *(.vector_206)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_207 = DEFINED (__vector_dispatch_207)?(. - _ebase_address):__vector_offset_default
+ *(.vector_207)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_208 = DEFINED (__vector_dispatch_208)?(. - _ebase_address):__vector_offset_default
+ *(.vector_208)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_209 = DEFINED (__vector_dispatch_209)?(. - _ebase_address):__vector_offset_default
+ *(.vector_209)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_210 = DEFINED (__vector_dispatch_210)?(. - _ebase_address):__vector_offset_default
+ *(.vector_210)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_211 = DEFINED (__vector_dispatch_211)?(. - _ebase_address):__vector_offset_default
+ *(.vector_211)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_212 = DEFINED (__vector_dispatch_212)?(. - _ebase_address):__vector_offset_default
+ *(.vector_212)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_213 = DEFINED (__vector_dispatch_213)?(. - _ebase_address):__vector_offset_default
+ *(.vector_213)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_214 = DEFINED (__vector_dispatch_214)?(. - _ebase_address):__vector_offset_default
+ *(.vector_214)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_215 = DEFINED (__vector_dispatch_215)?(. - _ebase_address):__vector_offset_default
+ *(.vector_215)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_216 = DEFINED (__vector_dispatch_216)?(. - _ebase_address):__vector_offset_default
+ *(.vector_216)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_217 = DEFINED (__vector_dispatch_217)?(. - _ebase_address):__vector_offset_default
+ *(.vector_217)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_218 = DEFINED (__vector_dispatch_218)?(. - _ebase_address):__vector_offset_default
+ *(.vector_218)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_219 = DEFINED (__vector_dispatch_219)?(. - _ebase_address):__vector_offset_default
+ *(.vector_219)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_220 = DEFINED (__vector_dispatch_220)?(. - _ebase_address):__vector_offset_default
+ *(.vector_220)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_221 = DEFINED (__vector_dispatch_221)?(. - _ebase_address):__vector_offset_default
+ *(.vector_221)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_222 = DEFINED (__vector_dispatch_222)?(. - _ebase_address):__vector_offset_default
+ *(.vector_222)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_223 = DEFINED (__vector_dispatch_223)?(. - _ebase_address):__vector_offset_default
+ *(.vector_223)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_224 = DEFINED (__vector_dispatch_224)?(. - _ebase_address):__vector_offset_default
+ *(.vector_224)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_225 = DEFINED (__vector_dispatch_225)?(. - _ebase_address):__vector_offset_default
+ *(.vector_225)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_226 = DEFINED (__vector_dispatch_226)?(. - _ebase_address):__vector_offset_default
+ *(.vector_226)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_227 = DEFINED (__vector_dispatch_227)?(. - _ebase_address):__vector_offset_default
+ *(.vector_227)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_228 = DEFINED (__vector_dispatch_228)?(. - _ebase_address):__vector_offset_default
+ *(.vector_228)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_229 = DEFINED (__vector_dispatch_229)?(. - _ebase_address):__vector_offset_default
+ *(.vector_229)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_230 = DEFINED (__vector_dispatch_230)?(. - _ebase_address):__vector_offset_default
+ *(.vector_230)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_231 = DEFINED (__vector_dispatch_231)?(. - _ebase_address):__vector_offset_default
+ *(.vector_231)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_232 = DEFINED (__vector_dispatch_232)?(. - _ebase_address):__vector_offset_default
+ *(.vector_232)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_233 = DEFINED (__vector_dispatch_233)?(. - _ebase_address):__vector_offset_default
+ *(.vector_233)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_234 = DEFINED (__vector_dispatch_234)?(. - _ebase_address):__vector_offset_default
+ *(.vector_234)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_235 = DEFINED (__vector_dispatch_235)?(. - _ebase_address):__vector_offset_default
+ *(.vector_235)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_236 = DEFINED (__vector_dispatch_236)?(. - _ebase_address):__vector_offset_default
+ *(.vector_236)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_237 = DEFINED (__vector_dispatch_237)?(. - _ebase_address):__vector_offset_default
+ *(.vector_237)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_238 = DEFINED (__vector_dispatch_238)?(. - _ebase_address):__vector_offset_default
+ *(.vector_238)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_239 = DEFINED (__vector_dispatch_239)?(. - _ebase_address):__vector_offset_default
+ *(.vector_239)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_240 = DEFINED (__vector_dispatch_240)?(. - _ebase_address):__vector_offset_default
+ *(.vector_240)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_241 = DEFINED (__vector_dispatch_241)?(. - _ebase_address):__vector_offset_default
+ *(.vector_241)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_242 = DEFINED (__vector_dispatch_242)?(. - _ebase_address):__vector_offset_default
+ *(.vector_242)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_243 = DEFINED (__vector_dispatch_243)?(. - _ebase_address):__vector_offset_default
+ *(.vector_243)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_244 = DEFINED (__vector_dispatch_244)?(. - _ebase_address):__vector_offset_default
+ *(.vector_244)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_245 = DEFINED (__vector_dispatch_245)?(. - _ebase_address):__vector_offset_default
+ *(.vector_245)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_246 = DEFINED (__vector_dispatch_246)?(. - _ebase_address):__vector_offset_default
+ *(.vector_246)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_247 = DEFINED (__vector_dispatch_247)?(. - _ebase_address):__vector_offset_default
+ *(.vector_247)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_248 = DEFINED (__vector_dispatch_248)?(. - _ebase_address):__vector_offset_default
+ *(.vector_248)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_249 = DEFINED (__vector_dispatch_249)?(. - _ebase_address):__vector_offset_default
+ *(.vector_249)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_250 = DEFINED (__vector_dispatch_250)?(. - _ebase_address):__vector_offset_default
+ *(.vector_250)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_251 = DEFINED (__vector_dispatch_251)?(. - _ebase_address):__vector_offset_default
+ *(.vector_251)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_252 = DEFINED (__vector_dispatch_252)?(. - _ebase_address):__vector_offset_default
+ *(.vector_252)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_253 = DEFINED (__vector_dispatch_253)?(. - _ebase_address):__vector_offset_default
+ *(.vector_253)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_254 = DEFINED (__vector_dispatch_254)?(. - _ebase_address):__vector_offset_default
+ *(.vector_254)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_255 = DEFINED (__vector_dispatch_255)?(. - _ebase_address):__vector_offset_default
+ *(.vector_255)
+                0x90000208                . = ALIGN (0x4)
+                0x00000208                __vector_offset_default = (. - _ebase_address)
+ *(.vector_default)
+ .vector_default
+                0x90000208       0x48 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+                0x90000208                _DefaultInterrupt
+
+.startup
+ *(.startup)
+
+.text           0x90000250        0x0
+ *(.stub .gnu.linkonce.t.*)
+ *(.text.*personality*)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+ *(.gnu.warning)
+                0x90000250                . = ALIGN (0x4)
+
+.init           0x90000250        0x0
+ *crti.o(.init)
+ *crtbegin.o(.init)
+ *(EXCLUDE_FILE(*crtn.o *crtend?.o *crtend.o) .init)
+ *crtend.o(.init)
+ *crtn.o(.init)
+                0x90000250                . = ALIGN (0x4)
+
+.fini           0x90000250        0x0
+ *(.fini)
+                0x90000250                . = ALIGN (0x4)
+
+.preinit_array  0x90000250        0x0
+                0x90000250                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x90000250                PROVIDE (__preinit_array_end, .)
+                0x90000250                . = ALIGN (0x4)
+
+.init_array     0x90000250        0x0
+                0x90000250                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x90000250                PROVIDE (__init_array_end, .)
+                0x90000250                . = ALIGN (0x4)
+
+.fini_array     0x90000250        0x0
+                0x90000250                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+                0x90000250                PROVIDE (__fini_array_end, .)
+                0x90000250                . = ALIGN (0x4)
+
+.ctors          0x90000250        0x0
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+                0x90000250                . = ALIGN (0x4)
+
+.dtors          0x90000250        0x0
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+                0x90000250                . = ALIGN (0x4)
+
+.rodata         0x90000250        0x0
+ *(.gnu.linkonce.r.*)
+ *(.rodata1)
+                0x90000250                . = ALIGN (0x4)
+
+.sdata2         0x9fc004b0        0x0
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x9fc004b0                . = ALIGN (0x4)
+
+.sbss2          0x9fc004b0        0x0
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+                0x9fc004b0                . = ALIGN (0x4)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+                0x9fc004b0                . = ALIGN (0x4)
+
+.eh_frame
+ *(.eh_frame)
+                0x9fc004b0                . = ALIGN (0x4)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+                0x9fc004b0                . = ALIGN (0x4)
+
+.dbg_data       0x80000000        0x0
+                0x80000000                . = (. + DEFINED (_DEBUGGER)?0x200:0x0)
+                0x80000000                . = (. + DEFINED (_DEBUGGER)?0x80:0x0)
+
+.jcr            0x80000000        0x0
+ *(.jcr)
+                0x80000000                . = ALIGN (0x4)
+
+.eh_frame
+ *(.eh_frame)
+                0x80000000                . = ALIGN (0x4)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+                0x80000000                . = ALIGN (0x4)
+
+.persist        0x80000000        0x0
+                0x80000000                _persist_begin = .
+ *(.persist .persist.*)
+                0x80000000                . = ALIGN (0x4)
+                0x80000000                _persist_end = .
+
+.data           0x80000000        0x0
+ *(.gnu.linkonce.d.*)
+ *(.data1)
+                0x80000000                . = ALIGN (0x4)
+                0x80000000                . = .
+                0x80007ff0                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got            0x80000000        0x0
+ *(.got.plt)
+ *(.got)
+                0x80000000                . = ALIGN (0x4)
+
+.sdata          0x80000000       0x44
+                0x80000000                _sdata_begin = .
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0x80000000       0x20 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+                0x80000000                pmu_cmode_reg
+                0x80000004                spi_cntrl_reg
+                0x80000008                spi_status_reg
+                0x8000000c                otp_treg3_data
+                0x80000010                otp_mldocfg2_data
+                0x80000014                otp_mldocfg1_data
+                0x80000018                otp_buckcfg2_data
+                0x8000001c                otp_buckcfg1_data
+ .sdata         0x80000020       0x24 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
+                0x80000020                __pic32_icache_size
+                0x80000024                __pic32_icache_linesize
+                0x80000028                __pic32_icache_ways
+                0x8000002c                __pic32_dcache_size
+                0x80000030                __pic32_dcache_linesize
+                0x80000034                __pic32_dcache_ways
+                0x80000038                __pic32_scache_size
+                0x8000003c                __pic32_scache_linesize
+                0x80000040                __pic32_scache_ways
+                0x80000044                . = ALIGN (0x4)
+                0x80000044                _sdata_end = .
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x80000044                . = ALIGN (0x4)
+                0x80000044                _data_end = .
+                0x80000044                _bss_begin = .
+
+.sbss           0x80000044       0x30
+                0x80000044                _sbss_begin = .
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0x80000044        0x4 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .sbss          0x80000048        0x8 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .sbss          0x80000050        0x8 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ *(.scommon)
+ .scommon       0x80000058        0x4 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+                0x80000058                result
+ *fill*         0x8000005c        0x4 
+ .scommon       0x80000060       0x14 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+                0x80000060                adc_count_filtered
+                0x80000068                input_voltage
+                0x80000070                adc_count_raw
+                0x80000074                _sbss_end = .
+                0x80000074                . = ALIGN (0x4)
+
+.bss            0x80000074       0x10
+ *(.dynbss)
+ *(COMMON)
+ COMMON         0x80000074       0x10 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+                0x80000074                lwp_iir_tap
+                0x80000084                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x80000084                . = ALIGN (0x4)
+                0x80000084                _end = .
+                0x80000084                _bss_end = .
+                0x00040000                _bmxdudba_address = 0x40000
+                0x00040000                _bmxdupba_address = 0x40000
+
+/DISCARD/
+ *(.pdr)
+ *(.rel.dyn)
+ *(.note.GNU-stack)
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+ *(.discard)
+
+.gptab.sdata
+ *(.gptab.data)
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32   0x00000000        0x0
+ *(.mdebug.abi32)
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .mdebug.abi32  0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .mdebug.abi32  0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0xed
+ *(.comment)
+ .comment       0x00000000       0x3c build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+                                 0x3d (size before relaxing)
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .comment       0x00000000       0x3d build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .comment       0x0000003c       0x4e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+                                 0x8b (size before relaxing)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .comment       0x0000008a       0x4b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                                 0x88 (size before relaxing)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+ .comment       0x000000d5       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+                                 0x19 (size before relaxing)
+
+.debug
+ *.elf(.debug)
+ *(.debug)
+
+.line
+ *.elf(.line)
+ *(.line)
+
+.debug_srcinfo
+ *.elf(.debug_srcinfo)
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *.elf(.debug_sfnames)
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x598
+ *.elf(.debug_aranges)
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_aranges
+                0x00000028       0x30 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_aranges
+                0x00000058       0x78 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_aranges
+                0x000000d0       0x78 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_aranges
+                0x00000148       0x20 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_aranges
+                0x00000168       0x20 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_aranges
+                0x00000188       0x20 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_aranges
+                0x000001a8       0x38 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_aranges
+                0x000001e0       0x28 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_aranges
+                0x00000208       0x20 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_aranges
+                0x00000228       0x60 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_aranges
+                0x00000288       0x50 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_aranges
+                0x000002d8       0x38 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_aranges
+                0x00000310       0x70 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_aranges
+                0x00000380       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_aranges
+                0x000003a0       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_aranges
+                0x000003c0       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_aranges
+                0x000003e0       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_aranges
+                0x00000400       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_aranges
+                0x00000428       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_aranges
+                0x00000450       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_aranges
+                0x00000470       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_aranges
+                0x00000498       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_aranges
+                0x000004b8       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_aranges
+                0x000004d8       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_aranges
+                0x000004f8       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_aranges
+                0x00000518       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_aranges
+                0x00000538       0x40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_aranges
+                0x00000578       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_pubnames
+ *.elf(.debug_pubnames)
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x7449
+ *.elf(.debug_info .gnu.linkonce.wi.*)
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x279 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_info    0x00000279      0x3e1 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_info    0x0000065a      0xc00 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_info    0x0000125a      0x8cf build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_info    0x00001b29      0x57d build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_info    0x000020a6      0x558 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_info    0x000025fe      0x1f0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_info    0x000027ee      0x358 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_info    0x00002b46      0x2c4 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_info    0x00002e0a      0x966 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_info    0x00003770      0x4bb build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_info    0x00003c2b     0x101f build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_info    0x00004c4a      0x696 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_info    0x000052e0      0x720 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_info    0x00005a00      0x137 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_info    0x00005b37       0xcd c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_info    0x00005c04       0xd5 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x00005cd9       0xe7 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_info    0x00005dc0       0xdb c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_info    0x00005e9b       0xdb c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_info    0x00005f76       0xce c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_info    0x00006044       0xea c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_info    0x0000612e       0xd1 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_info    0x000061ff       0xc2 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_info    0x000062c1       0xc5 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_info    0x00006386      0x74b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_info    0x00006ad1      0x788 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_info    0x00007259      0x131 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_info    0x0000738a       0xbf c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_abbrev   0x00000000     0x143a
+ *.elf(.debug_abbrev)
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xcb build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_abbrev  0x000000cb      0x124 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_abbrev  0x000001ef      0x134 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_abbrev  0x00000323      0x1d3 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_abbrev  0x000004f6      0x15d build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_abbrev  0x00000653      0x17d build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_abbrev  0x000007d0       0x57 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_abbrev  0x00000827       0x6b build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_abbrev  0x00000892       0xec build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_abbrev  0x0000097e       0xe8 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_abbrev  0x00000a66       0xd7 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_abbrev  0x00000b3d       0xed build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_abbrev  0x00000c2a      0x13e build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_abbrev  0x00000d68      0x19f build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_abbrev  0x00000f07       0x62 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x00000f69       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x00000f91       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x00000fb9       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x00000fe1       0x47 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_abbrev  0x00001028       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_abbrev  0x00001050       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_abbrev  0x00001078       0x4f c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_abbrev  0x000010c7       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_abbrev  0x000010ef       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_abbrev  0x00001117       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_abbrev  0x0000113f      0x138 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_abbrev  0x00001277      0x147 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_abbrev  0x000013be       0x54 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_abbrev  0x00001412       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_line     0x00000000     0x26e2
+ *.elf(.debug_line)
+ *(.debug_line)
+ .debug_line    0x00000000       0xfe build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_line    0x000000fe      0x18e build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_line    0x0000028c      0x272 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_line    0x000004fe      0x305 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_line    0x00000803      0x31a build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_line    0x00000b1d      0x552 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_line    0x0000106f       0xb6 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_line    0x00001125       0xea build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_line    0x0000120f      0x1ff build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_line    0x0000140e      0x19d build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_line    0x000015ab      0x21d build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_line    0x000017c8      0x208 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_line    0x000019d0      0x1e1 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_line    0x00001bb1      0x254 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_line    0x00001e05       0x93 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_line    0x00001e98       0x93 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_line    0x00001f2b       0x97 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x00001fc2       0xa5 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x00002067        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .debug_line    0x00002067       0x7c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_line    0x000020e3       0x7e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_line    0x00002161       0x7e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_line    0x000021df       0x7b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_line    0x0000225a        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .debug_line    0x0000225a       0x7e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_line    0x000022d8       0x7d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_line    0x00002355        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .debug_line    0x00002355       0x7e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_line    0x000023d3       0xf7 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_line    0x000024ca      0x109 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_line    0x000025d3       0x87 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_line    0x0000265a       0x88 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_frame    0x00000000      0x978
+ *.elf(.debug_frame)
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x3c build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_frame   0x0000003c       0x50 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_frame   0x0000008c       0xd0 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_frame   0x0000015c       0xe0 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_frame   0x0000023c       0x38 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_frame   0x00000274       0x2c build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_frame   0x000002a0       0x54 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_frame   0x000002f4       0x70 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_frame   0x00000364       0x48 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_frame   0x000003ac       0x20 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_frame   0x000003cc       0xa0 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_frame   0x0000046c       0x80 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_frame   0x000004ec       0x80 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_frame   0x0000056c       0xcc build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_frame   0x00000638       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_frame   0x00000664       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_frame   0x00000684       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x000006a4       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x000006c4       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_frame   0x000006f4       0x54 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_frame   0x00000748       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_frame   0x00000774       0x40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_frame   0x000007b4       0x40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_frame   0x000007f4       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_frame   0x00000824       0x38 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_frame   0x0000085c       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_frame   0x0000087c       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_frame   0x0000089c       0xa4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_frame   0x00000940       0x38 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_str      0x00000000       0x4e
+ *.elf(.debug_str)
+ *(.debug_str)
+ .debug_str     0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_str     0x00000000        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_str     0x00000000       0x13 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_str     0x00000013       0x15 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_str     0x00000028        0x0 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_str     0x00000028        0xa build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_str     0x00000032        0x7 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_str     0x00000039        0x9 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_str     0x00000042        0xc build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_str     0x0000004e        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_loc      0x00000000     0x23f1
+ *.elf(.debug_loc)
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x122 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_loc     0x00000122      0x1ed build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_loc     0x0000030f       0xe5 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_loc     0x000003f4      0x46e build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_loc     0x00000862       0xb1 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_loc     0x00000913       0x21 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_loc     0x00000934       0x77 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_loc     0x000009ab      0x129 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_loc     0x00000ad4       0x84 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_loc     0x00000b58      0x2af build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_loc     0x00000e07       0x13 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_loc     0x00000e1a       0x80 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .debug_loc     0x00000e9a      0xa6a c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_loc     0x00001904      0xa3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_loc     0x00002341       0x78 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_loc     0x000023b9       0x38 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.debug_macinfo
+ *.elf(.debug_macinfo)
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *.elf(.debug_weaknames)
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *.elf(.debug_funcnames)
+ *(.debug_funcnames)
+
+.debug_typenames
+ *.elf(.debug_typenames)
+ *(.debug_typenames)
+
+.debug_varnames
+ *.elf(.debug_varnames)
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *.elf(.debug_pubtypes)
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000      0x538
+ *.elf(.debug_ranges)
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x18 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .debug_ranges  0x00000018       0x20 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .debug_ranges  0x00000038       0x68 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .debug_ranges  0x000000a0       0x80 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .debug_ranges  0x00000120       0x28 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .debug_ranges  0x00000148       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .debug_ranges  0x00000158       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .debug_ranges  0x00000168       0x28 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .debug_ranges  0x00000190       0x18 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .debug_ranges  0x000001a8       0x10 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .debug_ranges  0x000001b8       0x50 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .debug_ranges  0x00000208       0x40 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .debug_ranges  0x00000248       0x28 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .debug_ranges  0x00000270       0x60 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .debug_ranges  0x000002d0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_ranges  0x000002e0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_ranges  0x000002f0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_ranges  0x00000300       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .debug_ranges  0x00000318       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .debug_ranges  0x00000330       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .debug_ranges  0x00000340       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .debug_ranges  0x00000358       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .debug_ranges  0x00000368       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .debug_ranges  0x00000378       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .debug_ranges  0x00000388       0x98 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .debug_ranges  0x00000420       0xd8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .debug_ranges  0x000004f8       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_ranges  0x00000528       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+
+.gnu.attributes
+                0x00000000       0x10
+ *(.gnu.attributes)
+ .gnu.attributes
+                0x00000000       0x10 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+ .gnu.attributes
+                0x00000010       0x10 build/pic32mz_w1_curiosity/production/_ext/1360937237/median.o
+ .gnu.attributes
+                0x00000020       0x10 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+ .gnu.attributes
+                0x00000030       0x10 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+ .gnu.attributes
+                0x00000040       0x10 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+ .gnu.attributes
+                0x00000050       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+ .gnu.attributes
+                0x00000060       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+ .gnu.attributes
+                0x00000070       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+ .gnu.attributes
+                0x00000080       0x10 build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+ .gnu.attributes
+                0x00000090       0x10 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+ .gnu.attributes
+                0x000000a0       0x10 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+ .gnu.attributes
+                0x000000b0       0x10 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+ .gnu.attributes
+                0x000000c0       0x10 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+ .gnu.attributes
+                0x000000d0       0x10 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+ .gnu.attributes
+                0x000000e0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+ .gnu.attributes
+                0x000000f0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .gnu.attributes
+                0x00000100       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .gnu.attributes
+                0x00000110       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .gnu.attributes
+                0x00000120       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+ .gnu.attributes
+                0x00000130       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(rand.o)
+ .gnu.attributes
+                0x00000140       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+ .gnu.attributes
+                0x00000150       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+ .gnu.attributes
+                0x00000160       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+ .gnu.attributes
+                0x00000170       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+ .gnu.attributes
+                0x00000180       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+ .gnu.attributes
+                0x00000190       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+ .gnu.attributes
+                0x000001a0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+ .gnu.attributes
+                0x000001b0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+ .gnu.attributes
+                0x000001c0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+ .gnu.attributes
+                0x000001d0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+ .gnu.attributes
+                0x000001e0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .gnu.attributes
+                0x000001f0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+                0x90000000                PROVIDE (__pic32_init_cache_program_base_addr, 0x90000000)
+                0x80000000                PROVIDE (__pic32_init_cache_data_base_addr, 0x80000000)
+                0x00000200                _min_heap_size = 0x200
+LOAD C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+LOAD C:\Users\m16946\AppData\Local\Temp\cc5o5BhB.o
+LOAD C:\Users\m16946\AppData\Local\Temp\ccTlO44o.o
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\default_isr_vectors.o
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a
+START GROUP
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libdebug.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libe.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libdspr2.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libdsp.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a
+END GROUP
+LOAD c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a
+OUTPUT(dist/pic32mz_w1_curiosity/production/pic32mz_w1_curiosity.X.production.elf elf32-tradlittlemips)
+LOAD stack
+LOAD data_init
+
+.reginfo        0x00000000       0x18
+ .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+
+.stack          0x800003b8      0x400
+ .stack         0x800003b8      0x400 stack
+
+.__vector_offset_BF810540_data
+                0xbf810540       0x64
+ .__vector_offset_BF810540_data
+                0xbf810540       0x64 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8106E8_data
+                0xbf8106e8       0x60
+ .__vector_offset_BF8106E8_data
+                0xbf8106e8       0x60 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8105B8_data
+                0xbf8105b8       0x48
+ .__vector_offset_BF8105B8_data
+                0xbf8105b8       0x48 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF810614_data
+                0xbf810614       0x30
+ .__vector_offset_BF810614_data
+                0xbf810614       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF81068C_data
+                0xbf81068c       0x28
+ .__vector_offset_BF81068C_data
+                0xbf81068c       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF810650_data
+                0xbf810650       0x24
+ .__vector_offset_BF810650_data
+                0xbf810650       0x24 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8107A0_data
+                0xbf8107a0       0x18
+ .__vector_offset_BF8107A0_data
+                0xbf8107a0       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8107C8_data
+                0xbf8107c8       0x18
+ .__vector_offset_BF8107C8_data
+                0xbf8107c8       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8106D0_data
+                0xbf8106d0       0x14
+ .__vector_offset_BF8106D0_data
+                0xbf8106d0       0x14 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF8106B8_data
+                0xbf8106b8       0x10
+ .__vector_offset_BF8106B8_data
+                0xbf8106b8       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF810778_data
+                0xbf810778       0x10
+ .__vector_offset_BF810778_data
+                0xbf810778       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF810680_data
+                0xbf810680        0x4
+ .__vector_offset_BF810680_data
+                0xbf810680        0x4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.__vector_offset_BF810798_data
+                0xbf810798        0x4
+ .__vector_offset_BF810798_data
+                0xbf810798        0x4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MZ1025W104132\vector_offset_init.o
+
+.data           0x80000084       0xa4
+ .data          0x80000084       0xa4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+                0x80000084                _Files
+                0x80000088                _iob
+
+.bss            0x80000128       0x68
+ .bss           0x80000128       0x44 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_iob.o)
+                0x80000128                _sobuf
+                0x80000148                _sibuf
+                0x80000168                _outdone
+ .bss           0x8000016c       0x24 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x80000188                _maxbrk
+                0x8000018c                _minbrk
+
+.bss            0x80000190        0x4
+ .bss           0x80000190        0x4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+
+.bss.errno      0x80000194        0x4
+ .bss.errno     0x80000194        0x4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(errno.o)
+                0x80000194                errno
+
+._debug_exception
+                0xbfc00480       0x2c
+ ._debug_exception
+                0xbfc00480       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+                0xbfc00480                __DbgExecReturn
+
+.text._vfprintf_cdnopuxX
+                0x90000250      0xc8c
+ .text._vfprintf_cdnopuxX
+                0x90000250      0xc8c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+                0x90000250                _vfprintf_cdnopuxX
+
+.text.dp32mul   0x90000edc      0x4b8
+ .text.dp32mul  0x90000edc      0x4b8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32div.o)
+                0x90000edc                dpdiv
+                0x90000edc                __divdf3
+
+.text           0x90001394      0x8bc
+ .text          0x90001394      0x464 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_umoddi3.o)
+                0x90001394                __umoddi3
+ .text          0x900017f8      0x458 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(_udivdi3.o)
+                0x900017f8                __udivdi3
+
+.text.dp32subadd
+                0x90001c50      0x430
+ .text.dp32subadd
+                0x90001c50      0x430 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32subadd.o)
+                0x90001c50                dpsub
+                0x90001c50                __subdf3
+                0x90001c58                __adddf3
+                0x90001c58                dpadd
+
+.dinit          0x90002080      0x400
+ .dinit         0x90002080      0x400 data_init
+
+.text.dp32mul   0x90002480      0x32c
+ .text.dp32mul  0x90002480      0x32c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dp32mul.o)
+                0x90002480                __muldf3
+                0x90002480                dpmul
+
+.text.main      0x900027ac      0x28c
+ .text.main     0x900027ac      0x28c build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+                0x900027ac                main
+
+.text._sbrk_init
+                0x90002a38      0x194
+ .text._sbrk_init
+                0x90002a38      0x194 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x90002a38                _sbrk_init
+
+.text.fputc     0x90002bcc      0x144
+ .text.fputc    0x90002bcc      0x144 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_fputc_simple.o)
+                0x90002bcc                fputc
+
+.text._flsbuf   0x90002d10      0x12c
+ .text._flsbuf  0x90002d10      0x12c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(_flsbuf_simple.o)
+                0x90002d10                _flsbuf
+
+.rodata         0x90002e40      0x128
+ .rodata        0x90002e40      0x128 build/pic32mz_w1_curiosity/production/_ext/1360937237/main.o
+
+.text.SYS_PMU_MLDO_TRIM
+                0x90002f68      0x118
+ .text.SYS_PMU_MLDO_TRIM
+                0x90002f68      0x118 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+                0x90002f68                SYS_PMU_MLDO_TRIM
+
+.text.CLK_Initialize
+                0x90003080      0x110
+ .text.CLK_Initialize
+                0x90003080      0x110 build/pic32mz_w1_curiosity/production/_ext/1481979610/plib_clk.o
+                0x90003080                CLK_Initialize
+
+.rodata         0x90003190      0x104
+ .rodata        0x90003190      0x104 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ctype.o)
+                0x90003190                _ctype
+
+.text.setvbuf   0x90003294      0x100
+ .text.setvbuf  0x90003294      0x100 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+                0x90003294                setvbuf
+
+.text.TIMER_1_Handler
+                0x90000010       0xf0
+ .text.TIMER_1_Handler
+                0x90000010       0xf0 build/pic32mz_w1_curiosity/production/_ext/1737632808/interrupts.o
+                0x90000010                TIMER_1_Handler
+
+.text.ADCHS_Initialize
+                0x90003394       0xe4
+ .text.ADCHS_Initialize
+                0x90003394       0xe4 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+                0x90003394                ADCHS_Initialize
+
+.text.general_exception
+                0x90003478       0xdc
+ .text.general_exception
+                0x90003478       0xdc c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                0x90003478                _general_exception_context
+
+.text._cache_err_exception_context
+                0x90003554       0xd8
+ .text._cache_err_exception_context
+                0x90003554       0xd8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+                0x90003554                _cache_err_exception_context
+
+.text.simple_tlb_refill_context
+                0x9000362c       0xd8
+ .text.simple_tlb_refill_context
+                0x9000362c       0xd8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+                0x9000362c                _simple_tlb_refill_exception_context
+
+.rodata         0x90003708       0xd0
+ .rodata        0x90003708       0xd0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(doprnt_cdnopuxX.eo)
+
+.text._sbrk     0x900037d8       0xc8
+ .text._sbrk    0x900037d8       0xc8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x900037d8                _sbrk
+
+.tlb.__pic32_tlb_init_ebi_sqi
+                0x900038a0       0xbc
+ .tlb.__pic32_tlb_init_ebi_sqi
+                0x900038a0       0xbc c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+                0x900038a0                __pic32_tlb_init_ebi_sqi
+
+.text           0x9000395c       0xa8
+ .text          0x9000395c       0xa8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(memset.o)
+                0x9000395c                memset
+
+.text.write     0x90003a04       0x9c
+ .text.write    0x90003a04       0x9c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(write.o)
+                0x90003a04                write
+
+.text.dptoli    0x90003aa0       0x90
+ .text.dptoli   0x90003aa0       0x90 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(dptoli.o)
+                0x90003aa0                __fixdfsi
+                0x90003aa0                dptoli
+
+.text.SYS_Initialize
+                0x90003b30       0x8c
+ .text.SYS_Initialize
+                0x90003b30       0x8c build/pic32mz_w1_curiosity/production/_ext/1737632808/initialization.o
+                0x90003b30                SYS_Initialize
+
+.text.LWP_iir_filter
+                0x90003bbc       0x88
+ .text.LWP_iir_filter
+                0x90003bbc       0x88 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+                0x90003bbc                LWP_iir_filter
+
+.text           0x90003c44       0x84
+ .text          0x90003c44       0x84 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+                0x90003c44                __pic32_data_init
+
+.text.litodp    0x90003cc8       0x78
+ .text.litodp   0x90003cc8       0x78 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libm.a(litodp.o)
+                0x90003cc8                __floatsidf
+                0x90003cc8                litodp
+
+.text.UART1_Write
+                0x90000110       0x60
+ .text.UART1_Write
+                0x90000110       0x60 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+                0x90000110                UART1_Write
+
+.text.SYS_PMU_SPI_READ
+                0x90000190       0x60
+ .text.SYS_PMU_SPI_READ
+                0x90000190       0x60 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+
+.text._bufallo  0x90003d40       0x5c
+ .text._bufallo
+                0x90003d40       0x5c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+                0x90003d40                _bufallo
+
+.text.SYS_PMU_SPI_WRITE
+                0x90003d9c       0x54
+ .text.SYS_PMU_SPI_WRITE
+                0x90003d9c       0x54 build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+
+.text.main_entry
+                0x90003df0       0x54
+ .text.main_entry
+                0x90003df0       0x54 C:\Users\m16946\AppData\Local\Temp\ccnbkxO6.o
+                0x90003e24                __crt0_exit
+
+.text.sbrk      0x90003e44       0x50
+ .text.sbrk     0x90003e44       0x50 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x90003e44                sbrk
+
+.text.DelayMs   0x90003e94       0x4c
+ .text.DelayMs  0x90003e94       0x4c build/pic32mz_w1_curiosity/production/_ext/1737632808/system_pmu_mldo_trim.o
+
+.text           0x90003ee0       0x88
+ .text          0x90003ee0       0x44 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+                0x90003ee0                __pic32_software_reset
+ .text          0x90003f24       0x44 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+                0x90003f24                __floatunsidf
+
+.text.TMR1_Initialize
+                0x90003f68       0x40
+ .text.TMR1_Initialize
+                0x90003f68       0x40 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+                0x90003f68                TMR1_Initialize
+
+.text.TIMER_1_InterruptHandler
+                0x90003fa8       0x40
+ .text.TIMER_1_InterruptHandler
+                0x90003fa8       0x40 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+                0x90003fa8                TIMER_1_InterruptHandler
+
+.text._printf_cdnopuxX
+                0x90003fe8       0x40
+ .text._printf_cdnopuxX
+                0x90003fe8       0x40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(printf_cdnopuxX.eo)
+                0x90003fe8                _printf_cdnopuxX
+
+.text.setbuf    0x90004028       0x3c
+ .text.setbuf   0x90004028       0x3c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(setbuf.o)
+                0x90004028                setbuf
+
+.text.UART1_Initialize
+                0x90004064       0x38
+ .text.UART1_Initialize
+                0x90004064       0x38 build/pic32mz_w1_curiosity/production/_ext/1303798346/plib_uart1.o
+                0x90004064                UART1_Initialize
+
+.text.EVIC_Initialize
+                0x9000409c       0x30
+ .text.EVIC_Initialize
+                0x9000409c       0x30 build/pic32mz_w1_curiosity/production/_ext/1303341575/plib_evic.o
+                0x9000409c                EVIC_Initialize
+
+.text._mon_putc
+                0x900040cc       0x2c
+ .text._mon_putc
+                0x900040cc       0x2c build/pic32mz_w1_curiosity/production/_ext/1903942254/xc32_monitor.o
+                0x900040cc                _mon_putc
+
+.text._stub_sbd_memlayout
+                0x900040f8       0x2c
+ .text._stub_sbd_memlayout
+                0x900040f8       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x900040f8                _sbd_memlayout
+                0x900040f8                _stub_sbd_memlayout
+
+.text.ADCHS_ChannelResultIsReady
+                0x90004124       0x24
+ .text.ADCHS_ChannelResultIsReady
+                0x90004124       0x24 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+                0x90004124                ADCHS_ChannelResultIsReady
+
+.text._general_exception_handler
+                0x90004148       0x24
+ .text._general_exception_handler
+                0x90004148       0x24 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+                0x90004148                _general_exception_handler
+
+.text._bootstrap_exception_handler
+                0x9000416c       0x24
+ .text._bootstrap_exception_handler
+                0x9000416c       0x24 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+                0x9000416c                _bootstrap_exception_handler
+
+.text._cache_err_exception_handler
+                0x90004190       0x24
+ .text._cache_err_exception_handler
+                0x90004190       0x24 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+                0x90004190                _cache_err_exception_handler
+
+.text._simple_tlb_refill_exception_handler
+                0x900041b4       0x24
+ .text._simple_tlb_refill_exception_handler
+                0x900041b4       0x24 build/pic32mz_w1_curiosity/production/_ext/1737632808/exceptions.o
+                0x900041b4                _simple_tlb_refill_exception_handler
+
+.text.LWP_iir_init
+                0x900041d8       0x20
+ .text.LWP_iir_init
+                0x900041d8       0x20 build/pic32mz_w1_curiosity/production/_ext/1360937237/lowpass.o
+                0x900041d8                LWP_iir_init
+
+.text.ADCHS_ChannelResultGet
+                0x900041f8       0x18
+ .text.ADCHS_ChannelResultGet
+                0x900041f8       0x18 build/pic32mz_w1_curiosity/production/_ext/1744647343/plib_adchs.o
+                0x900041f8                ADCHS_ChannelResultGet
+
+.text           0x90004210       0x18
+ .text          0x90004210       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                0x90004210                _nmi_handler
+
+.text.TMR1_Start
+                0x90004228       0x14
+ .text.TMR1_Start
+                0x90004228       0x14 build/pic32mz_w1_curiosity/production/_ext/1303780020/plib_tmr1.o
+                0x90004228                TMR1_Start
+
+.text._buffree  0x9000423c       0x14
+ .text._buffree
+                0x9000423c       0x14 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(buf.o)
+                0x9000423c                _buffree
+
+.text.GPIO_Initialize
+                0x90000170        0x8
+ .text.GPIO_Initialize
+                0x90000170        0x8 build/pic32mz_w1_curiosity/production/_ext/1303395403/plib_gpio.o
+                0x90000170                GPIO_Initialize
+
+.rodata         0x90000178        0x8
+ .rodata        0x90000178        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a(floatunsidf.o)
+
+.text._on_reset
+                0x900001f0        0x8
+ .text._on_reset
+                0x900001f0        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x900001f0                _on_reset
+
+.text._on_bootstrap
+                0x900001f8        0x8
+ .text._on_bootstrap
+                0x900001f8        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x900001f8                _on_bootstrap
