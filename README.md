@@ -74,5 +74,6 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [Lab 5 - Merging TCP Client example application and Paho MQTT Client example application](05_evaluate/README.md#step10)
    1. [Lab 6 - Enable WLAN MAC Debug Log](05_evaluate/README.md#step11)
 1. <font size="6">[Develop a Secured Smart Home Application from scratch](06_develop/README.md#top)</font>
+1. <font size="6">[Hub for Experimental Projects](07_projects/README.md#top)</font>
 
 
