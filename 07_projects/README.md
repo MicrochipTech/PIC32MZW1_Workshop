@@ -7,6 +7,7 @@
 
 1. [ADC example and Digital Filtering](#step1)
 1. [Touch example with CVD and QT7 Xpro](#step2)
+1. [USB for printing message using Debug System Service](#step3)
 
 ## ADC example and Digital Filtering<a name="step1"></a>
 
@@ -49,7 +50,7 @@ With the two actions above, it is possible to achieve an accuracy of 1mV within 
 ADC Count = 0xfff, ADC Input Voltage = 3.231248 V
 ```
 
-## Touch example with CVD and QT7 Xpro
+## Touch example with CVD and QT7 Xpro<a name="step2"></a>
 
 ### Purpose
 Basic CVD provides a touch interface based on selfcapacitance touch sensing. The ADC module embedded in the PIC32MZ-W1 device supports CVD feature by using the shared ADC core to perform a modified scan of all second and third class channels.
@@ -62,6 +63,11 @@ Basic CVD provides a touch interface based on selfcapacitance touch sensing. The
 
 <p align="center">
 <img src="resources/media/02_setup.png" width=320>
+</p>
+
+> One of the slider sensor line (Y-line2) is connected to U202 and the line is loaded with 10k (R220) resistor. You could remove R220 to not interfere the measurement of the slider sensor.
+<p align="center">
+<img src="resources/media/02_setup_r220.png" width=320>
 </p>
 
 ### QT7 Xpro Header and WFI32E01 connections
@@ -167,7 +173,7 @@ QT7 uses one slider and two touch buttons
 
 - Select **Parameters**
 - Set over sampling to **32 samples** for all sensors
-- Set Gain = **8** for sensor Id 4
+- Set Gain = **8** for sensor Id 4 (this step is not required if you have removed R220 resistor, check Hardware Setup section)
 - Set **20** additional charge cycles
 <p align="center">
 <img src="resources/media/02_touch_config_07.png" width=720>
@@ -293,6 +299,146 @@ void touch_status_display()
 <p align="center">
 <img src="resources/media/02_demo.gif" width=>
 </p>
+
+## USB CDC for printing message using Debug System Service<a name="step3"></a>
+
+### Purpose
+
+Use USB Power connector (J204) to print application logs in a console.
+
+### Hardware setup
+
+- Computer connected to WFI32 Curiositiy board over USB POWER (J204)
+- J202 = VBUS
+- J301 = open
+- J211 = shorted between 1-2
+
+<p align="center">
+<img src="resources/media/03_setup.png" width=480>
+</p>
+
+### MHC Setup
+
+- Create a 32-bit Harmony project for PIC32MZW1 device
+- Open Harmony Configurator
+- Add **PIC32MZ W1 Curiosity BSP** component to project Graph
+- Add **Harmony/System Services/DEBUG** component to project Graph
+  - Reply **Yes** to add **Core**
+  - Reply **No** to FreeRTOS
+- Add **Harmony/System Services/Console** component to project Graph
+  - Right click on **USB_DEVICE_CDC** diamond and satisfy USB_DEVICE_CDC
+  - Reply **Yes** to include **USB Device Layer**
+  - Reply **Yes** to include **USB Full Speed Driver**
+- Make the **USB_DEVICE_CDC** connection between the **CDC Function Driver** and the **CONSOLE** blocks
+
+<p align="center">
+<img src="resources/media/03_mhc_01.png" width=720>
+</p>
+
+- Configure **USB Device Layer** component with Product ID Selection = **cdc_com_port_single_demo**
+<p align="center">
+<img src="resources/media/03_mhc_02.png" width=480>
+</p>
+
+- Open **MHC/Tools/Clock Configurator** and enable **USB PLL** to get USBCLK = 96 MHz
+<p align="center">
+<img src="resources/media/03_mhc_03.png" width=720>
+</p>
+
+- Open **Pin Settings** in **MHC/Tools/Pin Configurator**
+- Set **Change Notification** Interrupt for the pin RA10/SWITCH1
+<p align="center">
+<img src="resources/media/03_mhc_04.png" width=720>
+</p>
+
+- Click **Generate Code**
+- Open `app.h`
+- Use the following application states:
+```
+typedef enum
+{
+    /* Application's state machine's initial state. */
+    APP_STATE_INIT=0,
+    APP_STATE_SERVICE_TASKS,
+    APP_STATE_IDLE,
+} APP_STATES;
+```
+- Use the following application data:
+```
+typedef struct
+{
+    /* The application's current state */
+    APP_STATES state;
+    SYS_CONSOLE_HANDLE consoleHandle;
+} APP_DATA;
+```
+
+- Open `app.c`
+- Add `#include "config/../definitions.h"`
+- Declare `uint32_t counter = 0 ;` as global variable
+- Add the following callback handler:
+```
+static void SWITCH1_Handler(GPIO_PIN pin, uintptr_t context)
+{
+    if (SWITCH1_Get() == SWITCH1_STATE_PRESSED)
+    {
+        if (appData.state == APP_STATE_IDLE)
+        {
+            appData.state = APP_STATE_SERVICE_TASKS ;
+        }
+    }
+}
+```
+- Use the following `APP_Initialize()` function:
+```
+void APP_Initialize ( void )
+{
+    /* Register interrupt callback for Switch 1 */    
+    GPIO_PinInterruptCallbackRegister(GPIO_PIN_RA10, SWITCH1_Handler, 0) ;
+    GPIO_PinInterruptEnable(GPIO_PIN_RA10) ;
+    /* Place the App state machine in its initial state. */
+    appData.state = APP_STATE_INIT ;
+}
+```
+
+- Use the following `APP_Tasks()` function:
+```
+void APP_Tasks ( void )
+{
+    switch ( appData.state )
+    {
+        case APP_STATE_INIT:
+            if (SYS_DEBUG_Status(SYS_CONSOLE_INDEX_0) == SYS_STATUS_READY)
+            {
+                LED_RED_On() ;
+                appData.state = APP_STATE_IDLE ;
+            }
+            break;
+        case APP_STATE_IDLE:
+            // do nothing
+            break ;
+        case APP_STATE_SERVICE_TASKS:
+            SYS_DEBUG_MESSAGE(SYS_ERROR_DEBUG, "Test USB Console\r\n") ;
+            SYS_DEBUG_PRINT(SYS_ERROR_DEBUG, "Counter value = %d\r\n", counter ++) ;
+            appData.state = APP_STATE_IDLE ;
+             break ;
+        default:
+            break;
+    }
+}
+```
+Known [issue](https://www.microchip.com/forums/m1142703.aspx)
+
+### Try it
+
+1. Clone/download the repo
+2. Open the project located in `PIC32MZW1_Workshop/07_projects/resources/software/usb_cdc` with MPLAB X IDE
+3. Build and program the code
+4. Attach the device to the host. If the host is a personal computer and this is the first time you have plugged this device into the computer, you may be prompted for a .inf file.
+5. Select the “Install from a list or specific location (Advanced)” option. Specify the `<install-dir>/cdc/inf` directory
+6. Verify that the enumerated USB device is seen as a virtual USB serial comport in Device Manager
+7. Open USB CDC Com Port with TeraTerm
+8. Press SW1 button and observe the console output
 
 
 <a href="#top">Back to top</a>

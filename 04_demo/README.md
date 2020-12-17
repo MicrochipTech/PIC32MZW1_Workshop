@@ -3,6 +3,15 @@
 
 [Back to Main page](../README.md)
 
+
+
+**Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to the cloud securely. Then interact with features on the board with Amazon Alexa.**
+<p align="center">
+<a href="https://youtu.be/QzlssnBK0HY" target="_blank">
+<img src="https://img.youtube.com/vi/QzlssnBK0HY/0.jpg" 
+alt="Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to the cloud securely. Then interact with features on the board with Amazon Alexa." width="480"></a>
+</p>
+
 ## A la carte
 
 1. [Introduction](#step1)
@@ -15,7 +24,7 @@
 
 The [PIC32WFI32E Curiosity Board](http://www.microchip.com/EV12F11A) comes with a Out-of-box demo application already programmed onto the PIC32MZ W1 device.
 
-The demo has a web app and voice based interaction mode. 
+The demo has a web app and voice based interaction mode.
 
 <p align="center">
 <img src="resources/media/oob_application.png" width=720>
