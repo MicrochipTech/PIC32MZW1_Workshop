@@ -3,12 +3,11 @@
 
 [Back to Main page](../README.md)
 
+**Watch the video and Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to the cloud securely. Then interact with features on the board with Amazon Alexa.**
 
-
-**Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to the cloud securely. Then interact with features on the board with Amazon Alexa.**
 <p align="center">
 <a href="https://youtu.be/QzlssnBK0HY" target="_blank">
-<img src="https://img.youtube.com/vi/QzlssnBK0HY/0.jpg" 
+<img src="resources/media/oobThumbnail.png" 
 alt="Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to the cloud securely. Then interact with features on the board with Amazon Alexa." width="480"></a>
 </p>
 
@@ -222,7 +221,7 @@ That will perform the following connection:
 The IO1 XPRO contains the light sensor [TEMT6000](https://www.vishay.com/docs/81579/temt6000.pdf) from Vishay. The light sensor is a single-ended analog output. When light is being blocked, the pull-up resistor will pull the signal voltage to 3.3V. When light is absorbed by the phototransistor, that will cause a current flow and pulling the signal voltage down to 0.0 V.
 
 <p align="center">
-<img src="resources/media/light_sensor_circuit.png" width=320>
+<img src="resources/media/light_sensor.png" width=320>
 </p>
 
 - Open the [latest code](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) of the OoB demo project
