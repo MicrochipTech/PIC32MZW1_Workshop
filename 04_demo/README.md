@@ -18,6 +18,7 @@ alt="Unbox the new WFI32E01 Curiosity evaluation board to see how to connect to 
 1. [System architecture](#step3)
 1. [Run the demo](#step4)
 1. [Customize the demo](#step5)
+1. [Smart Garage door demo](#step6)
 
 ## Introduction<a name="step1"></a>
 
@@ -424,5 +425,100 @@ With the above modifications, you should be able to observe the temperature sens
 <p align="center">
 <img src="resources/media/oob_web_page_customized.png" width=520>
 </p>
+
+## Smart Garage door demo<a name="step6"></a>
+
+Based on the [OoB MPLAB Harmony project v1.2.5](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/1.2.5) and the [WFI32E Curiosity board](http://www.microchip.com/EV12F11A) the Garage door demo has been built.
+
+Voice commands using Amazon Alexa or the web-app page can be used to control the garage door through Amazon AWS cloud.
+
+<p align="center">
+<img src="resources/media/garage_door_00.png" width=240>
+<img src="resources/media/garage_door_01.png" width=240>
+<img src="resources/media/garage_door_02.png" width=240>
+<img src="resources/media/garage_door_03.png" width=240>
+<img src="resources/media/garage_door_04.png" width=240>
+<img src="resources/media/garage_door_demo.gif" width=>
+</p>
+
+**Watch the video and see how to voice control a garage door using a secure cloud connectivity with WFI32E Curiosity board**
+
+<p align="center">
+<a href="https://youtu.be/DuRWZn31ReA" target="_blank">
+<img src="resources/media/garage_door_thumbnail.png" 
+alt="Garage Door Demo with voice commands based on WFI32 Out of the box Application developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
+</p>
+
+**BoM**
+
+This demo is using the following components:
+- [WFI32E Curiosity board](http://www.microchip.com/EV12F11A)
+- [42HS02](https://ww1.microchip.com/downloads/en/DeviceDoc/Leedshine%2042HS03%20Stepper%20Motor%20Datasheet.pdf) stepping motors with 4 leads
+- 2x subminiature basic switches
+- [Stepper-7 click](https://www.mikroe.com/stepper-7-click)
+- 5VDC to power supply the WFI32E Curiosity board
+- 24VDC power supply for the motor
+
+**Hardware Setup**
+
+<p align="center">
+<img src="resources/media/garage_door_hw_setup_00.png" width=720>
+</p>
+
+The PIC32MZ W1 communicates to the 8-bit I/O expander [MCP23S08](https://www.microchip.com/wwwproducts/en/MCP23S08) over the SPI-lines and it allows the control lines of the [MTS62C19A](https://www.microchip.com/wwwproducts/en/MTS62C19A) motor driver IC. By changing states of the [MTS62C19A](https://www.microchip.com/wwwproducts/en/MTS62C19A)'s control pins, it is possible to drive the stepper motor.
+
+Two basic switches are used to detect the garage door position.
+
+<p align="center">
+<img src="resources/media/garage_door_hw_setup_01.png" width=720>
+</p>
+
+
+**Software**
+
+To use voice command, make sure to register and claim the device using `voice.html`
+
+**[Clone/download](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) this repo to find the source code of this demo**
+
+The Harmony 3 project is based on OoB project version 1.2.5 which use the following Harmony components:
+- MHC v3.6.5
+- Cryptoauthlib v3.2.4
+- Core v3.8.1
+- CSP v3.8.2
+- paho MQTT v1.2.1
+- USB v3.7.0
+- dev packs v3.8.0
+- wireless v3.3.1
+- wolfssl v4.5.0
+- net v3.6.4
+- bsp v3.8.2
+- crypto v3.6.1
+- CMSIS FreeRTOS v10.3.1
+
+The manifest file `src/firmware/src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml` has been loaded using **Harmony Content Manager** to get same package configuration as the original project.
+
+In MHC, SPI2 component is added to allow PIC32MZ W1 device driving the stepper motor.
+Chip select pin is driven by software.
+
+<p align="center">
+<img src="resources/media/garage_door_mhc_01.png" width=640>
+</p>
+
+The pins have been configured to match the hardware connection.
+
+<p align="center">
+<img src="resources/media/garage_door_mhc_02.png" width=640>
+<br>
+<br>
+<img src="resources/media/garage_door_mhc_03.png" width=640>
+</p>
+
+The application `app_motor` has been added in addition to the existing 5 application files.
+
+<p align="center">
+<img src="resources/media/garage_door_mhc_04.png" width=480>
+</p>
+
+The FreeRTOS task `APP_MOTOR_Tasks` is managing the stepper motor by starting the motor when desired state is triggered via MQTT message and stopping the motor by de-energizing the coil when the garage door has reached the position of one of the switches.
 
 <a href="#top">Back to top</a>

@@ -61,6 +61,7 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [System architecture](04_demo/README.md#step3)
    1. [Run the demo](04_demo/README.md#step4)
    1. [Customize the demo](04_demo/README.md#step5)
+   1. [Smart Garage door demo](04_demo/README.md#step6)
 1. <font size="6">[Explore and try](05_evaluate/README.md#top)</font>
    1. [Collection of code examples](05_evaluate/README.md#step1)
    1. [Evaluation flow](05_evaluate/README.md#step2)
