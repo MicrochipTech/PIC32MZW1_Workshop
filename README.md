@@ -52,9 +52,9 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [Learn about Wireless Software](02_overview/README.md#step4)
 1. <font size="6">[Setup the tools](03_setup/README.md#top)</font>
    1. [Material Required](03_setup/README.md#step1)
-   1. [Hardware Setup](03_setup/README.md#step1)
-   1. [Software Requirements](03_setup/README.md#step1)
-   1. [Setup your development environment](03_setup/README.md#step1)
+   1. [Hardware Setup](03_setup/README.md#step2)
+   1. [Software Requirements](03_setup/README.md#step3)
+   1. [Setup your development environment](03_setup/README.md#step4)
 1. <font size="6">[Out-of-box experience](04_demo/README.md#top)</font>
    1. [Introduction](04_demo/README.md#step1)
    1. [Resources](04_demo/README.md#step2)
