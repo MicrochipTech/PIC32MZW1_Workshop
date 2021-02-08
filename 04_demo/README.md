@@ -444,7 +444,7 @@ Voice commands using Amazon Alexa or the web-app page can be used to control the
 **Watch the video and see how to voice control a garage door using a secure cloud connectivity with WFI32E Curiosity board**
 
 <p align="center">
-<a href="https://youtu.be/DuRWZn31ReA" target="_blank">
+<a href="https://youtu.be/3v59EC2LO_Q" target="_blank">
 <img src="resources/media/garage_door_thumbnail.png" 
 alt="Garage Door Demo with voice commands based on WFI32 Out of the box Application developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
 </p>
