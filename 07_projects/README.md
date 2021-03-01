@@ -8,6 +8,7 @@
 1. [ADC example and Digital Filtering](#step1)
 1. [Touch example with CVD and QT7 Xpro](#step2)
 1. [USB for printing message using Debug System Service](#step3)
+1. [Wi-Fi Provisioning over BLE](#step4)
 
 ## ADC example and Digital Filtering<a name="step1"></a>
 
@@ -41,10 +42,11 @@ With the two actions above, it is possible to achieve an accuracy of 1mV within 
 ### Try it
 
 1. Clone/download the repo
-2. Open the project located in `PIC32MZW1_Workshop/07_projects/resources/software/adchs_polled_with_filtering` with MPLAB X IDE
-3. Build and program the code
-4. Connect a 3.3V battery to AN9 channel
-5. Observe the result on the console
+1. Extract the file `adchs_polled_with_filtering.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
+1. Connect a 3.3V battery to AN9 channel
+1. Observe the result on the console
 
 ```bash
 ADC Count = 0xfff, ADC Input Voltage = 3.231248 V
@@ -293,8 +295,9 @@ void touch_status_display()
 ### Try it
 
 1. Clone/download the repo
-2. Open the project located in `PIC32MZW1_Workshop/07_projects/resources/software/touch_qt7xpro` with MPLAB X IDE
-3. Build and program the code
+1. Extract the file `touch_qt7xpro.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
 
 <p align="center">
 <img src="resources/media/02_demo.gif" width=>
@@ -432,13 +435,103 @@ Known [issue](https://www.microchip.com/forums/m1142703.aspx)
 ### Try it
 
 1. Clone/download the repo
-2. Open the project located in `PIC32MZW1_Workshop/07_projects/resources/software/usb_cdc` with MPLAB X IDE
-3. Build and program the code
-4. Attach the device to the host. If the host is a personal computer and this is the first time you have plugged this device into the computer, you may be prompted for a .inf file.
-5. Select the “Install from a list or specific location (Advanced)” option. Specify the `<install-dir>/cdc/inf` directory
-6. Verify that the enumerated USB device is seen as a virtual USB serial comport in Device Manager
-7. Open USB CDC Com Port with TeraTerm
-8. Press SW1 button and observe the console output
+1. Extract the file `usb_cdc.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
+1. Attach the device to the host. If the host is a personal computer and this is the first time you have plugged this device into the computer, you may be prompted for a .inf file.
+1. Select the “Install from a list or specific location (Advanced)” option. Specify the `<install-dir>/cdc/inf` directory
+1. Verify that the enumerated USB device is seen as a virtual USB serial comport in Device Manager
+1. Open USB CDC Com Port with TeraTerm
+1. Press SW1 button and observe the console output
 
+
+## Wi-Fi Provisioning over BLE<a name="step4"></a>
+
+### Purpose
+
+Attach external BLE device to WFI32E and enable Wi-Fi configuration over BLE.
+
+**Watch the video and see how to enable Wi-Fi provisioning over BLE with WFI32E Curiosity board**
+
+<p align="center">
+<a href="https://youtu.be/xTd-EptCuDA" target="_blank">
+<img src="resources/media/04_ble_provisioning_thumbnail.png" 
+alt="Wi-Fi provisioning over BLE demo based on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
+</p>
+
+### Hardware setup
+
+- Computer connected to WFI32 Curiositiy board over USB POWER (J204)
+- J202 = VBUS
+- J301 = open
+
+USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
+
+Attach a [RN4871 click](https://www.mikroe.com/rn4871-click) or [RN4870 click](https://www.mikroe.com/rn4870-click) to mikro BUS Header
+
+<p align="center">
+<img src="resources/media/04_setup.png" width=480>
+</p>
+
+### Generate QR code for Wi-Fi provisioning
+
+A QR code is used in the demo to provision the Wi-Fi configuration over BLE.
+
+To be recognized by the `BLE_PROVISIONING` sample application, the QR code must contains a string of characters which respect the following format:
+
+**Frame Format:** `&wifiprov|<ssid>|<authtype>|<password>&`
+
+Where `&` is used to indicate the start and the end of the frame.
+
+`wifiprov` is used as a command keyword.
+
+`<ssid>` is the name of the router / network
+
+`authtype` represents the security type:
+- 1: OPEN mode
+- 3: WPAWPA2 (Mixed) mode
+- 4: WPA2 mode
+- 5: WPA2WPA3 (Mixed) mode
+- 6: WPA3 mode
+
+`password` is not required in Open mode
+
+**e.g.:** `&wifiprov|DEMO_AP|3|password&`
+
+Create your own QR code from: [https://www.the-qrcode-generator.com/](https://www.the-qrcode-generator.com/)
+
+<p align="center">
+<img src="resources/media/04_qrcode.png" width=480>
+</p>
+
+### Try Wi-Fi over BLE
+
+1. Clone/download the repo
+1. Extract the file `ble_provisioning.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
+1. Open Tera Term to observe console logs
+1. Application starts in AP mode
+1. Scan the QR code from the smartphone
+1. Copy your own Wi-Fi provisioning frame
+1. Open Microchip Bluetooth Data App
+1. Select BM70 icon
+1. Connect and select your WFI32_xxxx device
+1. Select Transparent option
+1. Paste (or enter the data manually) and send the Wi-Fi provisioning frame
+1. Application restarts in STA mode using the new Wi-Fi configuration
+1. Application gets and IP address from the network
+
+### Try BLE Serial Bridge
+
+1. Clone/download the repo
+1. Extract the file `ble_serialbridge.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
+1. Communicate with the BLE module from the UART console using ASCII commands described in [RN4870-71 User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/RN4870-71-Bluetooth-Low-Energy-Module-User-Guide-DS50002466C.pdf)
+
+<p align="center">
+<img src="resources/media/04_ble_serialbridge.png" width=480>
+</p>
 
 <a href="#top">Back to top</a>
