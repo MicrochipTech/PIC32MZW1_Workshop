@@ -449,7 +449,7 @@ Known [issue](https://www.microchip.com/forums/m1142703.aspx)
 
 ### Purpose
 
-Attach external BLE device to WFI32E and enable Wi-Fi configuration over BLE.
+Attach external BLE device to WFI32E Curiosity board and enable Wi-Fi communication and configuration over BLE.
 
 **Watch the video and see how to enable Wi-Fi provisioning over BLE with WFI32E Curiosity board**
 
@@ -483,9 +483,11 @@ To be recognized by the `BLE_PROVISIONING` sample application, the QR code must 
 
 Where `&` is used to indicate the start and the end of the frame.
 
-`wifiprov` is used as a command keyword.
+`wifiprov` is required and used as a command keyword.
 
-`<ssid>` is the name of the router / network
+`|` is required and used as a separator.
+
+`<ssid>` is the name of the router / network.
 
 `authtype` represents the security type:
 - 1: OPEN mode
@@ -506,21 +508,101 @@ Create your own QR code from: [https://www.the-qrcode-generator.com/](https://ww
 
 ### Try Wi-Fi over BLE
 
-1. Clone/download the repo
-1. Extract the file `ble_provisioning.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
-1. Open the project with MPLAB X IDE
-1. Build and program the code
-1. Open Tera Term to observe console logs
-1. Application starts in AP mode
-1. Scan the QR code from the smartphone
-1. Copy your own Wi-Fi provisioning frame
-1. Open Microchip Bluetooth Data App
-1. Select BM70 icon
-1. Connect and select your WFI32_xxxx device
-1. Select Transparent option
-1. Paste (or enter the data manually) and send the Wi-Fi provisioning frame
-1. Application restarts in STA mode using the new Wi-Fi configuration
-1. Application gets and IP address from the network
+- Clone/download the repo
+- Extract the file `ble_provisioning.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+- Open the project with MPLAB X IDE
+- Build and program the code
+- Open Tera Term to observe console logs
+- Application starts in AP mode
+```
+TCP/IP Stack: Initialization Started
+TCP/IP Stack: Initialization Ended - success
+
+ mode=1 (0-STA,1-AP) saveConfig=1
+
+ AP Configuration :
+ channel=1
+ ssidVisibility=1
+ ssid=DEMO_AP_SOFTAP
+ passphase=password
+ authentication type=4 (1-Open,2-WEP,3-Mixed mode(WPA/WPA2),4-WPA2,5-Mixed mode(WPA2/WPA3),6-WPA3)
+PIC32MZW1 AP Mode IP Address: 192.168.1.1
+[APP_BLE] Init.
+[APP_BLE] Configuration done.
+Open Microchip Bluetooth Data App
+- Select BLE UART and BM70
+- Connect to your device WFI32_xxxx
+- Select Transparent
+- Frame format for Wi-Fi provisioning over BLE:
+&wifiprov|<ssid>|<authtype>|<password>&
+1: Open, 3: WPAWPA2, 4: WPA2, 5: WPA2WPA3, 6: WPA3
+e.g. &wifiprov|DEMO_AP|3|password&
+```
+- Scan the QR code from the smartphone
+- Copy your own Wi-Fi provisioning frame
+- Open Microchip Bluetooth Data App
+- Select BLE UART then BM70
+<p align="center">
+<img src="resources/media/04_mbd_screen01.png" width=120>
+<img src="resources/media/04_mbd_screen02.png" width=120>
+</p>
+
+- Connect and select your WFI32_xxxx device
+```
+[APP_BLE] Connected
+```
+- Select Transparent option
+```
+[APP_BLE] Transparent stream opened
+```
+
+<p align="center">
+<img src="resources/media/04_mbd_screen03.png" width=120>
+<img src="resources/media/04_mbd_screen04.png" width=120>
+</p>
+
+- Paste (or enter the data manually) and send the Wi-Fi provisioning frame
+
+<p align="center">
+<img src="resources/media/04_mbd_screen05.png" width=120>
+</p>
+
+- Application restarts in STA mode using the new Wi-Fi configuration
+- Application gets and IP address from the network
+
+```
+[APP_BLE] Frame received
+SSID: DEMO_AP - AUTH: 3 - PASS: password
+Wi-Fi Configuration done.ðTCP/IP Stack: Initialization Started
+TCP/IP Stack: Initialization Ended - success
+
+ mode=0 (0-STA,1-AP) saveConfig=1
+
+ STA Configuration :
+ channel=0
+ autoConnect=1
+ ssid=DEMO_AP
+ passphase=password
+ authentication type=3 (1-Open,2-WEP,3-Mixed mode(WPA/WPA2),4-WPA2,5-Mixed mode(WPA2/WPA3),6-WPA3)
+[APP_BLE] Init.
+[APP_BLE] Configuration done.
+Open Microchip Bluetooth Data App
+- Select BLE UART and BM70
+- Connect to your device WFI32_xxxx
+- Select Transparent
+- Frame format for Wi-Fi provisioning over BLE:
+&wifiprov|<ssid>|<authtype>|<password>&
+1: Open, 3: WPAWPA2, 4: WPA2, 5: WPA2WPA3, 6: WPA3
+e.g. &wifiprov|DEMO_AP|3|password&
+ Trying to connect to SSID : DEMO_AP
+ STA Connection failed.
+
+ Trying to connect to SSID : DEMO_AP
+ STA Connection failed.
+
+IP address obtained = 192.168.1.149
+Gateway IP address = 192.168.1.1
+```
 
 ### Try BLE Serial Bridge
 
