@@ -31,7 +31,7 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
 
 ## Resources
 
-- [PIC32MZ W1 Family Landing page](https://www.microchip.com/PIC32MZW1)
+<!--- [PIC32MZ W1 Family Landing page](https://www.microchip.com/PIC32MZW1)-->
 - [WFI32E01 Module Product page, Datasheet, Software User Guide, Family Reference Manual](http://www.microchip.com/wwwproducts/en/WFI32E01PC)
 - [PIC32WFI32E Curiosity Board](http://www.microchip.com/EV12F11A)
 - [MPLAB® Harmony Wireless](https://github.com/Microchip-MPLAB-Harmony/wireless)
@@ -75,6 +75,6 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [Lab 5 - Merging TCP Client example application and Paho MQTT Client example application](05_evaluate/README.md#step10)
    1. [Lab 6 - Enable WLAN MAC Debug Log](05_evaluate/README.md#step11)
 1. <font size="6">[Develop a Secured Smart Home Application from scratch](06_develop/README.md#top)</font>
-1. <font size="6">[Hub for Experimental Projects](07_projects/README.md#top)</font>
+1. <font size="6">[Hub for Additional Projects](07_projects/README.md#top)</font>
 
 

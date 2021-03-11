@@ -51,7 +51,7 @@ So you have the choice either to use code example copied from the Application Br
 
 The common way is to pick code example from Application Browser to not modifiy the original project.
 
-Check out the [SW User Guide](https://www.microchip.com/PIC32MZW1) to get more details on the code examples.
+Check out the [Software User Guide](https://www.microchip.com/wwwproducts/en/WFI32E01PC) to get more details on the code examples.
 
 
 

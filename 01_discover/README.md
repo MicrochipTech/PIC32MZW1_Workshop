@@ -43,7 +43,7 @@ Based on the SoC, the 54-pin SMD 24.5 x 20.5 x 2.5 mm module comes with differen
   The modules are compliant to Wi-Fi Alliance (WFA) specification and certified with the following world regulatory agencies: Federal Communications Commission (FCC), Industry Canada (IC) and European Radio Equipment Directive (RED). More certification to come later.
 
 
-Check out the [datasheet](https://www.microchip.com/pic32mzw1) for more information.
+Check out the [datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC) for more information.
 
 ## Smart MCU<a name="step2"></a>
 
@@ -69,7 +69,7 @@ It is supported with a leading Integrated Development Environment: [MPLAB® X ID
 
 The WFI32E01 module incorporates a high quality RF-FEM. This helps provide industry leading radio performance offering end products, using the module, increased range and improved RF performance. This also helps reduce power consumption, improve end user experience and reduce Wi-Fi latency as able to maintain Wi-Fi 4, MCS-7 capability.
 
-Check out the Transmitter Performance Characteristics Section in the [datasheet](https://www.microchip.com/WFI32E01PC) for more information.
+Check out the Transmitter Performance Characteristics Section in the [datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC) for more information.
 
 ## High level of Security<a name="step4"></a>
 
@@ -87,7 +87,7 @@ In addition, it comes with a symmetric crypto engine in order to accelerate appl
 
 Symmetric [Crypto Engine](https://www.microchip.com/design-centers/embedded-security/technology/hardware-crypto-engine) includes four different cryptographic security engines designed to accelerate the computation of public/private key pair negotiations, message hash authentication and bulk data encryption/decryption. Able to operate in parallel or daisy-chained to execute more sophisticated security methods, the Crypto Engine includes engines for AES, Data Encryption Standard (DES) and Triple DES (TDES), Secure Hash Algorithm (SHA-1 and SHA-256) and Message Digest 5 (MD5). Built into the MCU, the Crypto Engine includes a DMA controller for scatter/gather data fetching and an intelligent state machine to schedule the individual security engines independently of the PIC32MZW1's primary CPU.
 
-Check out the [datasheet](https://www.microchip.com/WFI32E01PC) to get the details of the algorithms supported.
+Check out the [datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC) to get the details of the algorithms supported.
 
 <p align="center">
 <img src="resources/media/security.png" width=>

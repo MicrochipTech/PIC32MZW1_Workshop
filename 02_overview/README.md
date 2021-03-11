@@ -23,7 +23,7 @@
 <img src="resources/media/curiosity_board_00.png" width=720>
 </p>
 
-The **PIC32WFI32E Curiosity Board** is a modular development board that supports rapid prototyping using on-chip MCU peripherals.
+The [**PIC32WFI32E Curiosity Board**](https://www.microchip.com/DevelopmentTools/ProductDetails/ev12f11a) is a modular development board that supports rapid prototyping using on-chip MCU peripherals.
 
 This board offers integrated programming/debugging features using PICkitTM On- Board (PKOB) debugger, and requires only a micro-USB power cable to power-up and program the board.
 
@@ -123,10 +123,6 @@ Now let's have a deeper look on useful Harmony 3 resources for the PIC32MZ W1 so
 - [Harmony 3 Network and TCP/IP Documentation](https://github.com/Microchip-MPLAB-Harmony/net/wiki)
 - [Harmony 3 Wireless solutions and examples applications](https://github.com/Microchip-MPLAB-Harmony/wireless)
 
-- [Software API Reference](https://microchip-mplab-harmony.github.io/wireless/index.html)
-- [Wireless Services Reference](https://github.com/pic32mzw1/wireless/tree/master/system)
-
-
 ## Trust&GO Integration<a name="step3"></a>
 
 The modules WFI32E01PC and WFI32E01UC come with on-board ECC608 Secure Element.
@@ -147,10 +143,11 @@ The integration of a Secure Element utilizing Microchip [Trust&GO](https://www.m
 - [Google IoT Core](https://www.microchip.com/design-centers/security-ics/trust-platform/trust-go/trust-go-google-iot-core)
 
 
-Check out the [Trust&Go Datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/ATECC608A-TNGTLS-CryptoAuthentication-Data-Sheet-DS40002112B.pdf) for more information.
+Check out the [Trust&Go TLS Datasheet](https://www.microchip.com/wwwproducts/en/ATECC608B-TNGTLS) for more information.
 
-Learn out to use [Trust&Go solutions for PIC32MZ W1](https://www.microchip.com/design-centers/wireless-connectivity/embedded-wi-fi/pic3mz-21-trust-go-wi-fi-module)
+Learn out to use [Trust&Go solutions for PIC32MZ W1](https://microchipsupport.force.com/s/article/Using-Trust-Go--TNG--in-PIC32MZW1-WFI32)
 
+Check out the [Trust&Go Wi-Fi 32-bit MCU for Cloud Authentication video](https://youtu.be/l13cpz0jMUc)
 
 ## Learn about Wireless Software<a name="step4"></a>
 
@@ -281,7 +278,7 @@ Some highlighted Configuration API:
 | `WDRV_PIC32MZW_BSSFindFirst` | A scan is requested. An optional callback can be provided to receive notification of the first BSS discovered |
 | `WDRV_PIC32MZW_BSSFindNext` | Requested to get next BSS information structure |
 
-Check out the [WLAN Driver API doc](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/doc) for more details.
+Check out the [WLAN Driver API doc](https://microchip-mplab-harmony.github.io/wireless/driver/pic32mzw1/readme.html) for more details.
   
 
 ### Wireless Services<a name="step4d"></a>
@@ -362,7 +359,7 @@ Every services have unique features but the basic data flow between the Applicat
 >- `SYS_NET_RecvMsg()` to receive data to the network
 >- `SYS_MQTT_Publish()` to publish MQTT message to the network
 
-Details information of each service can be found from [H3 GitHub page](https://github.com/pic32mzw1/wireless/tree/master/system). This page includes all the service API and the use of each API.
+Details information of each service can be found [here](https://microchip-mplab-harmony.github.io/wireless/system/readme.html). This page includes all the service API and the use of each API.
 
 #### Wi-Fi System Service
 
@@ -395,7 +392,7 @@ How the library works ?
 <img src="resources/media/software_wifi_service_sequence.png" width=520>
 </p>
 
-Check out the [doc](https://github.com/pic32mzw1/wireless/tree/master/system) for more details.
+Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/readme.html) for more details on Wi-Fi System Service.
 
 #### Wi-Fi Provisioning Service
 
@@ -438,7 +435,7 @@ How the library works ?
 
 > **The code of this service run in background to work with Wi-Fi System Service. No development and no configuration are required by the user. This is totally transparent for the developer.**
 
-Check out the [doc](https://github.com/pic32mzw1/wireless/tree/master/system) for more details.
+Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/readme.html) for more details.
 
 #### Net Service
 
@@ -496,7 +493,7 @@ Then:
 
 > Blue highlighted in the above picture are the function call and event related to the application. Developer can only focus on these items. Others are done in background.
 
-Check out the [doc](https://github.com/pic32mzw1/wireless/tree/master/system) for more details.
+Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/net/docs/readme.html) for more details.
 
 
 #### MQTT Service
@@ -536,7 +533,7 @@ TlsEnabled:0<br>AutoReconnect: 0<br>Username:<br>Password:|
 | `sysmqtt subscribe` | Subscribe to a topic | `sysmqtt subscribe 0 MCHP/Sample/b 1` |
 | `sysmqtt unsubscribe` | Unsubscribe from a topic | `sysmqtt unsubscribe 0 MCHP/Sample/b` |
 
-Check out the [doc](https://github.com/pic32mzw1/wireless/tree/master/system) for MQTT sequence diagrams and get more details.
+Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/mqtt/docs/readme.html) for MQTT sequence diagrams and get more details.
 
 #### MQTT Applications
 
@@ -597,7 +594,7 @@ Key Features:
 * Supports Enabling/ Disabling of logs based on logical flow
 * The App Debug System Service provides simple API's to enable/diable system console logs functionalities. Multiple users can request the App Debug system service functionalities simultaneously.
 
-Check out the [doc](https://github.com/pic32mzw1/wireless/tree/master/system) for more details.
+Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/appdebug/docs/readme.html) for more details.
 
 ### System Code<a name="step4e"></a>
 

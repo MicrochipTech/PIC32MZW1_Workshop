@@ -544,7 +544,7 @@ Add the ADC Peripheral Library to monitor the on-board temperature sensor.
 </p>
 
 > The on-board temperature sensor device is connected to pin AN15/RPA13 of the WFI32E01PC module.\
-According to the [PIC32MZ W1 datasheet](https://www.microchip.com/pic32mzw1), the 12-bit HS SAR ADC has one dedicated ADC module (ADC1) and one shared ADC module (ADC2). AN15 can be internally connected to the shared ADC module. In MHC, the shared ADC module is called ADC7.
+According to the [PIC32MZ W1 datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC), the 12-bit HS SAR ADC has one dedicated ADC module (ADC1) and one shared ADC module (ADC2). AN15 can be internally connected to the shared ADC module. In MHC, the shared ADC module is called ADC7.
 
 - In ADCHS Easy View, select **ADC7 Disabled** tab and check **Channel Enable**
 <p align="center">
