@@ -1,4 +1,4 @@
-# Hub for Experimental Projects
+# Hub for Additional Projects
 > "Wireless Made Easy!" - Full workshop experience to learn and touch PIC32MZ W1 family
 
 [Back to Main page](../README.md)
@@ -9,6 +9,7 @@
 1. [Touch example with CVD and QT7 Xpro](#step2)
 1. [USB for printing message using Debug System Service](#step3)
 1. [Wi-Fi Provisioning over BLE](#step4)
+1. [Wi-Fi Touch and OLED Display](#step5)
 
 ## ADC example and Digital Filtering<a name="step1"></a>
 
@@ -467,7 +468,7 @@ alt="Wi-Fi provisioning over BLE demo based on WFI32 Curiosity board developed w
 
 USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
 
-Attach a [RN4871 click](https://www.mikroe.com/rn4871-click) or [RN4870 click](https://www.mikroe.com/rn4870-click) to mikro BUS Header
+Attach a [RN4871 click](https://www.mikroe.com/rn4871-click) or [RN4870 click](https://www.mikroe.com/rn4870-click) to mikro BUS Header.
 
 <p align="center">
 <img src="resources/media/04_setup.png" width=480>
@@ -615,5 +616,68 @@ Gateway IP address = 192.168.1.1
 <p align="center">
 <img src="resources/media/04_ble_serialbridge.png" width=480>
 </p>
+
+## Wi-Fi Touch and OLED Display<a name="step5"></a>
+
+### Purpose
+
+Sample application showcasing Wi-Fi connectivity, Capacitive Touch and OLED Display control.
+
+The application acts as a TCP Server to which a TCP Client can connect and visualize QT7 Touch Xpro data. 
+
+The Touch data are also printed on an OLED Display.
+
+**Watch the video and see in action this All-in-one application with WFI32E Curiosity board**
+
+<p align="center">
+<a href="https://youtu.be/Jw4G9Fy-r7o" target="_blank">
+<img src="resources/media/05_wifi_touch_oled_thumbnail.png" 
+alt="Wi-Fi Touch and OLED Display Control on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
+</p>
+
+### Hardware setup
+
+- **J211** jumper shorted between pin 2-3 to get IRQ line
+- **J209** open that disconnect on-board temperature sensor thus one of the slider Y-line is sharing the same pin
+
+- Follow the instructions described [in a previous section](#step2) to setup the [WFI32 Curiosity Board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) and enable Touch functionality with [QT7 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/atqt7-xpro)
+- Connect [QT7 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/atqt7-xpro) to Xpro Header of the WFI32E Curiosity board
+
+- Order the [OLED W click board](https://www.mikroe.com/oled-w-click)
+- Make sure the **RST** pin of the [OLED W click](https://www.mikroe.com/oled-w-click) is not connected to the WFI32 Curiosity board but connected to a permanent 3.3V (here connected to J402 3V3_IN).\
+**The (RB6) signal is connected to the QT7 Xplained Pro board and used for the Capacitive Touch Driven Shield.**
+
+With this modification, the WFI32 does not control the RESET line of the OLED W click and the display is ON all the time.
+
+<p align="center">
+<img src="resources/media/05_setup_02.png" width=320>
+<img src="resources/media/05_setup_03.png" width=320>
+</p>
+
+- Then attach the [OLED W click](https://www.mikroe.com/rn4871-click) to mikro BUS Header.
+
+<p align="center">
+<img src="resources/media/05_setup_04.png" width=320>
+<img src="resources/media/05_setup_05.png" width=320>
+</p>
+
+<p align="center">
+<img src="resources/media/05_setup_01.png" width=320>
+</p>
+
+### Try it
+
+1. Clone/download the repo
+1. Extract the file `wifi_touch_oled.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Open the project with MPLAB X IDE
+1. Build and program the code
+1. Follow the [instructions](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) of the original [Wi-Fi Touch Demo](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) to setup the interaction between TCP Client and TCP Server.
+
+<p align="center">
+<img src="resources/media/05_wifiTouchDisplay_.gif" width=320>
+</p>
+
+> In this sample application, the QT7 Xplained Pro LEDs are not driven. Replacing the LEDs, the OLED Display is used to visualize the Capacitive Touch data from the buttons the and slider.
+
 
 <a href="#top">Back to top</a>

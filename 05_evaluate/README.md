@@ -297,7 +297,7 @@ Learn to use MHC to configure Wi-Fi credentials of the Wi-Fi System Service to c
 
 ### Instructions
 
-1.	Launch **MPLAP X IDE**
+1.	Launch **MPLAB X IDE**
 
 2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
 

@@ -158,7 +158,7 @@ Now:
 * Support MPLAB Harmony 3 Framework
 * WLAN subsystem support STA (station) and SoftAP (access point) mode
 * Up to 8 stations supported in SoftAP mode
-* Wi-Fi Security protocols supported: WPA/WPA2/WPA3 Personal, TLS 1.3 / SSL ([wolfssl 4.5-stable](https://www.wolfssl.com/products/wolfssl/))
+* Wi-Fi Security protocols supported: WPA/WPA2/WPA3 Personal, TLS 1.3 / SSL ([wolfssl](https://www.wolfssl.com/products/wolfssl/))
 * TCP and UDP can support application like HTTP Server, DHCP Client and Server, DNS, FTP, SNMP, SNTP, SMTP, NDP, NBNS, Iperf, reboot
 * Support Network layer IPv4 and IPv6
 * Support FreeRTOS Operating System or other 3rd party OS that supported in MPLAB Harmony 3, and non-OS environment as well
