@@ -644,8 +644,8 @@ alt="Wi-Fi Touch and OLED Display Control on WFI32 Curiosity board developed wit
 - Connect [QT7 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/atqt7-xpro) to Xpro Header of the WFI32E Curiosity board
 
 - Order the [OLED W click board](https://www.mikroe.com/oled-w-click)
-- Make sure the **RST** pin of the [OLED W click](https://www.mikroe.com/oled-w-click) is not connected to the WFI32 Curiosity board but connected to a permanent 3.3V (here connected to J402 3V3_IN).\
-**The (RB6) signal is connected to the QT7 Xplained Pro board and used for the Capacitive Touch Driven Shield.**
+- Make sure the **RST** pin of the [OLED W click](https://www.mikroe.com/oled-w-click) is not connected to the WFI32 Curiosity board (RB6 signal) but connected to a permanent 3.3V (here connected to J402 3V3_IN).\
+The RB6 signal is already connected to the QT7 Xplained Pro board and used for the Capacitive Touch Driven Shield.
 
 With this modification, the WFI32 does not control the RESET line of the OLED W click and the display is ON all the time.
 
@@ -665,6 +665,50 @@ With this modification, the WFI32 does not control the RESET line of the OLED W 
 <img src="resources/media/05_setup_01.png" width=320>
 </p>
 
+### OLED W click
+
+The [OLED W click](https://www.mikroe.com/oled-w-click) carries a 96 x 39px white monochrome passive matrix OLED display. The display is bright, has a wide viewing angle and low power consumption. To drive the display, [OLED W click](https://www.mikroe.com/oled-w-click) features an [SSD1306](https://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/) controller. Check out the [SSD1306 datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf) for more details.
+
+In this demo, the [OLED W click](https://www.mikroe.com/oled-w-click) communicates with the WFI32 MCU through SPI lines.
+
+### MHC Configuration
+
+Project Graph - Root view
+* Touch Library using ADCHS and TMR2 components
+* Wi-Fi Service, Wi-Fi provisioning and Net services
+<p align="center">
+<img src="resources/media/05_mhc_01.png" width=720>
+</p>
+
+Project Graph - System component view
+* SPI2 for OLED W click interface
+<p align="center">
+<img src="resources/media/05_mhc_02.png" width=720>
+</p>
+
+Project Graph - Net service configuration
+<p align="center">
+<img src="resources/media/05_net_service.png" width=320>
+</p>
+
+ADCHS Easy View - Enable ADC7
+<p align="center">
+<img src="resources/media/05_adchs_easy_view.png" width=480>
+</p>
+
+Pin Configuration
+<p align="center">
+<img src="resources/media/05_pin_configuration.png" width=520>
+</p>
+
+Touch Configuration
+<p align="center">
+<img src="resources/media/05_touch_configuration_01.png" width=320>
+<img src="resources/media/05_touch_configuration_02.png" width=320>
+<img src="resources/media/05_touch_configuration_03.png" width=320>
+<img src="resources/media/05_touch_configuration_04.png" width=320>
+</p>
+
 ### Try it
 
 1. Clone/download the repo
@@ -677,7 +721,7 @@ With this modification, the WFI32 does not control the RESET line of the OLED W 
 <img src="resources/media/05_wifiTouchDisplay_.gif" width=320>
 </p>
 
-> In this sample application, the QT7 Xplained Pro LEDs are not driven. Replacing the LEDs, the OLED Display is used to visualize the Capacitive Touch data from the buttons the and slider.
+> In this sample application, the QT7 Xplained Pro LEDs are not driven. Replacing the LEDs, the OLED Display is used to visualize the Capacitive Touch data from the buttons and the slider.
 
 
 <a href="#top">Back to top</a>
