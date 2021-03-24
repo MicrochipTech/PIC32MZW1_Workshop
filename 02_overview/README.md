@@ -383,13 +383,13 @@ Wi-Fi System Service is configured via MHC.
 How the library works ?
 - `SYS_Initialize()` invoke `SYS_WIFI_Initialize()` to initialize the Wi-Fi System Service module.
 - `SYS_Tasks()` invoke `SYS_WIFI_Tasks()` every a period of time to maintain the Wi-FI System module functionalities.
-- Client App 1 register the callback by calling `SYS_WIFI_CtrMsg()` with `SYS_WIFI_REGCALLBACK` event ID.
-- Client App 2 register the callback by calling `SYS_WIFI_CtrMsg()` with `SYS_WIFI_REGCALLBACK` event ID.
-- Client APP1 send connect request message to Wi-Fi System Service by calling `SYS_WIFI_CtrMsg()` with `SYS_WIFI_CONNECT` event ID.
+- Client App 1 register the callback by calling `SYS_WIFI_CtrlMsg()` with `SYS_WIFI_REGCALLBACK` event ID.
+- Client App 2 register the callback by calling `SYS_WIFI_CtrlMsg()` with `SYS_WIFI_REGCALLBACK` event ID.
+- Client APP1 send connect request message to Wi-Fi System Service by calling `SYS_WIFI_CtrlMsg()` with `SYS_WIFI_CONNECT` event ID.
 - Connect/ Disconnect Event is sent from Wi-Fi System Service module to Client APP1 and Client APP 2 through the callback function
 
 <p align="center">
-<img src="resources/media/software_wifi_service_sequence.png" width=520>
+<img src="resources/media/software_wifi_service_sequence_print.png" width=520>
 </p>
 
 Check out the [doc](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/readme.html) for more details on Wi-Fi System Service.

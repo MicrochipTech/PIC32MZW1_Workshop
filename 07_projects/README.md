@@ -10,6 +10,9 @@
 1. [USB for printing message using Debug System Service](#step3)
 1. [Wi-Fi Provisioning over BLE](#step4)
 1. [Wi-Fi Touch and OLED Display](#step5)
+1. [Enable Robust Wi-Fi Authentication with WPA3](#step6)
+
+More additional projects, checkout [here](https://github.com/MicrochipTech/PIC32MZW1_Projects)
 
 ## ADC example and Digital Filtering<a name="step1"></a>
 
@@ -722,6 +725,93 @@ Touch Configuration
 </p>
 
 > In this sample application, the QT7 Xplained Pro LEDs are not driven. Replacing the LEDs, the OLED Display is used to visualize the Capacitive Touch data from the buttons and the slider.
+
+## Enable Robust Wi-Fi Authentication with WPA3<a name="step6"></a>
+
+### Purpose
+
+Guideline to enable Robust Wi-Fi Authentication with WPA3 features.
+
+**Watch the video and see how to enable WPA3 with WFI32E Curiosity board**
+
+<p align="center">
+<a href="https://youtu.be/yoDdo9zYTLY" target="_blank">
+<img src="resources/media/06_wpa3_thumbnail.png" 
+alt="Enable Robust Wi-Fi Authentication with WPA3 features supported on WFI32 Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
+</p>
+
+### WPA3
+
+The original Wi-Fi Protected Access (WPA) standard protocol was released in 2003 to replace the WEP. Then WPA was replaced by WPA2 in 2004.
+
+WPA3 was released in 2020 to increase network security and introduces the use of Protected Management Frames (PMF) as well as the Simultaneous Authentication of Equals (SAE), technique to authenticate clients instead of the Pre-shared key (PKS) used in WPA2-Personal. WPA3's mission is to simplify Wi-Fi security, including better authentication, increased cryptographic strength.
+
+WPA3-Personal allows for better password-based authentication even when using non-complex combinations. WPA3 uses Simultaneous Authentication of Equals (SAE) to provide stronger defenses against password guessing. SAE is a secure key establishment protocol.
+
+<p align="center">
+<img src="resources/media/06_wpa3_sae.png" width=480>
+</p>
+
+WPA3-Enterprise provides additional protections for networks transmitting sensitive data by offering the equivalent of 192-bit cryptographic strength. WPA3 networks use a suite of 192-bit cryptographic tools to ensure consistent protection across networks.
+
+Check out [Wi-Fi Alliance](https://www.wi-fi.org/discover-wi-fi/security) for more details on WPA3.
+
+> Currently, PIC32MZW1 does support only WPA3-Personal.
+
+### Hardware setup
+
+- Computer connected to [WFI32 Curiositiy board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) over USB POWER (J204)
+- J202 = VBUS
+- J301 = open
+
+USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
+
+<p align="center">
+<img src="resources/media/06_hardware_setup.png" width=480>
+</p>
+
+This demo is using a [Nest WiFi](https://store.google.com/product/nest_wifi) Router with WPA3 capability.
+
+Make sure the router has WPA3 option ENABLED.
+
+
+### MHC Configuration
+
+To showcase WPA3 features with [WFI32 Curiosity Board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A), make sure the following items are correctly configured in Harmony Configurator of the project.
+
+Project Graph - Root
+* Wi-Fi Service, Wi-Fi provisioning are both required
+
+<p align="center">
+<img src="resources/media/06_mhc_03.png" width=>
+</p>
+
+* FreeRTOS is required
+
+Project Graph - System Component
+* **Support WPA3?** is checked
+* And BA414E Cryptographic Accelerator is linked to PIC32MZW1
+<p align="center">
+<img src="resources/media/06_mhc_04.png" width=480>
+</p>
+
+* Configure the Home AP credentials using MHC or using WiFi Provisioning System Service
+<p align="center">
+<img src="resources/media/06_mhc_provision.png" width=720>
+</p>
+
+### Try it
+
+1. Open the project [WiFi Easy Config](https://microchip-mplab-harmony.github.io/wireless/apps/wifi_easy_config/readme.html) located in `<HarmonyFrameworkFolder>/wireless/app/wifi_easy_config` with MPLAB X IDE
+1. Build and program the code
+1. Provision your device as a STATION using MHC or using the [WiFi Provisioning System Service](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/readme.html)
+1. Follow the [instructions](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) of the original [Wi-Fi Touch Demo](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) to setup the interaction between TCP Client and TCP Server.
+1. The [Wi-Fi service](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/readme.html) will use the credentials along with WPA3 security to connect to the Home AP and acquire an IP address
+
+<p align="center">
+<img src="resources/media/06_wpa3_light.gif" width=480>
+</p>
+
 
 
 <a href="#top">Back to top</a>
