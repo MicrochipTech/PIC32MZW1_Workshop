@@ -11,6 +11,7 @@
 1. [Wi-Fi Provisioning over BLE](#step4)
 1. [Wi-Fi Touch and OLED Display](#step5)
 1. [Enable Robust Wi-Fi Authentication with WPA3](#step6)
+1. [Enable L2 Bridging with WLAN & LAN on a single network](#step7)
 
 More additional projects, checkout [here](https://github.com/MicrochipTech/PIC32MZW1_Projects)
 
@@ -813,5 +814,156 @@ Project Graph - System Component
 </p>
 
 
+## Enable L2 Bridging with WLAN & LAN on a single network<a name="step7"></a>
+
+### Purpose
+
+Guideline to configure the WLAN Interface in L2 Bridge Mode (WLAN and LAN on the same Subnet).
+
+
+**Watch the video and see how to enable L2 Bridging function with WFI32E Curiosity board**
+
+<p align="center">
+<a href="https://youtu.be/RL0zQQlZI1A" target="_blank">
+<img src="resources/media/07_bridging_thumbnail.png" 
+alt="Enable L2 Bridging with WLAN & LAN on a single network supported on WFI32 Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
+</p>
+
+### L2 Bridging
+
+From [wikipedia](https://en.wikipedia.org/wiki/Bridging_(networking)), the network bridging is a function that creates a single, aggregate network from more than two communication networks.
+
+Routing and bridging are often misinterpreted as the same function. Routing function allows more than two networks to communicate while remaining as separate/independent networks. Whereas, bridging function connects two separate networks as if they were a single network. 
+
+In the OSI model, bridging is performed in the data link layer (layer 2).
+
+<p align="center">
+<img src="resources/media/07_bridging.png" width=480>
+</p>
+
+
+Bridging is independent of IP addresses. With one or more wireless segments in the bridged network, the device can be called a wireless bridge. 
+
+Below are the key points to consider while creating a bridging project:
+* The bridge knows only MAC addresses and doesn't know anything else
+* The bridge nver forwards a packet back to the interface the packet came from to avoid loops
+* If the packet destination (MAC) address is multicast or broadcast, the packet will be forwarded on all the other interfaces
+   * It will be passed internally to the stack running on top of the bridge too for internal processing
+* If the packet destination is unicast:
+   * If it is an address of one of the interfaces on the bridge host, the packet will be passed for internal processing
+   * If it is the address of a host that the MAC bridge knows about, then the packet will be forwarded only on that interface
+      * The bridge knows where various hosts are by looking at the source MAC address of the incoming packets
+   * Otherwise it will be forwarded on all interfaces
+
+
+### Software requirement
+
+PIC32MZW1 can be used as a Wireless Bridge connecting multiple wireless and wired networks to form a single network.
+
+**The bridging functionality can be enabled or disabled using MPLAB Harmony Configurator (MHC) with the NET repo (3.7.1 or above) and Wireless repo (3.4.0 or above).**
+
+### Hardware setup
+
+- Computer connected to [WFI32 Curiositiy board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) over USB POWER (J204)
+- J202 = VBUS
+- J301 = open
+
+USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
+
+- PIC32 LAN8720 PHY Daughter Board [AC3200043-3](https://www.microchip.com/DevelopmentTools/ProductDetails/AC320004-3) plugged in WFI32 Cursiotiy Board thru J208
+
+<p align="center">
+<img src="resources/media/07_hardware_setup_01.png" width=320>
+</p>
+
+- An Ethernet cable between PHY Daughter board and the Home Router
+<p align="center">
+<img src="resources/media/07_hardware_setup_02.png" width=320>
+</p>
+
+### MHC Configuration
+
+* Open the project [WiFi-ethernet dual interface](https://microchip-mplab-harmony.github.io/wireless/apps/wifi_eth_dual_interface/readme.html) located in `<HarmonyFrameworkFolder>/wireless/apps/wifi_eth_dual_interface` with MPLAB X IDE
+
+* Open Harmony Configurator
+
+* In Project Graph - Root, set the AP parameters required for a station device to connect to the Bridge in **WiFi Service**
+
+<p align="center">
+<img src="resources/media/07_mhc_01.png" width=520>
+</p>
+
+* In Project Graph - System Component, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
+
+<p align="center">
+<img src="resources/media/07_mhc_02.png" width=520>
+</p>
+
+* Select the **ETHMAC** component, expand **Ethernet Rx Filters Selection** and check **Accept Not Me Unicast Packets** to enable the promiscuous mode
+
+<p align="center">
+<img src="resources/media/07_mhc_03.png" width=>
+<img src="resources/media/07_mhc_04.png" width=>
+</p>
+
+* Select the **MAC Instance 0** from the **NETCONFIG** component and enable **Add Interface to MAC Bridge** under **Advanced Settings**
+
+<p align="center">
+<img src="resources/media/07_mhc_05.png" width=>
+<img src="resources/media/07_mhc_06.png" width=>
+</p>
+
+* Select the **MAC Instance 1** from the **NETCONFIG** component and enable **Add Interface to MAC Bridge** under **Advanced Settings**
+
+<p align="center">
+<img src="resources/media/07_mhc_07.png" width=>
+<img src="resources/media/07_mhc_08.png" width=>
+</p>
+
+* Select the **NETCONFIG** component and check **Enable the MAC Bridge Commands**
+
+<p align="center">
+<img src="resources/media/07_mhc_09.png" width=>
+<img src="resources/media/07_mhc_10.png" width=>
+</p>
+
+* Generate the code
+
+<p align="center">
+<img src="resources/media/07_mhc_11.png" width=>
+</p>
+
+> With the above settings, the WFI32 is now ready to work as a Wi-Fi Network bridge
+
+
+### Try it
+
+1. Build and program the code
+2. Plug the Ethernet cable from the PHY Daughter board to your own Home Router
+3. Reset the WFI32E Curiosity board
+<p align="center">
+<img src="resources/media/07_console_01.png" width=>
+</p>
+
+4. Connect a station in Wireless to the WLAN network created by the WFI32 device in SoftAP mode
+<p align="center">
+<img src="resources/media/07_console_02.png" width=>
+</p>
+
+5. To evaluate performance, open iPerf server on a station connected to the Home router thru Ethernet cable
+
+Get the IP address of the server
+`> ipconfg`
+
+Run iperf server
+`> iperf3 -s`
+
+6. On client side, open iPerf apps or execute `> iperf3 -c <ipaddress of the server>` command from a console
+
+<p align="center">
+<img src="resources/media/07_iperf_upload.png" width=120>
+.............................................
+<img src="resources/media/07_iperf_download.png" width=120>
+</p>
 
 <a href="#top">Back to top</a>
