@@ -459,7 +459,7 @@ Attach external BLE device to WFI32E Curiosity board and enable Wi-Fi communicat
 **Watch the video and see how to enable Wi-Fi provisioning over BLE with WFI32E Curiosity board**
 
 <p align="center">
-<a href="https://youtu.be/xTd-EptCuDA" target="_blank">
+<a href="https://youtu.be/HWui3HDnw80" target="_blank">
 <img src="resources/media/04_ble_provisioning_thumbnail.png" 
 alt="Wi-Fi provisioning over BLE demo based on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
 </p>
@@ -634,7 +634,7 @@ The Touch data are also printed on an OLED Display.
 **Watch the video and see in action this All-in-one application with WFI32E Curiosity board**
 
 <p align="center">
-<a href="https://youtu.be/Jw4G9Fy-r7o" target="_blank">
+<a href="https://youtu.be/swsQUucujnM" target="_blank">
 <img src="resources/media/05_wifi_touch_oled_thumbnail.png" 
 alt="Wi-Fi Touch and OLED Display Control on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
 </p>
@@ -736,7 +736,7 @@ Guideline to enable Robust Wi-Fi Authentication with WPA3 features.
 **Watch the video and see how to enable WPA3 with WFI32E Curiosity board**
 
 <p align="center">
-<a href="https://youtu.be/yoDdo9zYTLY" target="_blank">
+<a href="https://youtu.be/e73SHSPUOvo" target="_blank">
 <img src="resources/media/06_wpa3_thumbnail.png" 
 alt="Enable Robust Wi-Fi Authentication with WPA3 features supported on WFI32 Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
 </p>
@@ -824,7 +824,7 @@ Guideline to configure the WLAN Interface in L2 Bridge Mode (WLAN and LAN on the
 **Watch the video and see how to enable L2 Bridging function with WFI32E Curiosity board**
 
 <p align="center">
-<a href="https://youtu.be/RL0zQQlZI1A" target="_blank">
+<a href="https://youtu.be/W9FOUlL607k" target="_blank">
 <img src="resources/media/07_bridging_thumbnail.png" 
 alt="Enable L2 Bridging with WLAN & LAN on a single network supported on WFI32 Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
 </p>
