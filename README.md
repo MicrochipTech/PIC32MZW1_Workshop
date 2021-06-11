@@ -1,4 +1,6 @@
 # PIC32MZW1_Workshop
+<img src="resources/media/IoT-Made-Easy-Logo.png" width=100>
+
 > "Wireless Made Easy!" - Full workshop experience to learn and touch PIC32MZ W1 family
 
 Devices: | **PIC32MZ W1 | WFI32E01** | **Trust\&Go (ECC608)** |
