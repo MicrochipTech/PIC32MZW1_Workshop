@@ -887,13 +887,29 @@ USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) 
 
 * Open Harmony Configurator
 
-* In Project Graph - Root, set the AP parameters required for a station device to connect to the Bridge in **WiFi Service**
+* Under **Project Graph > Root**, set the AP parameters required for a station device to connect to the Bridge in **WiFi Service**
 
 <p align="center">
 <img src="resources/media/07_mhc_01.png" width=520>
 </p>
 
-* In Project Graph - System Component, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
+* Under **Project Graph > APPLICATION LAYER**:
+   * Select **DHCP Server**
+   * Untick **DHCP Server Instance 0** box
+
+<p align="center">
+<img src="resources/media/07_mhc_12.png" width=520>
+</p>
+
+* Under **Project Graph > APPLICATION LAYER**:
+   * Select **TCP/IP Application Layer Configuration**
+   * Add **DHCP CLIENT** and **DNS CLIENT** components 
+
+<p align="center">
+<img src="resources/media/07_mhc_13.png" width=480>
+</p>
+
+* Under **Project Graph > System Component**, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
 
 <p align="center">
 <img src="resources/media/07_mhc_02.png" width=520>
@@ -906,25 +922,28 @@ USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) 
 <img src="resources/media/07_mhc_04.png" width=>
 </p>
 
-* Select the **MAC Instance 0** from the **NETCONFIG** component and enable **Add Interface to MAC Bridge** under **Advanced Settings**
+* Select the **MAC Instance 0** from the **NETCONFIG** component 
+   * Make sure **IPv4 Static Address** = 0.0.0.0
+   * Disable **DHCP Flag**, **DNS Flag** and **Multicast** under **Network Configuration Start-up Flags**
+   * Enable **Add Interface to MAC Bridge** under **Advanced Settings**
 
 <p align="center">
-<img src="resources/media/07_mhc_05.png" width=>
-<img src="resources/media/07_mhc_06.png" width=>
+<img src="resources/media/07_mhc_04a.png" width=>
 </p>
 
-* Select the **MAC Instance 1** from the **NETCONFIG** component and enable **Add Interface to MAC Bridge** under **Advanced Settings**
+* Select the **MAC Instance 1** from the **NETCONFIG** component
+   * Make sure **IPv4 Static Address** = 0.0.0.0
+   * Enable **DHCP Flag** and **DNS Flag** under **Network Configuration Start-up Flags**
+   * Enable **Add Interface to MAC Bridge** under **Advanced Settings**
 
 <p align="center">
-<img src="resources/media/07_mhc_07.png" width=>
-<img src="resources/media/07_mhc_08.png" width=>
+<img src="resources/media/07_mhc_04b.png" width=>
 </p>
 
 * Select the **NETCONFIG** component and check **Enable the MAC Bridge Commands**
 
 <p align="center">
-<img src="resources/media/07_mhc_09.png" width=>
-<img src="resources/media/07_mhc_10.png" width=>
+<img src="resources/media/07_mhc_04c.png" width=>
 </p>
 
 * Generate the code
