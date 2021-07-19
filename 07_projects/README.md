@@ -981,9 +981,9 @@ Run iperf server
 6. On client side, open iPerf apps or execute `> iperf3 -c <ipaddress of the server>` command from a console
 
 <p align="center">
-<img src="resources/media/07_iperf_upload.png" width=120>
+<img src="resources/media/07_iperf_upload.PNG" width=120>
 .............................................
-<img src="resources/media/07_iperf_download.png" width=120>
+<img src="resources/media/07_iperf_download.PNG" width=120>
 </p>
 
 
