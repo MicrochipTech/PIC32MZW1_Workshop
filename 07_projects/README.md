@@ -1215,13 +1215,13 @@ tcp_client <SoftAP Ip Address> <Port No>
 [CAN Bus Analyzer](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) software receives the message under **Tools -> Rolling Trace**.
 
 <p align="center">
-<img src="resources/media/08_step12_bridge_forward_to_can_bus.png" width=480>
+<img src="resources/media/08_step12_bridge_forward_to_can_bus.png" width=720>
 </p>
 
 ### Demo
 
 <p align="center">
-<img src="resources/media/08_demo.gif" width=480>
+<img src="resources/media/08_demo.gif" width=720>
 </p>
 
 
