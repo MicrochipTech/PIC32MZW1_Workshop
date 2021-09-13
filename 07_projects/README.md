@@ -13,6 +13,7 @@
 1. [Enable Robust Wi-Fi Authentication with WPA3](#step6)
 1. [Enable L2 Bridging with WLAN & LAN on a single network](#step7)
 1. [Enable CAN-WiFi Bridge](#step8)
+1. [Enable a simple Webserver Application](#step9)
 
 More additional projects, checkout [here](https://github.com/MicrochipTech/PIC32MZW1_Projects)
 
@@ -1223,6 +1224,15 @@ tcp_client <SoftAP Ip Address> <Port No>
 <p align="center">
 <img src="resources/media/08_demo.gif" width=720>
 </p>
+
+
+## Enable a simple Webserver Application<a name="step9"></a>
+
+### Purpose
+
+This tutorial shows you how to use MHC to create a simple Webserver Application and will help you get started on developing Wi-Fi-based applications for PIC32 WFI32E MCU using the MPLAB Harmony v3 software framework.
+
+Checkout the content on [Microchip Developer Help](https://microchip.wikidot.com/harmony3:pic32wfi32e-iot-getting-started-training-module)
 
 
 <a href="#top">Back to top</a>

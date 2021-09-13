@@ -945,7 +945,7 @@ To determine if the application is starting in AP mode or in STA mode, the Wi-Fi
 
 > The initialization of the Wi-Fi Service occurs in the `main` when the API `SYS_Initialize()` (defined in `initialization.c`) is called.
 
-The API `SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETCONFIG, &g_wifiConfig, sizeof(g_wifiConfig))` is polled until Wi-Fi Service get initialized.
+The API `SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETWIFICONFIG, &g_wifiConfig, sizeof(g_wifiConfig))` is polled until Wi-Fi Service get initialized.
 
 Check out the [Wi-Fi System Service Interface](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/interface.html#sys_wifi_ctrlmsg-1) for more details.
 <br><br>
