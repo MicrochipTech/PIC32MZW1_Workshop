@@ -14,6 +14,7 @@
 1. [Enable L2 Bridging with WLAN & LAN on a single network](#step7)
 1. [Enable CAN-WiFi Bridge](#step8)
 1. [Enable a simple Webserver Application](#step9)
+1. [Enable Long-range communication to Wi-Fi AP Scan](#step10)
 
 More additional projects, checkout [here](https://github.com/MicrochipTech/PIC32MZW1_Projects)
 
@@ -911,7 +912,7 @@ USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) 
 <img src="resources/media/07_mhc_13.png" width=480>
 </p>
 
-* Under **Project Graph > System Component**, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
+* Under **Project Graph > System Configuration**, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
 
 <p align="center">
 <img src="resources/media/07_mhc_02.png" width=520>
