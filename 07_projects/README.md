@@ -906,7 +906,8 @@ USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) 
 
 * Under **Project Graph > APPLICATION LAYER**:
    * Select **TCP/IP Application Layer Configuration**
-   * Add **DHCP CLIENT** and **DNS CLIENT** components 
+   * Add **DHCP CLIENT** and **DNS CLIENT** components
+   * Remove **DHCP Server** 
 
 <p align="center">
 <img src="resources/media/07_mhc_13.png" width=480>
