@@ -457,7 +457,7 @@ This demo is using the following components:
 - 2x subminiature basic switches
 - [Stepper-7 click](https://www.mikroe.com/stepper-7-click)
 - 5VDC to power supply the WFI32E Curiosity board
-- 24VDC power supply for the motor
+- 15VDC 3A power supply for the motor
 
 **Hardware Setup**
 
@@ -480,24 +480,30 @@ To use voice command, make sure to register and claim the device using `voice.ht
 
 **[Clone/download](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) this repo to find the source code of this demo**
 
-The Harmony 3 project is based on OoB project version 1.2.6 which use the following Harmony components:
-- MHC v3.6.5
-- Cryptoauthlib v3.2.4
-- Core v3.8.1
-- CSP v3.8.2
-- paho MQTT v1.2.1
-- USB v3.7.0
-- dev packs v3.8.0
-- wireless v3.3.1
-- wolfssl v4.5.0
-- net v3.6.4
-- bsp v3.8.2
-- crypto v3.6.1
-- CMSIS FreeRTOS v10.3.1
+The Harmony 3 project of the Garage Door Demo is based on OoB project version [2.0.2](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.2) and it is tested with the following software components:
+
+- MHC v3.8.2
+- MPLAB X v6.00
+- Plugin v3.6.4
+- Compiler XC32 3.01
+
+- cryptoauthlib v20211006
+- csp v3.10.0
+- usb v3.8.1
+- wolfssl v4.7.0
+- crypto v3.7.5
+- CMSIS-FreeRTOS v10.3.1
+- core v3.10.0
+- wireless_wifi v3.6.1
+- paho.mqtt.embedded-c v1.2.3
+- dev_packs v3.10.0
+- littlefs
+- wireless_system_pic32mzw1_wfi32e01 v3.6.1
+- net v3.7.4
 
 The manifest file `src/firmware/src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml` has been loaded using **Harmony Content Manager** to get same package configuration as the original project.
 
-In MHC, SPI2 component is added to allow PIC32MZ W1 device driving the stepper motor.
+In MHC, SPI2 component is added to allow PIC32MZ W1 device driving the stepper motor mikroE board.
 Chip select pin is driven by software.
 
 <p align="center">
@@ -513,7 +519,7 @@ The pins have been configured to match the hardware connection.
 <img src="resources/media/garage_door_mhc_03.png" width=640>
 </p>
 
-The application `app_motor` has been added in addition to the existing 5 application files.
+The application `app_motor` has been added in addition to the existing 5 application files to take care of the tasks related to the motor.
 
 <p align="center">
 <img src="resources/media/garage_door_mhc_04.png" width=480>

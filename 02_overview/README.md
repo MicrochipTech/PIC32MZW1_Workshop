@@ -6,14 +6,15 @@
 ## A la carte
 
 1. [Learn about the Curiosity Board](#step1)
-1. [MPLAB® Harmony 3](#step2)
-1. [Trust&GO Integration](#step3)
-1. [Learn about Wireless Software](#step4)
-   1. [Features](#step4a)
-   1. [Software Architecture](#step4b)
-   1. [WLAN Driver](#step4c)
-   1. [Wireless Services](#step4d)
-   1. [System Code](#step4e)
+1. [Learn about the IoT Board](#step2)
+1. [MPLAB® Harmony 3](#step3)
+1. [Trust&GO Integration](#step4)
+1. [Learn about Wireless Software](#step5)
+   1. [Features](#step5a)
+   1. [Software Architecture](#step5b)
+   1. [WLAN Driver](#step5c)
+   1. [Wireless Services](#step5d)
+   1. [System Code](#step5e)
    
 
 
@@ -46,8 +47,44 @@ Check out the [PIC32WFI32E Curiosity Board User Guide](http://www.microchip.com/
 
 Check out the [Curiosity Board concept](https://www.microchip.com/promo/curiosity-development-boards).
 
+Check out the [Out of the Box Demo](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) running on WFI32E Curiosity Board to get securely connected on AWS Cloud.
 
-## MPLAB® Harmony 3<a name="step2"></a>
+## Learn about the IoT Board<a name="step2"></a>
+
+The [WFI32-IoT board](https://www.microchip.com/DevelopmentTools/ProductDetails/EV36W50A) is a compact and easy-to-use IoT development platform offering premium security approach with on-board Trust&Go Wi-Fi module. The board supports rapid prototyping and demonstrating. The development board offers also the possibility to evaluate the low-power operations of the WFI32 module. 
+
+<p align="center">
+<img src="resources/media/iot_board_00.png" width=576>
+</p>
+
+This board offers integrated programming/debugging features using PICkitTM On- Board (PKOB4) debugger, and requires only a micro-USB power cable to power-up and program the board.
+
+Through the on-board USB Hub, the USB port enable:
+* programming and debugging
+* general USB functions (e.g. USB CDC)
+* serial communication  (e.g. console message)
+
+The board also integrates:
+* [MCP9808 Temperature sensor](https://www.microchip.com/en-us/product/MCP9808)
+* OPT3001DNPT Light Sensor
+* [MCP2200 USB to UART Converter](https://www.microchip.com/en-us/product/MCP2200)
+* [SST26VF032B 32Mbit NOR Flash](https://www.microchip.com/en-us/product/SST26VF032B)
+* [MCP73871 Li-Po Battery Charger](https://www.microchip.com/en-us/product/MCP73871)
+* [MCP1727 LDO](https://www.microchip.com/en-us/product/MCP1727)
+* 4x user configurable LEDs
+
+<p align="center">
+<img src="resources/media/iot_board_01.png" width=576>
+</p>
+
+
+The WFI32-IoT-Board comes with a **WFI32E01PC** module mounted on the carrier board. Thus this module integrates FEM, PCB antenna and Trust&Go Secure Element is on board.
+
+[Order a WFI32 IoT Board.](https://www.microchipdirect.com/product/EV36W50A)
+
+Check out the [Out of the Box Demo](https://github.com/MicrochipTech/WFI32-IoT) running on WFI32 IoT Board to get securely connected on AWS Cloud.
+
+## MPLAB® Harmony 3<a name="step3"></a>
 
 The PIC32MZW1 Solution is supported with a leading Integrated Development Environment: [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide), the [XC32 Compiler](https://www.microchip.com/mplab/compilers) and a fully integrated embedded software development framework: [MPLAB® Harmony 3](https://www.microchip.com/mplab/mplab-harmony).
  
@@ -123,7 +160,7 @@ Now let's have a deeper look on useful Harmony 3 resources for the PIC32MZ W1 so
 - [Harmony 3 Network and TCP/IP Documentation](https://github.com/Microchip-MPLAB-Harmony/net/wiki)
 - [Harmony 3 Wireless solutions and examples applications](https://github.com/Microchip-MPLAB-Harmony/wireless)
 
-## Trust&GO Integration<a name="step3"></a>
+## Trust&GO Integration<a name="step4"></a>
 
 The modules WFI32E01PC and WFI32E01UC come with on-board ECC608 Secure Element.
 ECC608 employs ultra-secure hardware-based key storage which prevent the physical attack and eliminate potential backdoors linked to software weaknesses.
@@ -149,9 +186,9 @@ Learn out to use [Trust&Go solutions for PIC32MZ W1](https://microchipsupport.fo
 
 Check out the [Trust&Go Wi-Fi 32-bit MCU for Cloud Authentication video](https://youtu.be/l13cpz0jMUc)
 
-## Learn about Wireless Software<a name="step4"></a>
+## Learn about Wireless Software<a name="step5"></a>
 
-### Features<a name="step4a"></a>
+### Features<a name="step5a"></a>
 
 Now:
 
@@ -165,19 +202,14 @@ Now:
 * Support of Wi-Fi related System Service for easy development
 * Support system shell over serial interface UART (CLI)
 * Support “Wi-Fi Easy Connect” feature, using web-browser to do network provisioning
+* Over the Air upgrade (OTAU) features
 
 <p align="center">
 <img src="resources/media/software_key_features.png" width=640>
 </p>
 
-Later:
 
-* Over the Air upgrade (OTA) features
-* WPA Enterprise security
-* AP/STA Concurrency
-* Wi-Fi/BLE concurrency
-
-### Software Architecture<a name="step4b"></a>
+### Software Architecture<a name="step5b"></a>
 
 The PIC32MZ W1 SDK is fully integrated into MPLAB Harmony 3 Framework.
 
@@ -197,8 +229,7 @@ WLAN Library offers Wi-Fi core functionality and has 2 interface, one is data in
 **For easiness in application development, Wireless System Services and Middleware run on top of WLAN Library.**
 
 
-
-### WLAN Driver<a name="step4c"></a>
+### WLAN Driver<a name="step5c"></a>
 
 #### PIC32MZ W1 Wi-Fi Application SW Layers Structure
 
@@ -281,7 +312,7 @@ Some highlighted Configuration API:
 Check out the [WLAN Driver API doc](https://microchip-mplab-harmony.github.io/wireless/driver/pic32mzw1/readme.html) for more details.
   
 
-### Wireless Services<a name="step4d"></a>
+### Wireless Services<a name="step5d"></a>
 
 #### Concept
 

@@ -1,24 +1,25 @@
-# Hub for Additional Projects
+# Hub for Additional Resources
 > "Wireless Made Easy!" - Full workshop experience to learn and touch PIC32MZ W1 family
 
 [Back to Main page](../README.md)
 
 ## A la carte
 
+**Code Examples**
+1. <a href="https://github.com/search?q=topic:wfi32+org:MicrochipTech+org:Microchip-MPLAB-Harmony" target="_blank">From GitHub</a>
+1. <a href="https://mplab-discover.microchip.com/v1/itemtype/com.microchip.ide.project/com.microchip.subcategories.communications.wireless-communications.wi-fi?s0=wfi32" target="_blank">From MPLAB Discover Portal</a>
+
+
+**Tips 'n Tricks**
 1. [ADC example and Digital Filtering](#step1)
-1. [Touch example with CVD and QT7 Xpro](#step2)
-1. [USB for printing message using Debug System Service](#step3)
-1. [Wi-Fi Provisioning over BLE](#step4)
-1. [Wi-Fi Touch and OLED Display](#step5)
-1. [Enable Robust Wi-Fi Authentication with WPA3](#step6)
-1. [Enable L2 Bridging with WLAN & LAN on a single network](#step7)
-1. [Enable CAN-WiFi Bridge](#step8)
-1. [Enable a simple Webserver Application](#step9)
-1. [Enable Long-range communication to Wi-Fi AP Scan](#step10)
+1. [Enable CVD Touch using QT7 Xpro and WFI32 Curiosity board](#step2)
+1. [Enable USB for printing message using Debug System Service](#step3)
+1. [Enable Robust Wi-Fi Authentication with WPA3](#step4)
+1. [How can I make my code generated smaller ?](#step5)
 
-More additional projects, checkout [here](https://github.com/MicrochipTech/PIC32MZW1_Projects)
 
-## ADC example and Digital Filtering<a name="step1"></a>
+
+## Tips #1 - ADC example and Digital Filtering<a name="step1"></a>
 
 ### Purpose
 
@@ -60,7 +61,9 @@ With the two actions above, it is possible to achieve an accuracy of 1mV within 
 ADC Count = 0xfff, ADC Input Voltage = 3.231248 V
 ```
 
-## Touch example with CVD and QT7 Xpro<a name="step2"></a>
+<a href="#top">Back to top</a>
+
+## Tips #2 - Touch example with CVD and QT7 Xpro<a name="step2"></a>
 
 ### Purpose
 Basic CVD provides a touch interface based on selfcapacitance touch sensing. The ADC module embedded in the PIC32MZ-W1 device supports CVD feature by using the shared ADC core to perform a modified scan of all second and third class channels.
@@ -194,19 +197,8 @@ QT7 uses one slider and two touch buttons
 <img src="resources/media/02_generate_code.png" width=>
 </p>
 
-- ⚠ Known issue with MHC v3.6.2\
-When generating the Touch code (`touch.c`), two functions are generating as `qtm_ptc...` while they should be `qtm_cvd...`
-  - Open file `touch.c` located in `config/default/touch` folder and apply the following changes
-  - In function `touch_sensors_config()`\
-  Replace `qtm_ptc_init_acquisition_module(&qtlib_acq_set1);`\
-  by `qtm_cvd_init_acquisition_module(&qtlib_acq_set1);`
-  - In function `touch_process()`\
-  Replace `touch_ret = qtm_ptc_start_measurement_seq(&qtlib_acq_set1, qtm_measure_complete_callback);`\
-  by `touch_ret = qtm_cvd_start_measurement_seq(&qtlib_acq_set1, qtm_measure_complete_callback);`
-  - With the above modifications, the compilation will success
-
+- ⚠ Make sure to use MHC version higher than v3.6.2
 - Open `initialization.c` and observe that during generation, MHC added automatically the function which initialize the touch library (`touch_init()`)
-
 - Open and modify `main.c` as below
 
 ```
@@ -311,7 +303,9 @@ void touch_status_display()
 <img src="resources/media/02_demo.gif" width=>
 </p>
 
-## USB CDC for printing message using Debug System Service<a name="step3"></a>
+<a href="#top">Back to top</a>
+
+## Tips #3 - Enable USB CDC for printing message using Debug System Service<a name="step3"></a>
 
 ### Purpose
 
@@ -452,285 +446,9 @@ Known [issue](https://www.microchip.com/forums/m1142703.aspx)
 1. Open USB CDC Com Port with TeraTerm
 1. Press SW1 button and observe the console output
 
+<a href="#top">Back to top</a>
 
-## Wi-Fi Provisioning over BLE<a name="step4"></a>
-
-### Purpose
-
-Attach external BLE device to WFI32E Curiosity board and enable Wi-Fi communication and configuration over BLE.
-
-**Watch the video and see how to enable Wi-Fi provisioning over BLE with WFI32E Curiosity board**
-
-<p align="center">
-<a href="https://youtu.be/HWui3HDnw80" target="_blank">
-<img src="resources/media/04_ble_provisioning_thumbnail.png" 
-alt="Wi-Fi provisioning over BLE demo based on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
-</p>
-
-### Hardware setup
-
-- Computer connected to WFI32 Curiositiy board over USB POWER (J204)
-- J202 = VBUS
-- J301 = open
-
-USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
-
-Attach a [RN4871 click](https://www.mikroe.com/rn4871-click) or [RN4870 click](https://www.mikroe.com/rn4870-click) to mikro BUS Header.
-
-<p align="center">
-<img src="resources/media/04_setup.png" width=480>
-</p>
-
-### Generate QR code for Wi-Fi provisioning
-
-A QR code is used in the demo to provision the Wi-Fi configuration over BLE.
-
-To be recognized by the `BLE_PROVISIONING` sample application, the QR code must contains a string of characters which respect the following format:
-
-**Frame Format:** `&wifiprov|<ssid>|<authtype>|<password>&`
-
-Where `&` is used to indicate the start and the end of the frame.
-
-`wifiprov` is required and used as a command keyword.
-
-`|` is required and used as a separator.
-
-`<ssid>` is the name of the router / network.
-
-`authtype` represents the security type:
-- 1: OPEN mode
-- 3: WPAWPA2 (Mixed) mode
-- 4: WPA2 mode
-- 5: WPA2WPA3 (Mixed) mode
-- 6: WPA3 mode
-
-`password` is not required in Open mode
-
-**e.g.:** `&wifiprov|DEMO_AP|3|password&`
-
-Create your own QR code from: [https://www.the-qrcode-generator.com/](https://www.the-qrcode-generator.com/)
-
-<p align="center">
-<img src="resources/media/04_qrcode.png" width=480>
-</p>
-
-### Try Wi-Fi over BLE
-
-- Clone/download the repo
-- Extract the file `ble_provisioning.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
-- Open the project with MPLAB X IDE
-- Build and program the code
-- Open Tera Term to observe console logs
-- Application starts in AP mode
-```
-TCP/IP Stack: Initialization Started
-TCP/IP Stack: Initialization Ended - success
-
- mode=1 (0-STA,1-AP) saveConfig=1
-
- AP Configuration :
- channel=1
- ssidVisibility=1
- ssid=DEMO_AP_SOFTAP
- passphase=password
- authentication type=4 (1-Open,2-WEP,3-Mixed mode(WPA/WPA2),4-WPA2,5-Mixed mode(WPA2/WPA3),6-WPA3)
-PIC32MZW1 AP Mode IP Address: 192.168.1.1
-[APP_BLE] Init.
-[APP_BLE] Configuration done.
-Open Microchip Bluetooth Data App
-- Select BLE UART and BM70
-- Connect to your device WFI32_xxxx
-- Select Transparent
-- Frame format for Wi-Fi provisioning over BLE:
-&wifiprov|<ssid>|<authtype>|<password>&
-1: Open, 3: WPAWPA2, 4: WPA2, 5: WPA2WPA3, 6: WPA3
-e.g. &wifiprov|DEMO_AP|3|password&
-```
-- Scan the QR code from the smartphone
-- Copy your own Wi-Fi provisioning frame
-- Open Microchip Bluetooth Data App
-- Select BLE UART then BM70
-<p align="center">
-<img src="resources/media/04_mbd_screen01.png" width=120>
-<img src="resources/media/04_mbd_screen02.png" width=120>
-</p>
-
-- Connect and select your WFI32_xxxx device
-```
-[APP_BLE] Connected
-```
-- Select Transparent option
-```
-[APP_BLE] Transparent stream opened
-```
-
-<p align="center">
-<img src="resources/media/04_mbd_screen03.png" width=120>
-<img src="resources/media/04_mbd_screen04.png" width=120>
-</p>
-
-- Paste (or enter the data manually) and send the Wi-Fi provisioning frame
-
-<p align="center">
-<img src="resources/media/04_mbd_screen05.png" width=120>
-</p>
-
-- Application restarts in STA mode using the new Wi-Fi configuration
-- Application gets and IP address from the network
-
-```
-[APP_BLE] Frame received
-SSID: DEMO_AP - AUTH: 3 - PASS: password
-Wi-Fi Configuration done.ðTCP/IP Stack: Initialization Started
-TCP/IP Stack: Initialization Ended - success
-
- mode=0 (0-STA,1-AP) saveConfig=1
-
- STA Configuration :
- channel=0
- autoConnect=1
- ssid=DEMO_AP
- passphase=password
- authentication type=3 (1-Open,2-WEP,3-Mixed mode(WPA/WPA2),4-WPA2,5-Mixed mode(WPA2/WPA3),6-WPA3)
-[APP_BLE] Init.
-[APP_BLE] Configuration done.
-Open Microchip Bluetooth Data App
-- Select BLE UART and BM70
-- Connect to your device WFI32_xxxx
-- Select Transparent
-- Frame format for Wi-Fi provisioning over BLE:
-&wifiprov|<ssid>|<authtype>|<password>&
-1: Open, 3: WPAWPA2, 4: WPA2, 5: WPA2WPA3, 6: WPA3
-e.g. &wifiprov|DEMO_AP|3|password&
- Trying to connect to SSID : DEMO_AP
- STA Connection failed.
-
- Trying to connect to SSID : DEMO_AP
- STA Connection failed.
-
-IP address obtained = 192.168.1.149
-Gateway IP address = 192.168.1.1
-```
-
-### Try BLE Serial Bridge
-
-1. Clone/download the repo
-1. Extract the file `ble_serialbridge.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
-1. Open the project with MPLAB X IDE
-1. Build and program the code
-1. Communicate with the BLE module from the UART console using ASCII commands described in [RN4870-71 User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/RN4870-71-Bluetooth-Low-Energy-Module-User-Guide-DS50002466C.pdf)
-
-<p align="center">
-<img src="resources/media/04_ble_serialbridge.png" width=480>
-</p>
-
-## Wi-Fi Touch and OLED Display<a name="step5"></a>
-
-### Purpose
-
-Sample application showcasing Wi-Fi connectivity, Capacitive Touch and OLED Display control.
-
-The application acts as a TCP Server to which a TCP Client can connect and visualize QT7 Touch Xpro data. 
-
-The Touch data are also printed on an OLED Display.
-
-**Watch the video and see in action this All-in-one application with WFI32E Curiosity board**
-
-<p align="center">
-<a href="https://youtu.be/swsQUucujnM" target="_blank">
-<img src="resources/media/05_wifi_touch_oled_thumbnail.png" 
-alt="Wi-Fi Touch and OLED Display Control on WFI32 Curiosity board developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
-</p>
-
-### Hardware setup
-
-- **J211** jumper shorted between pin 2-3 to get IRQ line
-- **J209** open that disconnect on-board temperature sensor thus one of the slider Y-line is sharing the same pin
-
-- Follow the instructions described [in a previous section](#step2) to setup the [WFI32 Curiosity Board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) and enable Touch functionality with [QT7 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/atqt7-xpro)
-- Connect [QT7 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/atqt7-xpro) to Xpro Header of the WFI32E Curiosity board
-
-- Order the [OLED W click board](https://www.mikroe.com/oled-w-click)
-- Make sure the **RST** pin of the [OLED W click](https://www.mikroe.com/oled-w-click) is not connected to the WFI32 Curiosity board (RB6 signal) but connected to a permanent 3.3V (here connected to J402 3V3_IN).\
-The RB6 signal is already connected to the QT7 Xplained Pro board and used for the Capacitive Touch Driven Shield.
-
-With this modification, the WFI32 does not control the RESET line of the OLED W click and the display is ON all the time.
-
-<p align="center">
-<img src="resources/media/05_setup_02.png" width=320>
-<img src="resources/media/05_setup_03.png" width=320>
-</p>
-
-- Then attach the [OLED W click](https://www.mikroe.com/rn4871-click) to mikro BUS Header.
-
-<p align="center">
-<img src="resources/media/05_setup_04.png" width=320>
-<img src="resources/media/05_setup_05.png" width=320>
-</p>
-
-<p align="center">
-<img src="resources/media/05_setup_01.png" width=320>
-</p>
-
-### OLED W click
-
-The [OLED W click](https://www.mikroe.com/oled-w-click) carries a 96 x 39px white monochrome passive matrix OLED display. The display is bright, has a wide viewing angle and low power consumption. To drive the display, [OLED W click](https://www.mikroe.com/oled-w-click) features an [SSD1306](https://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/) controller. Check out the [SSD1306 datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf) for more details.
-
-In this demo, the [OLED W click](https://www.mikroe.com/oled-w-click) communicates with the WFI32 MCU through SPI lines.
-
-### MHC Configuration
-
-Project Graph - Root view
-* Touch Library using ADCHS and TMR2 components
-* Wi-Fi Service, Wi-Fi provisioning and Net services
-<p align="center">
-<img src="resources/media/05_mhc_01.png" width=720>
-</p>
-
-Project Graph - System component view
-* SPI2 for OLED W click interface
-<p align="center">
-<img src="resources/media/05_mhc_02.png" width=720>
-</p>
-
-Project Graph - Net service configuration
-<p align="center">
-<img src="resources/media/05_net_service.png" width=320>
-</p>
-
-ADCHS Easy View - Enable ADC7
-<p align="center">
-<img src="resources/media/05_adchs_easy_view.png" width=480>
-</p>
-
-Pin Configuration
-<p align="center">
-<img src="resources/media/05_pin_configuration.png" width=520>
-</p>
-
-Touch Configuration
-<p align="center">
-<img src="resources/media/05_touch_configuration_01.png" width=320>
-<img src="resources/media/05_touch_configuration_02.png" width=320>
-<img src="resources/media/05_touch_configuration_03.png" width=320>
-<img src="resources/media/05_touch_configuration_04.png" width=320>
-</p>
-
-### Try it
-
-1. Clone/download the repo
-1. Extract the file `wifi_touch_oled.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
-1. Open the project with MPLAB X IDE
-1. Build and program the code
-1. Follow the [instructions](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) of the original [Wi-Fi Touch Demo](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) to setup the interaction between TCP Client and TCP Server.
-
-<p align="center">
-<img src="resources/media/05_wifiTouchDisplay_.gif" width=320>
-</p>
-
-> In this sample application, the QT7 Xplained Pro LEDs are not driven. Replacing the LEDs, the OLED Display is used to visualize the Capacitive Touch data from the buttons and the slider.
-
-## Enable Robust Wi-Fi Authentication with WPA3<a name="step6"></a>
+## Tips #4 - Enable Robust Wi-Fi Authentication with WPA3<a name="step4"></a>
 
 ### Purpose
 
@@ -806,435 +524,59 @@ Project Graph - System Component
 
 ### Try it
 
-1. Open the project [WiFi Easy Config](https://microchip-mplab-harmony.github.io/wireless/apps/wifi_easy_config/readme.html) located in `<HarmonyFrameworkFolder>/wireless/app/wifi_easy_config` with MPLAB X IDE
+1. Open the project [WiFi Easy Config](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32mzw1_wfi32e01/tree/master/apps/wifi_easy_config) located in `<HarmonyFrameworkFolder>/wireless_app_pic32mzw1_wfi32e01/wifi_easy_config` with MPLAB X IDE
 1. Build and program the code
 1. Provision your device as a STATION using MHC or using the [WiFi Provisioning System Service](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/readme.html)
-1. Follow the [instructions](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) of the original [Wi-Fi Touch Demo](https://github.com/Microchip-MPLAB-Harmony/wireless/tree/master/apps/wifi_touch_demo) to setup the interaction between TCP Client and TCP Server.
 1. The [Wi-Fi service](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/readme.html) will use the credentials along with WPA3 security to connect to the Home AP and acquire an IP address
 
 <p align="center">
 <img src="resources/media/06_wpa3_light.gif" width=480>
 </p>
 
+<a href="#top">Back to top</a>
 
-## Enable L2 Bridging with WLAN & LAN on a single network<a name="step7"></a>
-
-### Purpose
-
-Guideline to configure the WLAN Interface in L2 Bridge Mode (WLAN and LAN on the same Subnet).
-
-
-**Watch the video and see how to enable L2 Bridging function with WFI32E Curiosity board**
-
-<p align="center">
-<a href="https://youtu.be/W9FOUlL607k" target="_blank">
-<img src="resources/media/07_bridging_thumbnail.png" 
-alt="Enable L2 Bridging with WLAN & LAN on a single network supported on WFI32 Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
-</p>
-
-### L2 Bridging
-
-From [wikipedia](https://en.wikipedia.org/wiki/Bridging_(networking)), the network bridging is a function that creates a single, aggregate network from more than two communication networks.
-
-Routing and bridging are often misinterpreted as the same function. Routing function allows more than two networks to communicate while remaining as separate/independent networks. Whereas, bridging function connects two separate networks as if they were a single network. 
-
-In the OSI model, bridging is performed in the data link layer (layer 2).
-
-<p align="center">
-<img src="resources/media/07_bridging.png" width=480>
-</p>
-
-
-Bridging is independent of IP addresses. With one or more wireless segments in the bridged network, the device can be called a wireless bridge. 
-
-Below are the key points to consider while creating a bridging project:
-* The bridge knows only MAC addresses and doesn't know anything else
-* The bridge nver forwards a packet back to the interface the packet came from to avoid loops
-* If the packet destination (MAC) address is multicast or broadcast, the packet will be forwarded on all the other interfaces
-   * It will be passed internally to the stack running on top of the bridge too for internal processing
-* If the packet destination is unicast:
-   * If it is an address of one of the interfaces on the bridge host, the packet will be passed for internal processing
-   * If it is the address of a host that the MAC bridge knows about, then the packet will be forwarded only on that interface
-      * The bridge knows where various hosts are by looking at the source MAC address of the incoming packets
-   * Otherwise it will be forwarded on all interfaces
-
-
-### Software requirement
-
-PIC32MZW1 can be used as a Wireless Bridge connecting multiple wireless and wired networks to form a single network.
-
-**The bridging functionality can be enabled or disabled using MPLAB Harmony Configurator (MHC) with the NET repo (3.7.1 or above) and Wireless repo (3.4.0 or above).**
-
-### Hardware setup
-
-- Computer connected to [WFI32 Curiositiy board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) over USB POWER (J204)
-- J202 = VBUS
-- J301 = open
-
-USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
-
-- PIC32 LAN8720 PHY Daughter Board [AC3200043-3](https://www.microchip.com/DevelopmentTools/ProductDetails/AC320004-3) plugged in WFI32 Cursiotiy Board thru J208
-
-<p align="center">
-<img src="resources/media/07_hardware_setup_01.png" width=320>
-</p>
-
-- An Ethernet cable between PHY Daughter board and the Home Router
-<p align="center">
-<img src="resources/media/07_hardware_setup_02.png" width=320>
-</p>
-
-### MHC Configuration
-
-* Open the project [WiFi-ethernet dual interface](https://microchip-mplab-harmony.github.io/wireless/apps/wifi_eth_dual_interface/readme.html) located in `<HarmonyFrameworkFolder>/wireless/apps/wifi_eth_dual_interface` with MPLAB X IDE
-
-* Open Harmony Configurator
-
-* Under **Project Graph > Root**, set the AP parameters required for a station device to connect to the Bridge in **WiFi Service**
-
-<p align="center">
-<img src="resources/media/07_mhc_01.png" width=520>
-</p>
-
-* Under **Project Graph > APPLICATION LAYER**:
-   * Select **DHCP Server**
-   * Untick **DHCP Server Instance 0** box
-
-<p align="center">
-<img src="resources/media/07_mhc_12.png" width=520>
-</p>
-
-* Under **Project Graph > APPLICATION LAYER**:
-   * Select **TCP/IP Application Layer Configuration**
-   * Add **DHCP CLIENT** and **DNS CLIENT** components
-   * Remove **DHCP Server** 
-
-<p align="center">
-<img src="resources/media/07_mhc_13.png" width=480>
-</p>
-
-* Under **Project Graph > System Configuration**, make sure the Ethernet and the WiFi MAC instances are enabled in the **NETCONFIG** component
-
-<p align="center">
-<img src="resources/media/07_mhc_02.png" width=520>
-</p>
-
-* Select the **ETHMAC** component, expand **Ethernet Rx Filters Selection** and check **Accept Not Me Unicast Packets** to enable the promiscuous mode
-
-<p align="center">
-<img src="resources/media/07_mhc_03.png" width=>
-<img src="resources/media/07_mhc_04.png" width=>
-</p>
-
-* Select the **MAC Instance 0** from the **NETCONFIG** component 
-   * Make sure **IPv4 Static Address** = 0.0.0.0
-   * Disable **DHCP Flag**, **DNS Flag** and **Multicast** under **Network Configuration Start-up Flags**
-   * Enable **Add Interface to MAC Bridge** under **Advanced Settings**
-
-<p align="center">
-<img src="resources/media/07_mhc_04a.png" width=>
-</p>
-
-* Select the **MAC Instance 1** from the **NETCONFIG** component
-   * Make sure **IPv4 Static Address** = 0.0.0.0
-   * Enable **DHCP Flag** and **DNS Flag** under **Network Configuration Start-up Flags**
-   * Enable **Add Interface to MAC Bridge** under **Advanced Settings**
-
-<p align="center">
-<img src="resources/media/07_mhc_04b.png" width=>
-</p>
-
-* Select the **NETCONFIG** component and check **Enable the MAC Bridge Commands**
-
-<p align="center">
-<img src="resources/media/07_mhc_04c.png" width=>
-</p>
-
-* Generate the code
-
-<p align="center">
-<img src="resources/media/07_mhc_11.png" width=>
-</p>
-
-> With the above settings, the WFI32 is now ready to work as a Wi-Fi Network bridge
-
-
-### Try it
-
-1. Build and program the code
-2. Plug the Ethernet cable from the PHY Daughter board to your own Home Router
-3. Reset the WFI32E Curiosity board
-<p align="center">
-<img src="resources/media/07_console_01.png" width=>
-</p>
-
-4. Connect a station in Wireless to the WLAN network created by the WFI32 device in SoftAP mode
-<p align="center">
-<img src="resources/media/07_console_02.png" width=>
-</p>
-
-5. To evaluate performance, open iPerf server on a station connected to the Home router thru Ethernet cable
-
-Get the IP address of the server
-`> ipconfg`
-
-Run iperf server
-`> iperf3 -s`
-
-6. On client side, open iPerf apps or execute `> iperf3 -c <ipaddress of the server>` command from a console
-
-<p align="center">
-<img src="resources/media/07_iperf_upload.PNG" width=120>
-.............................................
-<img src="resources/media/07_iperf_download.PNG" width=120>
-</p>
-
-
-## Enable CAN-WiFi Bridge<a name="step8"></a>
+## Tips #5 - How can I make my code generated smaller ?<a name="step5"></a>
 
 ### Purpose
 
-This example application bridge the CAN Bus and Wi-Fi peripherals to enable data transfer between CAN nodes and Wi-Fi peripherals.
+Checkout [here](https://microchipsupport.force.com/s/article/Memory-utilization-by-software-subsystems-in-PIC32MZW1---WFI32) to understand the memory utilization by software subsystems in PIC32MZ / WFI32.
 
+**The PRO version of the MPLAB XC32 compiler allow some compilation features to improve the code size generated.**
+
+As a example, let's take the [PIC32MZW1 Curiosity OoB](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.0-RC1) code as reference, and compare the different code size generated using XC32 compiler v3.01 and different compiler options.
+
+| Optimization level | microMIPS enabled | Additional options | Result |
+| ------------------ | ----------------- | ------------------ | ------ |
+| -O1 | No | _ | <img src="resources/media/11_o1_optimization_result.png" width=320> |
+| -Os | No | _ | <img src="resources/media/11_os_optimization_result.png" width=320> |
+| -Os | Yes | -minterlink-compressed | <img src="resources/media/11_os_micromips_optimization_result.png" width=320> |
+
+Set **-Os** optimization to minimize code size in **Project Properties -> xc32-gcc -> Optimization**
 <p align="center">
-<a href="https://www.microchip.com/en-us/products/wireless-connectivity/embedded-wi-fi/pic32mz-w1-wi-fi-soc-and-module-family" target="_blank">
-<img src="resources/media/08_canwifi_main.png" 
-alt="Enable CAN-WiFi Bridging on WFI32E Applications developed with MPLAB® X IDE and MPLAB Harmony v3" width="480"></a>
+<img src="resources/media/11_os_optimization_window.png" width=320>
 </p>
 
-### Description
-
-This sample application demonstrates how to bridge up the CAN Bus and Wi-Fi peripherals on the WFI32E device which is running in SoftAP Mode. This concentrator device allows to connect the physical CAN-bus to WLAN network. A third-party STA will connect to the WFI32E SoftAP device and a third-party CAN Bus node ([Microchip CAN Bus Analyzer](http://www.microchip.com/Developmenttools/ProductDetails/APGDT002)) will connect to the CAN Bus of the WFI32E device.
-
+Use compressed **microMIPS** ISA mode in **Project Properties -> xc32-gcc -> General**. </br> In Additional options text box, add **-minterlink-compressed** to generate code that is link compatible with microMIPS code.
 <p align="center">
-<img src="resources/media/08_bridge_setup_01.png" width=480>
+<img src="resources/media/11_os_micromips_optimization_window.png" width=320>
 </p>
 
-A TCP Client on the third-party STA will then connect to the TCP Server running on the WFI32E Bridge device. Once connected, the WFI32E device will be able to transmit or receive the network data from the TCP Client. The WFI32E device can also transmit or receive CAN Bus messages from the third-party CAN Bus node.
+XC32 compiler offers several optimizations that must be enabled separately and could help reduce the code further - unused function removal is the key one.</br>
 
-In this example, the CAN messages are sent from the [Microchip CAN Bus Analyzer](http://www.microchip.com/Developmenttools/ProductDetails/APGDT002). The WFI32E Bridge device forward the CAN Bus messages to the TCP Client (python script) running on a third party STA (computer). The TCP Client (python script) echoes the same message back to the SoftAP device and the WFI32E forward the message back to the CAN Node ([Microchip CAN Bus Analyzer](http://www.microchip.com/Developmenttools/ProductDetails/APGDT002)).
+To remove unused functions:
+* xc32-gcc Compiler: --ffunction-sections
+  * "Isolate each function a section"
+  * Place each function into its own section in the object
+* xc32-ld Linker: --gc-sections
+  * "Remove unused sections"
+  * Enable garbage collection of unused input sections
 
-<p align="center">
-<img src="resources/media/08_bridge_setup_02.png" width=480>
-</p>
+> Unused function removal may create problems if the project contains bootloader and functions that are only used by other project.
 
-### Software requirement
+Many resources are available to explain how to optimize the compilation process, checkout the links below :
 
-- [CAN Bus Analyzer Software v2.3](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002)
-(The tool requires .NET Framework 3.5, if you are facing an issue while installing it on a Windows 10 computer, checkout [here](https://answers.microsoft.com/en-us/windows/forum/all/error-code-0x80240438-while-downloading-net/32e2ab95-526a-4b90-88a8-a118788ecaa7)).
-
-The sample project has been created and tested with the following Software Development Tools:
-- MPLAB X IDE v5.50
-- MPLAB XC32 v2.50
-- MPLAB Harmony v3.6.4
-   - mhc v3.7.1
-   - csp v3.9.1
-   - core v3.9.1
-   - wireless_wifi v3.4.1
-   - dev_packs v3.9.0
-   - wireless_system_pic32mzw1_wfi32e01 v3.4.1
-   - wolfssl v4.7.0
-   - net v3.7.2
-   - crypto v3.7.1
-   - CMSIS-FreeRTOS v10.3.1
-
-- Python to run the TCP Client Script
-
-### Hardware setup
-
-* To run the demo, the following additional hardware are required:
-
-   - [Microchip CAN Bus Analyzer Hardware](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002)
-   - [ATA6563 click board](https://www.mikroe.com/ata6563-click)
-   - USB-to-UART cable
-
-- Computer connected to [WFI32 Curiositiy board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A) over USB POWER (J204)
-- J202 = VBUS
-- J301 = open
-
-- USB-to-UART cable between the computer and GPIO Header UART1 pins (Rx, GND, Tx) to observe the console logs.
-
-- Connect thru wiring the [ATA6563 click board](https://www.mikroe.com/ata6563-click) to the PIC32MZ W1 Curiosity Board as per the Pi connection below:
-
-| PIC32MZ W1 Curiosity Board | ATA6563 click board |
-| ---------------------------| ------------------- |
-| AN (RPA14), mikroBUS connector | TX (pin 14) |
-| PWM (RPB12), mikroBUS connector | RX (pin 13) |
-| +3.3V, mikroBUS connector | 3V3 (pin 7) |
-| +5V, mikroBUS connector | 5V (pin 10) |
-| GND, mikroBUS connector | GND (pin 9) |
-
-<p align="center">
-<img src="resources/media/08_hardware_wiring_signals.png" width=320>
-</p>
-
-- Connect [Microchip CAN Bus Analyzer Hardware](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) to [ATA6563 click board](https://www.mikroe.com/ata6563-click) using female to female DB9 serial cable.
-On both end, the wiring must be direct between the relevant signals:
-
-<p align="center">
-<img src="resources/media/08_subdb9.png" width=240>
-</p>
-
-| Pin no | Signal |
-| ------ | ------ |
-| 1 | - |
-| 2 | CAN-Low |
-| 3 | GND |
-| 4 | - |
-| 5 | - |
-| 6 | - |
-| 7 | CAN-High |
-| 8 | - |
-| 9 | - |
-
-- Connect [Microchip CAN Bus Analyzer Hardware](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) to PC using USB Male-A to Male Mini-B cable
-
-- A laptop / mobile device is needed to run the TCP Client script
-
-
-### ATA6553 click
-
-The [ATA6563 click board](https://www.mikroe.com/ata6563-click) carries the [AT6563](https://www.microchip.com/wwwproducts/en/ata6563) high-speed CAN transceiver. The transceiver is designed for high-speed (up to 5 Mbps) CAN applications in the automotive industry, providing differential transmit and receive capability to (a microcontroller with) a CAN protocol controller. It offers improved electromagnetic compatibility (EMC) and electrostatic discharge (ESD) performance. The transceiver is CAN FD (Flexible data-rate) ready, meaning it has increased data rates in comparison with classic CAN. Check out the [AT6563 datasheet](https://www.microchip.com/wwwproducts/en/ata6563) for more details.
-
-In this demo application, the [ATA6563 click board](https://www.mikroe.com/ata6563-click) communicates with the WFI32 MCU through **CAN1 Bus Lines**.
-
-<p align="center">
-<img src="resources/media/08_can_pinout_description.png" width=420>
-</p>
-
-With PPS, the CAN1 RX Line (C1RX) is routed to pin RPA14.
-
-<p align="center">
-<img src="resources/media/08_can_input_pin_selection.png" width=420>
-</p>
-
-And the CAN1 TX Line (C1TX) is routed to pin RPB12.
-
-<p align="center">
-<img src="resources/media/08_can_output_pin_selection.png" width=420>
-</p>
-
-### Try it
-
-1. Clone/download the repo
-2. Extract the file `can_wifi_bridge.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
-3. Open the project with MPLAB X IDE
-4. Open Harmony Configurator
-
-<p align="center">
-<img src="resources/media/08_mhc_01.png" width=520>
-</p>
-
-5. Under **Project Graph > Root**, set the AP parameters required for a station device to connect to the Bridge in **WIFI SERVICE**
-
-<p align="center">
-<img src="resources/media/08_mhc_02.png" width=320>
-</p>
-
-6. Under **Project Graph > Root**:
-   * Select **Net Service**
-   * Currently, **NetService** is configured to run a **TCP Server** which awaits connection from a TCP Client on port **5555**.
-
-7. (if required) Save configurations and generate code via MHC
-8. Build and program the code
-9. Open a serial terminal (e.g. Tera Term) on the computer
-10. Connect to the USB-to-UART COM port and configure the serial settings as follows:
-    * Baud: 115200
-    * Data: 8 Bits
-    * Parity: None
-    * Stop: 1 Bit
-    * Flow Control: None
-11. Reset WFI32E Curiosity Board by pressing MLCR button
-12. The bridge device shall come up as SoftAP and then as per the default Net Service configuration, the TCP Server shall come up, awaiting a connection from a TCP Client.
-<p align="center">
-<img src="resources/media/08_step01_start_softap.png" width=480>
-</p>
-
-13. Connect a Station (Laptop) to the SoftAP (with ssid DEMO_AP_SOFTAP) running on the WFI32E device
-<p align="center">
-<img src="resources/media/08_step02_connect_station.png" width=240>
-</p>
-
-14. Observe the Station connected to SoftAP device
-<p align="center">
-<img src="resources/media/08_step03_station_connected.png" width=480>
-</p>
-
-15. Start a TCP Client using Python Script on laptop, giving the server IP as the PIC32MZW1 AP Mode IP Address, and the TCP port as 5555
-```
-tcp_client <SoftAP Ip Address> <Port No>
-```
-
-<p align="center">
-<img src="resources/media/08_step04_station_run_tcp_client.png" width=320>
-</p>
-
-16. TCP Server received a connection
-<p align="center">
-<img src="resources/media/08_step05_softap_received_connection.png" width=480>
-</p>
-
-17. TCP Client is ready to receive data
-<p align="center">
-<img src="resources/media/08_step06_station_ready.png" width=320>
-</p>
-
-18. Open [CAN Bus Analyzer](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) software and make the following configurations:
-
-| Description | Settings |
-| ----------- | -------- |
-| CAN Bitrate Control | 500 Kbps |
-| CAN Mode Control | Normal |
-| Bus Termination Control | ON |
-
-<p align="center">
-<img src="resources/media/08_step07_setup_analyzer.png" width=480>
-</p>
-
-19. Under **Tools -> Transmit**, send following CAN message from [CAN Bus Analyzer](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) software
-
-    * ID: 0x469, DLC: 8, DATA: 1, 2, 3, 4, 5, 6, 7, 8
-
-<p align="center">
-<img src="resources/media/08_step08_transmit_can_message.png" width=480>
-</p>
-
-20. WFI32E Bridge display the message received on the console
-<p align="center">
-<img src="resources/media/08_step09_bridge_received_can_message.png" width=480>
-</p>
-
-21. The Server transfer the CAN message received to the TCP Client. You can observe the CAN message on laptop command prompt.
-<p align="center">
-<img src="resources/media/08_step10_server_transfer_message_to_client.png" width=720>
-</p>
-
-22. The TCP Client echo the same message back to the WFI32E (TCP Server).
-<p align="center">
-<img src="resources/media/08_step11_client_echo_back_to_server.png" width=720>
-</p>
-
-22. The WFI32E Bridge transfer the TCP Client message to the CAN Bus.\
-[CAN Bus Analyzer](https://www.microchip.com/Developmenttools/ProductDetails/APGDT002) software receives the message under **Tools -> Rolling Trace**.
-
-<p align="center">
-<img src="resources/media/08_step12_bridge_forward_to_can_bus.png" width=720>
-</p>
-
-### Demo
-
-<p align="center">
-<img src="resources/media/08_demo.gif" width=720>
-</p>
-
-
-## Enable a simple Webserver Application<a name="step9"></a>
-
-### Purpose
-
-This tutorial shows you how to use MHC to create a simple Webserver Application and will help you get started on developing Wi-Fi-based applications for PIC32 WFI32E MCU using the MPLAB Harmony v3 software framework.
-
-Checkout the content on [Microchip Developer Help](https://microchip.wikidot.com/harmony3:pic32wfi32e-iot-getting-started-training-module)
+* [MPLAB XC32 C/C++ User's Guide](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#Documentation)
+* [Microchip Developer Help - How Can I reduce memory usage](https://microchipdeveloper.com/faq:84)
 
 
 <a href="#top">Back to top</a>
