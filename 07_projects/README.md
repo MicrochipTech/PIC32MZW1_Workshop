@@ -19,7 +19,7 @@
 
 
 
-## Tips \#1 - ADC example and Digital Filtering<a name="step1"></a>
+## Tips n1 - ADC example and Digital Filtering<a name="step1"></a>
 
 ### Purpose
 
@@ -63,7 +63,7 @@ ADC Count = 0xfff, ADC Input Voltage = 3.231248 V
 
 <a href="#top">Back to top</a>
 
-## Tips \#2 - Touch example with CVD and QT7 Xpro<a name="step2"></a>
+## Tips n2 - Touch example with CVD and QT7 Xpro<a name="step2"></a>
 
 ### Purpose
 Basic CVD provides a touch interface based on selfcapacitance touch sensing. The ADC module embedded in the PIC32MZ-W1 device supports CVD feature by using the shared ADC core to perform a modified scan of all second and third class channels.
@@ -305,7 +305,7 @@ void touch_status_display()
 
 <a href="#top">Back to top</a>
 
-## Tips \#3 - Enable USB CDC for printing message using Debug System Service<a name="step3"></a>
+## Tips n3 - Enable USB CDC for printing message using Debug System Service<a name="step3"></a>
 
 ### Purpose
 
@@ -448,7 +448,7 @@ Known [issue](https://www.microchip.com/forums/m1142703.aspx)
 
 <a href="#top">Back to top</a>
 
-## Tips \#4 - Enable Robust Wi-Fi Authentication with WPA3<a name="step4"></a>
+## Tips n4 - Enable Robust Wi-Fi Authentication with WPA3<a name="step4"></a>
 
 ### Purpose
 
@@ -535,7 +535,7 @@ Project Graph - System Component
 
 <a href="#top">Back to top</a>
 
-## Tips \#5 - How can I make my code generated smaller ?<a name="step5"></a>
+## Tips n5 - How can I make my code generated smaller ?<a name="step5"></a>
 
 ### Purpose
 
