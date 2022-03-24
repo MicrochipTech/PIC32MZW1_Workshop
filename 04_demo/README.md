@@ -428,7 +428,7 @@ With the above modifications, you should be able to observe the temperature sens
 
 ## Smart Garage door demo<a name="step6"></a>
 
-Based on the [OoB MPLAB Harmony project v1.2.6](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/1.2.6) and the [WFI32E Curiosity board](http://www.microchip.com/EV12F11A) the Garage door demo has been built to showcase another possibility of the WFI32E device.
+Based on the [OoB MPLAB Harmony project v2.0.2](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.2) and the [WFI32E Curiosity board](http://www.microchip.com/EV12F11A) the Garage door demo has been built to showcase another possibility of the WFI32E device.
 
 Voice commands using Amazon Alexa or the web-app page can be used to control the garage door through Amazon AWS cloud.
 
