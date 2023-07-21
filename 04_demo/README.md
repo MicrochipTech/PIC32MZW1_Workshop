@@ -40,7 +40,7 @@ Follow this 30-second demo to set up Wi-Fi connection and start viewing live dat
 
 ## Resources<a name="step2"></a>
 
-- [Out-of-box Demo Application Firmware Image](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/latest)
+- [Out-of-box Demo Application Firmware Image](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/tree/master/src/prebuilt)
 - [Out-of-box Demo Landing Page](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) with detailled instructions and Harmony 3 project source code
 
 ## System architecture<a name="step3"></a>
@@ -176,7 +176,7 @@ Once your board is connected, you'll immediately be able to dive into your tempe
 
 The user switch (SW1) will be used to simulate another sensor.
 
-- Go to the main web-app page: `https://pic-iot.com/pic32mzw1/aws/<ThingName>`
+- Go to the main web-app page: `https://iot.microchip.com//pic32mzw1/aws/<ThingName>`
 - In "What's next?" section, select "Add more sensor data"
 <p align="center">
 <img src="resources/media/oob_add_sensor_data.png" width=>
@@ -197,7 +197,7 @@ The user switch (SW1) will be used to simulate another sensor.
 
 **Add your own sensor**
 
-Good practice to use MHC to change any configuration settings of components or services.
+Good practice to use MCC to change any configuration settings of components or services.
 <br>
 
 For the purpose of this demo, let's hack the demo by adding the Light Sensor from [IO1 Xplained Pro Extension Kit](https://www.microchip.com/DevelopmentTools/ProductDetails/ATIO1-XPRO) and connect this board to Xpro header (J203) of the WFI32 Curiosity Board.
@@ -227,22 +227,13 @@ The IO1 XPRO contains the light sensor [TEMT6000](https://www.vishay.com/docs/81
 
 - Open the [latest code](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) of the OoB demo project
 
-- The demo project has been written with certain versions of Harmony 3 components. The version of the Harmony 3 components used in this project are listed in the file `harmony-manifest-success.yml` located in the folder `src/firmware/src/config/pic32mz_w1_curiosity`.
+- The demo project has been written with certain versions of Harmony 3 components. The version of the Harmony 3 components used in this project are listed in the file `harmony-manifest-success.yml` located in the folder [Link](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/blob/master/src/firmware/src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml).
 
-<p align="center">
-<img src="resources/media/harmony-manifest-success.png" width=320>
-</p>
 
-- Open **MHC**
-
-> In case of missmatch between the Harmony 3 components present in the demo project and the ones available in current Harmony framework folder, use Harmony 3 Content Manager and checkout how to proceed [here](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB#regenerating-the-demo-with-harmony-3)
-
-<p align="center">
-<img src="resources/media/oob_h3_configurator.png" width=720>
-</p>
+- Open **MCC**
 
 - Select **ADCHS** from the Active Components list
-- Open **ADCHS Easy View** from **MHC -> Tools -> ADCHS Configuration**
+- Open **ADCHS Easy View** from **Project Grpaph -> plugins -> ADCHS Configuration**
 - Select **ADC7 Enabled**
 - Click **Channel Selection**
 <p align="center">
@@ -268,12 +259,7 @@ For more info, checkout: [datasheet](https://ww1.microchip.com/downloads/en/Devi
 
 - Click **Generate Code** and make sure to select **USER_RECENT** as Merge Strategy
 <p align="center">
-<img src="resources/media/oob_generate_code.png" width=>
-</p>
-
-- Save the new configuration
-<p align="center">
-<img src="resources/media/oob_save_configuration.png" width=520>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
 - Apply the requested modifications by selecting **Replace All** for all the popup windows then close the windows
@@ -425,106 +411,3 @@ With the above modifications, you should be able to observe the temperature sens
 <p align="center">
 <img src="resources/media/oob_web_page_customized.png" width=520>
 </p>
-
-## Smart Garage door demo<a name="step6"></a>
-
-Based on the [OoB MPLAB Harmony project v2.0.2](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.2) and the [WFI32E Curiosity board](http://www.microchip.com/EV12F11A) the Garage door demo has been built to showcase another possibility of the WFI32E device.
-
-Voice commands using Amazon Alexa or the web-app page can be used to control the garage door through Amazon AWS cloud.
-
-<p align="center">
-<img src="resources/media/garage_door_00.png" width=240>
-<img src="resources/media/garage_door_01.png" width=240>
-<img src="resources/media/garage_door_02.png" width=240>
-<img src="resources/media/garage_door_03.png" width=240>
-<img src="resources/media/garage_door_04.png" width=240>
-<img src="resources/media/garage_door_demo.gif" width=>
-</p>
-
-**Watch the video and see how to voice control a garage door using a secure cloud connectivity with WFI32E Curiosity board**
-
-<p align="center">
-<a href="https://youtu.be/DsprKlnv_J8" target="_blank">
-<img src="resources/media/garage_door_thumbnail.png" 
-alt="Garage Door Demo with voice commands based on WFI32 Out of the box Application developed with MPLAB X IDE and MPLAB Harmony v3." width="480"></a>
-</p>
-
-**BoM**
-
-This demo is using the following components:
-- [WFI32E Curiosity board](http://www.microchip.com/EV12F11A)
-- [42HS02](https://ww1.microchip.com/downloads/en/DeviceDoc/Leedshine%2042HS03%20Stepper%20Motor%20Datasheet.pdf) stepping motors with 4 leads
-- 2x subminiature basic switches
-- [Stepper-7 click](https://www.mikroe.com/stepper-7-click)
-- 5VDC to power supply the WFI32E Curiosity board
-- 15VDC 3A power supply for the motor
-
-**Hardware Setup**
-
-<p align="center">
-<img src="resources/media/garage_door_hw_setup_00.png" width=720>
-</p>
-
-The PIC32MZ W1 communicates to the 8-bit I/O expander [MCP23S08](https://www.microchip.com/wwwproducts/en/MCP23S08) over the SPI-lines and it allows the control lines of the [MTS62C19A](https://www.microchip.com/wwwproducts/en/MTS62C19A) motor driver IC. By changing states of the [MTS62C19A](https://www.microchip.com/wwwproducts/en/MTS62C19A)'s control pins, it is possible to drive the stepper motor.
-
-Two basic switches are used to detect the garage door position.
-
-<p align="center">
-<img src="resources/media/garage_door_hw_setup_01.png" width=720>
-</p>
-
-
-**Software**
-
-To use voice command, make sure to register and claim the device using `voice.html`
-
-**[Clone/download](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB) this repo to find the source code of this demo**
-
-The Harmony 3 project of the Garage Door Demo is based on OoB project version [2.0.2](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.2) and it is tested with the following software components:
-
-- MHC v3.8.2
-- MPLAB X v6.00
-- Plugin v3.6.4
-- Compiler XC32 3.01
-
-- cryptoauthlib v20211006
-- csp v3.10.0
-- usb v3.8.1
-- wolfssl v4.7.0
-- crypto v3.7.5
-- CMSIS-FreeRTOS v10.3.1
-- core v3.10.0
-- wireless_wifi v3.6.1
-- paho.mqtt.embedded-c v1.2.3
-- dev_packs v3.10.0
-- littlefs
-- wireless_system_pic32mzw1_wfi32e01 v3.6.1
-- net v3.7.4
-
-The manifest file `src/firmware/src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml` has been loaded using **Harmony Content Manager** to get same package configuration as the original project.
-
-In MHC, SPI2 component is added to allow PIC32MZ W1 device driving the stepper motor mikroE board.
-Chip select pin is driven by software.
-
-<p align="center">
-<img src="resources/media/garage_door_mhc_01.png" width=640>
-</p>
-
-The pins have been configured to match the hardware connection.
-
-<p align="center">
-<img src="resources/media/garage_door_mhc_02.png" width=640>
-<br>
-<br>
-<img src="resources/media/garage_door_mhc_03.png" width=640>
-</p>
-
-The application `app_motor` has been added in addition to the existing 5 application files to take care of the tasks related to the motor.
-
-<p align="center">
-<img src="resources/media/garage_door_mhc_04.png" width=480>
-</p>
-
-The FreeRTOS task `APP_MOTOR_Tasks` is managing the stepper motor by starting the motor when desired state is triggered via MQTT message and stopping the motor by de-energizing the coil when the garage door has reached the position of one of the switches.
-
-<a href="#top">Back to top</a>

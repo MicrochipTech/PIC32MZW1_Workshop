@@ -211,7 +211,6 @@ void NET_PRES_Tasks(SYS_MODULE_OBJ obj)
                             sNetPresSockets[x].status = NET_PRES_ENC_SS_FAILED;
                             if (OSAL_MUTEX_Unlock(&sNetPresData.presMutex) != OSAL_RESULT_TRUE)
                             {
-                                continue;
                             }
                             continue;
                         }
@@ -526,13 +525,13 @@ bool NET_PRES_SocketDisconnect(NET_PRES_SKT_HANDLE_T handle)
         return false;
     }
 
-    NET_PRES_TransBool fp = pSkt->transObject->fpDisconnect;
-    if (fp == NULL)
+    NET_PRES_TransBool fpDiscon = pSkt->transObject->fpDisconnect;
+    if (fpDiscon == NULL)
     {
         pSkt->lastError = NET_PRES_SKT_OP_NOT_SUPPORTED;
         return false;
     }
-    bool res = (*fp)(pSkt->transHandle);    
+    bool res = (*fpDiscon)(pSkt->transHandle);    
 
 
     if(res && (pSkt->socketType & NET_PRES_SKT_ENCRYPTED) == NET_PRES_SKT_ENCRYPTED)
@@ -541,10 +540,10 @@ bool NET_PRES_SocketDisconnect(NET_PRES_SKT_HANDLE_T handle)
         {
             if(pSkt->provOpen)
             {
-                NET_PRES_EncProviderConnectionClose fp = pSkt->provObject->fpClose;
-                if (fp != NULL)
+                NET_PRES_EncProviderConnectionClose fpClose = pSkt->provObject->fpClose;
+                if (fpClose != NULL)
                 {
-                    (*fp)(pSkt->providerData);
+                    (*fpClose)(pSkt->providerData);
                     pSkt->provOpen = 0;
                 }
             }
@@ -706,27 +705,28 @@ uint16_t NET_PRES_SocketReadIsReady(NET_PRES_SKT_HANDLE_T handle)
 
     if ((pSkt->socketType & NET_PRES_SKT_ENCRYPTED) == NET_PRES_SKT_ENCRYPTED)
     {   // encrypted socket
-        NET_PRES_EncProviderReadReady fp =  0;
 
         if(pSkt->status == NET_PRES_ENC_SS_OPEN)
         {   // IsSecure!
-            fp = pSkt->provObject->fpReadReady;
-            if (fp == NULL)
+            NET_PRES_EncProviderReadReady fprov = pSkt->provObject->fpReadReady;
+            if (fprov == NULL)
             {
                 pSkt->lastError = NET_PRES_SKT_OP_NOT_SUPPORTED;
                 return 0;
             }
+            return (*fprov)(pSkt->providerData);
         }
-		return fp ? (*fp)(pSkt->providerData) : 0;
+        // not secure yet
+		return 0;
     }
         
-    NET_PRES_TransReady fp = pSkt->transObject->fpReadyToRead;
-    if (fp == NULL)
+    NET_PRES_TransReady ftrans = pSkt->transObject->fpReadyToRead;
+    if (ftrans == NULL)
     {
         pSkt->lastError = NET_PRES_SKT_OP_NOT_SUPPORTED;
+        return 0;
     }
-    return (*fp)(pSkt->transHandle);    
-    
+    return (*ftrans)(pSkt->transHandle);    
 }
 
 uint16_t NET_PRES_SocketWrite(NET_PRES_SKT_HANDLE_T handle, const void * buffer, uint16_t size)

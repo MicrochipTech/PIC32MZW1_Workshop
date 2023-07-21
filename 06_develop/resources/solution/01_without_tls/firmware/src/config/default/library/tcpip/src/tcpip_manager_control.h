@@ -13,7 +13,7 @@
 *******************************************************************************/
 // DOM-IGNORE-BEGIN
 /*****************************************************************************
- Copyright (C) 2012-2018 Microchip Technology Inc. and its subsidiaries.
+ Copyright (C) 2012-2020 Microchip Technology Inc. and its subsidiaries.
 
 Microchip Technology Inc. and its subsidiaries.
 
@@ -246,12 +246,14 @@ typedef struct _tag_TCPIP_NET_IF
             uint16_t linkPrev       : 1;        // previous status of the link
             uint16_t connEvent      : 1;        // when set indicates a connection event
             uint16_t connEventType  : 1;        // 0: TCPIP_MAC_EV_CONN_LOST; 1: TCPIP_MAC_EV_CONN_ESTABLISHED
-            uint16_t reserved       : 13;       // available
+            uint16_t bridged        : 1;        // 1: interface is part of a bridge
+            uint16_t reserved       : 12;       // available
         };
         uint16_t        v;
     }exFlags;                               // additional extended flags      
     char                ifName[7];          // native interface name + \0
     uint8_t             macType;            // a TCPIP_MAC_TYPE value: ETH, Wi-Fi, etc; 
+    uint8_t             bridgePort;         // bridge port this interface belongs to; < 256
 } TCPIP_NET_IF;
 
 
@@ -286,9 +288,8 @@ typedef struct _TCPIP_STACK_MODULE_CTRL
     // i.e., across StackInit() -> StackDeInit() calls
     // 
     //
-    // number of the interfaces supported in this session
-    int     nIfs;         
-    int     nAliases;       // number of alias interfaces in this session         
+    uint16_t    nIfs;       // number of the interfaces supported in this session
+    uint16_t    nAliases;   // number of alias interfaces in this session         
 	// number of the modules enabled in this session
 	int 	nModules;
     // allocation parameters
@@ -323,6 +324,10 @@ static __inline__ bool __attribute__((always_inline)) _TCPIPStackIpAddFromLAN(TC
 
 int  TCPIP_STACK_NetIxGet(TCPIP_NET_IF* pNetIf);
 
+static __inline__ int __attribute__((always_inline)) _TCPIPStackNetIxGet(TCPIP_NET_IF* pIf)
+{
+    return pIf->netIfIx;
+}
 
 uint32_t  TCPIP_STACK_NetAddressGet(TCPIP_NET_IF* pNetIf);
 
@@ -338,8 +343,9 @@ void  TCPIP_STACK_PrimaryDNSAddressSet(TCPIP_NET_IF* pNetIf, IPV4_ADDR* ipAddres
 
 void  TCPIP_STACK_SecondaryDNSAddressSet(TCPIP_NET_IF* pNetIf, IPV4_ADDR* ipAddress);
 
-TCPIP_NET_IF*         TCPIP_STACK_NetByAddress(const IPV4_ADDR* pIpAddress);
+TCPIP_NET_IF*   TCPIP_STACK_NetByAddress(const IPV4_ADDR* pIpAddress);
 
+TCPIP_NET_IF*   TCPIP_STACK_MatchNetAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd);
 
 bool  TCPIP_STACK_AddressIsOfNetUp( TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd);
 
@@ -348,6 +354,36 @@ bool  TCPIP_STACK_NetIsBcastAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAd
 
 // detects limited or net-directed bcast
 bool  TCPIP_STACK_IsBcastAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd);
+
+// detects limited or net-directed bcast
+// assumes valid pNetIf
+static __inline__ bool __attribute__((always_inline))  _TCPIPStack_IsBcastAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd)
+{
+    return (pIpAdd->Val == 0xFFFFFFFF) ||  (pIpAdd->Val == (pNetIf->netIPAddr.Val | ~pNetIf->netMask.Val));
+}
+
+// detects limited bcast
+static __inline__ bool __attribute__((always_inline))  _TCPIPStack_IsLimitedBcast(const IPV4_ADDR* pIpAdd)
+{
+    return (pIpAdd->Val == 0xFFFFFFFF);
+}
+
+// detects net_directed bcast
+// assumes valid pNetIf
+static __inline__ bool __attribute__((always_inline))  _TCPIPStack_IsDirectedBcast(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd)
+{
+    return (pIpAdd->Val == (pNetIf->netIPAddr.Val | ~pNetIf->netMask.Val));
+}
+
+// local/non forwardable multicast address (in range [224.0.0.0, 224.0.0.255])
+// return true if local, i.e. non-forwardable
+// false otherwise
+// assumes the address is a multicast address (starts with 0b1110 prefix)!
+static __inline__ bool __attribute__((always_inline))  _TCPIPStack_IsLocalMcast(const IPV4_ADDR* pIpAdd)
+{
+    return ((pIpAdd->Val & 0x00ffffe0) == 0x000000e0);
+}
+
 
 
 bool  TCPIP_STACK_NetworkIsLinked(TCPIP_NET_IF* pNetIf);
@@ -364,14 +400,39 @@ int         TCPIP_STACK_MacToNetIndex(TCPIP_MAC_HANDLE hMac);
 
 
 
-const uint8_t*  TCPIP_STACK_NetMACAddressGet(TCPIP_NET_IF* pNetIf);
+const uint8_t*  TCPIP_STACK_NetUpMACAddressGet(TCPIP_NET_IF* pNetIf);
 
 static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackNetAddress(TCPIP_NET_IF* pNetIf)
 {
     return pNetIf->netIPAddr.Val;
 }
 
+static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackNetMask(TCPIP_NET_IF* pNetIf)
+{
+    return pNetIf->netMask.Val;
+}
 
+static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackNetGateway(TCPIP_NET_IF* pNetIf)
+{
+    return pNetIf->netGateway.Val;
+}
+
+static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackNetNetwork(TCPIP_NET_IF* pNetIf)
+{
+    return (pNetIf->netIPAddr.Val & pNetIf->netMask.Val);
+}
+
+// returns the host part of an IPv4 address
+static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackHostPartAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd)
+{
+    return pIpAdd->Val & (~pNetIf->netMask.Val);
+}
+
+// returns the network part of an IPv4 address
+static __inline__ uint32_t  __attribute__((always_inline)) _TCPIPStackNetPartAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd)
+{
+    return pIpAdd->Val & pNetIf->netMask.Val;
+}
 
 static __inline__ bool  __attribute__((always_inline)) TCPIP_STACK_AddressIsOfNet(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* pIpAdd)
 {
@@ -384,6 +445,10 @@ static __inline__ TCPIP_NET_IF*  __attribute__((always_inline)) _TCPIPStackHandl
     // if #debug enabled, etc
     return (TCPIP_NET_IF*)hNet; 
 }
+
+// more checking, for user passed handles
+TCPIP_NET_IF*  TCPIP_Stack_UserHandleToNet(TCPIP_NET_HANDLE hNet);
+
 
 static __inline__ bool  __attribute__((always_inline)) TCPIP_STACK_NetworkIsUp(TCPIP_NET_IF* pNetIf)
 {
@@ -423,6 +488,12 @@ TCPIP_NET_IF* _TCPIPStackHandleToNetLinked(TCPIP_NET_HANDLE hNet);
 // can start search with the default one
 TCPIP_NET_IF* _TCPIPStackAnyNetLinked(bool useDefault);
 
+// returns the interface for which this address is a net_directed address
+// 0 in not found
+// does NOT check network up, linked, etc.
+// does NOT check primary/virtual interface!
+TCPIP_NET_IF* _TCPIPStackAnyNetDirected(const IPV4_ADDR* pIpAdd);
+
 // converts between an interface name and a MAC (TCPIP_STACK_MODULE) ID 
 // TCPIP_MODULE_MAC_NONE - no MAC id could be found
 TCPIP_STACK_MODULE    TCPIP_STACK_StringToMACId(const char* str);
@@ -459,7 +530,7 @@ static __inline__ bool __attribute__((always_inline)) _TCPIPStackIsConfig(TCPIP_
 }
 
 
-void  _TCPIPStackSetConfigAddress(TCPIP_NET_IF* pNetIf, IPV4_ADDR* ipAddress, IPV4_ADDR* mask, bool config);
+void  _TCPIPStackSetConfigAddress(TCPIP_NET_IF* pNetIf, const IPV4_ADDR* ipAddress, const IPV4_ADDR* mask, const IPV4_ADDR* gw, bool config);
 
 // finds an interface that has the IPv6 address
 TCPIP_NET_IF* _TCPIPStackIPv6AddToNet(IPV6_ADDR* pIPv6Address, IPV6_ADDR_TYPE addType, bool useDefault);
@@ -591,6 +662,33 @@ static __inline__ TCPIP_NET_IF*  __attribute__((always_inline)) _TCPIPStackMapAl
 
 
 #endif  // (_TCPIP_STACK_ALIAS_INTERFACE_SUPPORT)
+
+// marks an interface as bridged
+static __inline__ void __attribute__((always_inline))  _TCPIPStack_BridgeSetIf(TCPIP_NET_IF* pNetIf, uint8_t portNo)
+{
+    pNetIf->exFlags.bridged = 1;
+    pNetIf->bridgePort = portNo;
+}
+
+// marks an interface as unbridged
+static __inline__ void __attribute__((always_inline))  _TCPIPStack_BridgeClearIf(TCPIP_NET_IF* pNetIf)
+{
+    pNetIf->exFlags.bridged = 0;
+}
+
+// returns true if an interface is bridged
+static __inline__ bool __attribute__((always_inline))  _TCPIPStack_BridgeCheckIf(TCPIP_NET_IF* pNetIf)
+{
+    return pNetIf->exFlags.bridged != 0;
+}
+
+// returns the bridge port corresponding to this interface
+static __inline__ uint8_t __attribute__((always_inline))  _TCPIPStack_BridgeGetIfPort(TCPIP_NET_IF* pNetIf)
+{
+    return pNetIf->bridgePort;
+}
+
+
 // debugging, tracing, etc.
 
 // enables the measurement of the CPU time taken by the TCPIP_STACK_Task() processing

@@ -13,7 +13,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc.  All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -101,7 +101,7 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStart
     OSAL_CRITSECT_DATA_TYPE critSect;
 
     /* Ensure the driver handle and user pointer is valid. */
-    if ((NULL == pDcpt) || (NULL == pBSSCtx))
+    if ((DRV_HANDLE_INVALID == handle) || (NULL == pDcpt) || (NULL == pDcpt->pCtrl))
     {
         return WDRV_PIC32MZW_STATUS_INVALID_ARG;
     }
@@ -112,51 +112,75 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStart
         return WDRV_PIC32MZW_STATUS_NOT_OPEN;
     }
 
+    if ((NULL == pBSSCtx) && (NULL == pAuthCtx))
+    {
+        /* Allow callback to be set/changed, but only if not trying to change
+         BSS/Auth settings. */
+        pDcpt->pCtrl->pfConnectNotifyCB = pfNotifyCallback;
+        return WDRV_PIC32MZW_STATUS_OK;
+    }
+
     /* Ensure RF and MAC is configured */
     if (WDRV_PIC32MZW_RF_MAC_MIN_REQ_CONFIG != (pDcpt->pCtrl->rfMacConfigStatus & WDRV_PIC32MZW_RF_MAC_MIN_REQ_CONFIG))
     {
         return WDRV_PIC32MZW_STATUS_RF_MAC_CONFIG_NOT_VALID;
     }
 
-    /* Validate BSS context. */
+    /* Ensure the BSS context is valid. */
     if (false == WDRV_PIC32MZW_BSSCtxIsValid(pBSSCtx, false))
     {
         return WDRV_PIC32MZW_STATUS_INVALID_CONTEXT;
     }
 
-    /* NULL auth context is ok - no encryption. */
+    /* NULL authentication context is OK - no encryption. */
     if (NULL != pAuthCtx)
     {
-        /* Ensure the Auth context is valid. */
+        /* Ensure the authentication context is valid. */
         if (false == WDRV_PIC32MZW_AuthCtxIsValid(pAuthCtx))
         {
             return WDRV_PIC32MZW_STATUS_INVALID_CONTEXT;
         }
-        /* Convert auth type to 11i bitmap. */
-        dot11iInfo = DRV_PIC32MZW_Get11iMask(pAuthCtx->authType, pAuthCtx->authMod);
+
+        /* Convert authentication type to an 11i bitmap. */
+        dot11iInfo = DRV_PIC32MZW_Get11iMask(
+                pAuthCtx->authType,
+                pAuthCtx->authMod & ~WDRV_PIC32MZW_AUTH_MOD_STA_TD);
     }
 
     /* Indicate that the dot11i settings are intended for AP mode. */
     dot11iInfo |= DRV_PIC32MZW_AP;
 
+    /* Ensure PIC32MZW is not already configured for Soft-AP. */
+    if (false != pDcpt->pCtrl->isAP)
+    {
+        return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+    }
+
+    /* Ensure PIC32MZW is not connected or attempting to connect. */
+    if (WDRV_PIC32MZW_CONN_STATE_DISCONNECTED != pDcpt->pCtrl->connectedState)
+    {
+        return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+    }
+
     /* Allocate memory for the WIDs. */
     DRV_PIC32MZW_MultiWIDInit(&wids, 512);
 
-    /* Switch to AP mode (1). */
-    DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_SWITCH_MODE, 1);
+    /* Enable or disable broadcast SSID based on cloaked flag. */
+    DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_BCAST_SSID, pBSSCtx->cloaked ? 1 : 0);
 
-    /* Set Transmit Rate to Autorate */
+    /* Set transmit rate to auto-rate. */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_CURRENT_TX_RATE, 0);
 
-    /* Copy SSID and channel. */
+    /* Set SSID. */
     DRV_PIC32MZW_MultiWIDAddData(&wids, DRV_WIFI_WID_SSID, pBSSCtx->ssid.name, pBSSCtx->ssid.length);
 
+    /* Set channel. */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_USER_PREF_CHANNEL, pBSSCtx->channel);
 
     /* Set 11i info as derived above. */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_11I_SETTINGS, (int)dot11iInfo);
 
-    /* Set credentials for whichever auth types are enabled. */
+    /* Set credentials for whichever authentication types are enabled. */
     if (
             (dot11iInfo & DRV_PIC32MZW_PRIVACY)
         &&  !(dot11iInfo & DRV_PIC32MZW_RSNA_MASK)
@@ -166,6 +190,7 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStart
         DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_KEY_ID, pAuthCtx->authInfo.WEP.idx-1);
         DRV_PIC32MZW_MultiWIDAddData(&wids, DRV_WIFI_WID_WEP_KEY_VALUE, pAuthCtx->authInfo.WEP.key, pAuthCtx->authInfo.WEP.size);
     }
+
     if (dot11iInfo & DRV_PIC32MZW_11I_PSK)
     {
         /* Set PSK credentials. */
@@ -183,17 +208,25 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStart
 
     /* Set 11g compatibility mode 1 (2). */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_11G_OPERATING_MODE, 2);
+
     /* Set Ack policy: Normal Ack (0). */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_ACK_POLICY, 0);
+
     /* Set 11n enabled (1). */
     DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_11N_ENABLE, 1);
 
+    /* Switch to AP mode (1). */
+    DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_SWITCH_MODE, 1);
+
     critSect = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
 
-    /* Write the wids. */
+    /* Write the WIDs. */
     if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
     {
         OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
         return WDRV_PIC32MZW_STATUS_CONNECT_FAIL;
     }
 
@@ -204,6 +237,9 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStart
     {
         pDcpt->pCtrl->assocInfoAP[i].handle = DRV_HANDLE_INVALID;
         pDcpt->pCtrl->assocInfoAP[i].peerAddress.valid = false;
+        pDcpt->pCtrl->assocInfoAP[i].assocID = -1;
+        pDcpt->pCtrl->assocInfoAP[i].transitionDisable =
+                            (dot11iInfo & DRV_PIC32MZW_11I_TD) ? true : false;
     }
 
     OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
@@ -231,9 +267,10 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStop(DRV_HANDLE handle)
 {
     WDRV_PIC32MZW_DCPT *pDcpt = (WDRV_PIC32MZW_DCPT *)handle;
     DRV_PIC32MZW_WIDCTX wids;
+    OSAL_CRITSECT_DATA_TYPE critSect;
 
     /* Ensure the driver handle is valid. */
-    if (NULL == pDcpt)
+    if ((DRV_HANDLE_INVALID == handle) || (NULL == pDcpt) || (NULL == pDcpt->pCtrl))
     {
         return WDRV_PIC32MZW_STATUS_INVALID_ARG;
     }
@@ -258,11 +295,96 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APStop(DRV_HANDLE handle)
     /* Clear the SSID value */
     DRV_PIC32MZW_MultiWIDAddString(&wids, DRV_WIFI_WID_SSID, "\0");
 
+    critSect = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+
     /* Write the wids. */
     if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
     {
+        OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
         return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
     }
+
+    OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+    return WDRV_PIC32MZW_STATUS_OK;
+}
+
+//*******************************************************************************
+/*
+  Function:
+    WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APRekeyIntervalSet
+    (
+        DRV_HANDLE handle,
+        const uint32_t interval
+    )
+
+  Summary:
+    Configures the group re-key interval used when operating in Soft-AP mode
+
+  Description:
+    The re-key interval specifies how much time must elapse before a group re-key
+    is initiated with connected stations.
+
+  Remarks:
+    See wdrv_pic32mzw_softap.h for usage information.
+
+*/
+
+WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_APRekeyIntervalSet(
+    DRV_HANDLE handle,
+    const uint32_t interval
+)
+{
+    WDRV_PIC32MZW_DCPT *const pDcpt = (WDRV_PIC32MZW_DCPT *const)handle;
+    DRV_PIC32MZW_WIDCTX wids;
+    OSAL_CRITSECT_DATA_TYPE critSect;
+
+    /* Ensure the driver handle is valid. */
+    if ((DRV_HANDLE_INVALID == handle) || (NULL == pDcpt))
+    {
+        return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+    }
+
+    /* Ensure the driver instance has been opened for use. */
+    if ((false == pDcpt->isOpen) || (NULL == pDcpt->pCtrl))
+    {
+        return WDRV_PIC32MZW_STATUS_NOT_OPEN;
+    }
+
+    /* Ensure driver handle is valid */
+    if (DRV_HANDLE_INVALID == pDcpt->pCtrl->handle)
+    {
+        return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+    }
+
+    /*Sanity check the interval */
+    if (interval < DRV_PIC32MZW_AP_REKEY_MIN_PERIOD)
+    {
+        return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+    }
+
+    /* Allocate memory for the WIDs. */
+    DRV_PIC32MZW_MultiWIDInit(&wids, 64);
+
+    /* Configfure group rekey period */
+    DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_REKEY_PERIOD, interval);
+
+    critSect = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+
+    /* Write the wids. */
+    if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
+    {
+        OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
+        return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+    }
+
+    OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
 
     return WDRV_PIC32MZW_STATUS_OK;
 }

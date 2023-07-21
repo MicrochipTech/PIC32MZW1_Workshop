@@ -525,7 +525,7 @@ DRV_HANDLE DRV_BA414E_Open( const SYS_MODULE_INDEX index,
     if (index == 0)
     {
 #if !defined(DRV_BA414E_RTOS_STACK_SIZE)
-        if ((ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+        if ((ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
 #endif
         {        
             if ((ioIntent & DRV_IO_INTENT_WRITE) == DRV_IO_INTENT_WRITE)
@@ -927,6 +927,9 @@ void DRV_BA414E_Prepare(DRV_BA414E_ClientData * cd)
         case DRV_BA414E_OP_PRIM_MOD_EXP:
             DRV_BA414E_PrimModExp(cd);
             break;
+        case DRV_BA414E_OP_NONE:
+        default:
+            break;
     }
 }
 void DRV_BA414E_ProcessEcdsaSign(DRV_BA414E_ClientData * cd)
@@ -1187,6 +1190,9 @@ void DRV_BA414E_Process(DRV_BA414E_ClientData * cd)
         case DRV_BA414E_OP_PRIM_MOD_EXP:
             DRV_BA414E_ProcessRsaModExp(cd);
             break;
+        case DRV_BA414E_OP_NONE:
+        default:
+            break;
     }
 
 }
@@ -1300,7 +1306,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_ECDSA_Sign(
             cd->ecdsaSignParams.msgHash = msgHash;
             cd->ecdsaSignParams.msgHashSz = msgHashSz;
             cd->currentOp = DRV_BA414E_OP_ECDSA_SIGN;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1350,7 +1356,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_ECDSA_Verify(
             cd->ecdsaVerifyParams.msgHash = msgHash;
             cd->ecdsaVerifyParams.msgHashSz = msgHashSz;
             cd->currentOp = DRV_BA414E_OP_ECDSA_VERIFY;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1395,7 +1401,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_EccPointDouble(
             cd->eccPointDoubleParams.p1X = p1X;
             cd->eccPointDoubleParams.p1Y = p1Y;
             cd->currentOp = DRV_BA414E_OP_PRIM_ECC_POINT_DOUBLE;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1443,7 +1449,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_EccPointAddition(
             cd->eccPointAdditionParams.p2X = p2X;
             cd->eccPointAdditionParams.p2Y = p2Y;
             cd->currentOp = DRV_BA414E_OP_PRIM_ECC_POINT_ADDITION;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1488,7 +1494,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_EccPointMultiplication(
             cd->eccPointMultiplicationParams.p1Y = p1Y;
             cd->eccPointMultiplicationParams.k = k;
             cd->currentOp = DRV_BA414E_OP_PRIM_ECC_POINT_MULTIPLICATION;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1528,7 +1534,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_EccCheckPointOnCurve(
             cd->eccCheckPointOnCurveParams.p1X = p1X;
             cd->eccCheckPointOnCurveParams.p1Y = p1Y;
             cd->currentOp = DRV_BA414E_OP_PRIM_ECC_CHECK_POINT_ON_CURVE;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1572,7 +1578,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_ModAddition(
             cd->modOperationParams.a = a;
             cd->modOperationParams.b = b;
             cd->currentOp = DRV_BA414E_OP_PRIM_MOD_ADDITION;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1616,7 +1622,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_ModSubtraction(
             cd->modOperationParams.a = a;
             cd->modOperationParams.b = b;
             cd->currentOp = DRV_BA414E_OP_PRIM_MOD_SUBTRACTION;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1660,7 +1666,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_ModMultiplication(
             cd->modOperationParams.a = a;
             cd->modOperationParams.b = b;
             cd->currentOp = DRV_BA414E_OP_PRIM_MOD_MULTIPLICATION;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;
@@ -1703,7 +1709,7 @@ DRV_BA414E_OP_RESULT DRV_BA414E_PRIM_ModExponentiation(
             cd->modExpParams.M = M;
             cd->modExpParams.e = e;
             cd->currentOp = DRV_BA414E_OP_PRIM_MOD_EXP;
-            if ((cd->ioIntent & DRV_IO_INTENT_BLOCKING) != DRV_IO_INTENT_BLOCKING)
+            if ((cd->ioIntent & DRV_IO_INTENT_NONBLOCKING) == DRV_IO_INTENT_NONBLOCKING)
             {
                 cd->callback = callback;
                 cd->context = context;

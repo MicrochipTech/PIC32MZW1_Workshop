@@ -16,7 +16,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc. All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc. All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -55,8 +55,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "system_config.h"
-#include "system_definitions.h"
+#include "configuration.h"
+#include "definitions.h"
 #include "osal/osal.h"
 #include "wdrv_pic32mzw_debug.h"
 
@@ -102,6 +102,17 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 /* Minimum length of a WPA Personal Password. */
 #define WDRV_PIC32MZW_MIN_PSK_PASSWORD_LEN      8
+        
+#ifdef WDRV_PIC32MZW_ENTERPRISE_SUPPORT
+/* The maximum length (in ASCII characters) of domain name + username (including '@' or '\')
+   for authentication with Enterprise methods.
+*/        
+#define WDRV_PIC32MZW_ENT_AUTH_IDENTITY_LEN_MAX         255
+/* The maximum length (in ASCII characters) of server domain name for server certificate's validation
+   during enterprise connection.
+*/        
+#define WDRV_PIC32MZW_ENT_AUTH_SERVER_DOMAIN_LEN_MAX    255        
+#endif        
 
 // *****************************************************************************
 /*  WiFi Channels
@@ -114,6 +125,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
   Remarks:
     None.
+
 */
 
 typedef enum _WDRV_PIC32MZW_CHANNEL_ID
@@ -173,6 +185,7 @@ typedef enum _WDRV_PIC32MZW_CHANNEL_ID
 
   Remarks:
     None.
+
 */
 
 typedef enum _WDRV_PIC32MZW_STATUS
@@ -237,6 +250,7 @@ typedef enum _WDRV_PIC32MZW_STATUS
 
   Remarks:
     None.
+
 */
 
 typedef enum
@@ -252,7 +266,6 @@ typedef enum
 
 } WDRV_PIC32MZW_SYS_STATUS;
 
-
 // *****************************************************************************
 /*  Connection State
 
@@ -264,6 +277,7 @@ typedef enum
 
   Remarks:
     None.
+
 */
 
 typedef enum
@@ -293,6 +307,7 @@ typedef enum
 
   Remarks:
     None.
+
 */
 
 typedef struct _WDRV_PIC32MZW_SSID
@@ -305,6 +320,30 @@ typedef struct _WDRV_PIC32MZW_SSID
 } WDRV_PIC32MZW_SSID;
 
 // *****************************************************************************
+/*  SSID Linked List
+
+  Summary:
+    Structure to hold an SSID linked list element.
+
+  Description:
+    An element structure which can form part of an SSID linked list.
+
+  Remarks:
+    None.
+
+*/
+
+typedef struct _WDRV_PIC32MZW_SSID_LIST
+{
+    /* Pointer to next SSID element in list. */
+    struct _WDRV_PIC32MZW_SSID_LIST *pNext;
+
+    /* SSID structure. */
+    WDRV_PIC32MZW_SSID ssid;
+} WDRV_PIC32MZW_SSID_LIST;
+
+
+// *****************************************************************************
 /*  MAC Address
 
   Summary:
@@ -315,6 +354,7 @@ typedef struct _WDRV_PIC32MZW_SSID
 
   Remarks:
     None.
+
 */
 
 typedef struct _WDRV_PIC32MZW_MAC_ADDR
@@ -337,6 +377,7 @@ typedef struct _WDRV_PIC32MZW_MAC_ADDR
 
   Remarks:
     None.
+
 */
 
 typedef uintptr_t WDRV_PIC32MZW_ASSOC_HANDLE;
@@ -355,6 +396,40 @@ typedef uintptr_t WDRV_PIC32MZW_ASSOC_HANDLE;
 */
 
 #define WDRV_PIC32MZW_ASSOC_HANDLE_INVALID  (((WDRV_PIC32MZW_ASSOC_HANDLE) -1))
+
+#ifdef WDRV_PIC32MZW_ENTERPRISE_SUPPORT
+// *****************************************************************************
+/* Wolfssl context (WOLFSSL_CTX) handle
+
+  Summary:
+    A handle representing a Wolfssl context(WOLFSSL_CTX) instance.
+
+  Description:
+    This handle identifies the open instance of a Wolfssl Context.
+
+  Remarks:
+   The application should create the wolfssl context, load the required CA and device 
+   certificates, load the device private key, enable peer server certificate verification
+   before calling any of the enterprise related APIs and pass this context handle as part of 
+   Authentication context.
+*/
+typedef uintptr_t WDRV_PIC32MZW_TLS_CONTEXT_HANDLE;
+
+// *****************************************************************************
+/* Invalid Wolfssl context (WOLFSSL_CTX) handle
+
+ Summary:
+    Invalid wolfssl context handle.
+
+ Description:
+    Defines a value for an wolfssl context handle which isn't yet valid.
+
+ Remarks:
+    None.
+*/
+
+#define WDRV_PIC32MZW_TLS_CONTEXT_HANDLE_INVALID  (((WDRV_PIC32MZW_TLS_CONTEXT_HANDLE) -1))
+#endif
 
 // *****************************************************************************
 /*  Connection Notify Callback
@@ -376,6 +451,7 @@ typedef uintptr_t WDRV_PIC32MZW_ASSOC_HANDLE;
 
   Remarks:
     None.
+
 */
 
 typedef void (*WDRV_PIC32MZW_BSSCON_NOTIFY_CALLBACK)
@@ -408,6 +484,7 @@ typedef void (*WDRV_PIC32MZW_BSSCON_NOTIFY_CALLBACK)
 
     See WDRV_PIC32MZW_OTAUpdateFromURL, WDRV_PIC32MZW_SwitchActiveFirmwareImage,
     WDRV_PIC32MZW_HostFileRead and WDRV_PIC32MZW_HostFileErase.
+
 */
 
 typedef void (*WDRV_PIC32MZW_STATUS_CALLBACK)

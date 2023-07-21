@@ -26,7 +26,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc. All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc. All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -58,15 +58,18 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
-#include "system_config.h"
-#include "system_definitions.h"
+#include "configuration.h"
+#include "definitions.h"
 #include "drv_pic32mzw1.h"
-#include "tcpip/src/link_list.h"
 #include "wdrv_pic32mzw_bssfind.h"
 #include "wdrv_pic32mzw_assoc.h"
 #include "wdrv_pic32mzw_regdomain.h"
 #include "wdrv_pic32mzw_ps.h"
-
+#include "wdrv_pic32mzw_ie.h"
+#include "tcpip/src/link_list.h"
+#ifdef WDRV_PIC32MZW_ENTERPRISE_SUPPORT
+#include "drv_pic32mzw1_tls.h"
+#endif
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus // Provide C++ Compatibility
     extern "C" {
@@ -130,11 +133,26 @@ typedef struct _WDRV_PIC32MZW_CTRLDCPT
     /* Current index of the BSS scan results. */
     uint8_t scanIndex;
 
+    /* Flag indicating if the scan parameters have been modified. */
+    bool scanParamDefault;
+
+    /* The number of scan slots per channel. */
+    uint8_t scanNumSlots;
+
+    /* Number of probe requests to be sent each scan slot. */
+    uint8_t scanNumProbes;
+
     /* Time spent on each active channel probing for BSS's. */
     uint16_t scanActiveScanTime;
 
     /* Time spent on each passive channel listening for beacons. */
     uint16_t scanPassiveListenTime;
+
+    /* The current power-save mode. */
+    WDRV_PIC32MZW_POWERSAVE_MODE powerSaveMode;
+
+    /* Power-save PIC/WiFi sync/async correlation mode. */
+    WDRV_PIC32MZW_POWERSAVE_PIC_CORRELATION powerSavePICCorrelation;
 
     /* Access semaphore for MAC firmware library. */
     OSAL_SEM_HANDLE_TYPE drvAccessSemaphore;
@@ -163,6 +181,9 @@ typedef struct _WDRV_PIC32MZW_CTRLDCPT
     /* RF and MAC configuration status */
     uint8_t rfMacConfigStatus;
 
+    /* Physical MAC address of interface. */
+    WDRV_PIC32MZW_MAC_ADDR macAddr;
+
     /* Extended system status which can be queried via WDRV_PIC32MZW_StatusExt. */
     WDRV_PIC32MZW_SYS_STATUS extSysStat;
 
@@ -177,6 +198,21 @@ typedef struct _WDRV_PIC32MZW_CTRLDCPT
 
     /* Callback to use for retrieving regulatory domain information. */
     WDRV_PIC32MZW_REGDOMAIN_CALLBACK pfRegDomCB;
+    
+    /* Callback used for retrieving vendor IE information received. */
+    WDRV_PIC32MZW_IE_RX_CALLBACK pfVendorIERxCB;
+    
+    /* Vendor specific IE frame filter mask */
+    uint8_t vendorIEMask;
+
+#ifdef WDRV_PIC32MZW_ENTERPRISE_SUPPORT
+    /* Handle to driver TLS module */
+    DRV_PIC32MZW1_TLS_HANDLE    tlsHandle;
+#endif
+    
+	/* Callback to use for notifying WiFi power-save sleep entry and exit.*/
+    WDRV_PIC32MZW_PS_NOTIFY_CALLBACK pfPSNotifyCB;
+
 } WDRV_PIC32MZW_CTRLDCPT;
 
 // *****************************************************************************
@@ -322,13 +358,13 @@ typedef struct _WDRV_PIC32MZW_RF_MAC_CONFIG
 } WDRV_PIC32MZW_RF_MAC_CONFIG;
 
 // *****************************************************************************
-/*
+/*  Memory Statistics
 
   Summary:
-
+    Memory allocation statistics.
 
   Description:
-
+    Structure maintaining memory allocation statistics.
 
   Remarks:
     None.
@@ -354,7 +390,6 @@ typedef struct _WDRV_PIC32MZW_MAC_MEM_STATISTICS
     struct
     {
         uint32_t gen;
-        uint32_t hprx;
     } err;
 } WDRV_PIC32MZW_MAC_MEM_STATISTICS;
 
@@ -394,7 +429,11 @@ typedef struct _WDRV_PIC32MZW_MAC_MEM_STATISTICS
 
  */
 
+#ifndef WDRV_PIC32MZW1_DEVICE_USE_SYS_DEBUG
 void WDRV_PIC32MZW_DebugRegisterCallback(WDRV_PIC32MZW_DEBUG_PRINT_CALLBACK const pfDebugPrintCallback);
+#else
+#define WDRV_PIC32MZW_DebugRegisterCallback(...)
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -496,6 +535,44 @@ void WDRV_PIC32MZW_Close(DRV_HANDLE handle);
 
 WDRV_PIC32MZW_SYS_STATUS WDRV_PIC32MZW_StatusExt(SYS_MODULE_OBJ object);
 
+//*******************************************************************************
+/*
+  Function:
+    WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_PMKCacheFlush
+    (
+        DRV_HANDLE handle
+    )
+
+  Summary:
+    Flush the PMK cache.
+
+  Description:
+    Removes all entries from the local PMK cache.
+
+  Precondition:
+    WDRV_PIC32MZW_Initialize should have been called.
+    WDRV_PIC32MZW_Open should have been called to obtain a valid handle.
+
+  Parameters:
+    handle  - Client handle obtained by a call to WDRV_PIC32MZW_Open.
+
+  Returns:
+    WDRV_PIC32MZW_STATUS_OK              - The request has been accepted.
+    WDRV_PIC32MZW_STATUS_NOT_OPEN        - The driver instance is not open.
+    WDRV_PIC32MZW_STATUS_INVALID_ARG     - The parameters were incorrect.
+    WDRV_PIC32MZW_STATUS_REQUEST_ERROR   - The request to the PIC32MZW was rejected.
+
+  Remarks:
+    Every SAE (i.e. WPA3) or 802.1X (Enterprise) authentication as either STA
+    or AP results in a PMK being generated with the peer, and cached locally.
+    The cache stores the most recent 4 entries, for 12 hours, or until flushed.
+*/
+
+WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_PMKCacheFlush
+(
+    DRV_HANDLE handle
+);
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: PIC32MZW Information Routines
@@ -539,6 +616,45 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_InfoDeviceMACAddressGet
 (
     DRV_HANDLE handle,
     uint8_t *const pMACAddress
+);
+
+//*******************************************************************************
+/*
+  Function:
+    WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_InfoEnabledChannelsGet
+    (
+        DRV_HANDLE handle,
+        WDRV_PIC32MZW_CHANNEL24_MASK *const pChannelMask
+    )
+
+  Summary:
+    Retrieves the enabled channels of the PIC32MZW.
+
+  Description:
+    Retrieves the enabled channels for the set regulatory domain.
+
+  Precondition:
+    WDRV_PIC32MZW_Initialize should have been called.
+    WDRV_PIC32MZW_Open should have been called to obtain a valid handle.
+
+  Parameters:
+    handle       - Client handle obtained by a call to WDRV_PIC32MZW_Open.
+    pChannelMask - Pointer to variable to receive the enabled channels.
+
+  Returns:
+    WDRV_PIC32MZW_STATUS_OK             - The information has been returned.
+    WDRV_PIC32MZW_STATUS_NOT_OPEN       - The driver instance is not open.
+    WDRV_PIC32MZW_STATUS_INVALID_ARG    - The parameters were incorrect.
+
+  Remarks:
+    None.
+
+*/
+
+WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_InfoEnabledChannelsGet
+(
+    DRV_HANDLE handle,
+    WDRV_PIC32MZW_CHANNEL24_MASK *const pChannelMask
 );
 
 //*******************************************************************************
@@ -658,7 +774,36 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_GetStatistics
 );
 #endif
 
-    // DOM-IGNORE-BEGIN
+//*******************************************************************************
+/*
+  Function:
+    void WDRV_PIC32MZW_MemTrackerDump(void)
+
+  Summary:
+    Dumps the active tacker entries to the debug output.
+
+  Description:
+    If an entry is still active within the tracker it is displayed on the debug output.
+
+  Precondition:
+    _DRV_PIC32MZW_MemTrackerInit must have called to initialize the tracker.
+
+  Parameters:
+    None.
+
+  Returns:
+    None.
+
+  Remarks:
+    Only included if DRV_PIC32MZW_TRACK_MEMORY_ALLOC defined in firmware library.
+
+*/
+
+#ifdef DRV_PIC32MZW_TRACK_MEMORY_ALLOC
+void WDRV_PIC32MZW_MemTrackerDump(void);
+#endif
+
+// DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif

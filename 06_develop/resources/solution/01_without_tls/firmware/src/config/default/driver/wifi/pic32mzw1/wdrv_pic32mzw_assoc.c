@@ -14,7 +14,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc.  All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -160,6 +160,60 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocPeerAddressGet
 //*******************************************************************************
 /*
   Function:
+    WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocTransitionDisableGet
+    (
+        WDRV_PIC32MZW_ASSOC_HANDLE assocHandle,
+        bool *const pTransitionDisable
+    )
+
+  Summary:
+    Determine whether transition algorithms should be disabled for this network.
+
+  Description:
+    Determines whether a WPA3 transition disable element was sent by the device
+      (if the device is in AP mode) or received from the peer AP (if the device
+      is in STA mode) during the 4-way handshake of the current association.
+
+  Remarks:
+    See wdrv_pic32mzw_assoc.h for usage information.
+
+*/
+
+WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocTransitionDisableGet
+(
+    WDRV_PIC32MZW_ASSOC_HANDLE assocHandle,
+    bool *const pTransitionDisable
+)
+{
+    WDRV_PIC32MZW_CTRLDCPT *pCtrl;
+    WDRV_PIC32MZW_ASSOC_INFO *const pAssocInfo = (WDRV_PIC32MZW_ASSOC_INFO *const)assocHandle;
+
+    if ((WDRV_PIC32MZW_ASSOC_HANDLE_INVALID == assocHandle) || (NULL == pAssocInfo) || (NULL == pTransitionDisable))
+    {
+        return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+    }
+
+    pCtrl = (WDRV_PIC32MZW_CTRLDCPT*)pAssocInfo->handle;
+
+    if ((DRV_HANDLE_INVALID == pAssocInfo->handle) || (NULL == pCtrl))
+    {
+        return WDRV_PIC32MZW_STATUS_NOT_CONNECTED;
+    }
+
+    /* Ensure the association handle is valid. */
+    if (false == _WDRV_PIC32MZW_AssocHandleIsValid(pCtrl, pAssocInfo))
+    {
+        return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+    }
+
+    *pTransitionDisable = pAssocInfo->transitionDisable;
+
+    return WDRV_PIC32MZW_STATUS_OK;
+}
+
+//*******************************************************************************
+/*
+  Function:
     WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocRSSIGet
     (
         WDRV_PIC32MZW_ASSOC_HANDLE assocHandle,
@@ -241,6 +295,7 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocRSSIGet
         else
         {
             DRV_PIC32MZW_WIDCTX wids;
+            OSAL_CRITSECT_DATA_TYPE critSect;
 
             /* A callback has been provided, request the current RSSI from the
                PIC32MZW device. */
@@ -256,10 +311,18 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocRSSIGet
                 /* TODO: request the RSSI for the association selected. */
             }
 
+            critSect = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+
             if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
             {
+                OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+                DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
                 return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
             }
+
+            OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
 
             /* Request was successful so indicate the user application needs to
                retry request, or rely on callback for information. */
@@ -273,4 +336,99 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocRSSIGet
     }
 
     return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+}
+
+//*******************************************************************************
+/*
+  Function:
+    WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocDisconnect(WDRV_PIC32MZW_ASSOC_HANDLE assocHandle)
+
+  Summary:
+    Disconnects an association.
+
+  Description:
+    Disconnects the STA associated with AP referred by the input association handle.
+    Association handle is updated to the application whenever a new STA is connected to the softAP
+    This API can also be used in STA mode to disconnect the STA from an AP.
+
+  Remarks:
+    See wdrv_pic32mzw_softap.h for usage information.
+*/
+
+WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_AssocDisconnect(WDRV_PIC32MZW_ASSOC_HANDLE assocHandle)
+{
+    DRV_PIC32MZW_WIDCTX wids;
+    WDRV_PIC32MZW_CTRLDCPT *pCtrl;
+	WDRV_PIC32MZW_DCPT *pDcpt;
+    OSAL_CRITSECT_DATA_TYPE critSect;
+
+    WDRV_PIC32MZW_ASSOC_INFO *const pAssocInfo = (WDRV_PIC32MZW_ASSOC_INFO *const)assocHandle;
+
+    if ((WDRV_PIC32MZW_ASSOC_HANDLE_INVALID == assocHandle) || (NULL == pAssocInfo))
+    {
+        return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+    }
+
+    pCtrl = (WDRV_PIC32MZW_CTRLDCPT*)pAssocInfo->handle;
+
+    if ((DRV_HANDLE_INVALID == pAssocInfo->handle) || (NULL == pCtrl))
+    {
+        return WDRV_PIC32MZW_STATUS_NOT_CONNECTED;
+    }
+
+    /* Ensure the association handle is valid. */
+    if (false == _WDRV_PIC32MZW_AssocHandleIsValid(pCtrl, pAssocInfo))
+    {
+        return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+    }
+
+    /* Check operation mode is Soft-AP or STA. */
+    if (true == pCtrl->isAP)
+    {
+        /* Allocate memory for the WIDs. */
+        DRV_PIC32MZW_MultiWIDInit(&wids, 16);
+    }
+    else
+    {
+        pDcpt = (WDRV_PIC32MZW_DCPT *)pCtrl->handle;
+
+        /* Ensure the driver handle is valid. */
+        if ((DRV_HANDLE_INVALID == pCtrl->handle) || (NULL == pDcpt))
+        {
+            return WDRV_PIC32MZW_STATUS_INVALID_ARG;
+        }
+
+        /* Ensure the driver instance has been opened for use. */
+        if (false == pDcpt->isOpen)
+        {
+            return WDRV_PIC32MZW_STATUS_NOT_OPEN;
+        }
+
+        /* Ensure PIC32MZW is not connected or attempting to connect. */
+        if (WDRV_PIC32MZW_CONN_STATE_DISCONNECTED == pCtrl->connectedState)
+        {
+            return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
+        }
+
+        /* Disconnect PIC32MZW. */
+        DRV_PIC32MZW_MultiWIDInit(&wids, 16);
+        DRV_PIC32MZW_MultiWIDAddString(&wids, DRV_WIFI_WID_SSID, "\0");
+    }
+
+    DRV_PIC32MZW_MultiWIDAddValue(&wids, DRV_WIFI_WID_DISCONNECT, pAssocInfo->assocID);
+
+    critSect = OSAL_CRIT_Enter(OSAL_CRIT_TYPE_LOW);
+
+    if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
+    {
+        OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
+        return WDRV_PIC32MZW_STATUS_DISCONNECT_FAIL;
+    }
+
+    OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+    return WDRV_PIC32MZW_STATUS_OK;
 }

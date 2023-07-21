@@ -11,7 +11,7 @@
 1. [TCP Client Application example](#step4)
 1. [Lab 0 - Wi-Fi feature evaluation with CLI](#step5)
 1. [Lab 1 - Use MPLAB X IDE to compile and flash the project](#step6)
-1. [Lab 2 - Configure the Wi-Fi network using MHC](#step7)
+1. [Lab 2 - Configure the Wi-Fi network using MCC](#step7)
 1. [Lab 3 - Enable Wi-Fi Provisioning with HTML webpage](#step8)
 1. [Lab 4 - Enable Wi-Fi Provisioning with Mobile Application](#step9)
 1. [Lab 5 - Merging TCP Client example application and Paho MQTT Client example application](#step10)
@@ -19,33 +19,15 @@
 
 ## Collection of code examples<a name="step1"></a>
 
-PIC32MZ W1 device is supported with many Application code examples within MPLAB® Harmony 3 Content Manager.
+PIC32MZ W1 device is supported with many Application code examples within MPLAB® Harmony 3 freamwork.
 
 * Open MPLAB® X IDE
-* Launch MPLAB® Harmony 3 Content Manager from **Tools -> Embedded** [(tutorial](https://microchip-mplab-harmony.github.io/contentmanager/doc/readme.html) for more details)
-* Make sure to use the Framework Path you have previously synced and click button "Next"
-<p align="center">
-<img src="resources/media/h3_content_manager_01.png" width=480>
-</p>
-
-* Select the "Application Browser"
-
-<p align="center">
-<img src="resources/media/h3_content_manager_02.png" width=480>
-</p>
-
-- Use the filter `w1` to easily find the `PIC32MZ1025W104132` Target Device
-
-<p align="center">
-<img src="resources/media/h3_application_browser.png" width=720>
-</p>
-
-- Observe the applications highlighted.\
-The following applications are provided to demonstrate the PIC32MZ W1 peripherals like CAN, ADC, SPI, I2C, UART, WDT, etc.\
+* Goto 03_Setup chapter [software requirements](../03_setup/README.md#Software-Requirements) for downloading required packages.
+* [Application repos](https://github.com/Microchip-MPLAB-Harmony?q=wfi32) include the following applications are provided to demonstrate the PIC32MZ W1 peripherals like CAN, ADC, SPI, I2C, UART, WDT, etc.\
 And wireless sample applications cover Wi-Fi, TCP, UDP, MQTT, etc.
 
 Notice that all those code examples are also part of your `<HarmonyFramework>` folder.\
-For e.g. Sample codes related to Wireless are located in `<HarmonyFramework folder>/wireless/apps`.
+For e.g. Sample codes related to Wireless are located in `<HarmonyFramework folder>/wireless_wifi/apps`.
 
 So you have the choice either to use code example copied from the Application Browser or directly from your `<HarmonyFramework folder>`.
 
@@ -65,11 +47,11 @@ From beginner to intermediate level:
 | --- | -------------------- | ----------------- | ----------------- | -------- |
 | Lab 0 - Wi-Fi feature evaluation with CLI | CLI | No | No | Fastest path for evaluation (especially for non Harmony users) |
 | Lab 1 - Use MPLAB X IDE to compile and flash the project | CLI | Yes | Yes | 
-| Lab 2 - Configure the Wi-Fi network using MHC | MHC | Yes | Yes | Easy way of evaluation, as a graphical front-end via MHC is available for configuration |
+| Lab 2 - Configure the Wi-Fi network using MCC | MCC | Yes | Yes | Easy way of evaluation, as a graphical front-end via MCC is available for configuration |
 | Lab 3 - Enable Wi-Fi Provisioning with HTML webpage | Soft AP | Yes | Yes | SoftAP is recommended for Mass production |
 | Lab 4 - Enable Wi-Fi Provisioning with Mobile Application | Soft AP | Yes | Yes | SoftAP is recommended for Mass production |
 
-> CLI is not recommended for Mass production. As a best practice, it is recommended to disable CLI thru MHC for production firmware image.
+> CLI is not recommended for Mass production. As a best practice, it is recommended to disable CLI thru MCC for production firmware image.
 
 Advanced labs:
 * Lab 5 - Merging TCP Client example application and Paho MQTT Client example application
@@ -89,13 +71,6 @@ Advanced labs:
 - To capture console log, connect a USB-to-UART converter to J207 (GPIO Header) of the curiosity board. Refer to [Setup the Tools](../03_setup/README.md#top) section.
 - [CLI documentation](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/usage.html)
 
-- Using Application Browser:
-  - Filter for **'w1'** applications
-  - Copy both projects: Paho MQTT Client and TCP Client to your `<HarmonyProjects>` path in order to not modify the original projects located in `<HarmonyFramework>` folder
-<p align="center">
-<img src="resources/media/h3_application_browser_tcp_client.png" width=720>
-<img src="resources/media/h3_application_browser_destination_path.png" width=480>
-</p>
 
 - TCP/IP basic knowledge, refer to the video [Microchip Masters Introduction to TCP/IP communication](https://www.youtube.com/watch?v=xlRq6pwcINY)
 
@@ -108,6 +83,11 @@ This application demonstrates how a user can use a TLS TCP client to connect to 
 </p>
 
 Currently Net Service is configured to run a TCP Client in Secured mode to connect to www.google.com on the https port (443).
+
+Steps to be followed:
+- Open the project in the MPLABX IDE
+- Project is avaialble at `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\tcp_client\firmware\pic32mz_w1_curiosity_freertos.X`
+- Compile the project using MPLABX IDE. HEX file will get created at  `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\tcp_client\firmware\pic32mz_w1_curiosity_freertos.X\dist\pic32mz_w1_curiosity_freertos\production`
 
 ## Lab 0 - Wi-Fi feature evaluation with CLI<a name="step5"></a>
 
@@ -133,8 +113,7 @@ Click **Connect**
 <img src="resources/media/mplabx_ipe_select_device.png" width=480>
 </p>
 
-3. Download the pre-built image `pic32mz_w1_curiosity_freertos.X.production.hex` available under: [resources/pre-built_image](resources/pre-built_image)
-
+3. Use the build image `pic32mz_w1_curiosity_freertos.X.production.hex` available under: `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\tcp_client\firmware\pic32mz_w1_curiosity_freertos.X\dist\pic32mz_w1_curiosity_freertos\production`
 4. Click **Browse** to select the hex image file `pic32mz_w1_curiosity_freertos.X.production.hex`. This is the image of the TCP client example project
 
 <p align="center">
@@ -289,94 +268,47 @@ And enable a simple TCP chat application.
 <img src="resources/media/lab1_console_chat.png" width=720>
 </p>
 
-## Lab 2 - Configure the Wi-Fi network using MHC<a name="step7"></a>
+## Lab 2 - Configure the Wi-Fi network using MCC<a name="step7"></a>
 
 ### Purpose
 
-Learn to use MHC to configure Wi-Fi credentials of the Wi-Fi System Service to connect the board to the target AP.
+Learn to use MCC to configure Wi-Fi credentials of the Wi-Fi System Service to connect the board to the target AP.
 
 ### Instructions
 
 1.	Launch **MPLAB X IDE**
 
-2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
-
-3.	Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_configurator.png" width=>
-</p>
-
-4. Ensure the Harmony 3 Framework Path is correct, click **Launch**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_launcher.png" width=520>
-</p>
-
-5. Below screen may be showed if example project package version is different from the local package version and they are not compatible. Click **Continue**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_package_issue.png" width=520>
-</p>
-
-6.	Click **Launch**  in below screen
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_configuration_database.png" width=520>
-</p>
-
-7. Open default saved state file
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_default_saved_state.png" width=520>
-</p>
+2. Open TCP Client project available at `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\tcp_client\firmware\pic32mz_w1_curiosity_freertos.X` folder. Refer to the [Prerequisites](#step3) section.
 
 
-8. The project graph looks like below
+3. Open the MCC.The project graph looks like below
 
 <p align="center">
 <img src="resources/media/lab2_mplab_harmony_project_graph.png" width=720>
 </p>
 
 
-9.	Select **WIFI SERVICE**, Change the STA Mode SSID and Password in order to connect to your own AP
+4.	Select **WIFI SERVICE**, Change the STA Mode SSID and Password in order to connect to your own AP
 
 <p align="center">
 <img src="resources/media/lab2_mplab_harmony_wireless_service.png" width=480>
 </p>
 
-10. Click **Generate Code** icon
+5. Click **Generate Code** icon
 
 <p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_code.png" width=>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
-11. Save the modified configuration
 
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_modified_configuration.png" width=520>
-</p>
+6. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
 
-12. Select **Merge Strategy** as **USER_ALL**, click **Generate**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_project.png" width=320>
-</p>
-
-13. Code is generated
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_generating_project.png" width=320>
-</p>
-
-14. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
-
-15. Click **Run Main Project** button , program is start compiled and download to the curiosity board
+7. Click **Run Main Project** button , program is start compiled and download to the curiosity board
 <p align="center">
 <img src="resources/media/mplabx_ide_run_main_project.png" width=>
 </p>
 
-16. After program is downloaded to the board and start running, below console log is printed. The log show that the board able to connect to the target AP, get the IP from the DHCP server, send a HTTP Get command to google.com, and receive the html Page content
+8. After program is downloaded to the board and start running, below console log is printed. The log show that the board able to connect to the target AP, get the IP from the DHCP server, send a HTTP Get command to google.com, and receive the html Page content
 
 <p align="center">
 <img src="resources/media/lab2_console.png" width=480>
@@ -386,7 +318,7 @@ Learn to use MHC to configure Wi-Fi credentials of the Wi-Fi System Service to c
 
 ### Purpose
 
-Learn to use MHC to set the board to AP mode and add HTML webpage Wi-Fi provisioning feature. User can use computer as Wi-Fi station to connect to the board and perform Wi-Fi provisioning through HTML webpage at the end of this Lab.
+Learn to use MCC to set the board to AP mode and add HTML webpage Wi-Fi provisioning feature. User can use computer as Wi-Fi station to connect to the board and perform Wi-Fi provisioning through HTML webpage at the end of this Lab.
 
 This is useful for the products which is production ready. End user can provision the network using HTML webpage.
 
@@ -394,13 +326,9 @@ This is useful for the products which is production ready. End user can provisio
 
 1. Launch **MPLAB X IDE**
 
-2. Open TCP Client project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+2. Open TCP Client project available at `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\tcp_client\firmware\pic32mz_w1_curiosity_freertos.X` folder. Refer to the [Prerequisites](#step3) section.
 
-3. Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_configurator.png" width=>
-</p>
+3. Open the MCC
 
 4. From the project graph, select **WIFI SERVICE** component, set Device Mode to **AP** 
 
@@ -426,29 +354,17 @@ This is useful for the products which is production ready. End user can provisio
 7. Click **Generate Code** icon
 
 <p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_code.png" width=>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
-8. Save the modified configuration
+8. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
 
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_modified_configuration.png" width=520>
-</p>
-
-9. Select **Merge Strategy** as **USER_ALL**, click **Generate**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_project.png" width=320>
-</p>
-
-10. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
-
-11. Click **Run Main Project** button , program is start compiled and download to the curiosity board
+9. Click **Run Main Project** button , program is start compiled and download to the curiosity board
 <p align="center">
 <img src="resources/media/mplabx_ide_run_main_project.png" width=>
 </p>
 
-12. After program is downloaded to the board and start run, below APP console log is printed. The Log show the PIC32MZ W1 is set as AP mode with IP address 192.168.1.1
+10. After program is downloaded to the board and start run, below APP console log is printed. The Log show the PIC32MZ W1 is set as AP mode with IP address 192.168.1.1
 
 <p align="center">
 <img src="resources/media/lab3_console.png" width=480>
@@ -483,7 +399,7 @@ Click **Apply Wi-Fi Configuration**
 
 ### Purpose
 
-Learn to use MHC to set the board to AP mode and add HTML webpage Wi-Fi provisioning feature. User can use computer as Wi-Fi station to connect to the board and perform Wi-Fi provisioning through HTML webpage at the end of this Lab.
+Learn to use MCC to set the board to AP mode and add HTML webpage Wi-Fi provisioning feature. User can use computer as Wi-Fi station to connect to the board and perform Wi-Fi provisioning through HTML webpage at the end of this Lab.
 
 This is useful for the products which is production ready. End user can provision the network using HTML webpage.
 
@@ -537,55 +453,45 @@ Learn to merge TCP Client example application and Paho MQTT Client example appli
 
 ### Instructions
 
-1. Open Paho MQTT example project you copied from the Application Browser to your `<HarmonyProjects>` folder. Refer to the [Prerequisites](#step3) section.
+1. Open Paho MQTT example project available at `<HarmonyProjects>\wireless_apps_pic32mzw1_wfi32e01\apps\paho_mqtt_client\firmware\pic32mz_w1_curiosity.X` folder. Refer to the [Prerequisites](#step3) section.
 
-2. Run MHC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
+2. Run MCC by selecting **Tools -> Embedded -> MPLAB Harmony 3 Configurator**
 
 3. Select **Net Service** component from **Root** view in Project graph
 4. Configure below settings, these are the settings of the TCP Client example project
 <p align="center">
-<img src="resources/media/mhc_configure_net_service.png" width=>
+<img src="resources/media/mcc_configure_net_service.png" width=>
 </p>
 
 5. After enabling **TLS**, below messages are prompt and require to activate **wolfSSL** library, **SNTP** component and connect **wolfSSL** with **wolfcyptLib**.\
 Reply **Yes** for all these settings.
 <p align="center">
-<img src="resources/media/mhc_add_wolfssl.png" width=>
-<img src="resources/media/mhc_add_sntp.png" width=>
-<img src="resources/media/mhc_link_wolfssl.png" width=>
+<img src="resources/media/mcc_add_wolfssl.png" width=>
+<img src="resources/media/mcc_add_sntp.png" width=>
+<img src="resources/media/mcc_link_wolfssl.png" width=>
 </p>
 
 6. Select **WIFI Service** component and configure the STA SSID and password to connect the device to the target Home Router
 <p align="center">
-<img src="resources/media/mhc_configure_wifi_service.png" width=480>
+<img src="resources/media/mcc_configure_wifi_service.png" width=480>
 </p>
 
 7. Select **wolfCrypt Library** component from **System Component** view in Project graph. Select **Single Thread** as **Threading Support** option
 <p align="center">
-<img src="resources/media/mhc_configure_wolfcrypt_library.png" width=480>
+<img src="resources/media/mcc_configure_wolfcrypt_library.png" width=480>
 </p>
 
 8. Click **Generate Code** icon
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_code.png" width=>
-</p>
-
-8. Save the modified configuration
-<p align="center">
-<img src="resources/media/lab5_mhc_save_configuration.png" width=520>
-</p>
-
-9. Select **Merge Strategy** as **USER_ALL**, click **Generate**
 
 <p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_project.png" width=320>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
-10. Now, it is time to merge the TCP Client example application code to the Paho MQTT Client application.\
-You will copy the TCP Client example application code from `<HarmonyProjects>/wireless/apps/tcp_client/firmware/src/app_pic32mzw1.c` to Paho MQTT Client application code in `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src/app.c`<br><br>
+9. Now, it is time to merge the TCP Client example application code to the Paho MQTT Client application.\
+You will copy the TCP Client example application code from `<HarmonyProjects>/wireless_apps_pic32mzw1_wfi32e01/apps/tcp_client/firmware/src/app_pic32mzw1.c` to Paho MQTT Client application code in `<HarmonyProjects>/wireless_apps_pic32mzw1_wfi32e01/apps/paho_mqtt_client/firmware/src/app.c`<br><br>
 The details steps are given in the next steps.
    
-11. Copy the files `<HarmonyProjects>/wireless/apps/tcp_client/firmware/src/app_pic32mzw1.c` and `app_pic32mzw1.h` to Paho MQTT Client project source folder `<HarmonyProjects>/wireless/apps/paho_mqtt_client/firmware/src`.
+11. Copy the files `<HarmonyProjects>/wireless_apps_pic32mzw1_wfi32e01/apps/tcp_client/firmware/src/app_pic32mzw1.c` and `app_pic32mzw1.h` to Paho MQTT Client project source folder `<HarmonyProjects>/wireless_apps_pic32mzw1_wfi32e01/apps/paho_mqtt_client/firmware/src`.
 <p align="center">
 <img src="resources/media/lab5_copy_files_01.png" width=720>
 </p>
@@ -666,7 +572,7 @@ Launch MQTT.fx and apply the following configuration:
 
 ### Purpose
 
-Learn to use MHC to configure the pin and STDIO module to print WLAN MAC debug log at UART2. WLAN MAC debug log is useful when do the WLAN debugging.
+Learn to use MCC to configure the pin and STDIO module to print WLAN MAC debug log at UART2. WLAN MAC debug log is useful when do the WLAN debugging.
 
 ### Instructions
 
@@ -680,10 +586,10 @@ Serial port settings: **_115200 8N1_**
 | Rx                | UART1_TX (Pin 5)                               |
 | Ground            | GND (Pin 2)                                    |
 
-2.	Launch the MHC
+2.	Launch the MCC
 3.	Add **STDIO Component** from the Available Components list.
 <p align="center">
-<img src="resources/media/lab5_add_stdio.png" width=520>
+<img src="resources/media/lab5_add_stdio1.png" width=520>
 </p>
 
 4. Right click **UART** on **STDIO** component (red diamond), select **UART2**. Use the default settings of UART2.
@@ -691,9 +597,9 @@ Serial port settings: **_115200 8N1_**
 <img src="resources/media/lab5_configure_stdio.png" width=720>
 </p>
 
-5. Select **MHC -> Tools -> Pin Configuration**
+5. Select **MCC -> Plugins -> Pin Configuration**
 <p align="center">
-<img src="resources/media/lab5_pin_configuration.png" width=320>
+<img src="resources/media/mcc_pin_configuration_01.png" width=320>
 </p>
 
 6. In **Pin Setting** Tab, set **A56** pin to **U2RX** and **A57** pin to **U2TX**
@@ -704,29 +610,17 @@ Serial port settings: **_115200 8N1_**
 7. Click **Generate Code** icon
 
 <p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_code.png" width=>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
-8. Save the modified configuration
+9. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
 
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_modified_configuration.png" width=520>
-</p>
-
-9. Select **Merge Strategy** as **USER_ALL**, click **Generate**
-
-<p align="center">
-<img src="resources/media/lab2_mplab_harmony_generate_project.png" width=320>
-</p>
-
-10. Select Hardware Tool, Device Family Pack (DFP) and compiler from the **Project Properties** window
-
-11. Click **Run Main Project** button , program is start compiled and download to the curiosity board
+10. Click **Run Main Project** button , program is start compiled and download to the curiosity board
 <p align="center">
 <img src="resources/media/mplabx_ide_run_main_project.png" width=>
 </p>
 
-12. After program is downloaded to the board start running, below WLAN console logs are printed from UART2.
+11. After program is downloaded to the board start running, below WLAN console logs are printed from UART2.
 <p align="center">
 <img src="resources/media/lab5_console.png" width=480>
 </p>

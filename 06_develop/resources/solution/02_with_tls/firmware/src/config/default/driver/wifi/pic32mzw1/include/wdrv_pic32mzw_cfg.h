@@ -13,7 +13,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc. All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc. All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -204,16 +204,14 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     Description:
         DRV_WIFI_WID_POWER_MANAGEMENT is used for power management.
 
-		Powersave/sleep modes						Value
-        Run/Active mode(No powersave)				0
-        WSM mode									1
-        WDS mode									2
-		WXDS mode									3
-        WOFF mode									4
+        Powersave/sleep modes                       Value
+        Run/Active mode(No powersave)               0
+        WSM mode                                    1
+        WDS mode                                    2
 
 */
 #define DRV_WIFI_WID_POWER_MANAGEMENT                0x000B
-
+      
 // *****************************************************************************
 /*
     Summary:
@@ -228,16 +226,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         Disable site survey                         2
 */
 #define DRV_WIFI_WID_SITE_SURVEY                    0x000E
-
-// *****************************************************************************
-/*
-    Summary:
-        WID for listen interval.
-    Description:
-        This field contains the Listen Interval value to be used by a BSS-STA.
-        The range is 1 to 255.
-*/
-#define DRV_WIFI_WID_LISTEN_INTERVAL                    0x000F
 
 // *****************************************************************************
 /*
@@ -393,11 +381,60 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 /*
     Summary:
+        WID for setting frame filter.
+    Description:
+        DRV_WIFI_WID_VSIE_FRAME used for setting frame filter to choose frame 
+        types on which custom IE tag can be added for TX and the frame types
+        from which vendor specific IE tag data can be extracted at RX.
+*/
+#define DRV_WIFI_WID_VSIE_FRAME                     0x0050
+        
+// *****************************************************************************
+/*
+    Summary:
+        WID for setting vendor specific info enable flag.
+    Description:
+        DRV_WIFI_WID_VSIE_INFO_ENABLE used for setting vendor specific info
+        enable flag which enables application to be notified as and when vendor
+        specific IE data is received.
+*/
+#define DRV_WIFI_WID_VSIE_INFO_ENABLE               0x0051
+
+// *****************************************************************************
+/*
+    Summary:
         WID for RF and MAC config status.
     Description:
         DRV_WIFI_WID_RF_MAC_CONFIG_STATUS provides the status of various records available in NVM.
 */
-#define DRV_WIFI_WID_RF_MAC_CONFIG_STATUS 0x005a
+#define DRV_WIFI_WID_RF_MAC_CONFIG_STATUS           0x005a
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for number of slots for scanning
+    Description:
+        DRV_WIFI_WID_SCAN_NUM_SLOTS is used to set the number of slots for scanning
+*/
+#define DRV_WIFI_WID_SCAN_NUM_SLOTS                 0x005b
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for number of probes for scanning
+    Description:
+        DRV_WIFI_WID_SCAN_NUM_PROBES is used to set the number of probes in a slot for scanning
+*/
+#define DRV_WIFI_WID_SCAN_NUM_PROBES                0x005c
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for Stop scan on first.
+    Description:
+        DRV_WIFI_WID_SCAN_STOP_ON_FIRST used to stop scan immediately after first SSID is found.
+*/
+#define DRV_WIFI_WID_SCAN_STOP_ON_FIRST             0x005d
 
 
 // *****************************************************************************
@@ -512,7 +549,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         DRV_WIFI_WID_PS_CORRELATION is used to set the powersave correlation with PIC.
         The possible values are 0 for ASYNC mode and 1 for SYNC mode.
 */
-#define DRV_WIFI_WID_PS_CORRELATION                  	0x0212
+#define DRV_WIFI_WID_PS_CORRELATION                     0x0212
 
 // *****************************************************************************
 /*
@@ -523,7 +560,27 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         during powersave by waking up at every DTIM interval
         The values are 1 for Enable, 0 for Disable
 */
-#define DRV_WIFI_WID_PS_BCAST_ENABLE                  	0x0213
+#define DRV_WIFI_WID_PS_BCAST_ENABLE                    0x0213
+/*
+    Summary:
+        WID to flush the PMK cache.
+    Description:
+        DRV_WIFI_WID_PMK_CACHE_FLUSH is used to flush the local PMK cache.
+        The value is 1 for Flush.
+*/
+#define DRV_WIFI_WID_PMK_CACHE_FLUSH                    0x0214
+
+/*
+    Summary:
+        WID to determine if the AP included a WPA3 transition disable element.
+    Description:
+        DRV_WIFI_WID_WPA3_TD_AP is used to determine whether the device (when
+          the device is in AP mode) or the peer (when the device is in STA mode)
+          included a WPA3 transition disable element in the 4-way handshake.
+        This is used for query only.
+        The value is 1 for included, 0 for not included.
+*/
+#define DRV_WIFI_WID_WPA3_TD_AP                         0x0215
 
 // *****************************************************************************
 /*
@@ -684,6 +741,28 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         The bit encoding of this is the same as that for DRV_WIFI_WID_USER_PREF_CHANNEL.
 */
 #define DRV_WIFI_WID_USER_SCAN_CHANNEL                          0x1022
+        
+// *****************************************************************************
+/*
+    Summary:
+        WID for listen interval.
+    Description:
+        This field contains the Listen Interval value to be used by a BSS-STA.
+*/
+#define DRV_WIFI_WID_LISTEN_INTERVAL                    		0x1023
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for sleep inactivity(assoc-timeout) limit/threshold.
+    Description:
+        This field contains the sleep inactivity limit/threshold value to be 
+        used by a BSS-STA.
+        During powersave if there is no activity in the BSS for the number of 
+        beacons specified by this WID, a NULL frame will be sent to the AP.
+*/
+#define DRV_WIFI_WID_SLEEP_INACT_IND_THRESHOLD           		0x1024        
+        
 
 // *****************************************************************************
 /*
@@ -833,12 +912,32 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 /*
     Summary:
+        WID for rekey period.
+    Description:
+        DRV_WIFI_WID_REKEY_PERIOD is valid in AP mode.
+        This field indicates the period in seconds after which a group rekey will be initiated, starting from the last group handshake.
+*/
+#define DRV_WIFI_WID_REKEY_PERIOD                             0x2010
+
+// *****************************************************************************
+/*
+    Summary:
         WID for hardware Rx count.
     Description:
         DRV_WIFI_WID_HW_RX_COUNT is valid in both AP/STA modes.
         This field indicates the total number of frames received without PHY level errors.
 */
 #define DRV_WIFI_WID_HW_RX_COUNT                             0x2015
+        
+// *****************************************************************************
+/*
+    Summary:
+        WID for setting vendor OUI.
+    Description:
+        DRV_WIFI_WID_VSIE_RX_OUI is used for setting vendor OUI while parsing
+        received management frames for vendor specific IE data.
+*/
+#define DRV_WIFI_WID_VSIE_RX_OUI                             0x2029
 
 // *****************************************************************************
 /*
@@ -925,20 +1024,23 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 // *****************************************************************************
 /*
+    Summary:
+        WID for setting the scan region.
+    Description:
+        This wid is used for changing the bitmap of the 2.4GHz channels to be scanned,
+        when specifying all channels (255). Channel 1 corresponds to the right-most bit.
+        0 skip scanning on that channel
+        1 scan channel
+ */
+
+#define DRV_WIFI_WID_SCAN_CH_BITMAP_2GHZ                  0x208a
+
+// *****************************************************************************
+/*
                     String Type WIDs
 */
 // *****************************************************************************
 
-/*
-    Summary:
-        Wid for SSID.
-    Description:
-        DRV_WIFI_WID_SSID is valid in both AP/STA modes. This field contains the SSID of the network.
-        The maximum length of this field is 32 bytes.
-*/
-#define DRV_WIFI_WID_SSID                               0x3000
-
-// *****************************************************************************
 /*
     Summary:
         WID for operational rate set.
@@ -992,7 +1094,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         This field gives the MAC address of the device.
         The length of this field is 6 bytes. Note that in all the modes a GET access is allowed for this parameter.
 */
-#define DRV_WIFI_WID_MAC_ADDR                           0x300C
+#define DRV_WIFI_WID_MAC_ADDR                           0x300C    
 
 // *****************************************************************************
 /*
@@ -1008,15 +1110,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 /*
     Summary:
-        WID for Scan ssid.
-    Description:
-        DRV_WIFI_WID_SCAN_SSID used for setting SCAN SSID.
-*/
-#define DRV_WIFI_WID_SCAN_SSID                              0x3032
-
-// *****************************************************************************
-/*
-    Summary:
         WID for giving Debug print level and Module type to MAC
     Description:
         DRV_WIFI_DEBUG_MODULE_LEVEL used to send the debug print level and Module type.
@@ -1026,6 +1119,33 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define DRV_WIFI_DEBUG_MODULE_LEVEL                           0x3033
 
 #define DRV_WIFI_WID_GET_SCAN_RESULTS                       0x3034
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for 802.1X Authentication Identity name.
+    Description:
+        DRV_WIFI_WID_SUPP_DOMAIN_USERNAME is valid for STA  mode.
+        This field gives the username or [username][domain name] or [domain name][username].
+        The length of this field is max 255 bytes. Note that in all the modes a GET access is allowed for this parameter.
+*/
+#define DRV_WIFI_WID_SUPP_DOMAIN_USERNAME                   0x3035  
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for power management information.
+    Description:
+        DRV_WIFI_WID_POWER_MANAGEMENT_INFO is used to notify sleep state entry information.
+
+        WLAN -> Driver - Report of SMC sleep state entry and exit information
+        Byte:
+            0           - Current power-save mode.
+            1           - SMC sleep entry/exit state. 
+                          1 = SMC(WSM/WDS mode) sleep entry, 0 = Exit of WSM/WDS powersave cycle.                     
+            2 to 5      - 4 bytes contain the SMC(WSM/WDS mode) sleep duration.
+*/
+#define DRV_WIFI_WID_POWER_MANAGEMENT_INFO           	    0x3036
 
 // *****************************************************************************
 /*
@@ -1109,6 +1229,56 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 */
 #define DRV_WIFI_WID_RSNA_PASSWORD                          0x4012
 
+// *****************************************************************************
+/*
+    Summary:
+        Wid for SSID.
+    Description:
+        DRV_WIFI_WID_SSID is valid in both AP/STA modes. This field contains the SSID of the network.
+        The maximum length of this field is 32 bytes.
+*/
+#define DRV_WIFI_WID_SSID                                   0x4020
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for Scan ssid.
+    Description:
+        DRV_WIFI_WID_SCAN_SSID used for setting SCAN SSID.
+*/
+#define DRV_WIFI_WID_SCAN_SSID                              0x4021
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for Scan ssid list.
+    Description:
+        DRV_WIFI_WID_SCAN_SSID_LIST used for setting SCAN SSID list.
+*/
+#define DRV_WIFI_WID_SCAN_SSID_LIST                         0x4022
+
+// *****************************************************************************
+/*
+    Summary:
+        WID for adding custom IE.
+    Description:
+        Applications can provide custom IE tag. This WID sets the global IE Tx
+        buffer in WLAN firmware which is used while preparing Tx frames.
+        For example: beacon frames in Soft-AP mode.
+*/
+#define DRV_WIFI_WID_VSIE_TX_DATA                           0x4085
+        
+// *****************************************************************************
+/*
+    Summary:
+        WID for receiving vendor specific IE.
+    Description:
+        DRV_WIFI_WID_VSIE_RX_DATA is used to place request for received vendor
+        IEs specified by application provided OUI.
+*/
+#define DRV_WIFI_WID_VSIE_RX_DATA                           0x4086        
+        
+
 typedef enum
 {
     DRV_PIC32MZW_WIDOPTYPE_UNDEFINED,
@@ -1128,6 +1298,7 @@ typedef struct
 void DRV_PIC32MZW_ProcessHostRsp(uint8_t *pHostRsp);
 
 bool DRV_PIC32MZW_MultiWIDInit(DRV_PIC32MZW_WIDCTX *pCtx, uint16_t bufferLen);
+void DRV_PIC32MZW_MultiWIDDestroy(DRV_PIC32MZW_WIDCTX *pCtx);
 bool DRV_PIC32MZW_MultiWIDAddValue(DRV_PIC32MZW_WIDCTX *pCtx, uint16_t wid, uint32_t val);
 bool DRV_PIC32MZW_MultiWIDAddData(DRV_PIC32MZW_WIDCTX *pCtx, uint16_t wid, const uint8_t *pData, uint16_t length);
 bool DRV_PIC32MZW_MultiWIDAddString(DRV_PIC32MZW_WIDCTX *pCtx, uint16_t wid, const char * val);

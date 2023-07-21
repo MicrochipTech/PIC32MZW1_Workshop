@@ -112,7 +112,7 @@ MPLAB Harmony has a layered architecture that consists of several software modul
 | Driver            | Preferred method to access peripherals when creating portable applications|
 | System Service    | Used by drivers, middleware and application (Timer, File System, etc.)|
 | Middleware        | Implement complex protocols like USB, TCP/IP, GFX, Bluetooth, etc. They use driver and system services|
-| MHC               | GUI based tool that provides an intuitive graphical user interface which enhances user experience to easily enable and configure the Harmony Framework components and significantly reducing user development time|
+| MCC               | GUI based tool that provides an intuitive graphical user interface which enhances user experience to easily enable and configure the Harmony Framework components and significantly reducing user development time|
 | Third-Party Libraries | RTOS from industry leading RTOS specialists, Graphics stack from Segger and other libraries|
 | Plug-in           | Plug-ins for Display manager, clock manager and Graphics composer
 
@@ -131,10 +131,10 @@ To getting started with MPLAB® Harmony 3:
 - Obtain a development board with a supported Microchip 32-bit microcontroller.
 - Install the [XC32 Compiler Suite](https://www.microchip.com/mplab/compilers).
 - Install the [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide).
-- From MPLAB® X IDE, install the MPLAB® Harmony 3 Configurator (MHC) plug-in.
-- From MHC, download the minimum required packages.\
-The MHC provides a convenient downloader for cloning MPLAB® Harmony 3 packages.
-- Use the MHC to create, configure, and generate a new project for your selected processor.
+- From MPLAB® X IDE, install the MPLAB® Code Configurator (MCC) plug-in.
+- From MCC, download the minimum required packages.\
+The MCC provides a convenient downloader for cloning MPLAB® Harmony 3 packages.
+- Use the MCC to create, configure, and generate a new project for your selected processor.
 - Program, debug, and execute your embedded software.
 
 Check out the [Getting Started Video](https://youtu.be/5nt3D-Cmbus).
@@ -147,7 +147,7 @@ alt="How to Set-up the Tools Required to Get Started with MPLAB® Harmony v3" wi
 The following tutorials will guide you through the process of creating, configuring, generating, and developing your first projects.
 
 - [MPLAB® Harmony 3 Quick Docs](https://microchip-mplab-harmony.github.io/quick_docs/)
-- [MPLAB® Harmony 3 Configurator](https://github.com/Microchip-MPLAB-Harmony/mhc/wiki)
+- [MPLAB® Harmony 3 Configurator](https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-2EE03524-41FE-4EBA-8646-6D10AA72F365)
 - [Create your first peripheral library (PLIB)](https://github.com/Microchip-MPLAB-Harmony/csp/wiki/Create-your-first-Microchip-MPLAB%C2%AE-Harmony-3-peripheral-library-project)
 
 Once you have created your first MPLAB Harmony core project, you’re ready to begin exploring MPLAB® Harmony 3 middleware. Refer to the Wiki for the middleware from supported devices page:
@@ -364,7 +364,7 @@ With modular approach, developing a Wi-Fi Application is much easier and provide
 <img src="resources/media/software_wireless_service_features.png" width=520>
 </p>
 
-Wireless Services are configured by the MPLAB Harmony Configurator (MHC).
+Wireless Services are configured by the MPLAB Code Configurator (MCC).
 
 Support multiple application clients, easy to combine two different applications together.
 * Use two instances of the same service (e.g create 2 TCP Client using NET System Service)
@@ -404,11 +404,11 @@ Wi-Fi System Service provides simple interface to manage Wi-Fi basic connectivit
 <img src="resources/media/software_wifi_service_abstraction.png" width=240>
 </p>
 
-Wi-Fi System Service is configured via MHC.
+Wi-Fi System Service is configured via MCC.
 * Developer can select the station(STA) or access point (AP) and configure the detail settings.
 
 <p align="center">
-<img src="resources/media/software_wifi_service_mhc.png" width=520>
+<img src="resources/media/software_wifi_service_mcc.png" width=520>
 </p>
 
 How the library works ?
@@ -432,20 +432,20 @@ This service provides simple interface to enable Wi-Fi provisioning over several
 - TCP socket\
 A socket server is activated when initialize the service. Using a laptop or mobile phone as a TCP client to connect to the device's socket server. JSON format data to send to socket server for network provisioning. The mobile APP [Wi-Fi Provisioning](https://play.google.com/store/apps/details?id=com.microchip.wifiapplication) is available from Android Play Store.
 - HTTP Pages
-- MHC GUI Based
+- MCC GUI Based
 
 Some provisioning methods are easy for development and one is useful for mass production.
 
 | Provisioning Method | Easy to develop with | Compilation required for providing credentials | Mass production ready |
 | ------------------- | -------------------- | --------- | ------------ |
-| MHC | Yes | Yes | No |
+| MCC | Yes | Yes | No |
 | CLI | Yes | No | No |
 | SoftAP | No | No | Yes |
 
-The developer configures the Wi-Fi Provisioning System Service via MHC.
+The developer configures the Wi-Fi Provisioning System Service via MCC.
 
 <p align="center">
-<img src="resources/media/software_wifi_provisioning_service_mhc.png" width=520>
+<img src="resources/media/software_wifi_provisioning_service_mcc.png" width=520>
 </p>
 
 Provisioning over CLI can be done over simple commands:
@@ -481,14 +481,14 @@ This service provides simple interface to manage TCPIP Networking functionalitie
 <img src="resources/media/software_net_service_abstraction.png" width=240>
 </p>
 
-The developer configures the Net Service via MHC:
+The developer configures the Net Service via MCC:
 - TCP or UDP mode
 - Client/Server mode
 - Enable/Disable TLS and self-healing
 - Input server port and host name/IP address
 
 <p align="center">
-<img src="resources/media/software_net_service_mhc_01.png" width=520>
+<img src="resources/media/software_net_service_mcc_01.png" width=520>
 </p>
 
 Net Service supports command line.
@@ -508,7 +508,7 @@ Service initialization:
 - `SYS_Initialize()` invoke `SYS_NET_Initialize()` to initialize the Net Service module.
 - `SYS_Tasks()` invoke `SYS_NET_Task()` every a period of time in a while loop to maintain the Net Service module functionalities.
 
-> **The code of Net Service initialization is generated by MHC and run in background. No interaction is required by developer.**
+> **The code of Net Service initialization is generated by MCC and run in background. No interaction is required by developer.**
 
 Then:
 - Application invoke `SYS_NET_Open()` to create the Net Service instance and register the callback function.
@@ -542,13 +542,13 @@ It support also:
 
 With MQTT Service, developer does not need to maintain state machine or refresh a timer. Everything is managed automatically by the service itself.
 
-MHC is used to configure the MQTT Service with:
+MCC is used to configure the MQTT Service with:
 - Broker server configuration
 - MQTT Topic which publish or subscrbie
 - Enable/Disable TLS and self-healing 
 
 <p align="center">
-<img src="resources/media/software_mqtt_service_mhc.png" width=520>
+<img src="resources/media/software_mqtt_service_mcc.png" width=520>
 </p>
 
 MQTT Service supports command line.
@@ -647,7 +647,7 @@ If the project use Wireless Service library (like WiFi System Service, NET Syste
 <img src="resources/media/software_system_tasks.png" width=720>
 </p>
 
-These are the major tasks. Other task may exist depending on configuration. For FreeRTOS projects, the tasks are created by `xTaskCreate` function. Developer only need to develop the application in the `APP_Tasks`. All the other task are generated by MHC and run in background.
+These are the major tasks. Other task may exist depending on configuration. For FreeRTOS projects, the tasks are created by `xTaskCreate` function. Developer only need to develop the application in the `APP_Tasks`. All the other task are generated by MCC and run in background.
 
 
 

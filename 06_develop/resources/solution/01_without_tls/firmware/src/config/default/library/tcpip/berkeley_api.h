@@ -54,6 +54,8 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 #ifndef _BERKELEY_API_HEADER_FILE
 #define _BERKELEY_API_HEADER_FILE
 
+#include <limits.h>
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -66,6 +68,7 @@ typedef int16_t SOCKET;   //Socket descriptor
 
 #define AF_INET         2			// Internet Address Family - IPv4, UDP, TCP, etc.
 #define AF_INET6        10          // Internet Address Family - IPv6
+#define AF_UNSPEC       0           // Ipv4 or IPv6
 
 #define IP_ADDR_ANY     0x01000000u			// IP Address for server binding
 #define INADDR_ANY      0x01000000u	// IP address for server binding.
@@ -271,7 +274,7 @@ typedef struct
      BSD operations.
 
    Precondition:
-     BerkeleySocketInit function should be called.
+     Berkeley API module should have been initialized.
 
    Parameters:
    af       - address family - AF_INET for IPv4, AF_INET6 for IPv6

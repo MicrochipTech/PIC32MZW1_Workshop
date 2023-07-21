@@ -55,28 +55,27 @@
 #include "peripheral/coretimer/plib_coretimer.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
+#include "system/reset/sys_reset.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
+#include "net_pres/pres/net_pres.h"
+#include "net_pres/pres/net_pres_encryptionproviderapi.h"
+#include "net_pres/pres/net_pres_transportapi.h"
+#include "net_pres/pres/net_pres_socketapi.h"
 #include "system/fs/sys_fs.h"
 #include "system/fs/sys_fs_media_manager.h"
 #include "system/fs/mpfs/mpfs.h"
 #include "driver/ba414e/drv_ba414e.h"
 #include "system/net/sys_net.h"
 #include "peripheral/nvm/plib_nvm.h"
-#include "peripheral/adchs/plib_adchs.h"
 #include "driver/memory/drv_memory_nvm.h"
-#include "system/mqtt/sys_mqtt.h"
+#include "peripheral/adchs/plib_adchs.h"
 #include "peripheral/uart/plib_uart1.h"
+#include "system/mqtt/sys_mqtt.h"
 #include "peripheral/tmr/plib_tmr3.h"
-#include "net_pres/pres/net_pres.h"
-#include "net_pres/pres/net_pres_encryptionproviderapi.h"
-#include "net_pres/pres/net_pres_transportapi.h"
-#include "net_pres/pres/net_pres_socketapi.h"
 #include "library/tcpip/tcpip.h"
 #include "system/sys_time_h2_adapter.h"
-#include "system/sys_clk_h2_adapter.h"
 #include "system/sys_random_h2_adapter.h"
-#include "system/sys_reset_h2_adapter.h"
 #include "system/command/sys_command.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
@@ -101,6 +100,9 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* CPU clock frequency */
+#define CPU_CLOCK_FREQUENCY 200000000
 
 // *****************************************************************************
 // *****************************************************************************
@@ -194,33 +196,33 @@ void SYS_Tasks ( void );
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-    
+
 // *****************************************************************************
 /* System Objects
-        
+
 Summary:
     Structure holding the system's object handles
-        
+
 Description:
     This structure contains the object handles for all objects in the
     MPLAB Harmony project's system configuration.
-        
+
 Remarks:
     These handles are returned from the "Initialize" functions for each module
     and must be passed into the "Tasks" function for each module.
 */
-        
+
 typedef struct
 {
     SYS_MODULE_OBJ  sysTime;
     SYS_MODULE_OBJ  sysConsole0;
 
+    SYS_MODULE_OBJ  netPres;
+
 
     SYS_MODULE_OBJ  ba414e;
 
     SYS_MODULE_OBJ  drvMemory0;
-    SYS_MODULE_OBJ  netPres;
-
 
     SYS_MODULE_OBJ  tcpip;
     SYS_MODULE_OBJ  sysDebug;

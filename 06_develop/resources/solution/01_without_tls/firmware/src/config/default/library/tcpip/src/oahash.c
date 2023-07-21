@@ -122,11 +122,6 @@ OA_HASH_ENTRY* TCPIP_OAHASH_EntryLookup(OA_HASH_DCPT* pOH, const void* key)
     bktIx = TCPIP_OAHASH_KeyHash(pOH, key);
 #endif  // defined ( OA_HASH_DYNAMIC_KEY_MANIPULATION )
 
-    if(bktIx < 0)
-    {
-        bktIx += pOH->hEntries;
-    }
-    
     while(bkts < pOH->hEntries)
     {
         pBkt = (OA_HASH_ENTRY*)((uint8_t*)(pOH->memBlk) + bktIx * pOH->hEntrySize);
@@ -146,11 +141,7 @@ OA_HASH_ENTRY* TCPIP_OAHASH_EntryLookup(OA_HASH_DCPT* pOH, const void* key)
 
         // advance to the next hash slot
         bktIx += probeStep;
-        if(bktIx < 0)
-        {
-            bktIx += pOH->hEntries;
-        }
-        else if(bktIx >= pOH->hEntries)
+        if(bktIx >= pOH->hEntries)
         {
             bktIx -= pOH->hEntries;
         }
@@ -261,6 +252,29 @@ OA_HASH_ENTRY* TCPIP_OAHASH_EntryGet(OA_HASH_DCPT* pOH, size_t entryIx)
     return 0;
 }
 
+int32_t TCPIP_OAHASH_EntryGetIndex(OA_HASH_DCPT* pOH, OA_HASH_ENTRY* pHe)
+{
+    if(pOH != 0 && pHe != 0)
+    {
+        OA_HASH_ENTRY   *pStartBkt, *pEndBkt, *pBkt;
+
+        pStartBkt = (OA_HASH_ENTRY*)pOH->memBlk;
+        pEndBkt = (OA_HASH_ENTRY*)((uint8_t*)pOH->memBlk + pOH->hEntries * pOH->hEntrySize);
+
+        if(pStartBkt <= pHe && pHe < pEndBkt)
+        {
+            size_t entryIx = ((uint8_t*)pHe - (uint8_t*)pStartBkt) / pOH->hEntrySize;
+            pBkt = (OA_HASH_ENTRY*)((uint8_t*)pStartBkt + entryIx * pOH->hEntrySize);
+            if(pBkt == pHe)
+            {
+                return (int32_t)entryIx;
+            }
+        } 
+    }
+
+    return -1;
+}
+
 // implementation
 
 // finds a entry that either contains the desired key
@@ -279,11 +293,6 @@ static OA_HASH_ENTRY* _OAHashFindBkt(OA_HASH_DCPT* pOH, const void* key)
     bktIx = TCPIP_OAHASH_KeyHash(pOH, key);
 #endif  // defined ( OA_HASH_DYNAMIC_KEY_MANIPULATION )
 
-    if(bktIx < 0)
-    {
-        bktIx += pOH->hEntries;
-    }
-    
     while(bkts < pOH->hEntries)
     {
         pBkt = (OA_HASH_ENTRY*)((uint8_t*)(pOH->memBlk) + bktIx * pOH->hEntrySize);
@@ -313,11 +322,7 @@ static OA_HASH_ENTRY* _OAHashFindBkt(OA_HASH_DCPT* pOH, const void* key)
 
         // advance to the next hash slot
         bktIx += probeStep;
-        if(bktIx < 0)
-        {
-            bktIx += pOH->hEntries;
-        }
-        else if(bktIx >= pOH->hEntries)
+        if(bktIx >= pOH->hEntries)
         {
             bktIx -= pOH->hEntries;
         }

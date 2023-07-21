@@ -23,18 +23,24 @@
 
 ### Purpose
 
-The ADCHS Polled example code has been modified with Digital filtering functions to enable a very accurate analog reading for application such as Battery Voltage Measurement.
+The ADCHS Polled example code has been used with Digital filtering functions to enable a very accurate analog reading for application such as Battery Voltage Measurement.
 
-In this sample code, the ADC channel AN9 has been used because it is easily available on the MikroBUS Header or on the Xpro Header of the PIC32WFI32E Curiosity Board.
+In this sample code, the ADC channel AN15 has been used because it is easily available on the jumper Header(J209) of the PIC32WFI32E Curiosity Board.
 <p align="center">
-<img src="resources/media/01_an9_xpro_header.png" width=720>
+<img src="resources/media/01_an9_xpro_header_00.png" width=720>
 </p>
+<p align="center">
+<img src="resources/media/01_an9_xpro_header_01.png" width=720>
+</p>
+[Example avaialable here] (https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1/tree/master/apps/adchs/adchs_polled/firmware/pic32mz_w1_curiosity.X). 
 
 To reduce the noise of the measurement and get a stable 12-bit ADC, two digital filtering techniques have been implemented in the code.
 
-* Introduction of a Lowpass filter for DC interpolation
-  - The Lowpass filter is the easiest to implement and it is adjustable.
-  - But, because the Tau is very long (to block the noise as much as possible ), it has the disadvantage of long time sampling before getting the conversion result (about 10 to 20 seconds). To avoid such delay, a +/-20mV barrier was introduced. Any change outside this barrier will lead to load the actual input into the filter taps. And only when the difference between input and output is less than 20mV, the filter is used. The filter reaches its final value much faster but still strongly lowpasses/average/interpolate the result.
+ <!---
+ * Introduction of a Lowpass filter for DC interpolation
+ 
+ - The Lowpass filter is the easiest to implement and it is adjustable.
+ - But, because the Tau is very long (to block the noise as much as possible ), it has the disadvantage of long time sampling before getting the conversion result (about 10 to 20 seconds). To avoid such delay, a +/-20mV barrier was introduced. Any change outside this barrier will lead to load the actual input into the filter taps. And only when the difference between input and output is less than 20mV, the filter is used. The filter reaches its final value much faster but still strongly lowpasses/average/interpolate the result. 
 
 * Introduction of a 3rd order polynom to compensate Gain and Offset error
   - To find the coefficients of the Polynom, the program [Scilab](https://www.scilab.org/) has been used.
@@ -47,17 +53,22 @@ To reduce the noise of the measurement and get a stable 12-bit ADC, two digital 
 </p>
 
 With the two actions above, it is possible to achieve an accuracy of 1mV within less a second. 
-
+-->
 ### Try it
 
-1. Clone/download the repo
-1. Extract the file `adchs_polled_with_filtering.zip` located in `PIC32MZW1_Workshop/07_projects/resources/software/`
+1. Clone/download the repo [csp_apps_pic32mz_w1](https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1/)
+1. Project will be avaiable at `<HarmonyFramework>/csp_apps_pic32mz_w1/tree/master/apps/adchs/adchs_polled/firmware/pic32mz_w1_curiosity.
 1. Open the project with MPLAB X IDE
 1. Build and program the code
-1. Connect a 3.3V battery to AN9 channel
+1. Disconnect the jumper J209 connection.
+1. Connect the jumper J209 pin 2 to GPIO header(J207) pin 15 to supply +3.3V.
 1. Observe the result on the console
 
 ```bash
+-----------------------------------------------
+               ADC Sample Demo
+-----------------------------------------------
+
 ADC Count = 0xfff, ADC Input Voltage = 3.231248 V
 ```
 
@@ -91,14 +102,14 @@ QT7 uses one slider and two touch buttons
 | --- | --- | --- | --- |
 | 1 | ID | - | - |
 | 2 | GND | - | - |
-| 3 | Y-LINE-5 | Driven shield | RB6 (X1 in MHC) |
-| 4 | Y-LINE-1 | Button 1 Sensor | RA14 (button 0/Y14 in MHC) |
-| 5 | LED0 | LED for Slider | RB12 (LED_SLIDER_6 in MHC) |
-| 6 | LED6 | LED for Button 1 | RK6 (LED_BUTTON_1 in MHC) |
-| 7 | Y-LINE-2 | Slider Sensor | RB8 (slider 0/channel 4/Y8 in MHC) |
-| 8 | Y-LINE-3 | Slider Sensor | RA13 (slider 0/channel 3/Y15 in MHC), shared with Temp sensor) |
-| 9 | Y-LINE-4 | Slider Sensor | RA10 (slider 0/channel 2/Y17 in MHC) |
-| 10 | Y-LINE-0 | Button 2 Sensor | RB2 (button 1/Y2 in MHC) |
+| 3 | Y-LINE-5 | Driven shield | RB6 (X1 in MCC) |
+| 4 | Y-LINE-1 | Button 1 Sensor | RA14 (button 0/Y14 in MCC) |
+| 5 | LED0 | LED for Slider | RB12 (LED_SLIDER_6 in MCC) |
+| 6 | LED6 | LED for Button 1 | RK6 (LED_BUTTON_1 in MCC) |
+| 7 | Y-LINE-2 | Slider Sensor | RB8 (slider 0/channel 4/Y8 in MCC) |
+| 8 | Y-LINE-3 | Slider Sensor | RA13 (slider 0/channel 3/Y15 in MCC), shared with Temp sensor) |
+| 9 | Y-LINE-4 | Slider Sensor | RA10 (slider 0/channel 2/Y17 in MCC) |
+| 10 | Y-LINE-0 | Button 2 Sensor | RB2 (button 1/Y2 in MCC) |
 | 11 | LED7 | LED for Button 2 | RA5 (LED_BUTTON_2) |
 | 12 | LED1 | LED for Slider | RA4 (LED_SLIDER_5) |
 | 13 | NC | - | - |
@@ -124,7 +135,7 @@ QT7 uses one slider and two touch buttons
 <img src="resources/media/02_add_touch_02.png" width=320>
 </p>
 
-- Configure ADCHS component from **MHC -> Tools -> ADCHS Configuration**
+- Configure ADCHS component from **MCC -> Resource Management -> Plugins -> ADCHS Configuration**
    - Enable Shared ADC7
    - Enable ADC7 Channel
    - Make ADC Clock Source = PBCLK2
@@ -134,7 +145,7 @@ QT7 uses one slider and two touch buttons
 
 > ADCHS is required by the Touch Library for sampling the capacitive touch sensors.
 
-- Open **MHC -> Tools -> Pin Configuration** and go to **Pin Settings** tab to configure the GPIOs requested to control the LEDs of the QT7 Xpro
+- Open **MCC -> Resource Management -> Plugins -> Pin Configuration** and go to **Pin Settings** tab to configure the GPIOs requested to control the LEDs of the QT7 Xpro
   - Give a custom name as below to the following pins
   - Select Function: GPIO, Direction: Out, Latch: High for all pins below 
 
@@ -149,7 +160,7 @@ QT7 uses one slider and two touch buttons
 | B18 | RK4 | LED_SLIDER_3 | GPIO | Out | High |
 | B19 | RK5 | LED_SLIDER_2 | GPIO | Out | High |
 
-- Open **MHC -> Tools -> Touch Configurator**
+- Open **MCC -> Resource Management -> Plugins -> Touch Configurator**
 - Drop a Button sensor type
 - Add **2 buttons**
 <p align="center">
@@ -194,11 +205,11 @@ QT7 uses one slider and two touch buttons
 
 - Click **Generate Code**
 <p align="center">
-<img src="resources/media/02_generate_code.png" width=>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
-- ⚠ Make sure to use MHC version higher than v3.6.2
-- Open `initialization.c` and observe that during generation, MHC added automatically the function which initialize the touch library (`touch_init()`)
+- ⚠ Make sure to use MCC version higher than v5.3.7
+- Open `initialization.c` and observe that during generation, MCC added automatically the function which initialize the touch library (`touch_init()`)
 - Open and modify `main.c` as below
 
 ```
@@ -209,7 +220,7 @@ QT7 uses one slider and two touch buttons
 #include "touch/touch.h"
 
 extern volatile uint8_t measurement_done_touch ;
-void touch_status_display(void) ;
+void touch_statusdisplay(void) ;
 
 int main ( void )
 {
@@ -224,7 +235,7 @@ int main ( void )
         touch_process() ;
         if (measurement_done_touch == 1)
         {
-            touch_status_display() ;
+            touch_statusdisplay() ;
             measurement_done_touch = 0 ;
         }
     }
@@ -232,7 +243,7 @@ int main ( void )
     return ( EXIT_FAILURE );
 }
 
-void touch_status_display()
+void touch_statusdisplay()
 {
     uint8_t key_status = 0 ;
     uint8_t  scroller_status = 0 ;
@@ -322,7 +333,7 @@ Use USB Power connector (J204) to print application logs in a console.
 <img src="resources/media/03_setup.png" width=480>
 </p>
 
-### MHC Setup
+### MCC Setup
 
 - Create a 32-bit Harmony project for PIC32MZW1 device
 - Open Harmony Configurator
@@ -337,23 +348,23 @@ Use USB Power connector (J204) to print application logs in a console.
 - Make the **USB_DEVICE_CDC** connection between the **CDC Function Driver** and the **CONSOLE** blocks
 
 <p align="center">
-<img src="resources/media/03_mhc_01.png" width=720>
+<img src="resources/media/03_mcc_01.png" width=720>
 </p>
 
 - Configure **USB Device Layer** component with Product ID Selection = **cdc_com_port_single_demo**
 <p align="center">
-<img src="resources/media/03_mhc_02.png" width=480>
+<img src="resources/media/03_mcc_02.png" width=480>
 </p>
 
-- Open **MHC/Tools/Clock Configurator** and enable **USB PLL** to get USBCLK = 96 MHz
+- Open **MCC -> Resource Management -> Plugins -> Clock Configurator** and enable **USB PLL** to get USBCLK = 96 MHz
 <p align="center">
-<img src="resources/media/03_mhc_03.png" width=720>
+<img src="resources/media/03_mcc_03.png" width=720>
 </p>
 
-- Open **Pin Settings** in **MHC/Tools/Pin Configurator**
+- Open **Pin Settings** in **MCC -> Resource Management -> Plugins -> Pin Configurator**
 - Set **Change Notification** Interrupt for the pin RA10/SWITCH1
 <p align="center">
-<img src="resources/media/03_mhc_04.png" width=720>
+<img src="resources/media/03_mcc_04.png" width=720>
 </p>
 
 - Click **Generate Code**
@@ -497,7 +508,7 @@ This demo is using a [Nest WiFi](https://store.google.com/product/nest_wifi) Rou
 Make sure the router has WPA3 option ENABLED.
 
 
-### MHC Configuration
+### MCC Configuration
 
 To showcase WPA3 features with [WFI32 Curiosity Board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV12F11A), make sure the following items are correctly configured in Harmony Configurator of the project.
 
@@ -505,7 +516,7 @@ Project Graph - Root
 * Wi-Fi Service, Wi-Fi provisioning are both required
 
 <p align="center">
-<img src="resources/media/06_mhc_03.png" width=>
+<img src="resources/media/06_mcc_03.png" width=>
 </p>
 
 * FreeRTOS is required
@@ -514,20 +525,24 @@ Project Graph - System Component
 * **Support WPA3?** is checked
 * And BA414E Cryptographic Accelerator is linked to PIC32MZW1
 <p align="center">
-<img src="resources/media/06_mhc_04.png" width=480>
+<img src="resources/media/06_mcc_04.png" width=480>
 </p>
 
-* Configure the Home AP credentials using MHC or using WiFi Provisioning System Service
+* Please verify below configuration if you are regenerating the project using MCC
+   > - For FreeRTOS WPA3 project change the PIC32MZW1 (Wi-Fi driver) task size to 4096.<br>
+   > - In the file  '<HarmonyFramework>/wireless_system_pic32mzw1_wfi32e01\system\wifi\templates\src\sys_wifi.c.ftl' replace the drvWifiPic32mzw1.DRV_WIFI_PIC32MZW1_SUPPORT_WPA3 with drvWifiPic32mzw1.DRV_WIFI_PIC32MZW1_SUPPORT_SAE in 
+* Configure the Home AP credentials using MCC or using WiFi Provisioning System Service
 <p align="center">
-<img src="resources/media/06_mhc_provision.png" width=720>
+<img src="resources/media/06_mcc_provision.png" width=720>
 </p>
 
 ### Try it
 
 1. Open the project [WiFi Easy Config](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32mzw1_wfi32e01/tree/master/apps/wifi_easy_config) located in `<HarmonyFrameworkFolder>/wireless_app_pic32mzw1_wfi32e01/wifi_easy_config` with MPLAB X IDE
 1. Build and program the code
-1. Provision your device as a STATION using MHC or using the [WiFi Provisioning System Service](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/readme.html)
+1. Provision your device as a STATION using MCC or using the [WiFi Provisioning System Service](https://microchip-mplab-harmony.github.io/wireless/system/wifiprov/docs/readme.html)
 1. The [Wi-Fi service](https://microchip-mplab-harmony.github.io/wireless/system/wifi/docs/readme.html) will use the credentials along with WPA3 security to connect to the Home AP and acquire an IP address
+1. 
 
 <p align="center">
 <img src="resources/media/06_wpa3_light.gif" width=480>
@@ -545,7 +560,7 @@ Checkout [here](https://microchipsupport.force.com/s/article/Memory-utilization-
 
 As a example, let's take the [PIC32MZW1 Curiosity OoB](https://github.com/MicrochipTech/PIC32MZW1_Curiosity_OOB/releases/tag/v2.0.0-RC1) code as reference, and compare the different code size generated using XC32 compiler v3.01 and different compiler options.
 
-| Optimization level | microMIPS enabled | Additional options | Result |
+| Optimization level | microMIPS enabled | Additional options | Example size details |
 | ------------------ | ----------------- | ------------------ | ------ |
 | -O1 | No | _ | <img src="resources/media/11_o1_optimization_result.png" width=320> |
 | -Os | No | _ | <img src="resources/media/11_os_optimization_result.png" width=320> |

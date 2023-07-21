@@ -334,7 +334,7 @@ bool            TCPIP_ARP_HandlerDeRegister(TCPIP_ARP_HANDLE hArp);
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_Resolve(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr)
+    TCPIP_ARP_RESULT TCPIP_ARP_Resolve(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* IPAddr)
 
    Summary:
     Transmits an ARP request to resolve an IP address.
@@ -368,13 +368,13 @@ bool            TCPIP_ARP_HandlerDeRegister(TCPIP_ARP_HANDLE hArp);
     To retrieve the ARP query result, call the TCPIP_ARP_IsResolved function.
 	
 */
-TCPIP_ARP_RESULT      TCPIP_ARP_Resolve(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr);
+TCPIP_ARP_RESULT      TCPIP_ARP_Resolve(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* IPAddr);
 
 
 // *****************************************************************************
 /*
   Function:
-    bool TCPIP_ARP_IsResolved(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr, TCPIP_MAC_ADDR* MACAddr)
+    bool TCPIP_ARP_IsResolved(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* IPAddr, TCPIP_MAC_ADDR* MACAddr)
 
   Summary:
     Determines if an ARP request has been resolved yet.
@@ -396,22 +396,22 @@ TCPIP_ARP_RESULT      TCPIP_ARP_Resolve(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr
   Return Values:
     - true - The IP address has been resolved and MACAddr MAC address field
              indicates the response.
-    - false - The IP address is not yet resolved.  Try calling TCPIP_ARP_IsResolved
-              again at a later time.  If you don't get a response after an application 
-			  specific time-out period, you may want to call TCPIP_ARP_Resolve again 
-			  to transmit another ARP query (in case if the original query or response 
-			  was lost on the network).  If you never receive an ARP response, this 
-			  may indicate that the IP address isn't in use.
+    - false - The IP address is not resolved or a bad parameter was supplied.
+              Try calling TCPIP_ARP_IsResolved again at a later time.
+              If you don't get a response after an application specific time-out period,
+              you may want to call TCPIP_ARP_Resolve again to transmit another ARP query
+              (in case if the original query or response was lost on the network).
+              If you never receive an ARP response, this may indicate that the IP address isn't in use.
 
   Remarks:
     None.
 */
-bool            TCPIP_ARP_IsResolved(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr, TCPIP_MAC_ADDR* MACAddr);
+bool            TCPIP_ARP_IsResolved(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* IPAddr, TCPIP_MAC_ADDR* MACAddr);
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_Probe(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr, 
-	                      IPV4_ADDR* srcAddr, TCPIP_ARP_OPERATION_TYPE opType)
+    TCPIP_ARP_RESULT TCPIP_ARP_Probe(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* IPAddr, 
+	                      const IPV4_ADDR* srcAddr, TCPIP_ARP_OPERATION_TYPE opType)
 
    Summary:
     Transmits an ARP probe to resolve an IP address.
@@ -453,8 +453,8 @@ bool            TCPIP_ARP_IsResolved(TCPIP_NET_HANDLE hNet, IPV4_ADDR* IPAddr, T
     To retrieve the ARP query result, call the TCPIP_ARP_IsResolved function.
 */
 TCPIP_ARP_RESULT TCPIP_ARP_Probe(TCPIP_NET_HANDLE hNet
-                    , IPV4_ADDR* IPAddr
-                    , IPV4_ADDR* srcAddr
+                    , const IPV4_ADDR* IPAddr
+                    , const IPV4_ADDR* srcAddr
                     , TCPIP_ARP_OPERATION_TYPE opType);
 
 // *****************************************************************************
@@ -465,8 +465,8 @@ TCPIP_ARP_RESULT TCPIP_ARP_Probe(TCPIP_NET_HANDLE hNet
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_EntrySet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
-	                                    TCPIP_MAC_ADDR* hwAdd, bool perm)
+    TCPIP_ARP_RESULT TCPIP_ARP_EntrySet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
+	                                    const TCPIP_MAC_ADDR* hwAdd, bool perm)
 
    Summary:
     Adds an ARP cache entry for the specified interface.
@@ -494,13 +494,13 @@ TCPIP_ARP_RESULT TCPIP_ARP_Probe(TCPIP_NET_HANDLE hNet
    Remarks:
     None.
 */
-TCPIP_ARP_RESULT      TCPIP_ARP_EntrySet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
-                                         TCPIP_MAC_ADDR* hwAdd, bool perm);
+TCPIP_ARP_RESULT      TCPIP_ARP_EntrySet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
+                                         const TCPIP_MAC_ADDR* hwAdd, bool perm);
 
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_EntryGet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
+    TCPIP_ARP_RESULT TCPIP_ARP_EntryGet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
 	                                    TCPIP_MAC_ADDR* pHwAdd, bool probe)
 
    Summary:
@@ -537,19 +537,21 @@ TCPIP_ARP_RESULT      TCPIP_ARP_EntrySet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd
                                  was added (and queued for resolving)
     - ARP_RES_CACHE_FULL       - if new entry could not be inserted,
                                  the cache was full
+    - ARP_RES_NO_ENTRY         - no such address found in cache
     - ARP_RES_BAD_ADDRESS      - bad address specified
     - ARP_RES_NO_INTERFACE     - no such interface
+    - ARP_RES_CONFIGURE_ERR    - interface not ready yet
 
   Remarks:
     Similar to TCPIP_ARP_Resolve + TCPIP_ARP_IsResolved, it avoids a double hash 
 	search when the mapping exists.
 */
-TCPIP_ARP_RESULT      TCPIP_ARP_EntryGet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
+TCPIP_ARP_RESULT      TCPIP_ARP_EntryGet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
                                          TCPIP_MAC_ADDR* pHwAdd, bool probe);
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_EntryRemove(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd);
+    TCPIP_ARP_RESULT TCPIP_ARP_EntryRemove(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd);
 
    Summary:
     Removes the mapping of an address, even a permanent one
@@ -573,7 +575,7 @@ TCPIP_ARP_RESULT      TCPIP_ARP_EntryGet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd
   Remarks:
     None.
 */
-TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemove(TCPIP_NET_HANDLE hNet,  IPV4_ADDR* ipAdd);
+TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemove(TCPIP_NET_HANDLE hNet,  const IPV4_ADDR* ipAdd);
 
 
 // *****************************************************************************
@@ -605,8 +607,8 @@ TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemoveAll(TCPIP_NET_HANDLE hNet);
 
 // *****************************************************************************
 /* Function:
-    TCPIP_ARP_RESULT TCPIP_ARP_EntryRemoveNet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
-	                                       IPV4_ADDR* mask, TCPIP_ARP_ENTRY_TYPE type)
+    TCPIP_ARP_RESULT TCPIP_ARP_EntryRemoveNet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
+	                                       const IPV4_ADDR* mask, TCPIP_ARP_ENTRY_TYPE type)
 
    Summary:
     Removes all the entries belonging to a network interface.
@@ -639,8 +641,8 @@ TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemoveAll(TCPIP_NET_HANDLE hNet);
    Remarks:
     None.
 */
-TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemoveNet(TCPIP_NET_HANDLE hNet, IPV4_ADDR* ipAdd, 
-                                          IPV4_ADDR* mask , TCPIP_ARP_ENTRY_TYPE type);
+TCPIP_ARP_RESULT      TCPIP_ARP_EntryRemoveNet(TCPIP_NET_HANDLE hNet, const IPV4_ADDR* ipAdd, 
+                                          const IPV4_ADDR* mask , TCPIP_ARP_ENTRY_TYPE type);
 
 // *****************************************************************************
 /* Function:

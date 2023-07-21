@@ -224,7 +224,7 @@ static bool SYS_FS_GetDisk
 
             if (pathLength)
             {
-                strncpy((char *)buffer, (const char *)ptr, pathLength);
+                memcpy((char *)buffer, (const char *)ptr, pathLength);
                 pathLength ++;
             }
 
@@ -422,13 +422,19 @@ void SYS_FS_Tasks ( void )
     There is no mechanism available for the application to know if the
     specified volume (devName) is really attached or not. The only available
     possibility is to keep trying to mount the volume (with the devname), until
-    success is achieved.
+    success is achieved or use the Automount feature.
 
     It is prudent that the application code implements a time-out mechanism
     while trying to mount a volume (by calling SYS_FS_Mount). The trial for
     mount should continue at least 10 times before before assuming that the
     mount will never succeed. This has to be done for every new volume to be
     mounted.
+
+    Once the mount is successful the application needs to use SYS_FS_Error()
+    API to know if the mount was successful with valid filesystem on media
+    or not. If SYS_FS_ERROR_NO_FILESYSTEM is returned application needs to
+    Format the media using the SYS_FS_DriveFormat() API before performing 
+    any operations.
 
     The standard names for volumes (devName) used in the MPLAB Harmony file
     system is as follows:
@@ -484,8 +490,9 @@ SYS_FS_RESULT SYS_FS_Mount
 
     (void)mountflags;
     (void)data;
+
     /* Validate the parameters. */
-    if ((devName == NULL) || (mountName == NULL) || ((filesystemtype != FAT) && (filesystemtype != MPFS2)))
+    if ((devName == NULL) || (mountName == NULL) || ((filesystemtype != FAT) && (filesystemtype != MPFS2) && (filesystemtype != LITTLEFS)))
     {
         errorValue = SYS_FS_ERROR_INVALID_PARAMETER;
         return SYS_FS_RES_FAILURE;
@@ -603,7 +610,6 @@ SYS_FS_RESULT SYS_FS_Mount
     {
         fileStatus = disk->fsFunctions->mount(disk->diskNumber);
         errorValue = (SYS_FS_ERROR)fileStatus;
-
         if (fileStatus == SYS_FS_ERROR_NO_FILESYSTEM)
         {
             fileStatus = 0;
@@ -849,9 +855,11 @@ SYS_FS_HANDLE SYS_FS_FileOpen
     mode = (uint8_t)attributes;
 
     errorValue = SYS_FS_ERROR_OK;
+
     if (disk->fsFunctions->open != NULL)
     {
         fileStatus = disk->fsFunctions->open((uintptr_t)&fileObj->nativeFSFileObj, (const char *)pathWithDiskNo, mode);
+
         errorValue = (SYS_FS_ERROR)fileStatus;
     }
     else
@@ -1875,7 +1883,6 @@ SYS_FS_RESULT SYS_FS_DirSearch
     SYS_FS_DIR_OBJ *fileObj = (SYS_FS_DIR_OBJ *)handle;
     char *fileName = NULL;
     OSAL_RESULT osalResult = OSAL_RESULT_FALSE;
-
     if ((handle == SYS_FS_HANDLE_INVALID) || (name == NULL) || (stat == NULL))
     {
         errorValue = SYS_FS_ERROR_INVALID_PARAMETER;
@@ -1932,7 +1939,7 @@ SYS_FS_RESULT SYS_FS_DirSearch
         }
 
         /* Firstly, match the file attribute with the requested attribute */
-        if ((stat->fattrib & attr) ||
+		if ((stat->fattrib & attr) ||
             (attr == SYS_FS_ATTR_FILE))
         {
             if((stat->lfname != NULL) && (stat->lfname[0] != '\0'))
@@ -2196,8 +2203,9 @@ SYS_FS_RESULT SYS_FS_DriveLabelSet
 SYS_FS_RESULT SYS_FS_DriveFormat
 (
     const char* drive,
-    SYS_FS_FORMAT fmt,
-    uint32_t clusterSize
+    const SYS_FS_FORMAT_PARAM* opt,
+    void* work,
+    uint32_t len
 )
 {
     /* The write operation is not supported by the Native FS. */
@@ -2296,7 +2304,7 @@ SYS_FS_RESULT SYS_FS_CurrentDriveGet
     }
 
     strcpy(buffer, "/mnt/");
-    strncpy(buffer + 5, gSYSFSCurrentMountPoint.currentDisk->mountName, gSYSFSCurrentMountPoint.currentDisk->mountNameLength);
+    memcpy(buffer + 5, gSYSFSCurrentMountPoint.currentDisk->mountName, gSYSFSCurrentMountPoint.currentDisk->mountNameLength);
 
     return SYS_FS_RES_SUCCESS;
 }

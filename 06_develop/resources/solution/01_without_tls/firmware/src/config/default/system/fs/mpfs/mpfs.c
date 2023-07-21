@@ -55,6 +55,12 @@
   Section: Module-Only Globals and Functions
   ***************************************************************************/
 
+#include "sys/kmem.h"
+
+#define CACHE_ALIGN_CHECK  (CACHE_LINE_SIZE - 1)
+
+uint8_t CACHE_ALIGN mpfsAlignedBuffer[CACHE_LINE_SIZE] __ALIGNED(CACHE_LINE_SIZE);
+
 /* Array of File Objects. */
 static MPFS_FILE_OBJ CACHE_ALIGN gSysMpfsFileObj[SYS_FS_MAX_FILES];
 
@@ -162,7 +168,7 @@ static int MPFSFindFile
     uint8_t *ptr = NULL;
     int32_t index = 0;
     uint16_t hash = 0;
-    static uint16_t CACHE_ALIGN hashBuffer[CACHE_LINE_SIZE] = {0};
+    static uint16_t CACHE_ALIGN hashBuffer[32] = {0};
     static uint8_t CACHE_ALIGN fileName[(SYS_FS_FILE_NAME_LEN + ((SYS_FS_FILE_NAME_LEN%CACHE_LINE_SIZE)? (CACHE_LINE_SIZE - (SYS_FS_FILE_NAME_LEN%CACHE_LINE_SIZE)) : 0))];
 
     /* Calculate the hash value for the file name. */
@@ -217,7 +223,7 @@ static int MPFSFindFile
     return -1;
 }
 
-static bool MPFSDiskRead
+static bool MPFSDiskReadAligned
 (
     uint16_t diskNum,
     uint8_t *destination,
@@ -225,26 +231,106 @@ static bool MPFSDiskRead
     const uint32_t nBytes
 )
 {
-    SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE commandHandle = SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE_INVALID;
+	SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE commandHandle = SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE_INVALID;
     SYS_FS_MEDIA_COMMAND_STATUS commandStatus = SYS_FS_MEDIA_COMMAND_UNKNOWN;
+	
+	commandHandle = SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE_INVALID;
+	commandStatus = SYS_FS_MEDIA_COMMAND_IN_PROGRESS;
 
-    commandHandle = SYS_FS_MEDIA_MANAGER_Read (diskNum, destination, source, nBytes);
+	commandHandle = SYS_FS_MEDIA_MANAGER_Read (diskNum, destination, source, nBytes);
 
-    if (commandHandle == SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE_INVALID)
-    {
-        return false;
+	if (commandHandle == SYS_FS_MEDIA_BLOCK_COMMAND_HANDLE_INVALID)
+	{
+		return false;
+	}
+
+	commandStatus = SYS_FS_MEDIA_MANAGER_CommandStatusGet(diskNum, commandHandle);
+
+	while ( (commandStatus == SYS_FS_MEDIA_COMMAND_IN_PROGRESS) ||
+			(commandStatus == SYS_FS_MEDIA_COMMAND_QUEUED))
+	{
+		SYS_FS_MEDIA_MANAGER_TransferTask (diskNum);
+		commandStatus = SYS_FS_MEDIA_MANAGER_CommandStatusGet(diskNum, commandHandle);
+	}
+
+	if (commandStatus != SYS_FS_MEDIA_COMMAND_COMPLETED)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+static bool MPFSDiskRead
+(
+    uint16_t diskNum,
+    uint8_t *destination,
+    uint8_t *source,
+    const uint32_t nBytes
+)
+{    
+    uint32_t nBytesPending = nBytes;
+	uint32_t nBytesRead = 0;
+	uint32_t nReadChunk = 0;
+
+    /* Use Aligned Buffer if input buffer is in Cacheable address space and
+     * is not aligned to cache line size OR if the input buffer is in Cacheable address and the size is not a multiple of cache line */
+    if (((IS_KVA0((uint8_t *)destination) == true) && (((uint32_t)destination & CACHE_ALIGN_CHECK) != 0)) ||
+       ((IS_KVA0((uint8_t *)destination) == true) && ((nBytes & CACHE_ALIGN_CHECK) != 0)))
+    {        		
+		/* First, copy data till the destination address becomes aligned to cache line */
+		if ((((uint32_t)destination) & CACHE_ALIGN_CHECK) != 0)
+		{
+			nReadChunk = CACHE_LINE_SIZE - ((uint32_t)destination & CACHE_ALIGN_CHECK);
+			
+			nReadChunk = nReadChunk > nBytesPending ? nBytesPending : nReadChunk;
+			
+			if (MPFSDiskReadAligned(diskNum,  mpfsAlignedBuffer, source, nReadChunk) == false)
+			{
+				return false;
+			}
+			/* Copy the received data from aligned buffer to actual buffer */
+			memcpy(destination, mpfsAlignedBuffer, nReadChunk);		
+		}	
+		
+		nBytesRead += nReadChunk;
+		source += nReadChunk;
+		nBytesPending -= nReadChunk;
+		
+		nReadChunk = nBytesPending - (nBytesPending & CACHE_ALIGN_CHECK);
+		
+		if (nReadChunk > 0)
+		{
+			/* As the destination is aligned now, and nReadChunk is a multiple of CACHE_LINE_SIZE, read directly into actual buffer */
+			if (MPFSDiskReadAligned(diskNum, &destination[nBytesRead], source, nReadChunk) == false)
+			{
+				return false;
+			}
+		}
+		
+		nBytesRead += nReadChunk;
+		source += nReadChunk;
+		nBytesPending -= nReadChunk;
+		
+		/* Lastly, read the pending bytes */
+		if (nBytesPending > 0)
+		{
+			if (MPFSDiskReadAligned(diskNum,  mpfsAlignedBuffer, source, nBytesPending) == false)
+			{
+				return false;
+			}
+			/* Copy the received data from aligned buffer to actual buffer */
+			memcpy(&destination[nBytesRead], mpfsAlignedBuffer, nBytesPending);								
+		}
+
+		return true;
     }
-
-    commandStatus = SYS_FS_MEDIA_MANAGER_CommandStatusGet(diskNum, commandHandle);
-
-    while ( (commandStatus == SYS_FS_MEDIA_COMMAND_IN_PROGRESS) ||
-            (commandStatus == SYS_FS_MEDIA_COMMAND_QUEUED))
+    else
     {
-        SYS_FS_MEDIA_MANAGER_TransferTask (diskNum);
-        commandStatus = SYS_FS_MEDIA_MANAGER_CommandStatusGet(diskNum, commandHandle);
+		return MPFSDiskReadAligned(diskNum, destination, source, nBytes);        
     }
-
-    return (commandStatus == SYS_FS_MEDIA_COMMAND_COMPLETED) ? true : false;
 }
 
 /* Wrapper for the MPFSDiskRead (). */
@@ -574,7 +660,7 @@ int MPFS_Stat
             else
             {
                 /* Populate the file details. */
-                strncpy (stat->lfname, file, fileLen);
+                memcpy (stat->lfname, file, fileLen);
                 stat->lfname[fileLen] = '\0';
             }
         }
@@ -586,7 +672,7 @@ int MPFS_Stat
         }
 
         /* Populate the file details. */
-        strncpy (stat->fname, file, fileLen);
+        memcpy (stat->fname, file, fileLen);
         stat->fname[fileLen] = '\0';
 
         stat->fattrib = fileRecord.flags;
@@ -749,7 +835,7 @@ int MPFS_DirRead
             else
             {
                 /* Populate the file details. */
-                strncpy (stat->lfname, (const char *)fileName, fileLen);
+                memcpy (stat->lfname, (const char *)fileName, fileLen);
                 stat->lfname[fileLen] = '\0';
             }
         }
@@ -760,7 +846,7 @@ int MPFS_DirRead
         }
 
         /* Populate the file details. */
-        strncpy (stat->fname, (const char *)fileName, fileLen);
+        memcpy (stat->fname, (const char *)fileName, fileLen);
         stat->fname[fileLen] = '\0';
 
         stat->fattrib = fileRecord.flags;

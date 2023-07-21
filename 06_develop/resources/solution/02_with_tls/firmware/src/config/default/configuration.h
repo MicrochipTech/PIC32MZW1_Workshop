@@ -56,7 +56,7 @@
 */
 
 #include "user.h"
-#include "toolchain_specifics.h"
+#include "device.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -117,6 +117,11 @@ extern "C" {
 
 
 
+
+#define SYS_NET_SUPP_INTF_WIFI_ONLY
+#define SYS_NET_SUPP_NUM_OF_SOCKS        		2
+
+#define SYS_NET_INDEX0_INTF       				SYS_NET_INTF_WIFI
 #define SYS_NET_INDEX0_MODE       				SYS_NET_MODE_CLIENT
 #define SYS_NET_INDEX0_PORT        				1
 #define SYS_NET_INDEX0_RECONNECT       			1
@@ -124,7 +129,14 @@ extern "C" {
 #define SYS_NET_INDEX0_IPPROT       			SYS_NET_IP_PROT_TCP
 #define SYS_NET_INDEX0_HOST_NAME        		"192.168.1.1"
 
+
+
 #define SYS_NET_TLS_ENABLED
+#define WOLFSSL_TLS13_NO_PEEK_HANDSHAKE_DONE
+#define SYS_NET_TLS_CERT_VERIFY_ENABLED
+
+
+#define SYS_NET_CLICMD_ENABLED
 
 
 
@@ -134,13 +146,17 @@ extern "C" {
 #define SYS_MQTT_INDEX0_BROKER_NAME        				"test.mosquitto.org"
 #define SYS_MQTT_INDEX0_ENABLE_TLS        				true
 #define SYS_MQTT_INDEX0_RECONNECT        				true
+#define SYS_MQTT_INDEX0_CLEAN_SESSION					true
 #define SYS_MQTT_INDEX0_CLIENT_ID        				""
 #define SYS_MQTT_INDEX0_KEEPALIVE_INTERVAL 				60
+#define SYS_MQTT_INDEX0_MQTT_INTF        				SYS_MQTT_INTF_WIFI
 
 #define SYS_MQTT_INDEX0_SUB_QOS							1
 #define SYS_MQTT_INDEX0_SUB_TOPIC_COUNT					1
 #define SYS_MQTT_INDEX0_TOPIC_NAME        				"pic32mz_w1/actuator"
 #define SYS_MQTT_INDEX0_ENTRY_VALID        				true
+
+#define SYS_MQTT_CLICMD_ENABLED
 
 
 #define SYS_MQTT_DEF_PUB_TOPIC_NAME							"pic32mz_w1/sensor"
@@ -187,7 +203,8 @@ extern "C" {
 #define DRV_MEMORY_INDEX_0                   0
 #define DRV_MEMORY_CLIENTS_NUMBER_IDX0       1
 #define DRV_MEMORY_DEVICE_START_ADDRESS      0x90010000
-#define DRV_MEMORY_DEVICE_MEDIA_SIZE         64UL
+#define DRV_MEMORY_DEVICE_MEDIA_SIZE         32UL
+#define DRV_MEMORY_DEVICE_MEDIA_SIZE_BYTES   (DRV_MEMORY_DEVICE_MEDIA_SIZE * 1024)
 #define DRV_MEMORY_DEVICE_PROGRAM_SIZE       1024
 #define DRV_MEMORY_DEVICE_ERASE_SIZE         4096
 
@@ -197,8 +214,9 @@ extern "C" {
 #define DRV_MEMORY_RTOS_DELAY_IDX0                         10
 
 /*** WiFi PIC32MZW1 Driver Configuration ***/
-#define WDRV_PIC32MZW_DEBUG_LEVEL               WDRV_PIC32MZW_DEBUG_TYPE_TRACE
-
+#define WDRV_PIC32MZW1_DEVICE_USE_SYS_DEBUG
+#define WDRV_PIC32MZW_ALARM_PERIOD_1MS          0
+#define WDRV_PIC32MZW_ALARM_PERIOD_MAX          0
 
 
 // *****************************************************************************
@@ -213,9 +231,10 @@ extern "C" {
 
 /*** ICMPv4 Client Configuration ***/
 #define TCPIP_STACK_USE_ICMP_CLIENT
-#define TCPIP_ICMP_CLIENT_USER_NOTIFICATION   true
-#define TCPIP_ICMP_ECHO_REQUEST_TIMEOUT       500
-#define TCPIP_ICMP_TASK_TICK_RATE             33
+#define TCPIP_ICMP_ECHO_REQUEST_TIMEOUT        500
+#define TCPIP_ICMP_TASK_TICK_RATE              33
+#define TCPIP_STACK_MAX_CLIENT_ECHO_REQUESTS   4
+#define TCPIP_ICMP_COMMAND_ENABLE              false
 
 /******************************************************************************/
 /*wolfSSL TLS Layer Configuration*/
@@ -233,34 +252,13 @@ extern "C" {
 #define WOLFSSL_USER_IO
 #define NO_WRITEV
 #define MICROCHIP_TCPIP
-
-    
 #define HAVE_FFDHE_2048
-    
-
 #define NO_PWDBASED
-
-#define WOLFSSL_TLS13
 #define HAVE_TLS_EXTENSIONS
+#define WOLFSSL_TLS13
 #define HAVE_SUPPORTED_CURVES
-
-    
-
-
-     
-    
-    
-    
-    
-
-    
 #define NO_OLD_TLS
-    
 #define USE_FAST_MATH
-    
-    
-    
-   
 
 
 /*** TCP Configuration ***/
@@ -284,6 +282,7 @@ extern "C" {
 #define TCPIP_TCP_QUIET_TIME		        	    0
 #define TCPIP_TCP_COMMANDS   false
 #define TCPIP_TCP_EXTERN_PACKET_PROCESS   false
+#define TCPIP_TCP_DISABLE_CRYPTO_USAGE		        	    false
 
 
 
@@ -298,8 +297,9 @@ extern "C" {
 #define TCPIP_ARP_CACHE_PURGE_QUANTA		    		1
 #define TCPIP_ARP_CACHE_ENTRY_RETRIES		    		3
 #define TCPIP_ARP_GRATUITOUS_PROBE_COUNT			1
-#define TCPIP_ARP_TASK_PROCESS_RATE		        	2
+#define TCPIP_ARP_TASK_PROCESS_RATE		        	2000
 #define TCPIP_ARP_PRIMARY_CACHE_ONLY		        	true
+#define TCPIP_ARP_COMMANDS false
 
 
 
@@ -326,7 +326,14 @@ extern "C" {
 
 
 /*** IPv4 Configuration ***/
+#define TCPIP_IPV4_ARP_SLOTS                        10
 #define TCPIP_IPV4_EXTERN_PACKET_PROCESS   false
+
+#define TCPIP_IPV4_COMMANDS false
+
+#define TCPIP_IPV4_FORWARDING_ENABLE    false 
+
+
 
 
 
@@ -342,19 +349,30 @@ extern "C" {
 #define TCPIP_UDP_EXTERN_PACKET_PROCESS   false
 
 
+/* MPLAB Harmony Net Presentation Layer Definitions*/
+#define NET_PRES_NUM_INSTANCE 1
+#define NET_PRES_NUM_SOCKETS 10
+
+/* Net Pres RTOS Configurations*/
+#define NET_PRES_RTOS_STACK_SIZE                8192
+#define NET_PRES_RTOS_TASK_PRIORITY             1
+	
+#define FREERTOS
+
+
 
 /*** DNS Server Configuration ***/
 #define TCPIP_STACK_USE_DNS_SERVER
-#define TCPIP_DNSS_HOST_NAME_LEN		    		64
+#define TCPIP_DNSS_HOST_NAME_LEN		    	64
 #define TCPIP_DNSS_REPLY_BOARD_ADDR				true
-#define TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS			2
-#define TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS			1
-#define TCPIP_DNSS_TTL_TIME							600
-#define TCPIP_DNSS_TASK_PROCESS_RATE			    33
+#define TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS		2
+#define TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS		1
+#define TCPIP_DNSS_TTL_TIME						600
+#define TCPIP_DNSS_TASK_PROCESS_RATE			33
 #define TCPIP_DNSS_DELETE_OLD_LEASE				true
-
+#define TCPIP_DNSS_CONSOLE_CMD           false
 /***Maximum DNS server Cache entries. It is the sum of TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS and TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS.***/
-#define TCPIP_DNSS_CACHE_MAX_SERVER_ENTRIES     (TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS+TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS)
+#define TCPIP_DNSS_CACHE_MAX_SERVER_ENTRIES     (TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS + TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS)
 
 
 
@@ -369,11 +387,11 @@ extern "C" {
 #define TCPIP_DNS_CLIENT_CACHE_PER_IPV6_ADDRESS		1
 #define TCPIP_DNS_CLIENT_ADDRESS_TYPE			    IP_ADDRESS_TYPE_IPV4
 #define TCPIP_DNS_CLIENT_CACHE_DEFAULT_TTL_VAL		1200
-#define TCPIP_DNS_CLIENT_CACHE_UNSOLVED_ENTRY_TMO	10
-#define TCPIP_DNS_CLIENT_LOOKUP_RETRY_TMO			5
+#define TCPIP_DNS_CLIENT_LOOKUP_RETRY_TMO			2
 #define TCPIP_DNS_CLIENT_MAX_HOSTNAME_LEN			64
 #define TCPIP_DNS_CLIENT_MAX_SELECT_INTERFACES		4
 #define TCPIP_DNS_CLIENT_DELETE_OLD_ENTRIES			true
+#define TCPIP_DNS_CLIENT_CONSOLE_CMD               	true
 #define TCPIP_DNS_CLIENT_USER_NOTIFICATION   false
 
 
@@ -387,7 +405,7 @@ extern "C" {
 #define DRV_BA414E_RTOS_TASK_PRIORITY             1	
 
 
-#define SYS_WIFIPROV_NVMADDR        		0x900F0000
+#define SYS_WIFIPROV_NVMADDR        		0x900FF000
 #define SYS_WIFIPROV_SAVECONFIG        			true
 #define SYS_WIFIPROV_SOCKETPORT        		6666
 
@@ -399,22 +417,19 @@ extern "C" {
 #define TCPIP_DHCP_HOST_NAME_SIZE                   20
 #define TCPIP_DHCP_CLIENT_CONNECT_PORT              68
 #define TCPIP_DHCP_SERVER_LISTEN_PORT               67
-#define TCPIP_DHCP_CLIENT_ENABLED                   true
+#define TCPIP_DHCP_CLIENT_CONSOLE_CMD               true
+
 #define TCPIP_DHCP_USE_OPTION_TIME_SERVER           0
 #define TCPIP_DHCP_TIME_SERVER_ADDRESSES            0
 #define TCPIP_DHCP_USE_OPTION_NTP_SERVER            0
 #define TCPIP_DHCP_NTP_SERVER_ADDRESSES             0
+#define TCPIP_DHCP_ARP_LEASE_CHECK_TMO              1000
+#define TCPIP_DHCP_WAIT_ARP_FAIL_CHECK_TMO          10
 
 
 
-/*** tcpip_cmd Configuration ***/
-#define TCPIP_STACK_COMMAND_ENABLE
-#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUESTS         4
-#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_DELAY    1000
-#define TCPIP_STACK_COMMANDS_ICMP_ECHO_TIMEOUT          5000
-#define TCPIP_STACK_COMMANDS_WIFI_ENABLE             	false
-#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_BUFF_SIZE    2000
-#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_DATA_SIZE    100
+	/*** tcpip_cmd Configuration ***/
+	#define TCPIP_STACK_COMMAND_ENABLE
 
 
 
@@ -425,7 +440,6 @@ extern "C" {
 #define TCPIP_HTTP_TIMEOUT		            		45
 #define TCPIP_HTTP_MAX_CONNECTIONS		    		4
 #define TCPIP_HTTP_DEFAULT_FILE		        		"index.htm"
-#define TCPIP_HTTPS_DEFAULT_FILE	        		"index.htm"
 #define TCPIP_HTTP_DEFAULT_LEN		        		10
 #define TCPIP_HTTP_MAX_DATA_LEN		        		100
 #define TCPIP_HTTP_MIN_CALLBACK_FREE				16
@@ -438,28 +452,18 @@ extern "C" {
 #define TCPIP_HTTP_USE_BASE64_DECODE
 #define TCPIP_HTTP_USE_AUTHENTICATION
 #define TCPIP_HTTP_TASK_RATE					33
-#define TCPIP_HTTP_MALLOC_FUNC                     0
-#define TCPIP_HTTP_FREE_FUNC                        0
-
-/* MPLAB Harmony Net Presentation Layer Definitions*/
-#define NET_PRES_NUM_INSTANCE 1
-#define NET_PRES_NUM_SOCKETS 10
-
-/* Net Pres RTOS Configurations*/
-#define NET_PRES_RTOS_STACK_SIZE                5120
-#define NET_PRES_RTOS_TASK_PRIORITY             1
-	
-#define FREERTOS
-
+#define TCPIP_HTTP_MALLOC_FUNC                     malloc
+#define TCPIP_HTTP_FREE_FUNC                     free
 
 
 /*** DHCP Server Configuration ***/
 #define TCPIP_STACK_USE_DHCP_SERVER
-#define TCPIP_DHCPS_TASK_PROCESS_RATE                               200
-#define TCPIP_DHCPS_LEASE_ENTRIES_DEFAULT                           15
-#define TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO                          1200
-#define TCPIP_DHCPS_LEASE_REMOVED_BEFORE_ACK                        5
-#define TCPIP_DHCP_SERVER_DELETE_OLD_ENTRIES                        true
+#define TCPIP_DHCPS_TASK_PROCESS_RATE                     	200
+#define TCPIP_DHCPS_MAX_NUMBER_INSTANCES					1
+#define TCPIP_DHCPS_LEASE_ENTRIES_DEFAULT                   15
+#define TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO                  1200
+#define TCPIP_DHCPS_LEASE_REMOVED_BEFORE_ACK                5
+#define TCPIP_DHCP_SERVER_DELETE_OLD_ENTRIES              	true
 #define TCPIP_DHCPS_LEASE_DURATION	TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO
 
 /*** DHCP Server Instance 0 Configuration ***/
@@ -479,12 +483,13 @@ extern "C" {
 
 #define TCPIP_DHCP_SERVER_POOL_ENABLED_IDX0                         true
 
+#define TCPIP_DHCP_SERVER_POOL_INDEX_IDX0								0
+
 
 
 
 
 /*** TCPIP Heap Configuration ***/
-
 #define TCPIP_STACK_USE_EXTERNAL_HEAP
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
@@ -542,17 +547,17 @@ extern "C" {
 
 /*** SNTP Configuration ***/
 #define TCPIP_STACK_USE_SNTP_CLIENT
-#define TCPIP_NTP_DEFAULT_IF		        		"PIC32INT"
-#define TCPIP_NTP_VERSION             			    	4
-#define TCPIP_NTP_DEFAULT_CONNECTION_TYPE   			IP_ADDRESS_TYPE_IPV4
-#define TCPIP_NTP_EPOCH		                		2208988800ul
-#define TCPIP_NTP_REPLY_TIMEOUT		        		6
-#define TCPIP_NTP_MAX_STRATUM		        		15
+#define TCPIP_NTP_DEFAULT_IF		        	"PIC32MZW1"
+#define TCPIP_NTP_VERSION             			4
+#define TCPIP_NTP_DEFAULT_CONNECTION_TYPE   	IP_ADDRESS_TYPE_IPV4
+#define TCPIP_NTP_EPOCH		                	2208988800ul
+#define TCPIP_NTP_REPLY_TIMEOUT		        	6
+#define TCPIP_NTP_MAX_STRATUM		        	15
 #define TCPIP_NTP_TIME_STAMP_TMO				660
 #define TCPIP_NTP_SERVER		        		"pool.ntp.org"
 #define TCPIP_NTP_SERVER_MAX_LENGTH				30
 #define TCPIP_NTP_QUERY_INTERVAL				600
-#define TCPIP_NTP_FAST_QUERY_INTERVAL	    			14
+#define TCPIP_NTP_FAST_QUERY_INTERVAL	    	14
 #define TCPIP_NTP_TASK_TICK_RATE				1100
 #define TCPIP_NTP_RX_QUEUE_LIMIT				2
 
@@ -572,8 +577,12 @@ extern "C" {
 #define HAVE_MCAPI
 #define WOLF_CRYPTO_CB  // provide call-back support
 #define WOLFSSL_MICROCHIP_PIC32MZ
+// ---------- CRYPTO HARDWARE MANIFEST START ----------
 #define WOLFSSL_HAVE_MCHP_HW_CRYPTO_ECC_HW_BA414E
 #define WOLFSSL_HAVE_MCHP_BA414E_CRYPTO
+// ---------- CRYPTO HARDWARE MANIFEST END ----------
+// ---------- FUNCTIONAL CONFIGURATION START ----------
+#define WOLFSSL_AES_SMALL_TABLES
 #define WOLFSSL_PIC32MZ_HASH
 #define WOLFSSL_PIC32MZ_HASH
 #define WOLFSSL_PIC32MZ_HASH
@@ -587,6 +596,7 @@ extern "C" {
 #define HAVE_AES_ECB
 #define HAVE_AES_CBC
 #define WOLFSSL_AES_COUNTER
+#define WOLFSSL_AES_OFB
 #define HAVE_AESGCM
 #define NO_RC4
 #define NO_HC128
@@ -602,10 +612,11 @@ extern "C" {
 #define NO_DEV_RANDOM
 #define HAVE_HASHDRBG
 #define WC_NO_HARDEN
-#define FREERTOS
+#define SINGLE_THREADED
+#define NO_SIG_WRAPPER
+#define NO_ERROR_STRINGS
 #define NO_WOLFSSL_MEMORY
-#define DEBUG
-#define DEBUG_WOLFSSL
+// ---------- FUNCTIONAL CONFIGURATION END ----------
 
 /* WIFI System Service Configuration Options */
 #define SYS_WIFI_DEVMODE        			SYS_WIFI_AP
@@ -615,7 +626,12 @@ extern "C" {
 #define SYS_WIFI_COUNTRYCODE        	   "GEN"
 #define SYS_WIFI_STA_SSID        			"DEMO_AP"
 #define SYS_WIFI_STA_PWD        			"password"
+
+
 #define SYS_WIFI_STA_AUTHTYPE				SYS_WIFI_WPAWPA2MIXED 
+
+
+
 #define SYS_WIFI_STA_AUTOCONNECT   			true
 
 
@@ -626,12 +642,30 @@ extern "C" {
 #define SYS_WIFI_AP_SSIDVISIBILE   			true
 
 
+#define SYS_WIFI_SCAN_CHANNEL               0
+#define SYS_WIFI_SCAN_MAX_SSID_COUNT    	DRV_PIC32MZW_MAX_HIDDEN_SITES
+#define SYS_WIFI_SCAN_MODE                  SYS_WIFI_SCAN_MODE_ACTIVE
+#define SYS_WIFI_SCAN_SSID_LIST             ""
+#define SYS_WIFI_SCAN_SSID_DELIM_CHAR       ','
+#define SYS_WIFI_SCAN_CHANNEL24_MASK        0x1fff
+#define SYS_WIFI_SCAN_NUM_SLOTS             1
+#define SYS_WIFI_SCAN_ACTIVE_SLOT_TIME      20
+#define SYS_WIFI_SCAN_PASSIVE_SLOT_TIME     120
+#define SYS_WIFI_SCAN_NUM_PROBES            1
+#define SYS_WIFI_SCAN_MATCH_MODE        	WDRV_PIC32MZW_SCAN_MATCH_MODE_FIND_ALL
+
 
 
 
 /* SYS WIFI RTOS Configurations*/
 #define SYS_WIFI_RTOS_SIZE           		1024
 #define SYS_WIFI_RTOS_PRIORITY             1
+
+#define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1
+
+
+
+
 
 
 

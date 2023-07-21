@@ -67,23 +67,20 @@
 #define NVM_FLASH_ROWSIZE          (1024U)
 #define NVM_FLASH_PAGESIZE         (4096U)
 
+/* No error */
+#define   NVM_ERROR_NONE       ( 0x0U )
+
+/* NVM write error */
+#define    NVM_ERROR_WRITE     ( _NVMCON_WRERR_MASK )
+
+/* NVM Low Voltage Detect error */
+#define    NVM_ERROR_LOWVOLTAGE ( _NVMCON_LVDERR_MASK )
+
+typedef uint32_t NVM_ERROR;
+
 #define NVM_START_ADDRESS              0x90010000
-#define NVM_MEDIA_SIZE                 64
+#define NVM_MEDIA_SIZE                 32
 #define NVM_ERASE_BUFFER_SIZE          4096
-
-typedef enum
-{
-    /* No error */
-    NVM_ERROR_NONE = 0x0,
-
-    /* NVM write error */
-    NVM_ERROR_WRITE = _NVMCON_WRERR_MASK,
-
-    /* NVM Low Voltage Detect error */
-    NVM_ERROR_LOWVOLTAGE = _NVMCON_LVDERR_MASK,
-
-} NVM_ERROR;
-
 
 
 typedef void (*NVM_CALLBACK)(uintptr_t context);

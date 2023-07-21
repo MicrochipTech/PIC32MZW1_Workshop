@@ -136,17 +136,17 @@ The Microchip [TC1047A temperature sensor](https://www.microchip.com/wwwproducts
 
 ## Software Requirements<a name="step3"></a>
 
-- [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide) v5.40 or above
-- [MPLAB® XC32 Compiler](https://www.microchip.com/mplab/compilers) v2.41 or above
-- [MPLAB® Harmony v3 Configurator](https://www.microchip.com/mplab/mplab-harmony) v3.6 or above
+- [MPLAB® X IDE](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide) v6.10
+- [MPLAB® XC32 Compiler](https://www.microchip.com/content/dam/mchp/documents/DEV/ProductDocuments/SoftwareTools/xc32-v3.01-full-install-windows-installer.exe) v3.01 or above
+- [MPLAB® Code Configurator](https://www.microchip.com/mplab/mplab-harmony) v5.3.7 or above
 - Serial Terminal like TeraTerm
 
 This material has been developped and validated with:
 
-- MPLAB® X IDE v5.40
-- MPLAB® XC32 Compiler v2.41
-- MPLAB® Harmony v3 Configurator v3.6
-- Device Pack PIC32MZ-W_DFP v1.3.177
+- MPLAB® X IDE v6.10
+- MPLAB® XC32 Compiler v3.01
+- MPLAB® Code Configurator v5.3.7
+- Device Pack PIC32MZ-W_DFP v1.6.220
 
 
 ## Setup your development environement<a name="step4"></a>
@@ -159,24 +159,42 @@ This material has been developped and validated with:
 Set up your development environment.
 -->
 
-* Download and install [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide) 
-* Download and install [XC32 Compiler](https://www.microchip.com/mplab/compilers)
-* Install the MPLAB® Harmony Configurator 3 Plugin [(tutorial)](https://github.com/Microchip-MPLAB-Harmony/contentmanager/wiki)
+* Download and install [MPLAB® X IDE](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide) 
+* Download and install [XC32 Compiler](https://www.microchip.com/content/dam/mchp/documents/DEV/ProductDocuments/SoftwareTools/xc32-v3.01-full-install-windows-installer.exe)
+* Install the MPLAB® Code Configurator Plugin [(tutorial)](https://onlinedocs.microchip.com/pr/GUID-1F7007B8-9A46-4D03-AEED-650357BA760D-en-US-6/index.html?GUID-2EE03524-41FE-4EBA-8646-6D10AA72F365)
+(Make sure MPLAB® Code Configurator is installed under tools -> Pluggins -> Installed).
 <p align="center">
-<img src="resources/media/mplabx_plugin_01.png" width=>
-<img src="resources/media/mplabx_plugin_02.png" width=>
+<img src="resources/media/mplabx_plugin_011.png" width=450>
+<img src="resources/media/mplabx_plugin_022.png" width=>
 </p>
 
-* Launch MPLAB® Harmony 3 Content Manager from the IDE [(Getting Started with Content Manager](https://github.com/Microchip-MPLAB-Harmony/contentmanager/blob/master/doc/readme.md) for more details).
-<p align="center">
-<img src="resources/media/h3_content_manager.png" width=480>
-<img src="resources/media/mplabx_content_manager_01.png" width=480>
-</p>
+|     Tools             |     Version                                        | |
+| -----------------      | ---------------------------------------------- | ------------------------ |
+|   MPLAB® X IDE        |  [v6.10.0](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide)      |                              | 
+MPLAB® XC32 Compiler     |  [v3.01](https://www.microchip.com/content/dam/mchp/documents/DEV/ProductDocuments/SoftwareTools/xc32-v3.01-full-install-windows-installer.exe) |
+MCC       | v5.3.7    |
 
-* Select and download all remote contents to sync Harmony 3 releases into your local folder (the sync takes some time)
-<p align="center">
-<img src="resources/media/mplabx_content_manager_02.png" width=720>
-</p>
+## Use the following commands to clone and checkout in repositories
+
+| Title               | Version                               |  Details  |
+| ----------------- | ---------------------------------------------- |-------------------|
+|usb  | [v3.8.1](https://github.com/Microchip-MPLAB-Harmony/usb.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/usb.git<br />cd usb/<br />git checkout v3.8.1 |
+|csp  | [v3.14.0](https://github.com/Microchip-MPLAB-Harmony/csp.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/csp.git<br />cd csp/<br />git checkout v3.14.0 |
+|wolfssl  | [v4.7.0](https://github.com/Microchip-MPLAB-Harmony/wolfssl.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/wolfssl.git<br />cd wolfssl/<br />git checkout v4.7.0 |
+|crypto  | [v3.7.6](https://github.com/Microchip-MPLAB-Harmony/crypto.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/crypto.git<br />cd crypto/<br />git checkout v3.7.6 |
+|CMSIS-FreeRTOS  | [v10.4.6](https://github.com/Microchip-MPLAB-Harmony/CMSIS-FreeRTOS.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/CMSIS-FreeRTOS.git<br />cd CMSIS-FreeRTOS/<br />git checkout v10.4.6 |
+|core  | [v3.11.1](https://github.com/Microchip-MPLAB-Harmony/core.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/core.git<br />cd core/<br />git checkout v3.11.1 |
+|wireless_wifi  | [v3.8.0](https://github.com/Microchip-MPLAB-Harmony/wireless_wifi.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/wireless_wifi.git<br />cd wireless_wifi/<br />git checkout v3.8.0 |
+|touch  | [v3.12.1](https://github.com/Microchip-MPLAB-Harmony/touch.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/touch.git<br />cd touch/<br />git checkout v3.12.1 |
+|dev_packs  | [v3.17.0]( https://github.com/Microchip-MPLAB-Harmony/dev_packs.git)         |  git clone  https://github.com/Microchip-MPLAB-Harmony/dev_packs.git<br />cd dev_packs/<br />git checkout v3.17.0 |
+|wireless_system_pic32mzw1_wfi32e01  | [v3.7.0](https://github.com/Microchip-MPLAB-Harmony/wireless_system_pic32mzw1_wfi32e01.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/wireless_system_pic32mzw1_wfi32e01.git<br />cd wireless_system_pic32mzw1_wfi32e01/<br />git checkout v3.7.0 |
+|net  | [v3.8.0]( https://github.com/Microchip-MPLAB-Harmony/net.git)         |  git clone  https://github.com/Microchip-MPLAB-Harmony/net.git<br />cd net/<br />git checkout v3.8.0 |
+|bsp  | [v3.16.0](https://github.com/Microchip-MPLAB-Harmony/bsp.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/bsp.git<br />cd bsp/<br />git checkout v3.16.0 |
+|littlefs  | [v2.4.0](https://github.com/MicrochipTech/littlefs.git)         |  git clone https://github.com/MicrochipTech/littlefs.git<br />cd littlefs/<br />git checkout v2.4.0 |
+|cryptoauthlib  | [20211006](https://github.com/MicrochipTech/cryptoauthlib.git)         |  git clone https://github.com/MicrochipTech/cryptoauthlib.git<br />cd cryptoauthlib/<br />git checkout 20211006 |
+|paho.mqtt.embedded-c  | [v1.2.3](https://github.com/MicrochipTech/paho.mqtt.embedded-c.git)         |  https://github.com/MicrochipTech/paho.mqtt.embedded-c.git<br />cd paho.mqtt.embedded-c/<br />git checkout v1.2.3 |
+|csp_apps_pic32mz_w1  | [v3.4.0](https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1.git)         |  git clone https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1.git<br />cd csp_apps_pic32mz_w1/<br />git checkout v3.4.0 |
+
 
 > PIC32MZ W1 Device support comes automatically with latest MPLAB X IDE, check out from MPLAB Pack Manager.
 
@@ -187,10 +205,11 @@ Set up your development environment.
 
 * Type "w1" in Show Packs Compatible text box
 <p align="center">
-<img src="resources/media/mplabx_pack_manager.png" width=720>
+<img src="resources/media/mplabx_pack_manager1.png" width=720>
 </p>
 
 > You are now ready to use the MPLAB® Harmony Framework to start your first application with PIC32MZ W1 device.
 
 
 <a href="#top">Back to top</a>
+

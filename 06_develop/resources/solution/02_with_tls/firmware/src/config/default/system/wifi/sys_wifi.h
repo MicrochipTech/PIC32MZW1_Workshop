@@ -16,7 +16,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc.  All rights reserved.
+Copyright (C) 2020-2021 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -99,8 +99,7 @@ typedef enum
     SYS_WIFI_WPA2WPA3MIXED,
 
     /* Requesting a WPA3 Authentication types */
-    SYS_WIFI_WPA3
-
+    SYS_WIFI_WPA3,
 } SYS_WIFI_AUTH ;
 
 // *****************************************************************************
@@ -127,8 +126,11 @@ typedef enum
     /*Control message type for requesting a Wi-Fi device disconnect */
     SYS_WIFI_DISCONNECT,
     
+    /*Control message type for auto reconnect failure */
+    SYS_WIFI_AUTO_CONNECT_FAIL,
+ 
     /* Control message type for requesting a Wi-Fi configuration information */
-    SYS_WIFI_GETCONFIG,
+    SYS_WIFI_GETWIFICONFIG,
 
     /* Control message type for updating a Provisioning Wi-Fi configuration 
        information */
@@ -137,10 +139,19 @@ typedef enum
     /* Control message type for registering a Wi-Fi system service 
        client callback */
     SYS_WIFI_REGCALLBACK,
+
+    /* Control message type for requesting a Wi-Fi Scan configuration 
+        information */
+    SYS_WIFI_GETSCANCONFIG,
     
-    /* Control message type for requesting a Wi-Fi scan.In Scan request, 
-       client can set channel number and type of scan(active/passive). */
-    SYS_WIFI_SCANREQ
+    /* Control message type for requesting a Wi-Fi scan. In Scan request, 
+       client can include Scan configuration strucure if desired*/
+    SYS_WIFI_SCANREQ,
+            
+    /*Control message type for requesting a Wi-Fi driver handle */
+    SYS_WIFI_GETDRVHANDLE,
+    /*Control message type for requesting a Assoc handle */
+    SYS_WIFI_GETDRVASSOCHANDLE,
 
 } SYS_WIFI_CTRLMSG ;
 
@@ -167,6 +178,27 @@ typedef enum
     SYS_WIFI_AP
 } SYS_WIFI_MODE ;
 
+// *****************************************************************************
+/* System Wi-Fi service scanning  modes
+
+  Summary:
+    Identifies the Wi-Fi scanning mode.
+
+  Description:
+    Identifies the Wi-Fi scanning mode.
+
+  Remarks:
+    None
+*/
+
+typedef enum 
+{
+    /* Requesting Passive Scan Mode */
+    SYS_WIFI_SCAN_MODE_PASSIVE = 0,
+
+    /* Requesting Active Scan Mode */
+    SYS_WIFI_SCAN_MODE_ACTIVE
+} SYS_WIFI_SCAN_MODES ;
 
 // *****************************************************************************
 /* System Wi-Fi service station mode configuration structure.
@@ -183,7 +215,7 @@ typedef enum
 typedef struct 
 {
     /* Wi-Fi station mode SSID */
-    uint8_t ssid[32];
+    uint8_t ssid[33];
 
     /* Wi-Fi station mode passphrase */
     uint8_t psk[64];
@@ -201,9 +233,33 @@ typedef struct
       value 0- Don't connect to AP, wait for client request.
       value 1- Connect to AP immediately */
     bool autoConnect;
+    
+    /* Wi-Fi station mode IP address */
+    IPV4_ADDR ipAddr;
 
 } SYS_WIFI_STA_CONFIG;
 
+
+// *****************************************************************************
+/* System Wi-Fi service station info structure shared with the Application.
+
+  Summary:
+    Information related to connected station shared with Application.
+
+  Description:
+    Information (MAC Address, IP Address) related to connected station.
+
+  Remarks:
+   None.
+*/
+typedef struct 
+{
+    /* IP Address of the station */
+    IPV4_ADDR ipAddr;
+
+    /* MAC Address of the station */
+    uint8_t macAddr[6];
+} SYS_WIFI_STA_APP_INFO;
 
 // *****************************************************************************
 /* System Wi-Fi service soft access point mode configuration structure
@@ -265,7 +321,7 @@ typedef struct
     uint8_t saveConfig;
 
     /* Country Code configuration */
-    uint8_t countryCode[5];
+    uint8_t countryCode[6];
 
 
     /* Wi-Fi station mode configuration structure */
@@ -275,6 +331,59 @@ typedef struct
     SYS_WIFI_AP_CONFIG apConfig;
 
 }SYS_WIFI_CONFIG;
+
+// *****************************************************************************
+/* System Wi-Fi service scan configuration structure.
+
+  Summary:
+    Configuration of ssid scan parameters.
+
+  Description:
+    Configuration of ssid scan parameters.
+
+  Remarks:
+   None.
+*/
+
+typedef struct 
+{
+    /* Wi-Fi Channel no for Scan request.
+        values of channel:  
+        0 - scan all the channels
+        1 to 13 - - scan on specified channel */
+    uint8_t channel;
+    
+    /* Scanning mode of the device */
+    SYS_WIFI_SCAN_MODES mode;
+    
+    /* List of SSIDs for scanning */
+    char * pSsidList;
+
+    /* Delimiter used for separating names in the "pSsidList" */
+    char delimChar;
+    
+    /* bitwise scanning masks*/
+    uint16_t chan24Mask;
+    
+    /* Number of slots (minimum is 2). */
+    uint8_t numSlots;
+    
+    /* Time spent on each active channel probing for BSS's. */
+    uint16_t activeSlotTime;
+    
+    /* Time spent on each passive channel listening for beacons. */
+    uint16_t passiveSlotTime;
+    
+    /* Number of probes per slot. */
+    uint8_t numProbes;
+    
+    /* The scan matching mode can be to stop on first match or match all. */
+    uint8_t matchMode;
+    
+    /* Scan callback handler that gets triggered from PIC32MZW1 driver */
+    void * pNotifyCallback;
+    
+} SYS_WIFI_SCAN_CONFIG;
 
 
 // *****************************************************************************
@@ -310,6 +419,8 @@ typedef enum
     /* Wi-Fi system service is in Wi-Fi connect request status */
     SYS_WIFI_STATUS_CONNECT_REQ,
 
+    /* Wi-Fi system service is in station mode IP address received status*/        
+    SYS_WIFI_STATUS_STA_IP_RECIEVED,
     /* In AP mode,Wi-Fi system service is in wait for AP IP address */
     SYS_WIFI_STATUS_WAIT_FOR_AP_IP,
     
@@ -403,6 +514,7 @@ typedef enum{
     #include "tcpip/tcpip.h"
     #include "definitions.h"
 
+    //User can refer the application "wireless_apps_pic32mzw1_wfi32e01\apps\wifi_easy_config" for more information on how to implement callback.
     APP_DATA appData;
     void WiFiServCallback (uint32_t event, void * data,void *cookie )
     {
@@ -411,8 +523,18 @@ typedef enum{
         {
             case SYS_WIFI_CONNECT:
             {
+                //In STA mode, Wi-Fi service share IP address provided by AP in the callback
                 IPAddr = (IPV4_ADDR *)data;
                 SYS_CONSOLE_PRINT("IP address obtained = %d.%d.%d.%d \\r\\n",IPAddr->v[0], IPAddr->v[1], IPAddr->v[2], IPAddr->v[3]);
+
+                //In AP mode, Wi-Fi service share MAC address and IP address of the connected STA in the callback
+                SYS_WIFI_STA_APP_INFO    *StaConnInfo = (SYS_WIFI_STA_APP_INFO *)data;
+                SYS_CONSOLE_PRINT("STA Connected to AP. Got IP address = %d.%d.%d.%d \r\n", 
+                        StaConnInfo->ipAddr.v[0], StaConnInfo->ipAddr.v[1], StaConnInfo->ipAddr.v[2], StaConnInfo->ipAddr.v[3]);                
+                SYS_CONSOLE_PRINT("STA Connected to AP. Got MAC address = %x:%x:%x:%x:%x:%x \r\n", 
+                        StaConnInfo->macAddr[0], StaConnInfo->macAddr[1], StaConnInfo->macAddr[2],
+                        StaConnInfo->macAddr[3], StaConnInfo->macAddr[4], StaConnInfo->macAddr[5]);
+                
                 break;
             }
             case SYS_WIFI_DISCONNECT:
@@ -600,7 +722,7 @@ SYS_WIFI_RESULT SYS_WIFI_Deinitialize (SYS_MODULE_OBJ object) ;
 
   Example:
         <code>
-        
+		
         // For example,User want to perform the Scan request when auto connect is disabled.
         // So user has to make sure service is in right state,
         // where Wi-Fi service has started and waiting in the Auto connect 
@@ -608,16 +730,27 @@ SYS_WIFI_RESULT SYS_WIFI_Deinitialize (SYS_MODULE_OBJ object) ;
 
         if (SYS_WIFI_STATUS_AUTOCONNECT_WAIT == SYS_WIFI_GetStatus (sysObj.syswifi))
         {
-            uint8_t buff[2];
+		   // Enable Wi-Fi Scanning in MHC
+           // Get Wi-Fi Scan Configuration using control message request.
+           // The information of configuration is updated in the wifiSrvcScanConfig.
+            
+            SYS_WIFI_SCAN_CONFIG wifiSrvcScanConfig;
+            if(SYS_WIFI_SUCCESS == SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETSCANCONFIG, &wifiSrvcScanConfig, sizeof(SYS_WIFI_SCAN_CONFIG)))
+            {
+                  //Received the wifiSrvcScanConfig data
+            }
 
-           // Scan all the channels
-            buff[0] = 0 ;                                                
-
-           // Set the Scan type as passive (false- passive scan,true -active scan)
-            buff[1] = false;                                            
-            SYS_WIFI_CtrlMsg(sysObj.syswifi,SYS_WIFI_SCANREQ,buff,2);   
+            // update desired parameters
+            char myAPlist[] = "openAP,SecuredAP,DEMO_AP,my_cell_hotspot";
+            char delimiter  = ',';
+            wifiSrvcScanConfig.channel    =  6;
+            wifiSrvcScanConfig.mode       =  SYS_WIFI_SCAN_MODE_ACTIVE;
+            wifiSrvcScanConfig.pSsidList  =  myAPlist;
+            wifiSrvcScanConfig.delimChar  =  delimiter;
+		    // pass structure in scan request
+            SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_SCANREQ, &wifiSrvcScanConfig, sizeof(SYS_WIFI_SCAN_CONFIG));
+   
         }
-
         //Wi-Fi system service is in TCPIP ready status, waiting for client request.
         if (SYS_WIFI_STATUS_TCPIP_READY == SYS_WIFI_GetStatus (sysObj.syswifi))
         {
@@ -734,24 +867,70 @@ uint8_t SYS_WIFI_Tasks (SYS_MODULE_OBJ object);
             memcpy(wifiSrvcConfig.staConfig.psk, WIFI_DEV_PSK, sizeof(WIFI_DEV_PSK));
 
             // sysObj.syswifi return from SYS_WIFI_Initialize() 
-            if (SYS_WIFI_OBJ_INVALID != SYS_WIFI_CtrlMsg (sysObj.syswifi, SYS_WIFI_CONNECT, wifiSrvcConfig, sizeof(SYS_WIFI_CONFIG)))
+            if (SYS_WIFI_OBJ_INVALID != SYS_WIFI_CtrlMsg (sysObj.syswifi, SYS_WIFI_CONNECT, &wifiSrvcConfig, sizeof(SYS_WIFI_CONFIG)))
             {
             
             }
 
+        Details of SYS_WIFI_GETSCANCONFIG:
+            
+            // Get Wi-Fi Scan Configuration using control message request.
+            // The information of configuration is updated in the wifiSrvcScanConfig.
+            
+            SYS_WIFI_SCAN_CONFIG wifiSrvcScanConfig;
+            if(SYS_WIFI_SUCCESS == SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETSCANCONFIG, &wifiSrvcScanConfig, sizeof(SYS_WIFI_SCAN_CONFIG)))
+            {
+                  //Received the wifiSrvcScanConfig data
+            }
+
         Details of SYS_WIFI_SCANREQ:
             
-            // In Scan request, user can set channel number and type of scan.
-            uint8_t buff[2];
+            // In Scan request, 
+            // user can request Wi-Fi scan with default values:
+            SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_SCANREQ, NULL, 0);
 
-            // Scan all the channels 
-            buff[0] = 0 ;
+            // OR 
+            // user can request Wi-Fi scan with custom values:
+            // step 1: get current structure "wifiSrvcScanConfig" from the service using SYS_WIFI_GETSCANCONFIG
+            // step 2: update desired parameters
+            char myAPlist[] = "openAP,SecuredAP,DEMO_AP,my_cell_hotspot";
+            char delimiter  = ',';
+            wifiSrvcScanConfig.channel    =  6;
+            wifiSrvcScanConfig.mode       =  SYS_WIFI_SCAN_MODE_ACTIVE;
+            wifiSrvcScanConfig.pSsidList  =  myAPlist;
+            wifiSrvcScanConfig.delimChar  =  delimiter;
+            wifiSrvcScanConfig.pNotifyCallback = (void *)APP_ScanHandler;
+            // step 3: pass structure in scan request
+            SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_SCANREQ, &wifiSrvcScanConfig, sizeof(SYS_WIFI_SCAN_CONFIG));
 
-            // Set the Scan type as passive: 
-            //  false- passive scan,
-            //  true -active scan) 
-            buff[1] = false;
-            SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_SCANREQ, buff, 2);
+            //Step 4: Define Application Scan callback to received the scan results
+            // Wi-Fi driver triggers a callback to update each Scan result one-by-one
+                bool APP_ScanHandler (DRV_HANDLE handle, uint8_t index, uint8_t ofTotal, WDRV_PIC32MZW_BSS_INFO *pBSSInfo)
+                {
+                    if (0 == ofTotal) 
+                    {
+                        SYS_CONSOLE_MESSAGE("No AP Found... Rescan\r\n");
+                    } 
+                    else 
+                    {
+                        if (index == 1)
+                        {
+                            SYS_CONSOLE_PRINT("Scan Results: #%02d\r\n", ofTotal);
+                        }
+                        SYS_CONSOLE_PRINT("[%02d] %s\r\n", index, pBSSInfo->ctx.ssid.name);
+                    }
+                    // return true to receive further results; otherwise return false if desired
+                    return true;
+                }
+
+        Details of SYS_WIFI_GETDRVHANDLE:
+
+            // Get Wi-Fi Driver handle using control message request.
+            DRV_HANDLE myWifiDrvHandle;
+            if(SYS_WIFI_SUCCESS == SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETDRVHANDLE, &myWifiDrvHandle, sizeof(DRV_HANDLE)))
+            {
+                  //Received the handle
+            }
 
         Details of SYS_WIFI_REGCALLBACK:
 
@@ -759,20 +938,25 @@ uint8_t SYS_WIFI_Tasks (SYS_MODULE_OBJ object);
             // callback registration is a MHC configuration.
             SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_REGCALLBACK, WiFiServCallback, sizeof(uint8_t *));
 
-        Details of SYS_WIFI_GETCONFIG:
+        Details of SYS_WIFI_GETWIFICONFIG:
             
             // Get Wi-Fi Configuration using control message request.
             // The information of configuration is updated in the wifiSrvcConfig.
             
             SYS_WIFI_CONFIG wifiSrvcConfig;
-            if(SYS_WIFI_SUCCESS == SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETCONFIG, &wifiSrvcConfig, sizeof(SYS_WIFI_CONFIG)))
+            if(SYS_WIFI_SUCCESS == SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETWIFICONFIG, &wifiSrvcConfig, sizeof(SYS_WIFI_CONFIG)))
             {
                   //Received the wifiSrvcConfig data
             } 
 
             Details of SYS_WIFI_DISCONNECT:
-                // Device Disconnect request using control message request. 
+                //In STA mode, device disconnect request using control message. 
                 SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_DISCONNECT, NULL, 0);
+
+                // In AP mode, How to disconnect connected STA 
+                // When STA connect to AP mode,application received the callback(SYS_WIFI_CONNECT) with connect STA IP and MAC address.
+                // User same MAC address for disconnect request.
+                SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_DISCONNECT, macAddr, 6);
 
         </code>
 

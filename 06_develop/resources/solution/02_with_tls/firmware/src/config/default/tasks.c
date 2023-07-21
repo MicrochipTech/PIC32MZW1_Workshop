@@ -67,7 +67,6 @@ void _APP_SENSOR_Tasks(  void *pvParameters  )
     while(1)
     {
         APP_SENSOR_Tasks();
-        vTaskDelay(50 / portTICK_PERIOD_MS);
     }
 }
 /* Handle for the APP_MQTT_Tasks. */
@@ -79,6 +78,16 @@ void _APP_MQTT_Tasks(  void *pvParameters  )
     {
         APP_MQTT_Tasks();
         vTaskDelay(50 / portTICK_PERIOD_MS);
+    }
+}
+
+
+void _NET_PRES_Tasks(  void *pvParameters  )
+{
+    while(1)
+    {
+        NET_PRES_Tasks(sysObj.netPres);
+        vTaskDelay(1 / portTICK_PERIOD_MS);
     }
 }
 
@@ -99,16 +108,6 @@ void _DRV_BA414E_Tasks(  void *pvParameters  )
     while(1)
     {
         DRV_BA414E_Tasks(sysObj.ba414e);
-    }
-}
-
-
-void _NET_PRES_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-        NET_PRES_Tasks(sysObj.netPres);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
 
@@ -136,7 +135,16 @@ static void _WDRV_PIC32MZW1_Tasks(  void *pvParameters  )
 {
     while(1)
     {
+        SYS_STATUS status;
+
         WDRV_PIC32MZW_Tasks(sysObj.drvWifiPIC32MZW1);
+
+        status = WDRV_PIC32MZW_Status(sysObj.drvWifiPIC32MZW1);
+
+        if ((SYS_STATUS_ERROR == status) || (SYS_STATUS_UNINITIALIZED == status))
+        {
+            vTaskDelay(50 / portTICK_PERIOD_MS);
+        }
     }
 }
 
@@ -205,21 +213,21 @@ void SYS_Tasks ( void )
 
     /* Maintain Middleware & Other Libraries */
     
-    xTaskCreate( _DRV_BA414E_Tasks,
-        "DRV_BA414E_Tasks",
-        DRV_BA414E_RTOS_STACK_SIZE,
-        (void*)NULL,
-        DRV_BA414E_RTOS_TASK_PRIORITY,
-        (TaskHandle_t*)NULL
-    );
-
-
-
     xTaskCreate( _NET_PRES_Tasks,
         "NET_PRES_Tasks",
         NET_PRES_RTOS_STACK_SIZE,
         (void*)NULL,
         NET_PRES_RTOS_TASK_PRIORITY,
+        (TaskHandle_t*)NULL
+    );
+
+
+
+    xTaskCreate( _DRV_BA414E_Tasks,
+        "DRV_BA414E_Tasks",
+        DRV_BA414E_RTOS_STACK_SIZE,
+        (void*)NULL,
+        DRV_BA414E_RTOS_TASK_PRIORITY,
         (TaskHandle_t*)NULL
     );
 

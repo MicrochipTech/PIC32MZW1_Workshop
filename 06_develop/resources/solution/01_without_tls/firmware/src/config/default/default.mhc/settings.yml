@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: MyFirstProject
+frameworkPath: C:\harmony3
+processor: PIC32MZ1025W104132
+projectName: MyFirstProject
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs\Microchip\PIC32MZ-W_DFP\1.6.220\atdf\PIC32MZ1025W104132.atdf

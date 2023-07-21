@@ -15,7 +15,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc.  All rights reserved.
+Copyright (C) 2020-2022 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -51,6 +51,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #if defined(TCPIP_STACK_USE_HTTP_SERVER)
 #include "tcpip/tcpip.h"
 #include "tcpip/src/common/helpers.h"
+#include "../../driver/wifi/pic32mzw1/include/wdrv_pic32mzw_bssfind.h"
 
 /****************************************************************************
   Section:
@@ -74,28 +75,61 @@ static uint8_t s_buf_ipv4addr[HTTP_APP_IPV4_ADDRESS_BUFFER_SIZE];
 static SYS_WIFI_CONFIG wifiConfig;
 #define CONVERT_TO_NUMBER(a) (a-'0')
 #define CONVERT_TO_ASCII(a) (a+'0')
+int8_t g_u8BssCount = -2;
+uint8_t s_scanResultIsValid = 0;
 
-// network configuration/information storage space
-static struct
-{
-    TCPIP_NET_HANDLE    currNet;            // current working interface + valid flag
-    char                ifName[10 + 1];     // interface name
-    char                nbnsName[16 + 1];   // host name
-    char                ifMacAddr[17 + 1];  // MAC address
-    char                ipAddr[15 +1];      // IP address
-    char                ipMask[15 + 1];     // mask
-    char                gwIP[15 + 1];       // gateway IP address
-    char                dns1IP[15 + 1];     // DNS IP address
-    char                dns2IP[15 + 1];     // DNS IP address
 
-    TCPIP_NETWORK_CONFIG   netConfig;  // configuration in the interface requested format
-}httpNetData;
-inline uint8_t Findstring_lenth(uint8_t *ptr)
+// Stick status message variable.  See lastSuccess for details.
+static bool lastFailure = false;
+
+uint8_t g_networkType;
+#define WF_NETWORK_TYPE_INFRASTRUCTURE 0
+#define WF_NETWORK_TYPE_ADHOC 1
+#define WF_NETWORK_TYPE_P2P 2
+#define WF_NETWORK_TYPE_SOFT_AP 3
+
+#define WF_ASSERT(condition, msg) WDRV_ASSERT(condition, msg)
+
+static inline uint8_t Findstring_lenth(uint8_t *ptr)
 {
     uint8_t len=0;
     for(;*ptr != '&';ptr++,len++);
     return len;
 }
+
+#define SYS_WIFI_MAX_SCAN_AP    16
+WDRV_PIC32MZW_BSS_INFO g_asScanBssInfo[SYS_WIFI_MAX_SCAN_AP];
+WDRV_PIC32MZW_BSS_INFO g_sTempScanBssInfo;
+
+bool APP_ScanHandler (DRV_HANDLE handle, uint8_t index, uint8_t ofTotal, WDRV_PIC32MZW_BSS_INFO *pBSSInfo)
+{
+    if (0 == ofTotal) 
+    {
+        SYS_CONSOLE_MESSAGE("No AP Found... Rescan\r\n");
+    } 
+    else 
+    {
+        g_u8BssCount = 0;
+        if (index == 1)
+        {
+            memset(g_asScanBssInfo, 0, sizeof(g_asScanBssInfo));
+            SYS_CONSOLE_PRINT("Scan Results: # %02d\r\n", ofTotal);
+        }
+        memcpy(&g_asScanBssInfo[index - 1], pBSSInfo, sizeof(WDRV_PIC32MZW_BSS_INFO));
+        SYS_CONSOLE_PRINT("[%02d] %s %x:%x:%x:%x:%x:%x\r\n", index, pBSSInfo->ctx.ssid.name, 
+                pBSSInfo->ctx.bssid.addr[0], pBSSInfo->ctx.bssid.addr[1], pBSSInfo->ctx.bssid.addr[2], 
+                pBSSInfo->ctx.bssid.addr[3], pBSSInfo->ctx.bssid.addr[4], pBSSInfo->ctx.bssid.addr[5]);
+        if(ofTotal == index)
+        {
+            g_u8BssCount = ofTotal;
+            memcpy(&g_sTempScanBssInfo, &g_asScanBssInfo[0], sizeof(g_sTempScanBssInfo));
+            s_scanResultIsValid = 1;
+        }
+    }
+    // return true to receive further results; otherwise return false if desired
+    return true;
+}
+
 /****************************************************************************
   Section:
     GET Form Handlers
@@ -110,6 +144,85 @@ inline uint8_t Findstring_lenth(uint8_t *ptr)
  ****************************************************************************/
 HTTP_IO_RESULT TCPIP_HTTP_GetExecute(HTTP_CONN_HANDLE connHandle)
 {
+    const uint8_t *ptr;
+    const uint8_t *ptr1;
+    uint16_t bssIdx;
+    uint8_t filename[20];
+    uint8_t *httpDataBuff;
+    uint8_t bssIdxStr[2];
+
+    // Load the file name.
+    // Make sure uint8_t filename[] above is large enough for your longest name.
+    SYS_FS_FileNameGet(TCPIP_HTTP_CurrentConnectionFileGet(connHandle), filename, 20);
+
+    httpDataBuff = TCPIP_HTTP_CurrentConnectionDataBufferGet(connHandle);
+
+    if(!memcmp(filename, "scan.cgi", 8))
+    {
+        ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *)"scan");
+        ptr1 = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *)"getBss");
+
+        if ((ptr != NULL) && (ptr1 == NULL))
+        {
+            // scan request
+            s_scanResultIsValid = 0;
+
+            /*
+             * Display pre-scan results if pre-scan results are available,
+             * otherwise initiate a new scan.
+             */
+            SYS_WIFI_RESULT res;
+            SYS_WIFI_STATUS wifiStatus;
+            SYS_WIFI_SCAN_CONFIG scanConfig;
+
+            wifiStatus = SYS_WIFI_GetStatus (sysObj.syswifi);
+            if (wifiStatus > SYS_WIFI_STATUS_WDRV_OPEN_REQ)
+            {                
+                memset(&scanConfig, 0, sizeof(scanConfig));
+                res = SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETSCANCONFIG, &scanConfig, sizeof(SYS_WIFI_SCAN_CONFIG));
+                if(SYS_WIFI_SUCCESS == res)
+                {
+                    //Received the wifiSrvcScanConfig data
+                    char myAPlist[] = ""; // e.g. "myAP*OPENAP*Hello World!"
+                    char delimiter  = '*';
+                    scanConfig.channel         = 0;
+                    scanConfig.mode            = SYS_WIFI_SCAN_MODE_ACTIVE;
+                    scanConfig.pSsidList       = myAPlist;
+                    scanConfig.delimChar       = delimiter;
+                    scanConfig.pNotifyCallback = (void *)APP_ScanHandler;
+                    scanConfig.matchMode       = WDRV_PIC32MZW_SCAN_MATCH_MODE_FIND_ALL;
+
+                    SYS_CONSOLE_PRINT("\r\nStarting Custom Scan ...\r\n");
+
+                    res = SYS_WIFI_CtrlMsg(sysObj.syswifi,SYS_WIFI_SCANREQ,&scanConfig,sizeof(SYS_WIFI_SCAN_CONFIG));                        
+                    if(SYS_WIFI_SUCCESS != res)
+                    {
+                        SYS_CONSOLE_PRINT("Error Starting scan: %d\r\n", res);
+                    }
+                }
+            }
+        }
+        else if ((ptr == NULL) && (ptr1 != NULL))
+        {
+            // getBss request
+            // use the value to get the nth bss stored on chip
+            s_scanResultIsValid = 0;
+            
+            if (g_u8BssCount > 0)
+            {
+                bssIdxStr[1] = *ptr1;
+                bssIdxStr[0] = *(ptr1 + 1);
+                bssIdx = hexatob(*(uint16_t *)bssIdxStr);
+                memcpy(&g_sTempScanBssInfo, &g_asScanBssInfo[bssIdx], sizeof(g_sTempScanBssInfo));
+                s_scanResultIsValid = 1;
+            }
+        }
+        else
+        {
+            // impossible to get here
+        }
+    }
+	
     return HTTP_IO_DONE;
 }
 
@@ -128,7 +241,7 @@ HTTP_IO_RESULT TCPIP_HTTP_PostExecute(HTTP_CONN_HANDLE connHandle)
     // Load the file name
     // Make sure uint8_t filename[] above is large enough for your longest name
     SYS_FS_FileNameGet(TCPIP_HTTP_CurrentConnectionFileGet(connHandle), filename, sizeof(filename));
-   
+
     if(!memcmp(filename, "config.htm", 10))
     {
         return HTTPPostConfig_wifi(connHandle);
@@ -188,191 +301,289 @@ uint8_t TCPIP_HTTP_UserAuthenticate(HTTP_CONN_HANDLE connHandle, uint8_t *cUser,
 
 static HTTP_IO_RESULT HTTPPostConfig_wifi(HTTP_CONN_HANDLE connHandle)
 {
-   // bool bConfigFailure = false;
     uint8_t httpDataBuff[256];
     uint16_t Index=0;
     uint32_t byteCount;
     TCP_SOCKET sktHTTP;
+    uint8_t *httpScanNwDataBuff = 0;
     
-    SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETCONFIG, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
-    httpNetData.currNet = 0; // forget the old settings
-    
-    // Check to see if the browser is attempting to submit more data than we
-    // can parse at once.  This function needs to receive all updated
-    // parameters and validate them all before committing them to memory so that
-    // orphaned configuration parameters do not get written (for example, if a
-    // static IP address is given, but the subnet mask fails parsing, we
-    // should not use the static IP address).  Everything needs to be processed
-    // in a single transaction.  If this is impossible, fail and notify the user.
-    // As a web devloper, if you add parameters to the network info and run into this
-    // problem, you could fix this by to splitting your update web page into two
-    // seperate web pages (causing two transactional writes).  Alternatively,
-    // you could fix it by storing a static shadow copy of network info someplace
-    // in memory and using it when info is complete.
-    // Lastly, you could increase the TCP RX FIFO size for the HTTP server.
-    // This will allow more data to be POSTed by the web browser before hitting this limit.
+    SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETWIFICONFIG, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
+	
     byteCount = TCPIP_HTTP_CurrentConnectionByteCountGet(connHandle);
     sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
-    if(byteCount > TCPIP_TCP_GetIsReady(sktHTTP) + TCPIP_TCP_FifoRxFreeGet(sktHTTP))
-    {   // Configuration Failure
-        TCPIP_HTTP_CurrentConnectionStatusSet(connHandle, HTTP_REDIRECT);
-        return HTTP_IO_DONE;
-    }
     
+    if(byteCount > TCPIP_TCP_GetIsReady(sktHTTP) + TCPIP_TCP_FifoRxFreeGet(sktHTTP))
+        goto ConfigFailure;
+
     // Ensure that all data is waiting to be parsed.  If not, keep waiting for
     // all of it to arrive.
     if(TCPIP_TCP_GetIsReady(sktHTTP) < byteCount)
         return HTTP_IO_NEED_DATA;
 
-    // Read all browser POST data
-    TCPIP_TCP_ArrayGet(sktHTTP,(uint8_t*)httpDataBuff,256);
-          
-     
-    if(!strncmp((const char *)httpDataBuff+Index, (const char *)"devmode=",strlen("devmode=")))
+    // In case the user used Static Wifi Configuration
+    if(byteCount > 100)
     {
-        Index += strlen("devmode=");
-        wifiConfig.mode = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-    }
-    Index += 2;
-    
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"saveconfig=",strlen("saveconfig=")))
-    {
-        Index += strlen("saveconfig=");
-        wifiConfig.saveConfig = CONVERT_TO_NUMBER(httpDataBuff[Index]);        
-    }
-    Index += 2;
+        // Read all browser POST data
+        TCPIP_TCP_ArrayGet(sktHTTP,(uint8_t*)httpDataBuff,256);
 
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"countrycode=",strlen("countrycode=")))
-    {
-        uint8_t country_code ;
-        Index += strlen("countrycode=");
-        country_code = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-        switch(country_code)
+
+        if(!strncmp((const char *)httpDataBuff+Index, (const char *)"devmode=",strlen("devmode=")))
         {
-            case 0: //GEN
+            Index += strlen("devmode=");
+            wifiConfig.mode = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+        }
+        Index += 2;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"saveconfig=",strlen("saveconfig=")))
+        {
+            Index += strlen("saveconfig=");
+            wifiConfig.saveConfig = CONVERT_TO_NUMBER(httpDataBuff[Index]);        
+        }
+        Index += 2;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"countrycode=",strlen("countrycode=")))
+        {
+            uint8_t country_code ;
+            Index += strlen("countrycode=");
+            country_code = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+            switch(country_code)
             {
-                strcpy((char *)wifiConfig.countryCode,(const char *)"GEN");
-                break;
+                case 0: //GEN
+                {
+                    strcpy((char *)wifiConfig.countryCode,(const char *)"GEN");
+                    break;
+                }
+                case 1: //USA
+                {
+                    strcpy((char *)wifiConfig.countryCode,(const char *)"USA");
+                    break;
+                }
+                case 2: //EMEA
+                {
+                    strcpy((char *)wifiConfig.countryCode,(const char *)"EMEA");
+                    break;
+                }
+                case 3: //CUST1
+                {
+                    strcpy((char *)wifiConfig.countryCode,(const char *)"CUST1");
+                    break;
+                }
+                case 4: //CUST2
+                {
+                    strcpy((char *)wifiConfig.countryCode,(const char *)"CUST2");
+                    break;
+                }
             }
-            case 1: //USA
+         }
+         Index += 2 ;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"stassid=",strlen("stassid=")))
+        {
+
+            uint8_t len ;
+            Index += strlen("stassid=");
+            len = Findstring_lenth(httpDataBuff+Index);
+            strncpy((char *)wifiConfig.staConfig.ssid,(const char *)httpDataBuff+Index,len);
+            wifiConfig.staConfig.ssid[len] ='\0';
+
+            Index += len ;
+        }
+         Index += 1;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"stapwd=",strlen("stapwd=")))
+        {
+            uint8_t len ;
+            Index += strlen("stapwd=");
+            len = Findstring_lenth(httpDataBuff+Index);
+            strncpy((char *)wifiConfig.staConfig.psk,(const char *)httpDataBuff+Index,len);
+            wifiConfig.staConfig.psk[len] ='\0';
+
+            Index += len ;
+        }
+         Index += 1;
+
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"staauth=",strlen("staauth=")))
+        {
+
+            Index += strlen("staauth=");
+            wifiConfig.staConfig.authType = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+
+        }
+         Index += 2;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"stach=",strlen("stach=")))
+        {
+
+            Index += strlen("stach=");
+            wifiConfig.staConfig.channel =CONVERT_TO_NUMBER(httpDataBuff[Index]);
+        }
+              Index += 2;
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"staauto=",strlen("staauto=")))
+        {
+
+            Index += strlen("staauto=");
+            wifiConfig.staConfig.autoConnect = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+        }
+         Index += 2;
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"apssid=",strlen("apssid=")))
+        {
+            uint8_t len ;
+            Index += strlen("apssid=");
+            len = Findstring_lenth(httpDataBuff+Index);
+            strncpy((char *)wifiConfig.apConfig.ssid,(const char *)httpDataBuff+Index,len);
+            wifiConfig.apConfig.ssid[len] ='\0';
+            Index += len;
+        }
+         Index += 1;
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"appwd=",strlen("appwd=")))
+        {
+            uint8_t len ;
+            Index += strlen("appwd=");
+            len = Findstring_lenth(httpDataBuff+Index);
+            strncpy((char *)wifiConfig.apConfig.psk,(const char *)httpDataBuff+Index,len);
+            wifiConfig.apConfig.psk[len] ='\0';
+            Index += len;
+        }
+         Index += 1;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"apauth=",strlen("apauth=")))
+        {
+
+            Index += strlen("apauth=");
+            wifiConfig.apConfig.authType = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+
+        }
+         Index += 2;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"apch=",strlen("apch=")))
+        {
+
+            Index += strlen("apch=");
+            wifiConfig.apConfig.channel =CONVERT_TO_NUMBER(httpDataBuff[Index]);    
+        }
+         Index += 2;
+
+        if(!strncmp((char *)httpDataBuff+Index, (const char *)"ssidv=",strlen("ssidv=")))
+        {
+
+            Index += strlen("ssidv=");
+            wifiConfig.apConfig.ssidVisibility = CONVERT_TO_NUMBER(httpDataBuff[Index]);
+        }
+        SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_CONNECT, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
+        return HTTP_IO_DONE;                
+    }
+    
+    httpScanNwDataBuff = TCPIP_HTTP_CurrentConnectionDataBufferGet(connHandle);
+    // Read all browser POST data.
+    while(TCPIP_HTTP_CurrentConnectionByteCountGet(connHandle))
+    {
+        // Read a form field name.
+        if(TCPIP_HTTP_PostNameRead(connHandle, httpScanNwDataBuff, 6) != HTTP_READ_OK)
+            goto ConfigFailure;
+
+        // Read a form field value.
+        if(TCPIP_HTTP_PostValueRead(connHandle, httpScanNwDataBuff + 6, TCPIP_HTTP_MAX_DATA_LEN - 6 - 2) != HTTP_READ_OK)
+            goto ConfigFailure;
+        
+        // Parse the value that was read.
+        if(!strcmp((char *)httpScanNwDataBuff, (const char *)"wlan"))
+        { // Get the wlan mode: Ad-Hoc or Infrastructure.
+            char mode[6];
+            if (strlen((char *)(httpScanNwDataBuff + 6)) > 5) /* Sanity check. */
+                goto ConfigFailure;
+
+            memcpy(mode, (void *)(httpScanNwDataBuff + 6), strlen((char *)(httpScanNwDataBuff + 6)));
+            mode[strlen((char *)(httpScanNwDataBuff + 6))] = 0; /* Terminate string. */
+            if(!strcmp((char *)mode, (const char *)"infra"))
             {
-                strcpy((char *)wifiConfig.countryCode,(const char *)"USA");
-                break;
+                g_networkType = WF_NETWORK_TYPE_INFRASTRUCTURE;
             }
-            case 2: //EMEA
+            else
             {
-                strcpy((char *)wifiConfig.countryCode,(const char *)"EMEA");
-                break;
-            }
-            case 3: //CUST1
-            {
-                strcpy((char *)wifiConfig.countryCode,(const char *)"CUST1");
-                break;
-            }
-            case 4: //CUST2
-            {
-                strcpy((char *)wifiConfig.countryCode,(const char *)"CUST2");
-                break;
+                // Mode type no good. :-(
+                SYS_CONSOLE_MESSAGE((const char *)"\r\nUnknown mode type on www! ");
+                goto ConfigFailure;
             }
         }
-     }
-     Index += 2 ;
-     
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"stassid=",strlen("stassid=")))
-    {
+        else if(!strcmp((char *)httpScanNwDataBuff, "ssid"))
+        { 
+            // Get new ssid and make sure it is valid.
+            if(strlen((char *)(httpScanNwDataBuff + 6)) < 33u)
+            {
+                memcpy(wifiConfig.staConfig.ssid, (void *)(httpScanNwDataBuff + 6), strlen((char *)(httpScanNwDataBuff + 6)));
+                wifiConfig.staConfig.ssid[strlen((char *)(httpScanNwDataBuff + 6))] = 0; /* Terminate string. */                
+            }
+            else
+            {
+                goto ConfigFailure; // Invalid SSID... :-(
+            }
+        }
+        else if(!strcmp((char *)httpScanNwDataBuff, (const char *)"sec"))
+        {
+            char security_type[20]; // Read security type.
 
-        uint8_t len ;
-        Index += strlen("stassid=");
-        len = Findstring_lenth(httpDataBuff+Index);
-        strncpy((char *)wifiConfig.staConfig.ssid,(const char *)httpDataBuff+Index,len);
-        wifiConfig.staConfig.ssid[len] ='\0';
-        
-        Index += len ;
+            memcpy(security_type, (void *)(httpScanNwDataBuff + 6), strlen((char *)(httpScanNwDataBuff + 6)));
+            security_type[strlen((char *)(httpScanNwDataBuff + 6))] = 0; /* Terminate string. */
+
+            if (!strcmp((char *)security_type, (const char *)"no"))
+            {
+                wifiConfig.staConfig.authType = SYS_WIFI_OPEN;
+            }
+            else if(!strcmp((char *)security_type, (const char *)"wpa1"))
+            {
+                wifiConfig.staConfig.authType = SYS_WIFI_WPAWPA2MIXED;
+            }
+            else if(!strcmp((char *)security_type, (const char *)"wpa2"))
+            {
+                wifiConfig.staConfig.authType = SYS_WIFI_WPA2;
+            }
+            else if(!strcmp((char *)security_type, (const char *)"wpa"))
+            {
+                wifiConfig.staConfig.authType = SYS_WIFI_WPAWPA2MIXED;
+            }
+            else
+            { // Security type no good. :-(
+                SYS_CONSOLE_MESSAGE("\r\nUnknown key type on www\r\n");
+                goto ConfigFailure;
+            }
+        }
+        else if(!strcmp((char *)httpScanNwDataBuff, (const char *)"key"))
+        { // Read new key material.
+            memcpy(wifiConfig.staConfig.psk, (void *)(httpScanNwDataBuff + 6), strlen((char *)(httpScanNwDataBuff + 6)));
+            wifiConfig.staConfig.psk[strlen((char *)(httpScanNwDataBuff + 6))] = 0;
+        }
     }
-     Index += 1;
 
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"stapwd=",strlen("stapwd=")))
-    {
-        uint8_t len ;
-        Index += strlen("stapwd=");
-        len = Findstring_lenth(httpDataBuff+Index);
-        strncpy((char *)wifiConfig.staConfig.psk,(const char *)httpDataBuff+Index,len);
-        wifiConfig.staConfig.psk[len] ='\0';
-        
-        Index += len ;
-    }
-     Index += 1;
+    /* Check if WPA hasn't been selected with Ad-Hoc, if it has we choke! */
+    if ((g_networkType == WF_NETWORK_TYPE_ADHOC) && (
+        (wifiConfig.staConfig.authType == SYS_WIFI_WPAWPA2MIXED) ||
+        (wifiConfig.staConfig.authType == SYS_WIFI_WPA2)))
+        goto ConfigFailure;
 
+    /*
+     * All parsing complete!  If we have got to here all data has been validated and
+     * We can handle what is necessary to start the reconfigure process of the Wi-Fi device.
+     */
 
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"staauth=",strlen("staauth=")))
-    {
-
-        Index += strlen("staauth=");
-        wifiConfig.staConfig.authType = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-        
-    }
-     Index += 2;
-
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"stach=",strlen("stach=")))
-    {
-
-        Index += strlen("stach=");
-        wifiConfig.staConfig.channel =CONVERT_TO_NUMBER(httpDataBuff[Index]);
-    }
-          Index += 2;
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"staauto=",strlen("staauto=")))
-    {
-
-        Index += strlen("staauto=");
-        wifiConfig.staConfig.autoConnect = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-    }
-     Index += 2;
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"apssid=",strlen("apssid=")))
-    {
-        uint8_t len ;
-        Index += strlen("apssid=");
-        len = Findstring_lenth(httpDataBuff+Index);
-        strncpy((char *)wifiConfig.apConfig.ssid,(const char *)httpDataBuff+Index,len);
-        wifiConfig.apConfig.ssid[len] ='\0';
-        Index += len;
-    }
-     Index += 1;
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"appwd=",strlen("appwd=")))
-    {
-        uint8_t len ;
-        Index += strlen("appwd=");
-        len = Findstring_lenth(httpDataBuff+Index);
-        strncpy((char *)wifiConfig.apConfig.psk,(const char *)httpDataBuff+Index,len);
-        wifiConfig.apConfig.psk[len] ='\0';
-        Index += len;
-    }
-     Index += 1;
-
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"apauth=",strlen("apauth=")))
-    {
-
-        Index += strlen("apauth=");
-        wifiConfig.apConfig.authType = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-
-    }
-     Index += 2;
-
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"apch=",strlen("apch=")))
-    {
-
-        Index += strlen("apch=");
-        wifiConfig.apConfig.channel =CONVERT_TO_NUMBER(httpDataBuff[Index]);    
-    }
-     Index += 2;
-
-    if(!strncmp((char *)httpDataBuff+Index, (const char *)"ssidv=",strlen("ssidv=")))
-    {
-
-        Index += strlen("ssidv=");
-        wifiConfig.apConfig.ssidVisibility = CONVERT_TO_NUMBER(httpDataBuff[Index]);
-    }
+    wifiConfig.mode = SYS_WIFI_STA;
+    strcpy((char *)wifiConfig.countryCode, "GEN");
+    wifiConfig.saveConfig = 1;
+    wifiConfig.staConfig.channel = 0;
     SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_CONNECT, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
+
+    /* Set 1s delay before redirection, goal is to display the redirection web page. */
+
     return HTTP_IO_DONE;
+
+    ConfigFailure:
+        lastFailure = true;
+        if(httpScanNwDataBuff)
+        {
+            strcpy((char *)httpScanNwDataBuff, "/error.htm");
+        }
+        TCPIP_HTTP_CurrentConnectionStatusSet(connHandle, HTTP_REDIRECT);
+        return HTTP_IO_DONE;
 }
 
 /****************************************************************************
@@ -416,7 +627,7 @@ void TCPIP_HTTP_Print_builddate(HTTP_CONN_HANDLE connHandle)
 
 void TCPIP_HTTP_Print_version(HTTP_CONN_HANDLE connHandle)
 {    
-    SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETCONFIG, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
+    SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETWIFICONFIG, &wifiConfig, sizeof(SYS_WIFI_CONFIG));
     TCPIP_TCP_StringPut(TCPIP_HTTP_CurrentConnectionSocketGet(connHandle), (const void *)TCPIP_STACK_VERSION_STR);
 }
 
@@ -425,7 +636,40 @@ void TCPIP_HTTP_Print_pot(HTTP_CONN_HANDLE connHandle)
     uint8_t AN0String[8];
     uint16_t ADval;
 
+
     ADval = (uint16_t)SYS_RANDOM_PseudoGet();
+    uitoa(ADval, (uint8_t *)AN0String);
+    TCPIP_TCP_StringPut(TCPIP_HTTP_CurrentConnectionSocketGet(connHandle), AN0String);
+}
+
+void TCPIP_HTTP_Print_apscan(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t AN0String[8];
+    uint16_t ADval;
+
+    ADval = (uint16_t)SYS_RANDOM_PseudoGet();
+    uitoa(ADval, (uint8_t *)AN0String);
+    TCPIP_TCP_StringPut(TCPIP_HTTP_CurrentConnectionSocketGet(connHandle), AN0String);
+}
+
+void TCPIP_HTTP_Print_startscan(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t AN0String[8];
+    uint16_t ADval = 1;
+    SYS_WIFI_RESULT res;
+
+    SYS_WIFI_STATUS wifiStatus = SYS_WIFI_GetStatus (sysObj.syswifi);
+    if (wifiStatus > SYS_WIFI_STATUS_WDRV_OPEN_REQ)
+    {
+        SYS_CONSOLE_PRINT("\r\nStarting Custom Scan ...\r\n");
+
+        res = SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_SCANREQ, NULL, 0);
+        if(SYS_WIFI_SUCCESS != res)
+        {
+                SYS_CONSOLE_PRINT("Error Starting scan: %d\r\n", res);
+        }
+    }
+
     uitoa(ADval, (uint8_t *)AN0String);
     TCPIP_TCP_StringPut(TCPIP_HTTP_CurrentConnectionSocketGet(connHandle), AN0String);
 }
@@ -654,4 +898,136 @@ void TCPIP_HTTP_Print_config_ssidv(HTTP_CONN_HANDLE connHandle,uint16_t val)
     if(val == wifiConfig.apConfig.ssidVisibility)
         TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *)"SELECTED");
 }
+
+void TCPIP_HTTP_Print_scan(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t scanInProgressString[4];
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    uitoa((uint16_t)false, scanInProgressString);
+    TCPIP_TCP_StringPut(sktHTTP, scanInProgressString);
+}
+
+void TCPIP_HTTP_Print_bssCount(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t bssCountString[4];
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    if(g_u8BssCount > -1)
+    {
+        s_scanResultIsValid = 1;
+    }
+    else
+        s_scanResultIsValid = 0;
+
+    uitoa(g_u8BssCount, bssCountString);
+    TCPIP_TCP_StringPut(sktHTTP, bssCountString);
+}
+
+void TCPIP_HTTP_Print_valid(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t s_scanResultIsValidString[4];
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    uitoa((uint8_t)s_scanResultIsValid, s_scanResultIsValidString);
+    TCPIP_TCP_StringPut(sktHTTP, s_scanResultIsValidString);
+}
+
+void TCPIP_HTTP_Print_name(HTTP_CONN_HANDLE connHandle)
+{
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    if (s_scanResultIsValid)
+    {
+#if 0       
+        if(g_sTempScanBssInfo.ctx.ssid.length == 0)
+        {
+            TCPIP_TCP_StringPut(sktHTTP, (uint8_t *)"Hidden Network");
+        }
+        else 
+#endif            
+            if(g_sTempScanBssInfo.ctx.ssid.length < 32)
+                TCPIP_TCP_StringPut(sktHTTP, g_sTempScanBssInfo.ctx.ssid.name);
+            else
+            {
+                uint8_t buf_tmp[33];
+                int i;
+                for(i = 0; i < 32; i++) buf_tmp[i] = g_sTempScanBssInfo.ctx.ssid.name[i];
+                buf_tmp[32] = 0;
+                TCPIP_TCP_StringPut(sktHTTP, buf_tmp);
+            }
+    }
+    else
+    {
+        TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *)"0");
+    }
+}
+
+void TCPIP_HTTP_Print_privacy(HTTP_CONN_HANDLE connHandle)
+{
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    if (s_scanResultIsValid)
+    {
+        uint8_t secString[4];
+        uint8_t security = g_sTempScanBssInfo.authTypeRecommended;
+
+        uitoa(security, secString);
+        TCPIP_TCP_StringPut(sktHTTP, secString);
+    }
+    else
+    {
+        TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *)"0");
+    }
+}
+
+void TCPIP_HTTP_Print_wlan(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t bssTypeString[4];
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    if (s_scanResultIsValid)
+    {
+        uitoa(1, bssTypeString);
+        TCPIP_TCP_StringPut(sktHTTP, bssTypeString);
+    }
+    else
+    {
+        TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *)"0");
+    }
+}
+
+void TCPIP_HTTP_Print_strength(HTTP_CONN_HANDLE connHandle)
+{
+    uint8_t strVal;
+    uint8_t strString[4];
+    TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
+
+    if (s_scanResultIsValid)
+    {
+        if (g_sTempScanBssInfo.rssi > -61)
+        {
+            strVal = 4;
+        }
+        else if (g_sTempScanBssInfo.rssi > -81)
+        {
+            strVal = 3;
+        }
+        else if (g_sTempScanBssInfo.rssi > -101)
+        {
+            strVal = 2;
+        }
+        else
+        {
+            strVal = 1;
+        }
+        uitoa(strVal, strString);
+        TCPIP_TCP_StringPut(sktHTTP, strString);
+    }
+    else
+    {
+        TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *)"0");
+    }
+}
+
 #endif // #if defined(TCPIP_STACK_USE_HTTP_SERVER)

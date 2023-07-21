@@ -45,32 +45,32 @@ Using MPLAB® Harmony Framework, you will add all the components to:
 
 ## Create a PIC32MZ W1 project from scratch<a name="step2"></a>
 
-The step-by-step instructions have been developped with MPLAB Harmony configured in Native Netbeans mode from **Tools -> Options -> Plugins -> Harmony**
+The step-by-step instructions have been developped with MPLAB IDE.Update the Harmony3 framework path in  **Tools -> Options -> Plugins -> Harmony**
 <p align="center">
-<img src="resources/media/mplab_harmony_options.png" width=520>
+<img src="resources/media/mplab_harmony_options1.png" width=520>
 </p>
 
 - Let's create a new project for the PIC32MZ W1 device with **File -> New Project**
 <p align="center">
-<img src="resources/media/mplabx_new_project_01.png" width=>
+<img src="resources/media/mplabx_new_project_00.png" width=>
 </p>
 
 - Select **32-bit MPLAB Harmony 3 Project**
 - Click **Next >**
 <p align="center">
-<img src="resources/media/mplabx_new_project_02.png" width=>
+<img src="resources/media/mplabx_new_project_01.png" width=>
 </p>
 
 - Make sure the Framework Path is correct
 - Click **Next >**
 <p align="center">
-<img src="resources/media/mplabx_new_project_03.png" width=>
+<img src="resources/media/mplabx_new_project_02.png" width=>
 </p>
 
 - Select your project location and provide the name that will be used for the MPLAB® X IDE's ".X" folder
 - Click **Next >**
 <p align="center">
-<img src="resources/media/mplabx_new_project_04.png" width=720>
+<img src="resources/media/mplabx_new_project_03.png" width=720>
 </p>
 
 - Use the filter **w1** to easily find the **PIC32MZ1025W104132** Target Device
@@ -78,25 +78,18 @@ The step-by-step instructions have been developped with MPLAB Harmony configured
 <p align="center">
 <img src="resources/media/mplabx_new_project_05.png" width=>
 </p>
-
-- Review the packages that will be used by the project
-- Click Launch to continue to the **MPLAB® Harmony Configurator (MHC)**
+ 
+- Click **Select MPLAB Harmoney**
 <p align="center">
-<img src="resources/media/mplabx_new_project_06.png" width=520>
+<img src="resources/media/MCC_Content_manager.png" width=>
 </p>
 
+-  If all required content is available locally in your machine then Click **Finish**. (To download/setup the required content follow [Setup your development environement](https://github.com/MicrochipTech/PIC32MZW1_Workshop/tree/master/03_setup#step4) )
 <p align="center">
-<img src="resources/media/mhc_00.png" width=480>
+<img src="resources/media/MCC_Content_manager1.png" width=>
 </p>
 
-> If MHC doesn't appear in the top menu bar then MPLAB® Harmony Configurator (MHC) can be launched under **Tools -> Embedded -> MPLAB® Harmony Configurator.**\
-Check out the [MHC wiki](https://github.com/Microchip-MPLAB-Harmony/mhc/wiki) for more details.
-
-<p align="center">
-<img src="resources/media/mhc_02.png" width=480>
-</p>
-
-* MHC will present different parts such as :
+* MCC will lunch and present different parts such as :
 
   * Available Components
   * Active Components
@@ -115,41 +108,35 @@ Check out the [MHC wiki](https://github.com/Microchip-MPLAB-Harmony/mhc/wiki) fo
   * _**Wireless**_: includes WLAN drivers and Wireless Services
 
 <p align="center">
-<img src="resources/media/mhc_01.png" width=>
+<img src="resources/media/mcc_011.png" width=>
 </p>
 
-> By default and for this tutorial, MHC is running in native mode and share the same window with MPLAB® X IDE. If running MHC in standalone mode is required, you can simply change the settings under: **Tools -> Options -> Plugins -> Window Manager**
 
-<!--
-<p align="center">
-<img src="resources/media/mhc_native_standalone.png" width=>
-</p>
--->
 
 - From the Available Components window, expand the **Board Support Packages (BSPs)**
 <p align="center">
-<img src="resources/media/mhc_add_bsp_01.png" width=240>
+<img src="resources/media/mcc_add_bsp_01.png" width=240>
 </p>
 
 - Double click on the **PIC32MZ W1 Curiosity BSP** to add the component to Active Components window.\
 The Project Graph looks like below:
 
 <p align="center">
-<img src="resources/media/mhc_add_bsp_02.png" width=480>
+<img src="resources/media/mcc_add_bsp_02.png" width=480>
 </p>
 
 > The BSP component contains code and configuration items to support the PIC32MZ W1 Curiosity hardware. 
 
-- To check the settings of the IOs which come with the BSP, select **MHC -> Tools -> Pin Configuration**
+- To check the settings of the IOs which come with the BSP, select **Project Graph -> plugins -> Pin Configuration**
 
 <p align="center">
-<img src="resources/media/mhc_pin_configuration_01.png" width=>
+<img src="resources/media/mcc_pin_configuration_01.png" width=>
 </p>
 
 - Open the tab **Pin Settings** and scroll-down to observe the configuration of the pins **RK1, RK3 and RA10**
 
 <p align="center">
-<img src="resources/media/mhc_pin_configuration_02.png" width=>
+<img src="resources/media/mcc_pin_configuration_02.png" width=>
 </p>
 
 - Make sure both LED pins are set as Digital Output
@@ -162,23 +149,15 @@ The Project Graph looks like below:
 > - if (SWITCH1_Get() == SWITCH1_STATE_PRESSED)
 > - ...
 
-- Click **Generate Code**
+- Click **Generate Code**, Required code will be auto generated.
 <p align="center">
-<img src="resources/media/mhc_generate_code_01.png" width=>
-</p>
-
-- Save the MHC Configuration File
-- Select _**USER_ALL**_ for the merge strategy\
-(Check out the [wiki](https://github.com/Microchip-MPLAB-Harmony/mhc/wiki#generating-code) for more details)
-- Generate the code
-<p align="center">
-<img src="resources/media/mhc_generate_code_02.png" width=480>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
 
 - Click the **Projects** tab to observe the project structure and the generated code
 
 <p align="center">
-<img src="resources/media/mhc_project_window.png" width=320>
+<img src="resources/media/mcc_project_window1.png" width=320>
 </p>
 
 The following table provides the Header and Source files generated:
@@ -212,29 +191,19 @@ MQTT Service library provides an entry point for the application.
 
 - From the Available Components window, add the MQTT Service component located into **Harmony/Harmony Networking** to the Active Components list
 <p align="center">
-<img src="resources/media/mhc_add_mqtt_service.png" width=240>
+<img src="resources/media/mcc_add_mqtt_service.png" width=240>
 </p>
 
 - Several popup window will come and ask to activate or deactivate components
 - Make sure to reply **Yes** to activate the components and link the dependencies
-(17 Click to reply **Yes**)
+(25 Click to reply **Yes**)
 <p align="center">
-<img src="resources/media/mhc_activate_net_service.png" width=320>
-</p>
-
-- Make sure to reply **No** when prompt is asking to deactivate NETCONFIG component (1 Click to reply **No**)
-<p align="center">
-<img src="resources/media/mhc_desactivate_netconfig.png" width=300>
-</p>
-
-- Make sure to reply **Yes** to activate the rest of the components required
-<p align="center">
-<img src="resources/media/mhc_activate_paho_mqtt.png" width=320>
+<img src="resources/media/mcc_activate_net_service.png" width=320>
 </p>
 
 - Then, reply **Yes** to automatically make the connections between the components
 <p align="center">
-<img src="resources/media/mhc_make_connections.png" width=480>
+<img src="resources/media/mcc_make_connections.png" width=480>
 </p>
 
 > MQTT Service is an Harmony Networking layer which include components such as:\
@@ -255,10 +224,16 @@ Drop down the list and check out the different layers\
 _**Root**_ is the default group
 
 <p align="center">
-<img src="resources/media/mhc_root_view_01.png" width=720>
+<img src="resources/media/mcc_root_view_01.png" width=720>
 </p>
 
 Next steps will be to configure the services automatically included with the MQTT Service.
+
+
+- From the Available Components window, add the SNTP component located into **Device Resource -> TCPIP -> Layer7-APPLICATION -> SNTP** to the Active Components list
+<p align="center">
+<img src="resources/media/mcc_add_SNTP.png" width=240>
+</p>
 
 
 ## Configure Wi-Fi Service Component<a name="step4"></a>
@@ -270,19 +245,20 @@ PIC32MZ W1 restarts in station mode and try to connect to the target router with
 
 - In Project Graph and from the Root view, select **WIFI SERVICE** component
 <p align="center">
-<img src="resources/media/mhc_select_wifi_service.png" width=720>
+<img src="resources/media/mcc_select_wifi_service.png" width=720>
 </p>
 
 - In Configuration Options window, select **Device Mode = AP**
 - **Make sure STA Mode And AP Mode are both checked**
 - (optional) Change the default SSID and Password of the AP Mode
 - Note carrefully the SSID and Password in AP Mode. You will need later to provision the device.
+- Select **Enable WiFi Scanning option**
 <p align="center">
-<img src="resources/media/mhc_configure_wifi_service_01.png" width=320>
+<img src="resources/media/mcc_configure_wifi_service_011.png" width=320>
 </p>
 
 > The WFI32 module is pre-certified for use in several geographic regions and complies to major regulatory guidelines and norms. Refer to the [product page](http://www.microchip.com/wwwproducts/en/WFI32E01PC) to get the latest information.\
-MHC provides the capability to select the regulatory domain to be used in the application firmware under the Advanced Configuration menu.\
+MCC provides the capability to select the regulatory domain to be used in the application firmware under the Advanced Configuration menu.\
 The supported region codes are:
 > - GEN: Worldwide configuration that is the least common factor of IEEE, FCC and CE configurations. This can be used without violating any of the major regulatory guidelines. This is the region selected by default.
 > - USA: North American regulatory limits.
@@ -294,7 +270,7 @@ The supported region codes are:
 
 - From the Root view, select **WIFI PROVISIONING SERVICE**
 <p align="center">
-<img src="resources/media/mhc_select_wifi_provisioning_service.png" width=720>
+<img src="resources/media/mcc_select_wifi_provisioning_service.png" width=720>
 </p>
 
 In Configuration Options window: 
@@ -304,12 +280,12 @@ In Configuration Options window:
 - Keep HTTPNET disabled (HTTP NET is Harmony 3 module which implements a HTTP server with dynamic variables support and encrypted connections)
 
 <p align="center">
-<img src="resources/media/mhc_configure_wifi_provisioning_service_01.png" width=>
+<img src="resources/media/mcc_configure_wifi_provisioning_service_01.png" width=>
 </p>
 
  - Reply **Yes** for all prompts to activate the required components and link the dependencies
 <p align="center">
-<img src="resources/media/mhc_configure_wifi_provisioning_service_02.png" width=320>
+<img src="resources/media/mcc_configure_wifi_provisioning_service_02.png" width=320>
 </p>
 
 > - Wi-Fi Provisioning using command line method is highly configurable for trial purpose. However, CLI method is not recommended in production release due to security concerns.
@@ -321,7 +297,7 @@ In Configuration Options window:
 - Select **Net Service** from Active Components list
 - Make sure settings are like below:
 <p align="center">
-<img src="resources/media/mhc_net_service.png" width=>
+<img src="resources/media/mcc_net_service1.png" width=>
 </p>
 
 ## Configure MQTT Service Component<a name="step7"></a>
@@ -330,7 +306,7 @@ This step is requested to configure the device to connect to MQTT Broker and pub
 
 - From the Root view, select **MQTT Service**
 <p align="center">
-<img src="resources/media/mhc_select_mqtt_service.png" width=720>
+<img src="resources/media/mcc_select_mqtt_service.png" width=720>
 </p>
 
 - In Configuration Options window, expand **Basic Configuration**
@@ -340,7 +316,7 @@ This step is requested to configure the device to connect to MQTT Broker and pub
    - (optional) Populate _**Client Id**_ with unique value
 
 <p align="center">
-<img src="resources/media/mhc_configure_mqtt_service_01.png" width=>
+<img src="resources/media/mcc_configure_mqtt_service_01.png" width=>
 </p>
 
 > The _**Client Id**_ identifies each MQTT client that connects to an MQTT Broker. The broker uses the _**Client Id**_ to identify the client and the current state of the client. Therefore, this ID should be unique per client and broker. This could be interesting for debugging purpose. If MQTT _**Client Id**_ is left empty, the Id will be generated randomly by the library.
@@ -350,7 +326,7 @@ This step is requested to configure the device to connect to MQTT Broker and pub
    - Keep the settings by default
    - No username and password are required
 <p align="center">
-<img src="resources/media/mhc_configure_mqtt_service_02.png" width=320>
+<img src="resources/media/mcc_configure_mqtt_service_02.png" width=320>
 </p>
 
 > MQTT Service supports a user name and password for client authentication and authorization. However, if this information isn’t encrypted or hashed (either by implementation or TLS), the password is sent in plain text. We highly recommend the use of user names and passwords together with a secure transport. 
@@ -385,7 +361,7 @@ The client (PIC32MZ W1) should publish sensor data to Broker over another topic.
    - Fill the Topic Name box with: **pic32mz_w1/actuator**
    - QOS: at least once (1)
 <p align="center">
-<img src="resources/media/mhc_configure_mqtt_service_03.png" width=>
+<img src="resources/media/mcc_configure_mqtt_service_03.png" width=>
 </p>
 
 - Expand **Publish Topic**
@@ -393,7 +369,7 @@ The client (PIC32MZ W1) should publish sensor data to Broker over another topic.
    - Fill the Topic Name box with: **pic32mz_w1/sensor**
    - QOS: at least once (1)
 <p align="center">
-<img src="resources/media/mhc_configure_mqtt_service_04.png" width=>
+<img src="resources/media/mcc_configure_mqtt_service_04.png" width=>
 </p>
 
 > QoS (Quality of Service) contains 3 levels for the messages emitted:
@@ -413,33 +389,33 @@ From the Active Components window:
 - In the configuration option window, you are exposed to the default configuration which is good enough as a starting point
 - Keep the RTOS parameters by default
 
-MHC allows the configuration of various parameters of FreeRTOS such as:
+MCC allows the configuration of various parameters of FreeRTOS such as:
 - Preemptive or Co operative scheduler type
 - Tick mode, tick rate
 - Heap mode (Heap_1, Heap_2, Heap_3, ..)
 - etc..
 
 <p align="center">
-<img src="resources/media/mhc_freertos_configuration_01.png" width=320>
+<img src="resources/media/mcc_freertos_configuration_01.png" width=320>
 </p>
 
 > Check out the details of the FreeRTOS configuration options on [freertos.org page](
 http://www.freertos.org/a00110.html).
 
 
-The different components part of the project are also configured by MHC to run with FreeRTOS. 
+The different components part of the project are also configured by MCC to run with FreeRTOS. 
 
 These configuration parameters include the stack size for each thread, priority of the thread and the task delay. Setting the task delay allows a thread to be put into a blocked state, thereby allowing other threads in the system to run.
 
 - Check out the **RTOS Configuration** for the components below (generally located at the bottom of the Configuration Options window):
 
 <p align="left">
-<img src="resources/media/mhc_freertos_configuration_02.png" width=320>
-<img src="resources/media/mhc_freertos_configuration_03.png" width=>
-<img src="resources/media/mhc_freertos_configuration_04.png" width=>
-<img src="resources/media/mhc_freertos_configuration_05.png" width=320>
-<img src="resources/media/mhc_freertos_configuration_06.png" width=>
-<img src="resources/media/mhc_freertos_configuration_07.png" width=>
+<img src="resources/media/mcc_freertos_configuration_02.png" width=320>
+<img src="resources/media/mcc_freertos_configuration_03.png" width=>
+<img src="resources/media/mcc_freertos_configuration_04.png" width=>
+<img src="resources/media/mcc_freertos_configuration_05.png" width=320>
+<img src="resources/media/mcc_freertos_configuration_06.png" width=>
+<img src="resources/media/mcc_freertos_configuration_07.png" width=>
 </p>
 
 ## Configure Application Threads<a name="step9"></a>
@@ -448,15 +424,15 @@ To benefit the multitasking, thanks to the FreeRTOS task scheduler, and simplify
 
 - From the Active Components window, select **Core** in System Component
 <p align="left">
-<img src="resources/media/mhc_select_core_component.png" width=320>
-<img src="resources/media/mhc_core_options.png" width=320>
+<img src="resources/media/mcc_select_core_component.png" width=320>
+<img src="resources/media/mcc_core_options1.png" width=320>
 </p>
 
 - Expand **Generate Harmony Application Files**
 - Expand **Application Configuration**
 - Change the **Number of Applications** to **2**
 <p align="center">
-<img src="resources/media/mhc_core_configuration_01.png" width=480>
+<img src="resources/media/mcc_core_configuration_01.png" width=480>
 </p>
 
 In **Application 0 Configuration**
@@ -465,7 +441,7 @@ This will create an RTOS thread called `_APP_SENSOR_Tasks`.
 - Expand **RTOS Configuration** to configure Stack Size, Task Priority and Task Delay.
 - Check **Use Task Delay** and keep default value (50ms)
 <p align="center">
-<img src="resources/media/mhc_core_configuration_02.png" width=>
+<img src="resources/media/mcc_core_configuration_0211.png" width=>
 </p>
 
 > It is a better practice to configure task delay to keep the system operating optimally. Without delay, other lower priority tasks will not run. If all tasks are at the same priority, all will run in a round robin and it is not optimal.
@@ -476,11 +452,11 @@ This will create an RTOS thread called `_APP_MQTT_Tasks`.
 - Expand **RTOS Configuration** to configure Stack Size, Task Priority and Task Delay.
 - Check **Use Task Delay** and keep default value (50ms)
 <p align="center">
-<img src="resources/media/mhc_core_configuration_03.png" width=>
+<img src="resources/media/mcc_core_configuration_03.png" width=>
 </p>
 
 <!-- <p align="center">
-<img src="resources/media/mhc_core_configuration.png" width=>
+<img src="resources/media/mcc_core_configuration.png" width=>
 </p>
 -->
 
@@ -508,7 +484,7 @@ Add a Timer to trigger periodically the measurement of the on-board temperature 
 
 - From the Available Components window, add the **TMR3** component located in **Peripherals/TMR**
 <p align="center">
-<img src="resources/media/mhc_add_timer.png" width=320>
+<img src="resources/media/mcc_add_timer.png" width=320>
 </p>
 
 ## Configure Timer Component<a name="step11"></a>
@@ -519,7 +495,7 @@ Add a Timer to trigger periodically the measurement of the on-board temperature 
   - Set the highest period value in millisecond (**168**)
   - Make sure to obtain Period register = **65 534**
 <p align="center">
-<img src="resources/media/mhc_configure_timer.png" width=>
+<img src="resources/media/mcc_configure_timer1.png" width=>
 </p>
 
 ## Add ADC Component<a name="step12"></a>
@@ -528,120 +504,108 @@ Add the ADC Peripheral Library to monitor the on-board temperature sensor.
 
 - From the Available Components window, add the **ADCHS** component located into **Peripherals/ADCHS**
 <p align="center">
-<img src="resources/media/mhc_add_adchs.png" width=300>
+<img src="resources/media/mcc_add_adchs.png" width=300>
 </p>
 
 ## Configure ADC Component<a name="step13"></a>
 
-- Configure the ADC Component from **MHC -> Tools** and select **ADCHS Configuration**
+- Configure the ADC Component from **Project graph -> Plugins ** and select **ADCHS Configuration**
 <p align="center">
-<img src="resources/media/mhc_configure_adchs_01.png" width=320>
+<img src="resources/media/mcc_add_adchs_projectgraph.png" width=320>
 </p>
 
 - Select **ADCHS Easy View** tab to display another way to configure the component instead of using the Configurations Options window
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_01.png" width=720>
+<img src="resources/media/mcc_adchs_easy_view_01.png" width=720>
 </p>
 
 > The on-board temperature sensor device is connected to pin AN15/RPA13 of the WFI32E01PC module.\
-According to the [PIC32MZ W1 datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC), the 12-bit HS SAR ADC has one dedicated ADC module (ADC1) and one shared ADC module (ADC2). AN15 can be internally connected to the shared ADC module. In MHC, the shared ADC module is called ADC7.
+According to the [PIC32MZ W1 datasheet](https://www.microchip.com/wwwproducts/en/WFI32E01PC), the 12-bit HS SAR ADC has one dedicated ADC module (ADC1) and one shared ADC module (ADC2). AN15 can be internally connected to the shared ADC module. In MCC, the shared ADC module is called ADC7.
 
 - In ADCHS Easy View, select **ADC7 Disabled** tab and check **Channel Enable**
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_02.png" width=720>
+<img src="resources/media/mcc_adchs_easy_view_02.png" width=720>
 </p>
 
 - Observe the settings are also changing in Configuration Options window
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_03.png" width=480>
+<img src="resources/media/mcc_adchs_easy_view_03.png" width=480>
 </p>
 
 - Set the shared ADC Resolution to **12-bits**
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_04.png" width=720>
+<img src="resources/media/mcc_adchs_easy_view_04.png" width=720>
 </p>
 
 - Select the **General Purpose Timer 3** as trigger source
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_05.png" width=720>
+<img src="resources/media/mcc_adchs_easy_view_05.png" width=720>
 </p>
 
 - To configure the analog input AN15, open the **Channel Selection**
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_06.png" width=>
+<img src="resources/media/mcc_adchs_easy_view_06.png" width=>
 </p>
 
 - Scroll-down and **Enable AN15 with Input Scan and Interrupt capabilities**
 <p align="center">
-<img src="resources/media/mhc_adchs_easy_view_07.png" width=720>
+<img src="resources/media/mcc_adchs_easy_view_07.png" width=720>
 </p>
 
 - Close the Channel Configuration ADC window
 
 - Select **System Clock (Tcy)** as the Clock Source
 <p align="left">
-<img src="resources/media/mhc_adchs_easy_view_08.png" width=>
-<img src="resources/media/mhc_adchs_easy_view_09.png" width=>
+<img src="resources/media/mcc_adchs_easy_view_08.png" width=>
+<img src="resources/media/mcc_adchs_easy_view_09.png" width=>
 </p>
 
 - Verify on the Configuration Options window you get the same settings as below:
 <p align="center">
-<img src="resources/media/mhc_adchs_configuration_01.png" width=480>
-<img src="resources/media/mhc_adchs_configuration_02.png" width=480>
+<img src="resources/media/mcc_adchs_configuration_01.png" width=480>
+<img src="resources/media/mcc_adchs_configuration_02.png" width=480>
 </p>
 
 ## Generate Code<a name="step14"></a>
 
-Once Harmony components are added to the Project Graph using MHC, it is time to generate the source files based on the configurations.
+Once Harmony components are added to the Project Graph using MCC, it is time to generate the source files based on the configurations.
 
-- **Generate the code** from MHC menu
+- **Generate the code** from MCC Resource Management
 <p align="center">
-<img src="resources/media/mhc_generate_code_03.png" width=>
+<img src="resources/media/mcc_generate_code_01.png" width=>
 </p>
-
-- Click **Save As** button
-<p align="center">
-<img src="resources/media/mhc_generate_code_04.png" width=480>
-</p>
-
-- Click the **Save** button to save the generated configuration
-<p align="center">
-<img src="resources/media/mhc_generate_code_05.png" width=320>
-</p>
-
-- Select **Merge Strategy = USER_ALL**
-- Generate Project
-<p align="center">
-<img src="resources/media/mhc_generate_code_06.png" width=400>
-</p>
-
-- As the code is generated, MPLAB® Harmony Configurator (MHC) displays the progress.
 
 <!--<p align="center">
-<img src="resources/media/mhc_generate_code_07.png" width=>
+<img src="resources/media/mcc_generate_code_07.png" width=>
 </p>-->
 	
 - When done, navigate to the **Projects** tab to view the project tree structure
 <p align="center">
-<img src="resources/media/mhc_generate_code_08.png" width=720>
+<img src="resources/media/mcc_generate_code_08.png" width=720>
 </p>
 
-MHC will include all the MPLAB Harmony library files and generate the code based on the MHC selections. The generated code would add files and folders to your Harmony project as shown.
+MCC will include all the MPLAB Harmony library files and generate the code based on the MCC selections. The generated code would add files and folders to your Harmony project as shown.
 
 - Examine the generated code
 
-  - `config/default/configuration.h` contains the definition based on the MHC selections
+  - `config/default/configuration.h` contains the definition based on the MCC selections
   - `config/default/FreeRTOSConfig.h` contains the FreeRTOS configuration
   - `config/default/initialization.c` initializes the application and the Harmony libraries (PLIB, Driver, Middleware)
   - `config/default/tasks.c` runs the harmony libraries and the application tasks
 
-MHC also generates the template main file (``main.c``) and the application thread files(``app_sensor.c`` and ``app_mqtt.c``) for sensor and MQTT communication threads.
+MCC also generates the template main file (``main.c``) and the application thread files(``app_sensor.c`` and ``app_mqtt.c``) for sensor and MQTT communication threads.
 
-> **The application files are only generated once, when the project is initially created. These are starter files where you are intended to do most of your development.** Other files (like the system configuration files) are under control of the MHC. You can occasionally need to modify these files; however, you need not worry about losing your changes if you regenerate the project files. The MHC will open a diff tool when it detects that you have modified a file and allow you to choose which changes you want to keep and which ones you want to update.
+> **The application files are only generated once, when the project is initially created. These are starter files where you are intended to do most of your development.** Other files (like the system configuration files) are under control of the MCC. You can occasionally need to modify these files; however, you need not worry about losing your changes if you regenerate the project files. The MCC will open a diff tool when it detects that you have modified a file and allow you to choose which changes you want to keep and which ones you want to update.
+
+- Make sure **Use_Legacy_libc** option under **MyFirstProject -> Propertiess -> XC32(Global Options) -> Use_Legacy_libc** is **disable**.
+<p align="center">
+<img src="resources/media/Use_Legacy_libc.png" width=700>
+</p>
+
 
 - (optional) Build the code by clicking on the **Clean and Build** button and verify that the project builds successfully. 
 <p align="center">
-<img src="resources/media/mplabx_clean_and_build.png" width=480>
+<img src="resources/media/mplabx_clean_and_build1.png" width=480>
 </p>
 
 At this point, you are ready to start implementing your application code.
@@ -663,9 +627,9 @@ The FreeRTOS scheduler would:
 - switches between tasks
 - switches context to next ready task based on scheduler configuration
 
-MHC allows combining MPLAB Harmony library tasks under the common RTOS thread (`_SYS_Tasks`) that runs the MPLAB Harmony System modules. 
+MCC allows combining MPLAB Harmony library tasks under the common RTOS thread (`_SYS_Tasks`) that runs the MPLAB Harmony System modules. 
 
-When MHC generates the code, the MPLAB Harmony System task (`SYS_Tasks`) routine contains the RTOS specific thread creation code (in `tasks.c`).
+When MCC generates the code, the MPLAB Harmony System task (`SYS_Tasks`) routine contains the RTOS specific thread creation code (in `tasks.c`).
 
 The `xTaskCreate` function creates a task by allocating RAM memory. It's parameters allows to set the name, stack depth, priority of the task, and also to retrieve task identifier and pointer to RAM function where the task code is implemented. After its creation, a task is ready to be executed. The `xTaskCreate` function call should be done prior to the scheduler call.
 <p align="center">
@@ -675,7 +639,7 @@ The `xTaskCreate` function creates a task by allocating RAM memory. It's paramet
 > The RAM can be automatically dynamically allocated from the RTOS heap within the RTOS Configuration. Creating RTOS objects dynamically has the benefit of greater simplicity, and the potential to minimise the application's maximum RAM usage.
 
 The System task routine then calls the RTOS scheduler, thereafter all RTOS threads will be managed by the scheduler and the ``SYS_Tasks`` function will not return. 
-MHC also generates the individual daemon threads that will run the
+MCC also generates the individual daemon threads that will run the
 MPLAB Harmony libraries and the application tasks (`_APP_SENSOR_Tasks` and `_APP_MQTT_Tasks`).
 
 <p align="center">
@@ -898,9 +862,9 @@ be called once the transfer completes
 `_APP_MQTT_Tasks` - This thread will have the responsability to:
 - Start the application in AP or STA mode
 - Allow provisioning while in AP mode
-- Connect to MQTT broker configured thru MHC
-- Publish the shared temperature resource from `_APP_SENSOR_Tasks` to the topic pre-configured within MHC (`pic32mz_w1_sensor`)
-- Subscribe to the topic `pic32mz_w1/actuator` (done by MHC)
+- Connect to MQTT broker configured thru MCC
+- Publish the shared temperature resource from `_APP_SENSOR_Tasks` to the topic pre-configured within MCC (`pic32mz_w1_sensor`)
+- Subscribe to the topic `pic32mz_w1/actuator` (done by MCC)
 - Parse the MQTT message received and control the on-board LEDs accordingly  
 <br>
 
@@ -1022,7 +986,7 @@ char message[32] = {0};
 SYS_MQTT_PublishTopicCfg sMqttTopicCfg;
 ```
 
-All the parameters other than the message itself are initialized by the configuration provided in MHC such as topic name for publishing, QOS, etc.
+All the parameters other than the message itself are initialized by the configuration provided in MCC such as topic name for publishing, QOS, etc.
 ```
 strcpy(sMqttTopicCfg.topicName, SYS_MQTT_DEF_PUB_TOPIC_NAME);
 sMqttTopicCfg.topicLength = strlen(SYS_MQTT_DEF_PUB_TOPIC_NAME);
@@ -1126,7 +1090,7 @@ You are now ready to build the code !
 - Go to **File > Project Properties** and make sure that your debugger/programmer (on-board PKOB or external tool) is selected as the Hardware tool connected and XC32 is selected as the Compiler Toolchain.
 
 <p align="center">
-<img src="resources/media/mplab_project_properties.png" width=720>
+<img src="resources/media/mplab_project_properties1.png" width=720>
 </p>
 
 - Press **Apply** and **Ok**
@@ -1134,7 +1098,7 @@ You are now ready to build the code !
 - Clean and build your application by clicking on the **Clean and Build** button
 
 <p align="center">
-<img src="resources/media/mplab_clean_and_build.png" width=>
+<img src="resources/media/mplab_clean_and_build1.png" width=>
 </p>
 
 - Program your application to the device by clicking on the **Make and Program** button
@@ -1174,12 +1138,12 @@ The project should build and program successfully.
 
 ## Provision the device<a name="step18"></a>
 
-According to MHC configuration, the Application is setup to start as an Access Point and ready for provisioning over Wi-Fi.
+According to MCC configuration, the Application is setup to start as an Access Point and ready for provisioning over Wi-Fi.
 
 It is required to provision the device to connect to Home Router.\
 Refer to the previous [section](../05_evaluate/README.md#top) of the workshop material.
 
-To provision the device you can use one of the following methods you have enabled thru MHC:
+To provision the device you can use one of the following methods you have enabled thru MCC:
 - Command Line Interface (CLI)
 - TCP Socket mode
   - Wi-Fi provisioning with JSON format
@@ -1291,7 +1255,9 @@ First step is to get the server certificate of [test.mosquitto.org](https://test
 
 > Here, the certificate chain consists of two certificates presented. At level 0 there is the server certificate with some parsed information. s: is the subject line of the certificate and i: contains information abouth the issuing CA.\
 This particular server (test.mosquitto.org) has sent an intermediate certificate as well. Subject and issuer information is provided for each certificate in the presented chain. Chains can be much longer than 2 certificates in length. The server certificates section is a duplicate of level 0 in the chain. Here we are looking for the end entity certificate.\
-> Alternate solution is to download the certificate directly from [test.mosquitto.org](https://test.mosquitto.org/ssl/mosquitto.org.crt) but the command line approach is more scalable to connect to other hosts.
+
+>**Alternate solution is to download the certificate directly from [test.mosquitto.org](https://test.mosquitto.org/ssl/mosquitto.org.crt). Save the file in `C:\PIC32MZW1` and rename it to `mosquitto.crt`.**
+but the command line approach is more scalable to connect to other hosts
 
 5. Make sure you have [python 3](https://www.python.org/downloads/) installed\
   From the Git bash console:
@@ -1333,38 +1299,33 @@ From the existing project created from scratch:
 <img src="resources/media/mplabx_add_existing_item_02.png" width=520>
 </p>
 
-- Open MHC
+- Open MCC
 - Select **MQTT Service** from Root view in Project graph 
   - Enter **Server Port = 8883**
   - Check **Enable TLS**
 <p align="center">
-<img src="resources/media/mhc_mqtt_service_server_port.png" width=520>
+<img src="resources/media/mcc_mqtt_service_server_port.png" width=520>
 </p>
 
 - Activate wolfSSL library
 <p align="center">
-<img src="resources/media/mhc_activate_wolfssl.png" width=>
-</p>
-
-- Activate SNTP (required for certificate expiration date)
-<p align="center">
-<img src="resources/media/mhc_activate_sntp.png" width=>
+<img src="resources/media/mcc_activate_wolfssl.png" width=>
 </p>
 
 - Enable the requested connection
 <p align="center">
-<img src="resources/media/mhc_link_wolfssl.png" width=>
+<img src="resources/media/mcc_link_wolfssl.png" width=>
 </p>
 
 Update the Presentation Layer configuration
-- Select **Presentation Layer** from **System Component** view in Project graph
+- Select **Presentation Layer** from **Presentation Layer** view in Project graph
 <p align="center">
-<img src="resources/media/mhc_select_presentation_layer.png" width=720>
+<img src="resources/media/mcc_select_presentation_layer1.png" width=720>
 </p>
 
 - In **Configuration Options** window, select **Fixed Flash Based Certificate Repo** as encryption certification store
 <p align="center">
-<img src="resources/media/mhc_configure_presentation_layer_01.png" width=>
+<img src="resources/media/mcc_configure_presentation_layer_01.png" width=>
 </p>
 
 - Expand **Encryption Certification Store** settings
@@ -1376,7 +1337,7 @@ Update the Presentation Layer configuration
     - Variable Name Containing Size of CA Certificate: `sizeof_ca_cert_der`
   - Uncheck **Support Server Certificate** because the steps here are NOT for mutual authentication
 <p align="center">
-<img src="resources/media/mhc_configure_presentation_layer_02.png" width=>
+<img src="resources/media/mcc_configure_presentation_layer_02.png" width=>
 </p>
 
 <br>
@@ -1384,10 +1345,10 @@ Update the Presentation Layer configuration
 - Select **PIC32MZW1** from **System Component** view in Project graph
 - And **disable WPA3** in PIC32MZW1 Wi-Fi driver configuration
 <p align="center">
-<img src="resources/media/mhc_configure_pic32mzw1_wifi_driver.png" width=>
+<img src="resources/media/mcc_configure_pic32mzw1_wifi_driver.png" width=>
 </p>
 
-- **Generate the code** from MHC menu
+- **Generate the code** from MCC Resource Management
 - **Clean and Build** the project
 - **Make and Program** the application
 - Open TeraTerm console

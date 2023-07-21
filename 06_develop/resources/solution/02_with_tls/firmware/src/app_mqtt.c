@@ -270,7 +270,7 @@ void APP_MQTT_Tasks ( void )
         case APP_MQTT_STATE_INIT:
         {
             // poll here until getting Wi-Fi service initialized
-            if(SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETCONFIG, &g_wifiConfig, sizeof(g_wifiConfig)) == SYS_WIFI_SUCCESS)
+            if(SYS_WIFI_CtrlMsg(sysObj.syswifi, SYS_WIFI_GETWIFICONFIG, &g_wifiConfig, sizeof(g_wifiConfig)) == SYS_WIFI_SUCCESS)
             {
                 // Wi-Fi service initialized
                 if (SYS_WIFI_STA == g_wifiConfig.mode)

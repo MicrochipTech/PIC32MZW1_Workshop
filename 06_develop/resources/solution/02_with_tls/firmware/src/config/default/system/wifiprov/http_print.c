@@ -17,7 +17,7 @@ Description:
 *********************************************************************/
 
 /*********************************************************************
-Copyright (C) 2012-2018 Microchip Technology Inc. and its subsidiaries 
+Copyright (C) 2012-2021 Microchip Technology Inc. and its subsidiaries 
  Microchip Technology Inc. and its subsidiaries.
  Subject to your compliance with these terms, you may use Microchip software
  and any derivatives exclusively with Microchip products. It is your
@@ -66,6 +66,13 @@ void TCPIP_HTTP_Print_version(HTTP_CONN_HANDLE connHandle);
 void TCPIP_HTTP_Print_builddate(HTTP_CONN_HANDLE connHandle);
 void TCPIP_HTTP_Print_hellomsg(HTTP_CONN_HANDLE connHandle);
 void TCPIP_HTTP_Print_pot(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_scan(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_bssCount(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_valid(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_name(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_privacy(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_wlan(HTTP_CONN_HANDLE connHandle);
+void TCPIP_HTTP_Print_strength(HTTP_CONN_HANDLE connHandle);
 
 void TCPIP_HTTP_Print(HTTP_CONN_HANDLE connHandle,uint32_t callbackID)
 {
@@ -191,6 +198,27 @@ void TCPIP_HTTP_Print(HTTP_CONN_HANDLE connHandle,uint32_t callbackID)
 			break;
         case 0x00000027:
 			TCPIP_HTTP_Print_pot(connHandle);
+			break;
+        case 0x0000002f:
+			TCPIP_HTTP_Print_scan(connHandle);
+			break;
+        case 0x00000031:
+			TCPIP_HTTP_Print_bssCount(connHandle);
+			break;
+        case 0x00000033:
+			TCPIP_HTTP_Print_valid(connHandle);
+			break;
+        case 0x00000034:
+			TCPIP_HTTP_Print_name(connHandle);
+			break;
+        case 0x00000035:
+			TCPIP_HTTP_Print_privacy(connHandle);
+			break;
+        case 0x00000036:
+			TCPIP_HTTP_Print_wlan(connHandle);
+			break;
+        case 0x00000037:
+			TCPIP_HTTP_Print_strength(connHandle);
 			break;
         default:
             // Output notification for undefined values

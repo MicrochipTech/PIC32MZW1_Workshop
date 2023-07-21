@@ -14,7 +14,7 @@
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (C) 2020 released Microchip Technology Inc.  All rights reserved.
+Copyright (C) 2020-21 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -85,7 +85,7 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_RegDomainGet
     OSAL_CRITSECT_DATA_TYPE critSect;
 
     /* Ensure the driver handle is valid. */
-    if (NULL == pDcpt)
+    if ((DRV_HANDLE_INVALID == handle) || (NULL == pDcpt) || (NULL == pDcpt->pCtrl))
     {
         return WDRV_PIC32MZW_STATUS_INVALID_ARG;
     }
@@ -120,6 +120,9 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_RegDomainGet
     if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
     {
         OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
         return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
     }
 
@@ -164,7 +167,7 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_RegDomainSet
     OSAL_CRITSECT_DATA_TYPE critSect;
 
     /* Ensure the driver handle and regulatory string pointer are valid. */
-    if ((NULL == pDcpt) || (NULL == pRegDomain))
+    if ((DRV_HANDLE_INVALID == handle) || (NULL == pDcpt) || (NULL == pDcpt->pCtrl) || (NULL == pRegDomain))
     {
         return WDRV_PIC32MZW_STATUS_INVALID_ARG;
     }
@@ -195,6 +198,9 @@ WDRV_PIC32MZW_STATUS WDRV_PIC32MZW_RegDomainSet
     if (false == DRV_PIC32MZW_MultiWid_Write(&wids))
     {
         OSAL_CRIT_Leave(OSAL_CRIT_TYPE_LOW, critSect);
+
+        DRV_PIC32MZW_MultiWIDDestroy(&wids);
+
         return WDRV_PIC32MZW_STATUS_REQUEST_ERROR;
     }
 

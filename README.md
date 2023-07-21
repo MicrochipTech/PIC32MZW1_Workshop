@@ -72,7 +72,7 @@ Continue the PIC32MZ W1 journey by developing a Secured Smart Home application f
    1. [TCP Client Application example](05_evaluate/README.md#step4)
    1. [Lab 0 - Wi-Fi feature evaluation with CLI](05_evaluate/README.md#step5)
    1. [Lab 1 - Use MPLAB X IDE to compile and flash the project](05_evaluate/README.md#step6)
-   1. [Lab 2 - Configure the Wi-Fi network using MHC](05_evaluate/README.md#step7)
+   1. [Lab 2 - Configure the Wi-Fi network using MCC](05_evaluate/README.md#step7)
    1. [Lab 3 - Enable Wi-Fi Provisioning with HTML webpage](05_evaluate/README.md#step8)
    1. [Lab 4 - Enable Wi-Fi Provisioning with Mobile Application](#step9)
    1. [Lab 5 - Merging TCP Client example application and Paho MQTT Client example application](05_evaluate/README.md#step10)
