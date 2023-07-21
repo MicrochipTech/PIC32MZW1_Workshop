@@ -36,24 +36,7 @@ In this sample code, the ADC channel AN15 has been used because it is easily ava
 
 To reduce the noise of the measurement and get a stable 12-bit ADC, two digital filtering techniques have been implemented in the code.
 
- <!---
- * Introduction of a Lowpass filter for DC interpolation
- 
- - The Lowpass filter is the easiest to implement and it is adjustable.
- - But, because the Tau is very long (to block the noise as much as possible ), it has the disadvantage of long time sampling before getting the conversion result (about 10 to 20 seconds). To avoid such delay, a +/-20mV barrier was introduced. Any change outside this barrier will lead to load the actual input into the filter taps. And only when the difference between input and output is less than 20mV, the filter is used. The filter reaches its final value much faster but still strongly lowpasses/average/interpolate the result. 
 
-* Introduction of a 3rd order polynom to compensate Gain and Offset error
-  - To find the coefficients of the Polynom, the program [Scilab](https://www.scilab.org/) has been used.
-  - The Scilab script that calculate the compensation polynom coefficient is part of the MPLAB X project in `adchs_polled\firmware\src\calib.sce`.
-  - It is necessary to measure in parallel with a good multimeter and read the results also from the terminal. Then put these two rows of data into the script to get the coefficients for the polynom.
-  - The calculation is done in emulated float and need 560 instruction cycles (14us@40MHz (Flash bandwidth)).
-
-<p align="center">
-<img src="resources/media/01_polynom.png" width=>
-</p>
-
-With the two actions above, it is possible to achieve an accuracy of 1mV within less a second. 
--->
 ### Try it
 
 1. Clone/download the repo [csp_apps_pic32mz_w1](https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1/)
